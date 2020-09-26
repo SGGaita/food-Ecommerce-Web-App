@@ -1,0 +1,88 @@
+<div class="container-fluid services">
+  <div class="row">
+    <div class=col-sm-12>
+      <!--Featured restaurants section-->
+      <div class="row featured-section">
+        <!-- <div class="col-sm-12 nav-tabs">
+               <button class="btn btn-outline-secondary">Restaurants</button>
+               <button class="btn btn-outline-secondary">Menu</button>
+            </div>-->
+
+        <!--Restaurants section-->
+        <div class="col-sm-12 restaurant-list">
+          <div class="row">
+
+            <div class="col-sm-12 res-headings">
+              <h2>Pick your taste </h2>
+              <h1>Restaurants</h1>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 restaurant" *ngFor="let _restaurant of restaurants">
+              <div class="col-sm-12 badge"><span class="badge badge-danger">New</span></div>
+              <img src="../../assets/img/restaurants/{{_restaurant.supplier_image}}" alt="">
+              <h3>{{_restaurant.supplier_name}}</h3>
+              <p>{{_restaurant.supplier_description.substr(0,80)}} ...</p>
+              <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >View our menu</a>
+            </div>
+          </div>
+        </div>
+        <!-- End Restaurants section-->
+
+        <!--Menus section-->
+        <div class="col-sm-12 menu-list">
+          <div class="row">
+            <div class="col-sm-12 res-headings">
+              <h1>Explore Menu</h1>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of products">
+              <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
+              <a routerLink="/products/{{_menu.id_product}}"><img src="../../assets/img/menu/{{_menu.image}}" alt="">
+              <h3>{{_menu.product_name}}</h3></a>
+              <p><strong>Category:</strong>{{_menu.category}} </p>
+              <p class="ingredients">{{_menu.product_description.substr(0,80)}} ...</p>
+              <p class="currency"> {{_currency}} {{_menu.product_price | currency: 'CDF'}}</p>
+              <button class="btn"
+              [disabled] ="_menu.quality < 1"
+              [class.disabled]="_menu.quantity < 1"
+              [class.btn-warning]="_menu.quantity < 1"
+              (click)="addToCart(_menu.id_product)">{{_menu.quantity < 1 ? "No Stock" : "Add to cart"}}</button>
+              <!--<button >Out of Stock</button>-->
+            </div>
+          </div>
+        </div>
+        <!--End menus section-->
+
+      </div>
+      <!-- End Featured restaurants section-->
+
+      <!--Customer assurance section-->
+      <div class="row assurance-statement">
+        <div class="col-sm-3">
+          <img src="../../assets/img/icons/icon1.png" alt="">
+          <h3>Best Quality</h3>
+          <p>Praesent pulvinar neque pel
+            lentesque mattis pretium.</p>
+        </div>
+        <div class="col-sm-3">
+          <img src="../../assets/img/icons/icon2.png" alt="">
+          <h3>On Time</h3>
+          <p>Praesent pulvinar neque pel
+            lentesque mattis pretium.</p>
+        </div>
+        <div class="col-sm-3">
+          <img src="../../assets/img/icons/icon3.png" alt="">
+          <h3>MasterChefs</h3>
+          <p>Praesent pulvinar neque pel
+            lentesque mattis pretium.</p>
+        </div>
+        <div class="col-sm-3">
+          <img src="../../assets/img/icons/icon4.png" alt="">
+          <h3>Taste Food</h3>
+          <p>Praesent pulvinar neque pel
+            lentesque mattis pretium.</p>
+        </div>
+      </div>
+      <!--End of Customer assurance section-->
+    </div>
+  </div>
+</div>

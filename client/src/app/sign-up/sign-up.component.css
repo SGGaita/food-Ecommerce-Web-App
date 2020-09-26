@@ -1,0 +1,32 @@
+.card{
+    position: relative;
+    margin: .3rem auto 1rem auto;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    width: 70% !important;
+    border-radius: 2px;
+    
+}
+
+.card-header h4{
+    text-transform: uppercase;
+    font-weight:700;
+    font-size:1.5rem;
+}
+
+.card-header p{
+    font-weight:200;
+    font-size: 0.9rem
+}
+
+label{
+    font-size: 1rem
+}
+
+label .red-text{
+    color:red
+}
+
+.input-group-prepend .input-group-text{
+    font-weight:600
+}

@@ -1,0 +1,15 @@
+#wrapper{
+    height:100%
+}
+
+.copyright{
+    
+    width: 100%;
+    background: #171616;
+    color: white;
+    height: 80px;
+    padding: 25px;
+    left: 0;
+    bottom: 0;
+    border-top:#f0002f 2px solid;
+}

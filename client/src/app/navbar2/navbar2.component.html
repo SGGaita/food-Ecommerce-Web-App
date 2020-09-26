@@ -1,0 +1,74 @@
+ <!--End not homepage-->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <a class="navbar-brand"  routerLink="/"><img src="../../assets/img/logo-bw.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"routerLink="/restaurants">Restaurants</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/drinks">Drinks and Beverages</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav ml-auto icons">
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-2x fa-user" aria-hidden="true"><br>Your Account</i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item nav-links"(click)="myAccount()">Your Account</a>
+          <a class="dropdown-item nav-links" (click)="myOrders()">My Orders</a>
+          <div class="row">
+            <div class="col-sm-12 d-flex flex-sm-column flex-md-column">
+              <a class="btn btn-danger text-center my-2 mx-3" routerLink="/customer/login">Login</a>
+          <a class="btn btn-warning text-center  mx-3" routerLink="/customer/register">Register</a>
+            </div>
+
+          </div>
+          
+
+        </div>
+        </li>
+        <li class="space"></li>
+        
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-shopping-cart" aria-hidden="true"> {{cartData.data[0].numInCart != 0 ? cartData.data.length : 0}} <br>Your cart</i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+            <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+              <div class="product-img">
+                <img src="../../assets/img/menu/{{c.product?.image}}" alt="" width="60px">
+              </div>
+              <div class="product-body">
+                <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
+                <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'USD'}}</h4>
+              </div>
+              <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+            </div>
+          </div>
+          <div class="cart-summary">
+            <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+            <h5>TOTAL : {{cartTotal | currency:'USD'}}</h5>
+          </div>
+          <div class="cart-btns">
+            <a routerLink="/cart">View Cart</a>
+            <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+           </div>
+        </li>
+        
+    </ul>
+    </div>
+  </nav>
+  <!--End not homepage-->

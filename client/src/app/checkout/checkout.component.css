@@ -1,0 +1,73 @@
+.billing input{
+    height: 40px;
+    margin-bottom: 15px;
+    width: 90% !important;
+    padding:10px
+}
+.order{
+    border-color: #e5e6e6!important;
+    border-radius: 10px 10px 0px 0px;
+    padding:20px
+}
+
+.place-order button{
+    border-radius: 40px;
+    border: #e0dada 4px solid;
+    padding: 10px 40px;
+}
+
+.table td{
+    font-size:1rem;
+    font-weight:500
+
+}
+
+.table tr .total-hd, .table tr .total-qty {
+    font-size: 1.3rem;
+    font-weight: 600
+}
+
+.table tr .total-qty{
+    color:#dc3545;
+}
+
+h1{
+    color: #cf0810;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.terms .checkbox, .radio-group .radio{
+width: 20px !important;
+
+
+}
+
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.custom-control-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.custom-control label {
+    font-weight: 400;
+}
+
+.custom-control-label {
+    cursor: pointer;
+}
+
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+

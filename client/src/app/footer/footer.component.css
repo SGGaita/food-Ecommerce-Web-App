@@ -1,0 +1,116 @@
+.footer{
+    background-color: rgb(22 30 33);
+    height: 400px;
+    border-top: #e30026 12px solid;
+    padding-top: 88px;
+    text-align: center;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0); 
+}
+
+.fa-twitter:before {
+    content: "\f099";
+}
+
+.hidden {
+    display: block!important;
+    border: 0!important;
+    margin: 0!important;
+    padding: 0!important;
+    font-size: 0!important;
+    line-height: 0!important;
+    width: 0!important;
+    height: 0!important;
+    overflow: hidden!important;
+}
+.hidden {
+    display: none!important;
+    visibility: hidden!important;
+}
+.socials {
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.socials .social-link {
+    color: #969696;
+    border-color: #969696;
+}
+.socials .social-link {
+    border: 1px solid #969696;
+    border-radius: 50%;
+    display: block;
+    height: 53px;
+    line-height: 53px;
+    text-align: center;
+    width: 53px;
+    float: left;
+    margin-right: 24px;
+    font-size: 20px;
+    color: #969696;
+}
+
+.socials .social-link:hover {
+    color: #ffffff;
+    background-color: #f0002f;
+    border-color: #f0002f;
+}
+
+.logo img{
+
+    padding-bottom: 20px;
+    
+}
+
+.menu-footer{
+    text-align: center;
+}
+
+.menu-footer ul {
+    list-style: none;
+}
+.footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-footer li {
+    border-color: #d3d3d3;
+}
+.menu-footer li {
+    border-right: 1px solid #e30026;
+    display: inline;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    color:#a2a5a6
+}
+
+.menu-footer li:last-child {
+    border-right: none;
+}
+
+@media (min-width: 320px){
+    .socials .social-link{
+        border: 1px solid #969696;
+        border-radius: 50%;
+        display: block;
+        height: 43px;
+        line-height: 43px;
+        text-align: center;
+        width: 43px;
+        float: left;
+        margin-right: 24px;
+        font-size: 20px;
+        color: #969696;
+    }
+}

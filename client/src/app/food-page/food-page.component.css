@@ -1,0 +1,16 @@
+.restaurant img{
+    width: 200px;
+    height: 100px;
+}
+
+.restaurant .btn{
+    background: #cf0810;
+    color: white;
+    padding: 10px 20px;
+    border: #ccc 5px solid;
+    border-radius: 50px;
+}
+
+.restaurant h3{
+    font-size:1rem
+}

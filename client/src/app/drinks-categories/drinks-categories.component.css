@@ -1,0 +1,17 @@
+.vertical-menu{
+    border: #bfbebe 1px solid;
+    padding: 10px 10px 10px 10px;
+    background: whitesmoke;
+}
+
+.vertical-menu h5{
+
+}
+
+.vert-menu-list{
+
+}
+
+.vert-menu-list ul li{
+    list-style-type: none;
+}

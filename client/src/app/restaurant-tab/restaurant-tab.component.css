@@ -1,0 +1,152 @@
+a{
+    cursor:pointer;
+    text-decoration: none;
+}
+
+a
+.disabled{
+    cursor:not-allowed
+}
+.service{
+  margin-top:20px;
+  margin-bottom:20px; 
+}
+
+.featured-section .nav-tabs{
+    text-align: center;
+}
+
+.featured-section .nav-tabs button{
+    margin-left:20px;
+    margin-bottom:10px;
+}
+
+.restaurant-list, .menu-list{
+    text-align: center;
+    padding: 20px 30px 10px 30px;
+}
+
+.restaurant{
+    max-height: 500px !important;
+    padding:30px 0 30px 0
+}
+
+.restaurant:hover{
+    border:#e9e9e9 2px solid;
+    transition: border 2s;
+    
+}
+.restaurant .badge .badge-danger{
+
+}
+.restaurant img{
+    width: 300px;
+    height: 200px;
+}
+
+.restaurant .btn{
+    background: #cf0810;
+    color: white;
+    padding: 10px 20px;
+    border: #ccc 5px solid;
+    border-radius: 50px;
+}
+
+.res-headings h1{
+    color: #cf0810;
+    text-transform: uppercase;
+    font-weight: 800;
+    
+}
+
+.res-headings h2{
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: #666666;
+    font-weight: lighter;
+    display: inline-block;
+    position: relative;
+    padding: 0 75px;
+    margin: 0;
+    line-height: 1;
+}
+
+.res-headings h2:before{
+    left:0;
+}
+
+.res-headings h2:before{
+    transform: translateY(-50%);
+    top: 50%;
+    content: "";
+    width: 53px;
+    display: inline-block;
+    height: 1px;
+    background-color: #d5d5d5;
+    position: absolute;
+}
+
+.res-headings h2:after{
+    right:0;
+}
+
+.res-headings h2:after{
+    transform: translateY(-50%);
+    top: 50%;
+    content: "";
+    width: 53px;
+    display: inline-block;
+    height: 1px;
+    background-color: #d5d5d5;
+    position: absolute;
+}
+
+.restaurant h3{
+    margin: 10px 0 5px;
+    font-size: 20px;
+    color: #333333;
+    font-weight: 500;
+    padding: 10px 0 0 0;
+}
+
+.restaurant .ingredients{
+    font-style:italic;
+    padding: 0px 20px 0px 20px;
+}
+
+.restaurant .currency{
+    padding: 10px 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #3c3c3c;
+    
+}
+
+.restaurant p{
+    font-size: 14px;
+    color: #666666;
+    margin: 0;
+    line-height: normal;
+    padding: 0 20px 10px 20px;
+}
+
+.assurance-statement{
+    text-align:center;
+    padding: 50px 50px;
+    margin-top: 20px;
+}
+
+.assurance-statement div h3{
+    margin: 10px 0 5px;
+    padding: 0;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.assurance-statement div p{
+    font-size: 14px;
+    color: #666666;
+    margin: 0;
+    line-height: normal;
+}

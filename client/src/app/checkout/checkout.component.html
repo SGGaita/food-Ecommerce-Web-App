@@ -1,0 +1,149 @@
+<ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="yellow" type="ball-clip-rotate-pulse"
+  fullscreen="true">
+  <p style="font-size:20px; color:black ; margin-top:50px">Booking Order</p>
+</ngx-spinner>
+<div class="container">
+  <!--When the cart is empty-->
+  <div class="row" *ngIf="cartData.total == 0">
+    <div class="col-sm-12 text-center my-5">
+      <div class="">
+        <h4>
+          Shopping cart is empty
+        </h4>
+        <button class="btn btn-outline-danger" routerLink="/">
+          <i class="fa fa-arrow-circle-o-left"> GO TO SHOP</i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5" *ngIf="cartData.total > 0">
+    <div class="col-sm-12 text-center my-5 ">
+      <h1>
+        Checkout
+      </h1>
+
+
+    </div>
+    <div class="col-sm-8">
+      <div class="billing-details">
+        <div class="section-title">
+          <h3 class="title">Billing address</h3>
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control " type="text" name="first-name" placeholder="First Name">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="text" name="last-name" placeholder="Last Name">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="email" name="email" placeholder="Email">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="text" name="address" placeholder="Address">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="text" name="city" placeholder="City">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="text" name="country" placeholder="Country">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="text" name="zip-code" placeholder="ZIP Code">
+        </div>
+        <div class="form-group col-sm-12">
+          <input class="input form-control" type="tel" name="tel" placeholder="Telephone">
+        </div>
+        <!--div class="form-group col-sm-12">
+          <div class="input-checkbox">
+            <input type="checkbox" id="create-account">
+            <label for="create-account">
+              <span></span>
+              Create Account?
+            </label>
+            <div class="caption">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              <input class="input" type="password" name="password" placeholder="Enter Your Password">
+            </div>
+          </div>
+        </div>-->
+      </div>
+      <!-- /Billing Details -->
+
+    </div>
+    <div class="col-sm-4 order border border-secondary">
+      <h5>Your Order</h5>
+
+      <div col-sm-12 text-center>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Total</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of cartData.data">
+              <td class="">
+                {{c.numInCart}} x {{c.product.product_name}}
+              </td>
+              <td>
+                {{c.product.product_price * c.numInCart | currency: 'USD'}}
+              </td>
+
+            </tr>
+            <tr>
+              <td class="total-hd">Total</td>
+              <td class="total-qty">{{cartTotal | currency: 'USD'}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!-- Form starts -->
+        <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
+          <!-- Gender -->
+          <div class="group-gap">
+            <h5 class="mb-3">Payment options</h5>
+
+            <div class="d-block my-3">
+              <div class="" *ngFor="let py of modes">
+                <input class="form-input" type="radio" formControlName="payment" [value]="py.id_payment"
+                  id="{{py.payment_name}}"> <small class="">
+                  {{py.payment_name}}</small>
+
+              </div>
+            </div>
+
+            <div class="terms">
+              <input class="checkbox" type="checkbox" name="" id=""> <small> I have read and accept the <a routerLink="/customer/terms">terms and
+                conditions.</a> </small>
+            </div>
+
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="place-order text-center">
+            <button class="btn btn-danger btn-block">Place Order</button>
+          </div>
+        </form><!-- Form ends -->
+
+      </div>
+
+
+    </div>
+    <div class="col-sm-12 d-flex py-5 nav-btn">
+      <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
+        <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> Continue
+          Shopping</button>
+        <button class="btn btn-dark btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> Shopping
+          Cart</button>
+        <button class="btn btn-danger btn-sm order-2 " routerLink="/checkout">Checkout <i
+            class="fa fa-arrow-circle-right"></i></button>
+      </div>
+
+    </div>
+  </div>
+</div>

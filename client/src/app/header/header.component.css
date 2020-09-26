@@ -1,0 +1,171 @@
+
+
+.carousel-inner{
+    
+}
+
+.carousel-caption h5{
+    margin-top: -150px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.carousel-caption button{
+    border-color: white;
+    border-width: 1px;
+    color: #020202;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-top: 45px;
+    font-weight: 400;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 35px;
+    border: #807d7d3b 5px solid
+}
+
+.carousel-caption p{
+    font-size: 1.5rem;
+    padding: 0px 200px 0 200px;
+}
+
+.carousel-caption form input{
+    height: 70px;
+    font-size: 25px;
+    margin-top: 70px;
+    margin-bottom: 60px;
+    width: 90%;
+    border-radius: 6px;
+    border-color: var(--danger);
+    padding: 15px;
+}
+
+
+@media (min-width: 320px) { 
+    
+    .carousel-inner img{
+        margin-top:0px
+    }
+
+    .carousel-caption h5{
+        margin-top: 100px;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .carousel-caption button {
+        border-color: white;
+        border-width: 1px;
+        color: #020202;
+        text-transform: uppercase;
+        font-size: .8rem;
+        margin-top: 25px;
+        font-weight: 400;
+        background: #ffffff;
+        padding: 5px 10px 5px 10px;
+        border-radius: 35px;
+        border: #807d7d3b 5px solid;
+    }
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  
+    .carousel-caption h5{
+        margin-top: -170px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    transition: 2s margin-top font-size;
+    }
+
+    .carousel-caption button {
+        border-color: white;
+        border-width: 1px;
+        color: #020202;
+        text-transform: uppercase;
+        font-size: .8rem;
+        margin-top: 25px;
+        font-weight: 400;
+        background: #ffffff;
+        padding: 5px 10px 5px 10px;
+        border-radius: 35px;
+        border: #807d7d3b 5px solid;
+    }
+
+   
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    .carousel-caption h5{
+        margin-top: -230px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    }
+
+    .carousel-caption button {
+        border-color: white;
+        border-width: 1px;
+        color: #020202;
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin-top: 25px;
+        font-weight: 400;
+        background: #ffffff;
+        padding: 10px 20px 10px 20px;
+        border-radius: 35px;
+        border: #807d7d3b 5px solid;
+    }
+
+    .carousel-caption p{
+        font-size: 1rem;
+        padding: 0px 20px 0 20px;
+    }
+
+   
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .carousel-inner{
+       
+        margin-top: -100px;
+    }
+    .carousel-caption h5{
+        margin-top: -250px;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .carousel-caption p{
+        font-size: 1.2rem;
+        padding: 0px 20px 0 20px;
+    }
+
+   
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+    .carousel-inner{
+    height: 100vh !important;
+    margin-top: -70px;
+}
+
+    .carousel-caption h5{
+        margin-top: -400px;
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .carousel-caption p{
+        font-size: 1.5rem;
+        padding: 0px 20px 0 20px;
+    }
+
+   
+}
+  
+
+

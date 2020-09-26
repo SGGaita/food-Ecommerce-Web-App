@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+/*._body{
+    height:85vh
+}*/
+
+label {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.disabled{
+    cursor: not-allowed;
+}
+
+.dropdown-menu .cart-list {
+    max-height: 180px;
+    overflow-y: scroll;
+    margin-bottom: 15px;
+  }
+  
+  .dropdown-menu .cart-list .product-widget {
+    padding: 5px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  .dropdown-menu .cart-list .product-widget:last-child {
+    margin-bottom: 0px;
+  }
+  
+  .dropdown-menu .cart-list .product-widget .product-img {
+    left: 0px;
+    top: 0px;
+    
+    
+  }
+
+  .dropdown-menu .cart-list .product-widget .product-body{
+    
+  }
+
+  .dropdown-menu .cart-list .product-widget .product-body .product-name{
+    font-size:1rem
+  }
+  
+  .dropdown-menu .cart-list .product-widget .product-body .product-price {
+    color: #2B2D42;
+    font-size: 1.2rem;
+  }
+  
+  .dropdown-menu .cart-btns {
+    margin: 0px 0px -9px;
+  }
+  
+  .dropdown-menu .cart-btns>a {
+    display: inline-block;
+    width: calc(50% - 0px);
+    padding: 12px;
+    background-color: #D10024;
+    color: #FFF;
+    text-align: center;
+    font-weight: 700;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+  
+  .dropdown-menu .cart-btns>a:first-child {
+    margin-right: 0px;
+    background-color: #1e1f29;
+  }
+  
+  .dropdown-menu .cart-btns>a:hover {
+    opacity: 0.9;
+  }
+  
+  .dropdown-menu .cart-summary {
+    border-top: 1px solid #E4E7ED;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }

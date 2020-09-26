@@ -1,0 +1,41 @@
+a {
+    color: #424040;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #424040;
+    background-color: #ededed;
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -1px;
+    font-weight: 600;
+}
+
+.product-info{
+    width: 70%;
+    padding: 0 10px;
+}
+
+.product-info span {
+    float:left
+}
+
+.order-number{
+    margin-left: -110px
+}
+
+
+label{
+    font-size: 1rem
+}
+
+label .red-text{
+    color:red
+}
+
+.input-group-prepend .input-group-text{
+    font-weight:600
+}

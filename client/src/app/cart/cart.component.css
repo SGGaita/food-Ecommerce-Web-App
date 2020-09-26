@@ -1,0 +1,141 @@
+/**.increase_quantity, .decrease_quantity {
+    cursor: pointer;
+  }
+  
+  form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    padding: 10px 0 12px;
+    text-align: center;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .value-button:hover {
+    cursor: pointer;
+  }
+  
+  form #decrease {
+    margin-right: -4px;
+    border-radius: 8px 0 0 8px;
+    background: red;
+    color: white;
+  }
+  
+  form #increase {
+    margin-left: -4px;
+    border-radius: 0 8px 8px 0;
+    background: green;
+    color: white;
+  }
+  
+  /* form #input-wrap {
+    margin: 0px;
+    padding: 0px;
+  } 
+  
+  input#number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  tbody {
+    tr {
+      &:not(:last-of-type) {
+        td {
+          border-right: 1px solid #dee2e6;
+  
+          &:first-of-type {
+            border-left: 1px solid #dee2e6;
+          }
+        }
+      }
+  
+      &:last-of-type {
+        td {
+  
+          &:first-child {
+            border-top: 1px solid #dee2e6 !important;
+          }
+  
+          &:nth-child(4), &:nth-child(5) {
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-align: center;
+          }
+  
+  
+        }
+  
+      }
+  
+    }
+  } */
+
+
+  .value-button {
+    display: inline-block;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  
+  input#number {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+  }
+
+  .value-button:hover {
+    cursor: pointer;
+  }
+
+  ._bottom td{
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  
+
+  
+  

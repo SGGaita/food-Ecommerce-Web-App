@@ -1,0 +1,97 @@
+<!--End homepage-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light " data-toggle="collapse" data-target=".navbar-collapse.show">
+    <a class="navbar-brand" routerLink="/"><img src="../../assets/img/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link"routerLink="/" data-toggle="collapse" data-target=".navbar-collapse.show">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/restaurants" data-toggle="collapse" data-target=".navbar-collapse.show">Restaurants</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/drinks" data-toggle="collapse" data-target=".navbar-collapse.show">Drinks and Beverages</a>
+        </li>
+
+        <div class="dropdown-divider d-block d-lg-none"></div>
+
+        <li class="nav-item ">
+          <a class="nav-link d-block d-lg-none" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">Your Account</a>
+            
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link d-block d-lg-none" routerLink="/customer/my-orders" data-toggle="collapse" data-target=".navbar-collapse.show">My Orders</a>
+        </li>
+
+        <div class="d-block">
+          <button class="btn btn-dark d-lg-none w-50 rounded-0"><i class="fa fa-shopping-cart" routerLink="/cart" data-toggle="collapse" data-target=".navbar-collapse.show"></i> View Cart</button>
+          <button class="btn btn-danger d-lg-none w-50 rounded-0" routerLink="/checkout" data-toggle="collapse" data-target=".navbar-collapse.show">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+        </div>
+
+        <button class="btn btn-danger d-block d-lg-none my-2" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">Login</button>
+        <button class="btn btn-warning d-block d-lg-none" routerLink="/customer/register" data-toggle="collapse" data-target=".navbar-collapse.show">Register</button>
+
+       
+        
+      </ul>
+      <ul class="navbar-nav ml-auto icons">
+          <li class="dropdown d-none d-lg-block">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-2x fa-user" aria-hidden="true"><br><span>Your Account</span></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">Your Account</a>
+            <a class="dropdown-item" routerLink="/customer/my-orders" data-toggle="collapse" data-target=".navbar-collapse.show">My Orders</a>
+            <div class="row">
+              <div class="col-sm-12 d-flex flex-xs-column flex-sm-column flex-md-column">
+                <a class="btn btn-danger text-center my-2 mx-3" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">Login</a>
+            <a class="btn btn-warning text-center  mx-3" routerLink="/customer/register" data-toggle="collapse" data-target=".navbar-collapse.show">Register</a>
+              </div>
+  
+            </div>
+          </div>
+          </li>
+          <li class="space"></li>
+          
+          <li class="dropdown d-none d-lg-block">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-shopping-cart" aria-hidden="true"> {{cartData.data[0].numInCart != 0 ? cartData.data.length : 0}} <br> <span>Your cart</span> </i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+              <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+                <div class="product-img">
+                  <img src="../../assets/img/menu/{{c.product?.image}}" alt="" width="60px">
+                </div>
+                <div class="product-body">
+                  <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
+                  <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'USD'}}</h4>
+                </div>
+                <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+              </div>
+            </div>
+            <div class="cart-summary">
+              <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+              <h5>TOTAL : {{cartTotal | currency:'USD'}}</h5>
+            </div>
+            <div class="cart-btns ">
+              <a routerLink="/cart">View Cart</a>
+              <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+             </div>
+          </li>
+          
+      </ul>
+    </div>
+  </nav>
+  <!--End homepage-->
+
+ 

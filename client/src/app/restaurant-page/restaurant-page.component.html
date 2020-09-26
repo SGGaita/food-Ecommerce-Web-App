@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <input type="text"  id="" placeholder="Search your favorite restaurant.." [(ngModel)]="searchText" name="searchText">
+        </div>
+    </div>
+    <div class="row py-3">
+      <div class="col-sm-12 col-md-6 col-lg-3 restaurant" *ngFor="let _restaurant of restaurants | searchBy:{supplier_name:
+        searchText} ">
+          <div class="col-sm-12 badge"><span class="badge badge-danger">New</span></div>
+          <img src="../../assets/img/restaurants/{{_restaurant.supplier_image}}" alt="">
+          <h3>{{_restaurant.supplier_name}}</h3>
+          <p>{{_restaurant.supplier_description.substr(0,50)}} ...</p>
+          <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >View our menu</a>
+        </div>
+  </div>
+  </div>
