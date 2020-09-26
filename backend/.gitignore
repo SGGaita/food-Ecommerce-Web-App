@@ -30,6 +30,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/backend.zip
 
 # System Files
 .DS_Store
