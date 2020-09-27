@@ -17,7 +17,9 @@ export class AccountProfileComponent implements OnInit {
     .subscribe(data =>{
       console.log("customer infor", data);
       this.userData = data
-      console.log()
+      console.log(this.userData.fname)
+
+      //fetch all customer details
     })
   }
 

@@ -10,3 +10,37 @@
 .designed-by a{
     color:#f0002f;
 }
+
+@media (min-width: 320px){
+
+    
+
+span.copyright-msg {
+       
+        background: #1f272a;
+        padding: 10px;
+        color: white;
+        font-size: 0.8rem !important;
+    }
+
+    .designed-by {
+        font-size: 0.8rem;
+    
+}
+}
+
+@media (min-width:576px){
+
+}
+
+@media (min-width:768px){
+    
+}
+
+@media (min-width:992px){
+    
+}
+
+@media (min-width: 1200px) {
+    
+}

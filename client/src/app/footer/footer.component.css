@@ -100,17 +100,73 @@
 }
 
 @media (min-width: 320px){
+
+    .footer {
+        background-color: rgb(22 30 33);
+        height: 300px;
+        border-top: #e30026 12px solid;
+        padding-top: 48px;
+        text-align: center;
+    }
     .socials .social-link{
         border: 1px solid #969696;
         border-radius: 50%;
         display: block;
-        height: 43px;
-        line-height: 43px;
+        height: 33px;
+        line-height: 33px;
         text-align: center;
-        width: 43px;
+        width: 33px;
         float: left;
         margin-right: 24px;
         font-size: 20px;
         color: #969696;
     }
+
+    .logo img {
+        padding-bottom: 10px;
+        width: 40%;
+    }
+
+    .menu-footer li {
+        border-right: 1px solid #e30026;
+        display: inline;
+        line-height: 30px;
+        margin: 0;
+        padding: 0 15px;
+        text-align: center;
+        color: #a2a5a6;
+        font-size: .8rem;
+    }
+
+}
+
+@media (min-width:576px){
+    .logo img {
+        padding-bottom: 10px;
+        width: 40% !important;
+    }
+
+}
+
+@media (min-width:768px){
+    .logo img {
+        padding-bottom: 10px;
+        width: 20% !important;
+    }
+    
+}
+
+@media (min-width:992px){
+    .logo img {
+        padding-bottom: 10px;
+        width: 20% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .logo img {
+        padding-bottom: 10px;
+        width: 20% !important;
+    }
+    
 }
