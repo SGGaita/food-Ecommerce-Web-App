@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import {ProductsComponent} from './products/products.component'
 import { CustomerComponent } from './customer/customer.component';
 import { TermsComponent } from './terms/terms.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -42,7 +43,8 @@ children:[
   {path: 'terms', component: TermsComponent}
 ]},
 //Start admin section
-{path:'admin', component:AdminComponent}
+{path:'admin', component:AdminComponent},
+{ path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
