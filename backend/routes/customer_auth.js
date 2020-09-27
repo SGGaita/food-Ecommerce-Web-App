@@ -78,7 +78,7 @@ router.post('/login_customer', (req, res) => {
             console.log("Customer", customer)
             if (!customer) {
                 return res.status(404).send({
-                    reason: `Customer email "${req.body.email}" not found in the database`
+                    reason: `Customer email ${req.body.email} not found in the database`
                 });
             }
             var passwordIsValid = bcrypt.compareSync(req.body.password, customer.password);

@@ -3,6 +3,16 @@
     height:85vh
 }*/
 
+
+.alert {
+  position: relative;
+  padding: .3rem 1.25rem;
+  margin-bottom: rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-weight: 600;
+}
+
 label {
   font-size: 1.5rem;
   font-weight: 600;
