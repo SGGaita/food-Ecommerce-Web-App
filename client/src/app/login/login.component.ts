@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
-
+import {SharedService} from '../_services/shared_service/shared.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,21 +15,28 @@ export class LoginComponent implements OnInit {
   errorMsg: any;
   loading = false;
   public loadingMsg = "Authenticating...Please wait";
+  _userData: any
 
-  constructor(private router: Router,private fb: FormBuilder,private customerAuth: CustomerAuthenticationService) {}
+  constructor(private sharedService: SharedService, private router: Router,private fb: FormBuilder,private customerAuth: CustomerAuthenticationService) {}
 
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-      email:[null, Validators.required,  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
+      email:[null, [Validators.required,  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       password: [null]
     })
+
+
 
 
   }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
+  }
+
+  sendUserData(user: []) {
+    this.sharedService.nextCustomerData(user);
   }
 
 
@@ -41,6 +48,10 @@ export class LoginComponent implements OnInit {
     this.customerAuth.login(this.loginForm.value).subscribe(
       data => {
         console.log(data)
+
+        console.log("Costomer information data",this.customerAuth.getcustomerDetails())
+        this._userData = this.customerAuth.getcustomerDetails()
+        this.sendUserData(this._userData)
         this.successMsg = "Successful Authentication";
         this.loading = false;
         this.router.navigateByUrl('/customer/profile')

@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
 
-  private userData = new BehaviorSubject([]);
-  sharedUser = this.userData.asObservable();
+  private userData = new BehaviorSubject({});
+  sharedCustomer = this.userData.asObservable();
 
   constructor() { }
 
-  nextUserData(user: []) {
+  nextCustomerData(user: {}) {
     this.userData.next(user)
   }
 }
