@@ -31,6 +31,18 @@ label .red-text{
     display: inline-block
 }
 
+.alert.validation{
+    height: 20px;
+    font-size: small;
+    margin: auto;
+    background: #ea5160;
+    border-color: #d32535;
+}
+
+.alertMsg{
+    margin-top:-10px
+}
+
 .remember label{
     margin-right:5px
 }

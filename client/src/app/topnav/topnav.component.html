@@ -1,7 +1,8 @@
 <div class="container-fluid top">
     <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
         <p class="order-0">Order on: +25400000000 </p>
-        <p class="order-1"><a routerLink="/customer/login">Sign in</a> </p>
+        <p *ngIf="!this.customerAuth.isLoggedIn()" class="order-1"><a routerLink="/customer/login">Sign in</a> </p>
+        <p *ngIf="this.customerAuth.isLoggedIn()"class="order-1"><a routerLink="/customer/login">Sign out</a> </p>
     </div>
 
 

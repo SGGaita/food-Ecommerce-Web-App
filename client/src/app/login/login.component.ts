@@ -11,6 +11,7 @@ import {SharedService} from '../_services/shared_service/shared.service'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
   fieldTextType: boolean;
+  submitted: boolean = false;
   successMsg: string;
   errorMsg: any;
   loading = false;
@@ -23,18 +24,22 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = this.fb.group({
       email:[null, [Validators.required,  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-      password: [null]
+      password: [null, Validators.required]
     })
 
+}
 
+//get form controls
+get f(){
+  return this.loginForm.controls;
+}
 
-
-  }
-
+//Toggle show password
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
 
+ //Share user data via shared service
   sendUserData(user: []) {
     this.sharedService.nextCustomerData(user);
   }
@@ -42,12 +47,19 @@ export class LoginComponent implements OnInit {
 
   //login
   login(){
-    this.loading = true;
+    
     this.errorMsg = ""
+    this.submitted = true
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.loading = true;
     console.log("These values", this.loginForm.value)
     this.customerAuth.login(this.loginForm.value).subscribe(
       data => {
         console.log(data)
+        
 
         console.log("Costomer information data",this.customerAuth.getcustomerDetails())
         this._userData = this.customerAuth.getcustomerDetails()
