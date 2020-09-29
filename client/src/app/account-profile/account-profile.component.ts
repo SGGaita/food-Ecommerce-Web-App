@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../_services/customer.service';
 import { SharedService } from '../_services/shared_service/shared.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SharedService } from '../_services/shared_service/shared.service';
 export class AccountProfileComponent implements OnInit {
   userData: any;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private customerService: CustomerService) { }
 
   ngOnInit(): void {
 
@@ -20,6 +21,10 @@ export class AccountProfileComponent implements OnInit {
       console.log(this.userData.fname)
 
       //fetch all customer details
+      this.customerService.getCustomerById(this.userData.id_customer)
+      .subscribe(data=>{
+        console.log("customer details", data)
+      })
     })
   }
 

@@ -191,13 +191,14 @@ router.get('/customers/:custId', (req, res) => {
 router.get('/customers_add/:custId', (req, res) => {
     let customerId = req.params.custId;
     database.table('customers as c ')
-    .join([{
+    .leftJoin([{
             table: "customer_addresses as ca",
-            on: `ca.id_customer_fk = c.id_customer`
+            on: `c.id_customer = ca.id_customer_fk`
         },
         
     ])
     .withFields(['c.id_customer',
+    'ca.id_customer_fk',
     'c.fname as firstName',
     'c.lname as lastName',
     'c.email',
@@ -219,7 +220,7 @@ router.get('/customers_add/:custId', (req, res) => {
                 res.status(200).json(cust);
             } else {
                 res.json({
-                    message: `No Custome found with id ${customerId}`
+                    message: `No Customer found with id ${customerId}`
                 });
             }
         }).catch(err => res.json(err));

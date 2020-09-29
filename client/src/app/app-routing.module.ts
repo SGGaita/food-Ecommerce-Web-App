@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from './_auth/auth.guard'
+import {AuthCustGuard} from './_auth/auth-cust.guard'
 import { HomeComponent } from './home/home.component';
 import { RestaurantMenuComponent } from './restaurant-menu/restaurant-menu.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
@@ -18,6 +20,8 @@ import {ProductsComponent} from './products/products.component'
 import { CustomerComponent } from './customer/customer.component';
 import { TermsComponent } from './terms/terms.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
+
+//Import Auth guards
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -39,7 +43,8 @@ children:[{
 children:[
   {path: "login", component: LoginComponent},
   {path: 'register', component: SignUpComponent},
-  {path: 'profile', component: AccountProfileComponent},
+  {path: 'profile', component: AccountProfileComponent,
+  canActivate: [AuthCustGuard]},
   {path: 'terms', component: TermsComponent}
 ]},
 //Start admin section

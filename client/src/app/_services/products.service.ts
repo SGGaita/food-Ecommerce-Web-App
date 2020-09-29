@@ -19,7 +19,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  // retrieving sermons
+  // retrieving products
   getProducts(numberofResults: number = 10): Observable<any> {
     return this.http
       .get(this.server_url + '/products', {

@@ -3,12 +3,16 @@ import { Observable } from 'rxjs';
 import {Router, CanActivate,ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {AuthenticationService} from './authentication.service';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
   constructor(private auth: AuthenticationService, private router: Router) { }
+
+  //canActivate for admin
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
@@ -19,5 +23,6 @@ export class AuthGuard implements CanActivate {
       this.router.navigateByUrl('/admin');  
       return false;
   }
+
   
 }

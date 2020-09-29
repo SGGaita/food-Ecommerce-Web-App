@@ -9,7 +9,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
+import { CustomersModelServer} from '../_models/customers' 
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +25,36 @@ export class CustomerService {
     return this.http.post(this.server_url + '/sendmail', user)
       .pipe(catchError(this.handleError));
   }
+
+   // retrieving customers
+   getCustomers(numberofResults: number = 10): Observable<any> {
+    return this.http
+      .get(this.server_url + '/customers', {
+        params: {
+          limit: numberofResults.toString(),
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getCustomerById(customerId: Number): Observable<CustomersModelServer> {
+    return this.http
+      .get<CustomersModelServer>(this.server_url + '/customers/' + customerId)
+      .pipe(catchError(this.handleError));
+  }
+
+  getCustomerAddById(customerId: Number): Observable<CustomersModelServer> {
+    return this.http
+      .get<CustomersModelServer>(this.server_url + '/customers_add/' + customerId)
+      .pipe(catchError(this.handleError));
+  }
+
+  //get products from one category
+  getProductsFromCategory(catName: string): Observable<CustomersModelServer[]> {
+    return this.http.get<CustomersModelServer[]>(this.server_url + 'products/category/' + catName)
+    .pipe(catchError(this.handleError))
+  }
+
 
   //capture errors
   private handleError(errorResponse: HttpErrorResponse) {
