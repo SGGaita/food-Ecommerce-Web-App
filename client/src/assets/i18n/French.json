@@ -1,0 +1,88 @@
+{"TOP":{
+   "Order": "Commander",
+   "SingIn": "Se connecter",
+   "SignOut": "Se déconnecter"
+},
+"HOME":{
+    "Home": "Accueil",
+    "Restaurants": "Restaurants",
+    "Drinks":"A boire",
+    "Contact":"Nos contacts",
+    "About": "À notre sujet",
+    "Account": "Votre compte",
+    "Cart":"Vorte carte",
+    "MyProfile": "Votre profile",
+    "MyOrders":"Votre commande",
+    "Register":"S'incrire",
+    "ViewCart":"Vérifier la carte",
+    "Admin":"Administrateur",
+    "Checkout":"Accédez aux payements",
+    "SelectedItems":"Choix fait",
+    "Total": "total",
+    "Help":""
+},
+"HEADER":{
+    "Intro": "Fraîche, rapide et delicieux",
+    "Description":"Dans nos restaurants , nous offrons de plat délicieux et des services de qualité, nous vous invitons à essayer nos services. ",
+    "ViewButton": "Voir nos restaurants"
+},
+"RESTAURANT":{
+    "Heading":"Choisissez vôtre goût ",
+    "NewBadge":"Nouveau",
+    "ViewButton":"Voir notre menu",
+    "SearchBar": ""
+},
+"FEATUREDMENU":{
+    "Heading":"Menu vedette",
+    "Category":"Catégorie",
+    "Subcategory":"Sous catégorie",
+    "AddToCart":"Ajouter à la carte"
+    },
+"CUSTOMERSASSURANCE":{
+    "BestQuality":"Meilleur qualité",
+    "OnTime":"A temps",
+    "MasterChefs": "Masterchefs",
+    "TastyFood":"Des repas délicieux"
+},
+"FOOTER":{
+"Telephone":"Téléphone",
+"PaymentMode":"Methods de payements",
+"JoinUs":"Rejoignez nous sur"
+},
+"COPYRIGHT":{
+    "AllRights":""
+    },
+"CUSTOMERPAGE":{
+    "MyAccount":"Mon compte",
+    "Orders": "Commande(s)",
+    "Details": "Détail",
+    "AddressBook": "Carnet d'address",
+    "ChangePword":"Changer le mots de passe",
+    "AccountOver": "Aperçu du compte",
+    "AccountDets":"Détails du compte",
+    "DefaultAdd":"Votre adresse de livraison par défaut ",
+    "OpenOrders":"Commande en cour",
+    "ClosedOrders":"Commande faites",
+    "OrderNumber":"Numéro de commande",
+    "SeeDetails": "Voir les détails",
+    "Delivered":"Livré",
+    "Cancelled":"Annuler",
+    "Pending": "En suspend",
+    "ReadyBy":"Prêt dans",
+    "FirstName":"Prénom",
+    "LastName":"Nom de famille",
+    "Submit": "Soumettre",
+    "Reset":"Réinitialiser",
+    "SetDefaultAdd":"Définir comme l'adresse par défaut",
+    "AddNewAddress":"Ajouter une nouvelle adresse",
+    "CPassword": "Mots de pass actuel",
+    "NPassword":"Nouveau mot de pass",
+    "RPassword":"Taper le nouveau mots de pass",
+     "SignOut":"Se déconnecter "
+},
+"PNF":{
+    "Error":"Erreur 404 - Page non trouvée",
+    "Message":"Nous sommes désolés, la page que vous avez demandée est introuvable. Veuillez revenir à la page d'accueil ou contacter l'assistance à l'adresse support@notreforce.org",
+    "Button":"Page d'accueil"
+}
+}

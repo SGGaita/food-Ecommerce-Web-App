@@ -3,6 +3,7 @@ import { CustomerAuthenticationService } from '../_auth/customer-authentication.
 import { CustomersModelServer } from '../_models/customers';
 import { CustomerService } from '../_services/customer.service';
 import { SharedService } from '../_services/shared_service/shared.service';
+import {TranslateService} from '@ngx-translate/core'
 
 @Component({
   selector: 'app-topnav',
@@ -14,7 +15,14 @@ export class TopnavComponent implements OnInit {
   fname: any;
   customerData: any;
 
-  constructor(private sharedService: SharedService,public auth_cust: CustomerAuthenticationService, private customerService: CustomerService) { }
+  languages =[{value:"en",lang:"English"},{value:"fr",lang:"French"}]
+
+  constructor(public translate: TranslateService,private sharedService: SharedService,public auth_cust: CustomerAuthenticationService, private customerService: CustomerService) { 
+    translate.addLangs(['English','French'])
+    translate.setDefaultLang('English')
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/English|French/) ? browserLang : 'English');
+  }
 
   ngOnInit(): void {
     

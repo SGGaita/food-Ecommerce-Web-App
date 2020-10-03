@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~10.0.11",
     "@angular/router": "~10.0.11",
     "@angular/service-worker": "~10.0.11",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "admin-lte": "^3.0.5",
     "angularx-social-login": "^3.2.2",
     "bootstrap": "^4.5.2",

@@ -7,6 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider} from 'angularx-social-login';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -98,7 +100,16 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ToastrModule.forRoot(), // ToastrModule added
     NgxSpinnerModule,
     NoopAnimationsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        //useClass: TranslationService,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'fr'
+    }),
     
   ],
   providers: [{
@@ -118,3 +129,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// AoT requires an exported function for factories
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
