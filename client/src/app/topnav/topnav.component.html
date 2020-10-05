@@ -8,7 +8,7 @@
         </select>-->
     
             <p *ngIf="!this.auth_cust.isLoggedIn()" class="order-1"><a routerLink="/customer/login">{{'TOP.SingIn' | translate}}</a> </p>
-        <p *ngIf="this.auth_cust.isLoggedIn()"class="order-1"><a (click)="this.auth_cust.logout()">{{'SignOut' | translate}} ({{fname}})</a> </p>
+        <p *ngIf="this.auth_cust.isLoggedIn()"class="order-1"><a (click)="this.auth_cust.logout()">{{'TOP.SignOut' | translate}} ({{fname}})</a> </p>
         </span>
         
     </div>

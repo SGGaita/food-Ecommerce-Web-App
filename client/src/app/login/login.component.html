@@ -3,8 +3,8 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <div class="card mt-3">
         <div class="card-header text-center">
-          <h4>Login</h4>
-          <p>Enter your login credentials</p>
+          <h4>{{'LOGIN.Login' | translate}}</h4>
+          <p>{{'LOGIN.PromptMsg' | translate}}</p>
           <div class="alert alert-info" *ngIf="loading">
             <img
               src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
@@ -16,32 +16,32 @@
         <div class="card-body">
           <form action="" [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
-              <label for="">Email:<label class="red-text">*</label></label>
+              <label for="">{{'LOGIN.Email' | translate}}<label class="red-text">*</label></label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text">@</div>
                 </div>
                 <input type="email" class="form-control" id="email" name="email" formControlName="email"
-                  placeholder="Enter your Email (example@email.com)">
+                  placeholder="{{'LOGIN.EnterEmail' | translate}}">
                 <!--Validation-->
                 <!--<div *ngIf="submitted && f.email.errors" class="alert alert-danger">-->
               </div>
               <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger validation">
                 <div class="alertMsg" *ngIf="f.email.errors.required">
-                  Email is required
+                  {{'LOGIN.EmailRequired' | translate}}
                 </div>
                 <div class="alertMsg" *ngIf="f.email.errors.pattern">
-                  Invalid Email format *example@email.com
+                  {{'LOGIN.InvalidEmail' | translate}}
                 </div>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="">Password<label class="red-text">*</label></label>
+              <label for="">{{'LOGIN.Password' | translate}}<label class="red-text">*</label></label>
               <div class="input-group mb-2">
 
                 <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password"
-                  formControlName="password" placeholder="Enter your password">
+                  formControlName="password" placeholder="{{'LOGIN.EnterPassword' | translate}}">
                 <div class="input-group-append">
                   <span class="input-group-text">
                     <i class="fa" [ngClass]="{
@@ -54,7 +54,7 @@
               </div>
               <div *ngIf="submitted && f.password.errors" class="alert alert-danger validation">
                 <div class="alertMsg" *ngIf="f.password.errors.required">
-                  Password is required
+                  {{'LOGIN.PasswordRequired' | translate}}
                 </div>
                  </div>
             </div>
@@ -67,20 +67,20 @@
                     </div>-->
             <div class="links d-flex justify-content-between flex-sm-column w-100">
               <div class="remember order-0 ">
-                <label for="" class="">Remember me </label>
+                <label for="" class="">{{'LOGIN.Rememberme' | translate}} </label>
                 <input type="checkbox" name="" id="" class="">
               </div>
               <div class="forgot order-1 pb-2">
-                <a routerLink="/forgot-password">Forgot your password?</a>
+                <a routerLink="/forgot-password">{{'LOGIN.Forgot' | translate}} </a>
               </div>
             </div>
             <button class="btn btn-danger btn-block" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i>
-              Login</button>
+              {{'LOGIN.Login' | translate}} </button>
             <button class="btn btn-dark btn-block" type="reset"><i class="fa fa-undo" aria-hidden="true"></i>
-              Reset</button>
+              {{'LOGIN.Reset' | translate}}</button>
 
             <div class="col-sm-12 pt-2 text-center">
-              <a routerLink="/customer/register">Register an account</a>
+              <a routerLink="/customer/register">{{'LOGIN.Register' | translate}}</a>
             </div>
 
 

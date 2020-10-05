@@ -244,8 +244,8 @@ li .cart-count{
     }
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute;
-        margin-left: -250px;
-    width: 300px;
+        margin-left: -300px;
+    width: 450px;
 }
 
 .navbar-nav>li>a {

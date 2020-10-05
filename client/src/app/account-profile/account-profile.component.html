@@ -3,16 +3,16 @@
       <div class="col-sm-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link active" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account" role="tab"
-            aria-controls="v-pills-account" aria-selected="true">My Account</a>
+            aria-controls="v-pills-account" aria-selected="true">{{'CUSTOMERPAGE.MyAccount' | translate}}</a>
           <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab"
-            aria-controls="v-pills-orders" aria-selected="false">Orders</a>
+            aria-controls="v-pills-orders" aria-selected="false">{{'CUSTOMERPAGE.Orders' | translate}}</a>
           <a class="nav-link" id="v-pills-details-tab" data-toggle="pill" href="#v-pills-details" role="tab"
-            aria-controls="v-pills-details" aria-selected="false">Details</a>
+            aria-controls="v-pills-details" aria-selected="false">{{'CUSTOMERPAGE.Details' | translate}}</a>
           <a class="nav-link" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address" role="tab"
-            aria-controls="v-pills-address" aria-selected="false">Address Book</a>
+            aria-controls="v-pills-address" aria-selected="false">{{'CUSTOMERPAGE.AddressBook' | translate}}</a>
           <a class="nav-link" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password" role="tab"
-            aria-controls="v-pills-password" aria-selected="false">Change Password</a>
-          <button class="btn btn-danger "> <i class="fa fa-sign-out"></i> Logout</button>
+            aria-controls="v-pills-password" aria-selected="false">{{'CUSTOMERPAGE.ChangePword' | translate}}</a>
+          <button class="btn btn-danger "> <i class="fa fa-sign-out"></i> {{'CUSTOMERPAGE.SignOut' | translate}}</button>
         </div>
       </div>
   
@@ -22,7 +22,7 @@
             <div class="container">
               <div class="row ">
                 <div class="col-sm-12">
-                  <h5>Account Overview</h5>
+                  <h5>{{'CUSTOMERPAGE.AccountOver' | translate}}</h5>
   
                 </div>
   
@@ -30,7 +30,7 @@
                 <div class="col-sm-6">
                   <div class="card">
                     <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100">
-                      <h6>Account Details</h6>
+                      <h6>{{'CUSTOMERPAGE.AccountDets' | translate}}</h6>
                       <a href=""><i class="fa fa-pencil"></i></a>
                     </div>
                     <div class="card-body ">
@@ -41,11 +41,11 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="card">
-                    <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100"><h6>Address Book</h6>
+                    <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100"><h6>{{'CUSTOMERPAGE.AddressBook' | translate}}</h6>
                       <a href=""><i class="fa fa-pencil"></i></a>
                   </div>
                     <div class="card-body">
-                        <p>Your default shipping address:</p>
+                        <p>{{'CUSTOMERPAGE.DefaultAdd' | translate}}</p>
                         <p>Steve Gaita
   
                           Jabulani Apartments, Limuru Rd, Ruaka
@@ -67,16 +67,16 @@
               <div class="container">
                   <div class="row ">
                     <div class="col-sm-12">
-                      <h5>Orders</h5>
+                      <h5>{{'CUSTOMERPAGE.Orders' | translate}}</h5>
                     </div>
   
                     <div class="col-sm-12">
                       <ul class="nav nav-tabs" id="myTab" role="tablist">
                           <li class="nav-item">
-                            <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab" aria-controls="open" aria-selected="true">Open Orders</a>
+                            <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab" aria-controls="open" aria-selected="true">{{'CUSTOMERPAGE.OpenOrders' | translate}}</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="closed" aria-selected="false">Closed Orders</a>
+                            <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="closed" aria-selected="false">{{'CUSTOMERPAGE.ClosedOrders' | translate}}</a>
                           </li>
                           
                         </ul>
@@ -87,17 +87,17 @@
                               <div class="product-info">
                                 <div class="details"><span><h6>Chicken Burger</h6></span> <span>- Chicken, Bacon, Tomatoes, Cheese, Lettuce, Mayo</span></div>
                                 <br>
-                                <small class="order-number"> <strong>Order number:</strong> 23981001</small>
+                                <small class="order-number"> <strong>{{'CUSTOMERPAGE.OrderNumber' | translate}}</strong> 23981001</small>
                                 <br>
-                                <p class="badge badge-success mt-3">Delivered</p>
+                                <p class="badge badge-success mt-3">{{'CUSTOMERPAGE.Delivered' | translate}}</p>
                                 <p class="delivery-date"> <strong>ON 16/09/20</strong> </p>
                               </div>
-                              <a href="">See Details</a>
+                              <a href="">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a>
   
                               </div>
                           </div>
                           <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="closed-tab">
-                              <div class="alert alert-info w-100 py-3 text-center"><p>No items to display</p></div>
+                              <div class="alert alert-info w-100 py-3 text-center"><p>{{'CUSTOMERPAGE.NoDisplay' | translate}}</p></div>
                           </div>
                           </div>
                     </div>
@@ -113,7 +113,7 @@
               <div class="container">
                   <div class="row ">
                     <div class="col-sm-12">
-                      <h5>Details</h5>
+                      <h5>{{'CUSTOMERPAGE.Details' | translate}}</h5>
   
                       <div class="card">
                           
@@ -121,12 +121,9 @@
                             <form  >
                               <div class="row">
                                 <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">First Name<label class="red-text">*</label></label>
+                                  <label for="">{{'CUSTOMERPAGE.FirstName' | translate}}<label class="red-text">*</label></label>
                                   <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text">F</div>
-                                    </div>
-                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your First name">
+                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="{{'CUSTOMERPAGE.EnterFname' | translate}}">
                   
                                   </div>
                                   <!--Validation-->
@@ -136,12 +133,9 @@
                                 </div>
                   
                                 <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">Last Name<label class="red-text">*</label></label>
+                                  <label for="">{{'CUSTOMERPAGE.LastName' | translate}}<label class="red-text">*</label></label>
                                   <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text">L</div>
-                                    </div>
-                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your Last name">
+                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="{{'CUSTOMERPAGE.EnterLname' | translate}}">
                                   </div>
                                   <!--Validation-->
                                   <!--<div *ngIf="submitted && registerForm.get('lname').errors" class="alert alert-danger">
@@ -152,52 +146,30 @@
                                 </div>
                   
                                 <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">Email<label class="red-text">*</label></label>
+                                  <label for="">{{'CUSTOMERPAGE.Email' | translate}}<label class="red-text">*</label></label>
                                   <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">@</div>
                                     </div>
                                     <input type="email"  class="form-control" id="email" name="email"
-                                      placeholder="Enter your email (example@email.com)">
+                                      placeholder="{{'CUSTOMERPAGE.EnterEmail' | translate}}">
                   </div>
                                </div>
                   
                                 <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">Phone (optional)</label>
+                                  <label for="">{{'CUSTOMERPAGE.Phone' | translate}}</label>
                                   <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">#</div>
                                     </div>
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="{{'CUSTOMERPAGE.EnterPhone' | translate}}">
                   
                                   </div>
                                 </div>
   
-                              <!-- <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">Gender (optional)</label>
-                                  <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text">#</div>
-                                    </div>
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
-                  
-                                  </div>
-                                </div>
-  
-                                <div class="form-group col-sm-12 col-md-6">
-                                  <label for="">Phone (optional)</label>
-                                  <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text">#</div>
-                                    </div>
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
-                  
-                                  </div>
-                                </div>-->
-                  
                                <div class="col-sm-12 d-flex">
                                   <button class="btn btn-warning btn-block" type="submit">
-                                    Save</button>
+                                    {{'CUSTOMERPAGE.Submit' | translate}}</button>
                   </div>
                                 
                               </div>
@@ -215,14 +187,14 @@
               <div class="container">
                   <div class="row ">
                     <div class="col-sm-12 d-flex justify-content-between flex-sm-column flex-md-row w-100">
-                      <h5>Address</h5>
-                      <button class="btn btn-warning">Add new address</button>
+                      <h5>{{'CUSTOMERPAGE.Address' | translate}}</h5>
+                      <button class="btn btn-warning">{{'CUSTOMERPAGE.AddNewAddress' | translate}}</button>
       </div>
   
       <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-                <p>Your default shipping address:</p>
+                <p>{{'CUSTOMERPAGE.DefaultAdd' | translate}}</p>
                 <p>Steve Gaita
   
                   Jabulani Apartments, Limuru Rd, Ruaka
@@ -232,11 +204,11 @@
                   Kiambu - Nova / Kirigiti / Ndenderu, Kiambu
                   
                   +254 723272915 / +254 781453905</p>
-                  <p>Default Address</p>
+                  <p>{{'CUSTOMERPAGE.DefaultAddress' | translate}}</p>
   
               </div>
               <div class="card-footer d-flex justify-content-between flex-sm-column flex-md-row w-100">
-                <h6>Set as Default Address</h6>
+                <h6>{{'CUSTOMERPAGE.SetDefaultAdd' | translate}}</h6>
                 <i class="fa fa-pencil"></i>
               </div>
           </div>
@@ -249,7 +221,7 @@
               <div class="container">
                   <div class="row ">
                     <div class="col-sm-12">
-                      <h5>Change Password</h5>
+                      <h5>{{'CUSTOMERPAGE.ChangePword' | translate}}</h5>
       </div>
   <div class="col-sm-6">
       <div class="card">
@@ -257,10 +229,10 @@
               <form action="">
                   <div class="row">
                       <div class="form-group col-sm-12 col-md-12">
-                        <label for="">Current Password<label class="red-text">*</label></label>
+                        <label for="">{{'CUSTOMERPAGE.CPassword' | translate}}<label class="red-text">*</label></label>
                         <div class="input-group mb-2">
                           <div class="input-group-prepend">
-                            <div class="input-group-text">F</div>
+                            <div class="input-group-text">*</div>
                           </div>
                           <input type="text" class="form-control" id="password" name="password" placeholder="Enter your Current password">
         
@@ -272,10 +244,10 @@
                       </div>
   
                       <div class="form-group col-sm-12 col-md-12">
-                          <label for="">New Password<label class="red-text">*</label></label>
+                          <label for="">{{'CUSTOMERPAGE.NPassword' | translate}}<label class="red-text">*</label></label>
                           <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                              <div class="input-group-text">F</div>
+                              <div class="input-group-text">*</div>
                             </div>
                             <input type="text" class="form-control" id="npassword" name="npassword" placeholder="Enter your New password">
           
@@ -287,12 +259,12 @@
                         </div>
   
                         <div class="form-group col-sm-12 col-md-12">
-                          <label for="">Retype New Password<label class="red-text">*</label></label>
+                          <label for="">{{'CUSTOMERPAGE.RPassword' | translate}}<label class="red-text">*</label></label>
                           <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                              <div class="input-group-text">F</div>
+                              <div class="input-group-text">*</div>
                             </div>
-                            <input type="text" class="form-control" id="cpassword" name="cpassword" placeholder="Retype New password">
+                            <input type="text" class="form-control" id="cpassword" name="cpassword" placeholder="{{'CUSTOMERPAGE.NPassword' | translate}}">
           
                           </div>
                           <!--Validation-->
@@ -303,7 +275,7 @@
   
                         <div class="col-sm-12 ">
                           <div class=" w-100 ">
-                            <button class="btn btn-warning btn-block"><i class="fa "></i> Submit</button>
+                            <button class="btn btn-warning btn-block"><i class="fa "></i> {{'CUSTOMERPAGE.Submit' | translate}}</button>
                             
                           </div>
                     

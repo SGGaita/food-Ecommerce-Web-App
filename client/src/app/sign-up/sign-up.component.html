@@ -3,44 +3,42 @@
     <div class="col-sm-12 py-3">
       <div class="card">
         <div class="card-header text-center">
-          <h4>Create account</h4>
+          <h4>{{'REGISTER.CreateAccount' | translate}}</h4>
         </div>
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">First Name<label class="red-text">*</label></label>
+                <label for="">{{'REGISTER.FirstName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="fname" name="fname" formControlName="fname" placeholder="Enter your First name">
+                  <input type="text" class="form-control" id="fname" name="fname" formControlName="fname" placeholder="{{'REGISTER.EnterFname' | translate}}">
 
                 </div>
                 <!--Validation-->
-               <!-- <div *ngIf="submitted && f.fname.errors">
+               <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
                   <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
-                </div>-->
+                </div>
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">Last Name<label class="red-text">*</label></label>
+                <label for="">{{'REGISTER.LastName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="lname" name="lname" formControlName="lname" placeholder="Enter your Last name">
+                  <input type="text" class="form-control" id="lname" name="lname" formControlName="lname" placeholder="{{'REGISTER.EnterLname' | translate}}">
                 </div>
                 <!--Validation-->
-                <!--<div *ngIf="submitted && registerForm.get('lname').errors" class="alert alert-danger">
-                  <div *ngIf="registerForm.get('lname').errors.required">
-                    Last name is required
-                  </div>
-                </div>-->
+                <div *ngIf="f.lname.invalid && (f.lname.dirty || f.lname.touched)">
+                  <div *ngIf="f.lname.errors.required" class="alert alert-danger">Last name is required</div>
+                </div>
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">Email<label class="red-text">*</label></label>
+                <label for="">{{'REGISTER.Email' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
                   <input type="email" [class.is-invalid] = "f.email.invalid && f.email.touched" class="form-control" id="email" name="email" formControlName="email"
-                    placeholder="Enter your email (example@email.com)">
+                    placeholder="{{'REGISTER.EnterEmail' | translate}}">
 
                 </div>
                 
@@ -48,22 +46,22 @@
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">Phone (optional)</label>
+                <label for="">{{'REGISTER.Phone' | translate}}</label>
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
                     <div class="input-group-text">#</div>
                   </div>
-                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="Enter your phone number">
+                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="{{'REGISTER.EnterPhone' | translate}}">
 
                 </div>
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">Password<label class="red-text">*</label></label>
+                <label for="">{{'REGISTER.Password' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
                   <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password" formControlName="password"
-                    placeholder="Enter your password">
+                    placeholder="{{'REGISTER.EnterPassword' | translate}}">
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="fa" [ngClass]="{
@@ -82,11 +80,11 @@
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
-                <label for="">Confirm Password<label class="red-text">*</label></label>
+                <label for="">{{'REGISTER.CPassword' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
                   <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword"
-                    placeholder="Enter confirmation password">
+                    placeholder="{{'REGISTER.EnterCPassword' | translate}}">
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="fa" [ngClass]="{
@@ -96,12 +94,12 @@
                     </span>
                   </div>
                 </div>
-                <div *ngIf="submitted && registerForm.get('confirmPassword').errors" >
+                <div *ngIf="submitted && f.confirmPassword.errors" >
                   <!--div *ngIf="registerForm.get('confirmPassword').errors.required" class="alert alert-danger">
                     Confirm Password is required
                   </div>-->
 
-                  <div *ngIf="registerForm.get('confirmPassword').errors.confirmPasswordValidator" class="alert alert-danger">
+                  <div *ngIf="f.confirmPassword.errors.confirmPasswordValidator" class="alert alert-danger">
                     Passsword and Confirm Password didn't match.
                   </div>
                 </div>
@@ -110,14 +108,14 @@
              
  
               <div class="col-sm-12 d-flex">
-                <button class="btn btn-warning btn-block" type="submit">
-                  Create Account</button>
+                <button class="btn btn-outline-danger btn-block" type="submit">
+                  {{'REGISTER.Submit' | translate}}</button>
 
           
 
               </div>
               <div class="col-sm-12 pt-2 text-center">
-                <a routerLink="/customer/login">Already have an account</a>
+                <a routerLink="/customer/login">{{'REGISTER.AlreadyAccount' | translate}}</a>
 </div>
             </div>
 

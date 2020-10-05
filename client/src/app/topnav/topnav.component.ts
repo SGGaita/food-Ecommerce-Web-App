@@ -19,7 +19,7 @@ export class TopnavComponent implements OnInit {
 
   constructor(public translate: TranslateService,private sharedService: SharedService,public auth_cust: CustomerAuthenticationService, private customerService: CustomerService) { 
     translate.addLangs(['English','French'])
-    translate.setDefaultLang('English')
+    translate.setDefaultLang('French')
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/English|French/) ? browserLang : 'English');
   }

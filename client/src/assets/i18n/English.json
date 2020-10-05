@@ -14,6 +14,7 @@
      "MyProfile": "Votre profile",
      "MyOrders":"Votre commande",
      "Register":"S'incrire",
+     "SingIn": "Se connecter",
      "ViewCart":"Vérifier la carte",
      "Admin":"Administrateur",
      "Checkout":"Accédez aux payements",
@@ -28,15 +29,17 @@
  },
  "RESTAURANT":{
      "Heading":"Choisissez vôtre goût ",
+     "Heading2":"Restaurant",
      "NewBadge":"Nouveau",
      "ViewButton":"Voir notre menu",
-     "SearchBar": ""
+     "SearchBar": "Recherchez votre restaurant préféré..."
  },
  "FEATUREDMENU":{
      "Heading":"Menu vedette",
      "Category":"Catégorie",
      "Subcategory":"Sous catégorie",
-     "AddToCart":"Ajouter à la carte"
+     "AddToCart":"Ajouter à la carte",
+     "NoStock": "Pas de stock"
      },
  "CUSTOMERSASSURANCE":{
      "BestQuality":"Meilleur qualité",
@@ -52,10 +55,19 @@
  "COPYRIGHT":{
      "AllRights":""
      },
+     "LOGIN":{
+         "Login":"Se connecter",
+        "PromptMsg":"Entrez vos identifiants de connexion",
+        "Remember me":"Souviens-toi de moi",
+    "Forgot":"Mot de passe oublié?",
+"Email":"Email",
+"Password":"Mot de pass"},
+        
  "CUSTOMERPAGE":{
      "MyAccount":"Mon compte",
      "Orders": "Commande(s)",
      "Details": "Détail",
+     "Address":"Adresse",
      "AddressBook": "Carnet d'address",
      "ChangePword":"Changer le mots de passe",
      "AccountOver": "Aperçu du compte",
@@ -69,11 +81,19 @@
      "Cancelled":"Annuler",
      "Pending": "En suspend",
      "ReadyBy":"Prêt dans",
+     "NoDisplay":"Aucun élément à afficher",
      "FirstName":"Prénom",
      "LastName":"Nom de famille",
+     "Email":"Email",
+     "Phone":"Téléphone(Optionnel) ",
+     "EnterFname":"Entrez votre prénom",
+     "EnterLname":"Entrez votre nom",
+     "EnterPhone":"Entrez votre téléphone",
+     "EnterEmail":"Entrer votre Email",
      "Submit": "Soumettre",
      "Reset":"Réinitialiser",
      "SetDefaultAdd":"Définir comme l'adresse par défaut",
+     "DefaultAddress":"Adresse par défaut",
      "AddNewAddress":"Ajouter une nouvelle adresse",
      "CPassword": "Mots de pass actuel",
      "NPassword":"Nouveau mot de pass",
