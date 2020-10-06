@@ -90,6 +90,35 @@
     
   },
 
+  "PRODUCT":{
+
+  },
+
+  "CART":{
+  "CartContents": "Contenu du panier",
+  "Image":"Image",
+  "Title": "Titre",
+  "Price":"Le prix",
+  "Quantity":"Quantité",
+  "Subtotal":"Sous-total",
+  "Total":"Total",
+  "Continue":"Continuer vos achats",
+  "CheckOut":"Check-out",
+  "EmptyCart":"Le panier d'achat est vide"
+  },
+  "CHECKOUT":{
+    "Billing":"Adresse de facturation",
+    "YourOrder":"Votre commande",
+    "Product":"Produit",
+  "Total":"Total",
+    "PlaceOrder":"Passer la commande",
+    "Continue":"Continuer vos achats",
+  "ShoppingCart":"La carte",
+  "Payment":"Options de paiement",
+  "Terms":""
+
+  },
+
   "CUSTOMERPAGE": {
     "MyAccount": "Mon compte",
     "Orders": "Commande(s)",
@@ -129,7 +158,7 @@
   },
   "PNF": {
     "Error": "Erreur 404 - Page non trouvée",
-    "Message": "Nous sommes désolés, la page que vous avez demandée est introuvable. Veuillez revenir à la page d'accueil ou contacter l'assistance à l'adresse support@notreforce.org",
+    "Message": "Nous sommes désolés, la page que vous avez demandée est introuvable. Veuillez revenir à la page d'accueil ou contacter l'assistance à l'adresse support@mukononi.org",
     "Button": "Page d'accueil"
   }
 }

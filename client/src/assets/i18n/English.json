@@ -1,108 +1,156 @@
-{"TOP":{
-    "Order": "Commander",
-    "SingIn": "Se connecter",
-    "SignOut": "Se déconnecter"
- },
- "HOME":{
-     "Home": "Accueil",
-     "Restaurants": "Restaurants",
-     "Drinks":"A boire",
-     "Contact":"Nos contacts",
-     "About": "À notre sujet",
-     "Account": "Votre compte",
-     "Cart":"Vorte carte",
-     "MyProfile": "Votre profile",
-     "MyOrders":"Votre commande",
-     "Register":"S'incrire",
-     "SingIn": "Se connecter",
-     "ViewCart":"Vérifier la carte",
-     "Admin":"Administrateur",
-     "Checkout":"Accédez aux payements",
-     "SelectedItems":"Choix fait",
-     "Total": "total",
-     "Help":""
- },
- "HEADER":{
-     "Intro": "Fraîche, rapide et delicieux",
-     "Description":"Dans nos restaurants , nous offrons de plat délicieux et des services de qualité, nous vous invitons à essayer nos services. ",
-     "ViewButton": "Voir nos restaurants"
- },
- "RESTAURANT":{
-     "Heading":"Choisissez vôtre goût ",
-     "Heading2":"Restaurant",
-     "NewBadge":"Nouveau",
-     "ViewButton":"Voir notre menu",
-     "SearchBar": "Recherchez votre restaurant préféré..."
- },
- "FEATUREDMENU":{
-     "Heading":"Menu vedette",
-     "Category":"Catégorie",
-     "Subcategory":"Sous catégorie",
-     "AddToCart":"Ajouter à la carte",
-     "NoStock": "Pas de stock"
-     },
- "CUSTOMERSASSURANCE":{
-     "BestQuality":"Meilleur qualité",
-     "OnTime":"A temps",
-     "MasterChefs": "Masterchefs",
-     "TastyFood":"Des repas délicieux"
- },
- "FOOTER":{
- "Telephone":"Téléphone",
- "PaymentMode":"Methods de payements",
- "JoinUs":"Rejoignez nous sur"
- },
- "COPYRIGHT":{
-     "AllRights":""
-     },
-     "LOGIN":{
-         "Login":"Se connecter",
-        "PromptMsg":"Entrez vos identifiants de connexion",
-        "Remember me":"Souviens-toi de moi",
-    "Forgot":"Mot de passe oublié?",
-"Email":"Email",
-"Password":"Mot de pass"},
-        
- "CUSTOMERPAGE":{
-     "MyAccount":"Mon compte",
-     "Orders": "Commande(s)",
-     "Details": "Détail",
-     "Address":"Adresse",
-     "AddressBook": "Carnet d'address",
-     "ChangePword":"Changer le mots de passe",
-     "AccountOver": "Aperçu du compte",
-     "AccountDets":"Détails du compte",
-     "DefaultAdd":"Votre adresse de livraison par défaut ",
-     "OpenOrders":"Commande en cour",
-     "ClosedOrders":"Commande faites",
-     "OrderNumber":"Numéro de commande",
-     "SeeDetails": "Voir les détails",
-     "Delivered":"Livré",
-     "Cancelled":"Annuler",
-     "Pending": "En suspend",
-     "ReadyBy":"Prêt dans",
-     "NoDisplay":"Aucun élément à afficher",
-     "FirstName":"Prénom",
-     "LastName":"Nom de famille",
-     "Email":"Email",
-     "Phone":"Téléphone(Optionnel) ",
-     "EnterFname":"Entrez votre prénom",
-     "EnterLname":"Entrez votre nom",
-     "EnterPhone":"Entrez votre téléphone",
-     "EnterEmail":"Entrer votre Email",
-     "Submit": "Soumettre",
-     "Reset":"Réinitialiser",
-     "SetDefaultAdd":"Définir comme l'adresse par défaut",
-     "DefaultAddress":"Adresse par défaut",
-     "AddNewAddress":"Ajouter une nouvelle adresse",
-     "CPassword": "Mots de pass actuel",
-     "NPassword":"Nouveau mot de pass",
-     "RPassword":"Taper le nouveau mots de pass",
-      "SignOut":"Se déconnecter "
- },
- "PNF":{
-     "Error":"Erreur 404 - Page non trouvée",
-     "Message":"Nous sommes désolés, la page que vous avez demandée est introuvable. Veuillez revenir à la page d'accueil ou contacter l'assistance à l'adresse support@notreforce.org",
-     "Button":"Page d'accueil"
- }
- }
+{
+    "TOP": {
+      "Order": "Commander",
+      "SingIn": "Se connecter",
+      "SignOut": "Se déconnecter"
+    },
+    "HOME": {
+      "Home": "Accueil",
+      "Restaurants": "Restaurants",
+      "Drinks": "A boire",
+      "Contact": "Nos contacts",
+      "About": "À notre sujet",
+      "Account": "Votre compte",
+      "Cart": "Vorte carte",
+      "MyProfile": "Votre profile",
+      "MyOrders": "Votre commande",
+      "Register": "S'incrire",
+      "SingIn": "Se connecter",
+      "ViewCart": "Vérifier la carte",
+      "Admin": "Administrateur",
+      "Checkout": "Accédez aux payements",
+      "SelectedItems": "Choix fait",
+      "Total": "total",
+      "Help": ""
+    },
+    "HEADER": {
+      "Intro": "Fraîche, rapide et delicieux",
+      "Description": "Dans nos restaurants , nous offrons de plat délicieux et des services de qualité, nous vous invitons à essayer nos services. ",
+      "ViewButton": "Voir nos restaurants"
+    },
+    "RESTAURANT": {
+      "Heading": "Choisissez vôtre goût ",
+      "Heading2": "Restaurant",
+      "NewBadge": "Nouveau",
+      "ViewButton": "Voir notre menu",
+      "SearchBar": "Recherchez votre restaurant préféré..."
+    },
+    "FEATUREDMENU": {
+      "Heading": "Menu vedette",
+      "Category": "Catégorie",
+      "Subcategory": "Sous catégorie",
+      "AddToCart": "Ajouter à la carte",
+      "NoStock": "Pas de stock"
+    },
+    "CUSTOMERSASSURANCE": {
+      "BestQuality": "Meilleur qualité",
+      "OnTime": "A temps",
+      "MasterChefs": "Masterchefs",
+      "TastyFood": "Des repas délicieux"
+    },
+    "FOOTER": {
+      "Telephone": "Téléphone",
+      "PaymentMode": "Methods de payements",
+      "JoinUs": "Rejoignez nous sur"
+    },
+    "COPYRIGHT": {
+      "AllRights": ""
+    },
+    "LOGIN": {
+      "Login": "Se connecter",
+      "PromptMsg": "Entrez vos identifiants de connexion",
+      "Rememberme": "Souviens-toi de moi",
+      "Forgot": "Mot de passe oublié?",
+      "Email": "Email",
+      "Password": "Mot de pass",
+      "EnterEmail": "Entrer votre Email (exemple@email.com)",
+      "EnterPassword": "Entrer le mot de pass",
+      "EmailRequired": "Email est requis",
+      "InvalidEmail":"Format d'e-mail non valide *example@email.com",
+      "PasswordRequired":"Mot de pass requis",
+      "Register": "S'incrire un compte",
+      "Reset": "Réinitialiser"
+    },
+    "REGISTER": {
+      "CreateAccount": "S'incrire un compte",
+      "FirstName": "Prénom",
+      "LastName": "Nom de famille",
+      "Email": "Email",
+      "Phone": "Téléphone(Optionnel) ",
+      "Password": "Mot de pass",
+      "CPassword": "Mot de passe de confirmation",
+      "EnterFname": "Entrez votre prénom",
+      "EnterLname": "Entrez votre nom",
+      "EnterPhone": "Entrez votre téléphone",
+      "EnterEmail": "Entrer votre Email (exemple@email.com)",
+      "EnterPassword": "Entrer le mot de pass",
+      "EnterCPassword": "Entrez le mot de pass de confirmation",
+      "AlreadyAccount": "Vous avez déjà un compte",
+      "Submit": "Soumettre"
+      
+    },
+  
+    "PRODUCT":{
+  
+    },
+  
+    "CART":{
+    "CartContents": "Contenu du panier",
+    "Image":"Image",
+    "Title": "Titre",
+    "Price":"Le prix",
+    "Quantity":"Quantité",
+    "Subtotal":"Sous-total",
+    "Total":"Total",
+    "Continue":"Continuer vos achats",
+    "CheckOut":"Check-out",
+    "EmptyCart":"Le panier d'achat est vide"
+    },
+    "CHECKOUT":{
+  
+    },
+  
+    "CUSTOMERPAGE": {
+      "MyAccount": "Mon compte",
+      "Orders": "Commande(s)",
+      "Details": "Détail",
+      "Address": "Adresse",
+      "AddressBook": "Carnet d'address",
+      "ChangePword": "Changer le mots de passe",
+      "AccountOver": "Aperçu du compte",
+      "AccountDets": "Détails du compte",
+      "DefaultAdd": "Votre adresse de livraison par défaut ",
+      "OpenOrders": "Commande en cour",
+      "ClosedOrders": "Commande faites",
+      "OrderNumber": "Numéro de commande",
+      "SeeDetails": "Voir les détails",
+      "Delivered": "Livré",
+      "Cancelled": "Annuler",
+      "Pending": "En suspend",
+      "ReadyBy": "Prêt dans",
+      "NoDisplay": "Aucun élément à afficher",
+      "FirstName": "Prénom",
+      "LastName": "Nom de famille",
+      "Email": "Email",
+      "Phone": "Téléphone(Optionnel) ",
+      "EnterFname": "Entrez votre prénom",
+      "EnterLname": "Entrez votre nom",
+      "EnterPhone": "Entrez votre téléphone",
+      "EnterEmail": "Entrer votre Email",
+      "Submit": "Soumettre",
+      "Reset": "Réinitialiser",
+      "SetDefaultAdd": "Définir comme l'adresse par défaut",
+      "DefaultAddress": "Adresse par défaut",
+      "AddNewAddress": "Ajouter une nouvelle adresse",
+      "CPassword": "Mots de pass actuel",
+      "NPassword": "Nouveau mot de pass",
+      "RPassword": "Taper le nouveau mots de pass",
+      "SignOut": "Se déconnecter "
+    },
+    "PNF": {
+      "Error": "Erreur 404 - Page non trouvée",
+      "Message": "Nous sommes désolés, la page que vous avez demandée est introuvable. Veuillez revenir à la page d'accueil ou contacter l'assistance à l'adresse support@mukononi.org",
+      "Button": "Page d'accueil"
+    }
+  }
+  

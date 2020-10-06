@@ -49,6 +49,7 @@ import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AdminSidebarComponent,
     AdminFooterComponent,
     TopnavComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ForgotPasswordComponent
   ], 
   imports: [
     BrowserModule,

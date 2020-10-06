@@ -28,7 +28,7 @@
     <div class="col-sm-8">
       <div class="billing-details">
         <div class="section-title">
-          <h3 class="title">Billing address</h3>
+          <h3 class="title">{{'CHECKOUT.Billing' | translate }}</h3>
         </div>
         <div class="form-group col-sm-12">
           <input class="input form-control " type="text" name="first-name" placeholder="First Name">
@@ -54,6 +54,7 @@
         <div class="form-group col-sm-12">
           <input class="input form-control" type="tel" name="tel" placeholder="Telephone">
         </div>
+        <button class="btn btn-dark d-block w-80">Save Information</button>
         <!--div class="form-group col-sm-12">
           <div class="input-checkbox">
             <input type="checkbox" id="create-account">
@@ -72,14 +73,14 @@
 
     </div>
     <div class="col-sm-4 order border border-secondary">
-      <h5>Your Order</h5>
+      <h5>{{'CHECKOUT.YourOrder' | translate }}</h5>
 
       <div col-sm-12 text-center>
         <table class="table">
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Total</th>
+              <th>{{'CHECKOUT.Product' | translate }}</th>
+              <th>{{'CHECKOUT.Total' | translate }}</th>
             </tr>
 
           </thead>
@@ -105,7 +106,7 @@
         <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
           <!-- Gender -->
           <div class="group-gap">
-            <h5 class="mb-3">Payment options</h5>
+            <h5 class="mb-3">{{'CHECKOUT.Payment' | translate}}</h5>
 
             <div class="d-block my-3">
               <div class="" *ngFor="let py of modes">
@@ -126,7 +127,7 @@
 
           <!-- Submit Button -->
           <div class="place-order text-center">
-            <button class="btn btn-danger btn-block">Place Order</button>
+            <button class="btn btn-danger btn-block">{{'CHECKOUT.PlaceOrder' | translate}}</button>
           </div>
         </form><!-- Form ends -->
 
@@ -136,12 +137,9 @@
     </div>
     <div class="col-sm-12 d-flex py-5 nav-btn">
       <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
-        <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> Continue
-          Shopping</button>
-        <button class="btn btn-dark btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> Shopping
-          Cart</button>
-        <button class="btn btn-danger btn-sm order-2 " routerLink="/checkout">Checkout <i
-            class="fa fa-arrow-circle-right"></i></button>
+        <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CHECKOUT.Continue' | translate}}</button>
+        <button class="btn btn-dark btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> {{'CHECKOUT.ShoppingCart' | translate}}</button>
+        
       </div>
 
     </div>

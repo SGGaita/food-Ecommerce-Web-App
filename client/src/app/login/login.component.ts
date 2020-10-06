@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import jwt_decode from "jwt-decode";
 import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
 import {SharedService} from '../_services/shared_service/shared.service'
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   public loadingMsg = "Authenticating...Please wait";
   _userData: any
 
-  constructor(private sharedService: SharedService, private router: Router,private fb: FormBuilder,private customerAuth: CustomerAuthenticationService) {}
+  constructor(private sharedService: SharedService, private custAuthService: CustomerAuthenticationService, private router: Router,private fb: FormBuilder,private customerAuth: CustomerAuthenticationService) {}
 
   ngOnInit(): void {
 
@@ -60,10 +61,12 @@ get f(){
       data => {
         console.log(data)
         
-
-        console.log("Costomer information data",this.customerAuth.getcustomerDetails())
-        this._userData = this.customerAuth.getcustomerDetails()
-        this.sendUserData(this._userData)
+        //get and decode token
+    let customerToken = this.custAuthService.getToken()
+    console.log("Customer token", customerToken)
+    var decoded = jwt_decode(customerToken);
+    console.log("Decode", decoded)
+    this.sendUserData(decoded)
         this.successMsg = "Successful Authentication";
         this.loading = false;
         this.router.navigateByUrl('/customer/profile')

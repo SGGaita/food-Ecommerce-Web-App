@@ -4,7 +4,7 @@
       <!--When the cart is empty-->
       <div class="" *ngIf="cartData.data[0].numInCart == 0">
         <h4>
-          Shopping cart is empty
+          {{'CART.EmptyCart' | translate}}
         </h4>
         <button class="btn btn-outline-danger" routerLink="/restaurants">
           <i class="fa fa-arrow-circle-o-left"> GO TO SHOP</i>
@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-sm-12 ">
             <h4>
-              Shopping cart contents
+              {{'CART.CartContents' | translate}}
             </h4>
           </div>
         </div>
@@ -26,11 +26,11 @@
 
               <thead class="table-dark">
                 <tr class="text-center">
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
+                  <th>{{'CART.Image' | translate}}</th>
+                  <th>{{'CART.Title' | translate}}</th>
+                  <th>{{'CART.Price' | translate}}</th>
+                  <th>{{'CART.Quantity' | translate}}</th>
+                  <th>{{'CART.Subtotal' | translate}}</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,7 +71,7 @@
                   <td style="border: none"></td>
                   <td></td>
                   <td></td>
-                  <td>Total</td>
+                  <td>{{'CART.Total' | translate}}</td>
                   <td>{{cartTotal | currency: 'USD'}}</td>
                 </tr>
               </tbody>
@@ -82,8 +82,8 @@
 
           <div class="col-sm-12 d-flex md-5 nav-btn">
             <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
-              <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> Continue Shopping</button>
-              <button class="btn btn-danger btn-sm order-1 " routerLink="/checkout">Checkout <i
+              <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CART.Continue' | translate}}</button>
+              <button class="btn btn-danger btn-sm order-1 " routerLink="/checkout">{{'CART.CheckOut' | translate}} <i
                   class="fa fa-arrow-circle-right"></i></button>
             </div>
 

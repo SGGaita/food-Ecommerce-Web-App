@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import jwt_decode from "jwt-decode";
 import { CartModelServer } from '../_models/cart';
 import { CartService } from '../_services/cart.service';
 import { OrderService } from '../_services/order.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { CustomerService } from '../_services/customer.service';
+import { SharedService } from '../_services/shared_service/shared.service';
+import {CustomerAuthenticationService} from '../_auth/customer-authentication.service'
+
 
 @Component({
   selector: 'app-checkout',
@@ -17,10 +22,11 @@ export class CheckoutComponent implements OnInit {
   cartTotal: number;
   cartData: CartModelServer
   modes: [] =[];
+  userData: any;
   
 
-  constructor(private cartService: CartService, private orderService: OrderService, private router: Router,
-     private spinner: NgxSpinnerService, private fb: FormBuilder) { }
+  constructor(private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
+     private spinner: NgxSpinnerService, private fb: FormBuilder, private sharedService: SharedService,private customerService: CustomerService) { }
 
   ngOnInit(): void {
 
@@ -39,9 +45,28 @@ export class CheckoutComponent implements OnInit {
     .subscribe(mod =>{
       console.log("Payments", mod)
       this.modes = mod.modes
-      
-    
     })
+
+    //get customer details
+    this.sharedService.sharedCustomer
+    .subscribe(data =>{
+      console.log("customer infor", data);
+      this.userData = data
+      console.log(this.userData.fname)
+
+      //fetch all customer details
+      this.customerService.getCustomerById(this.userData.id_customer)
+      .subscribe(data=>{
+        console.log("customer details", data)
+      })
+    })
+
+
+    //get and decode token
+    let customerToken = this.custAuthService.getToken()
+    console.log("Customer token", customerToken)
+    var decoded = jwt_decode(customerToken);
+    console.log("Decode", decoded)
   }
 
   //checkout method

@@ -127,9 +127,13 @@ export class CustomerAuthenticationService {
 
   //logout
   public logout(): void {
+    if (window.confirm('Are you sure you want to logout?')) {
     this.token = ''
     window.localStorage.removeItem('customerToken')
-    this.router.navigateByUrl('/admin')
+    this.router.navigateByUrl('/customer/login')
+    } else{
+      return
+    }
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
