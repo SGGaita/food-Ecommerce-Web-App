@@ -1,19 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {
-    database
-} = require('../db/db_mysqli');
+const {database} = require('../db/db_mysqli');
 
-/*-----------Table of Contents---------------
-1. Get all Orders
-2. Get Single Order by ID
-3. Get orders from specific supplier
-4. 
-5. Payment modes
-*/
-
-/* GET ALL ORDERS */
-router.get('/orders', function (req, res) { // Sending Page Query Parameter is mandatory http://localhost:4200/api/orders?page=1
+// Get all orders
+const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:4200/api/orders?page=1
     database.table('order_details as od')
         .join([{
                 table: "orders as o",
@@ -51,10 +41,10 @@ router.get('/orders', function (req, res) { // Sending Page Query Parameter is m
             }
         })
         .catch(err => console.log(err));
-});
+}
 
-// Get Single Order
-router.get('/order/:id', async (req, res) => {
+// Get single order
+const getOrderById = async (req, res) => {
     let orderId = req.params.id;
     console.log(orderId);
 
@@ -98,10 +88,10 @@ router.get('/order/:id', async (req, res) => {
             }
 
         }).catch(err => res.json(err));
-});
+}
 
-// Place New Order
-router.post('/new', async (req, res) => {
+// Add new order
+const addNewOrder = async (req, res) => {
     // let userId = req.body.userId;
     // let data = JSON.parse(req.body);
     let {
@@ -183,42 +173,7 @@ router.post('/new', async (req, res) => {
         });
     }
 
-});
-
-// Payment Gateway
-router.post('/payment', (req, res) => {
-    setTimeout(() => {
-        res.status(200).json({
-            success: true
-        });
-    }, 3000)
-});
+}
 
 
-/****************************************/
-/*       Payment Modes Crud             */
-/****************************************/ 
-// Get all payments
-
-router.get('/payment-modes', (req,res) =>{
-    database.table('payment_modes')
-       .getAll()
-        .then(modes => {
-            if (modes.length > 0) {
-                res.status(200).json({
-                    count: modes.length,
-                    modes: modes
-                });
-            } else {
-                res.json({
-                    message: "No payment modes found"
-                });
-            }
-        })
-        .catch(err => console.log(err));
-
-})
-
-
-
-module.exports = router;
+module.exports = {getAllOrders, getOrderById, addNewOrder}

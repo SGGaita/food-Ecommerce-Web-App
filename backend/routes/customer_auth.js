@@ -15,91 +15,12 @@ var currenttime = new moment().format('YYYY-MM-DD HH:MM:SS');
 process.env.SECRET_KEY = 'secret';
 
 //Customer
-//Register new Customer
-router.post('/register_customer', (req, res, next) => {
-    console.log("this values", req.body)
-    console.log("Email values", req.body.fname)
-    var newCustomer = {
 
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        phone: req.body.phone,
-        password: req.body.password,
-        createdAt: currenttime
-    }
-
-    Customer.findOne({
-            where: Sequelize.or({
-                email: req.body.email
-            })
-        })
-        .then(customer => {
-            console.log("email", req.body.email)
-            console.log("customer", customer)
-            if (!customer) {
-                const hash = bcrypt.hashSync(newCustomer.password, 10)
-                newCustomer.password = hash;
-                Customer.create(newCustomer)
-                    .then(customer => {
-                        let token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
-                            expiresIn: 3600
-                        })
-                        res.json({
-                            token: token
-                        })
-                    })
-                    .catch(err => {
-                        res.send('error: ' + err)
-                    })
-            } else {
-                res.json({
-                    error: 'Customer already exists'
-                });
-            }
-        })
-        .catch(err => {
-            console.log("Email", req.body.email)
-            res.send('Error: ' + err);
-        })
-})
 
 
 //LOGIN
 
-router.post('/login_customer', (req, res) => {
-    console.log("Request body", req.body)
-    Customer.findOne({
-            where: Sequelize.or({
-                email: req.body.email
-            })
-        })
-        .then(customer => {
-            console.log("Customer", customer)
-            if (!customer) {
-                return res.status(404).send({
-                    reason: `Customer email ${req.body.email} not found in the database`
-                });
-            }
-            var passwordIsValid = bcrypt.compareSync(req.body.password, customer.password);
-            if (!passwordIsValid) {
-                return res.status(401).send({
-                    auth: false,
-                    accessToken: null,
-                    reason: 'Invalid Password'
-                });
-            }
-            var token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
-                expiresIn: 7200
-            });
-            res.send({
-                token: token
-            })
-        })
-        .catch(err => {
-            res.status(500).send('error: ' + err)
-        });
-});
+router.post('/login_customer', );
 
 //PROFILE
 router.get('/profile', verifyToken, (req, res) => {

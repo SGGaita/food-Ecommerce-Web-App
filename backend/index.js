@@ -39,17 +39,11 @@ app.use(function (req,res,next){
 });
 
 
-//import routes from /routes/routes.js
-//var user = require('./routes/Users');  
-  // route = require('./routes/api_routes');
-var product = require('./routes/products_routes');
-    supplier = require('./routes/supplier_routes');
-    orders = require('./routes/order_routes');
-    customers = require('./routes/customer');
-    customer_auth = require('./routes/customer_auth')
-    //upload = require('./routes/photo_upload')
+//import routes from /routes/allRoutes.js
+var allRoutes = require('./routes/allRoutes')
+
 //adding routes
-app.use('/api', product, supplier, orders, customers, customer_auth);
+app.use('/api', allRoutes);
 
 app.get('/', (req, res) => res.send('Hello World!'))
 app.listen(port, function() {console.log('Server started at http://localhost:'+port+'/');});

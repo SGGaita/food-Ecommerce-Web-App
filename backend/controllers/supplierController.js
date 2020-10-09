@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {
-    database
-} = require('../db/db_mysqli');
+const {database} = require('../db/db_mysqli');
 
-/* GET ALL Suppliers */
-router.get('/suppliers', function (req, res) { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
+//Get all restaurants
+const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
     let page = (req.query.page !== undefined && req.query.page !== 0) ? req.query.page : 1;
     const limit = (req.query.limit !== undefined && req.query.limit !== 0) ? req.query.limit : 10; // set limit of items per page
     let startValue;
@@ -36,10 +34,9 @@ router.get('/suppliers', function (req, res) { // Sending Page Query Parameter i
             }
         })
         .catch(err => console.log(err));
-});
-
-/* GET ONE supplier*/
-router.get('/suppliers/:supId', (req, res) => {
+}
+//Get restaurant by Id
+const getRestaurantById = (req, res) => {
     let supplierId = req.params.supId;
     database.table('suppliers as s')
         .filter({
@@ -56,6 +53,7 @@ router.get('/suppliers/:supId', (req, res) => {
                 });
             }
         }).catch(err => res.json(err));
-});
+}
 
-module.exports = router;
+
+module.exports = {getAllRestaurants, getRestaurantById};

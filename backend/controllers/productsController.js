@@ -1,19 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {
-    database
-} = require('../db/db_mysqli');
+const {database} = require('../db/db_mysqli');
 
-/*-----------Table of Contents---------------
-1. Get all Products
-2. Get Single Products
-3. Get Products by category
-4.
-5.
-*/
-
-/* GET ALL PRODUCTS */
-router.get('/products', function (req, res) { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
+//Get all products
+const getAllProducts = (req, res)=> { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
     let page = (req.query.page !== undefined && req.query.page !== 0) ? req.query.page : 1;
     const limit = (req.query.limit !== undefined && req.query.limit !== 0) ? req.query.limit : 10; // set limit of items per page
     let startValue;
@@ -25,6 +15,8 @@ router.get('/products', function (req, res) { // Sending Page Query Parameter is
         startValue = 0;
         endValue = 10;
     }
+
+    console.log("All products")
     database.table('product as p')
         .join([{
                 table: "product_category as c",
@@ -71,10 +63,10 @@ router.get('/products', function (req, res) { // Sending Page Query Parameter is
             }
         })
         .catch(err => console.log(err));
-});
+}
 
-/* GET ONE PRODUCT*/
-router.get('/products/:prodId', (req, res) => {
+//Get product by product id
+const getProductById = (req, res) => {
     let productId = req.params.prodId;
     database.table('product as p')
     .join([{
@@ -119,10 +111,10 @@ router.get('/products/:prodId', (req, res) => {
                 });
             }
         }).catch(err => res.json(err));
-});
+}
 
-/* GET ALL PRODUCTS FROM ONE CATEGORY */
-router.get('/category/:catName', (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
+//Get products by category
+const getProductsByCat = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
 
     // Get category title value from param
     const cat_title = req.params.catName;
@@ -171,17 +163,12 @@ router.get('/category/:catName', (req, res) => { // Sending Page Query Parameter
             }
         }).catch(err => res.json(err));
 
-});
+}
 
+//Get products by subcategory
 
-
-
-/****************************************/
-/*  Product Categories and subcategories*/
-/****************************************/
-
-/*Get all food categories*/
-router.get('/categories', (req, res) => {
+//Get categories
+const getCategories = (req, res) => {
     //let product_sub_cat = req.params.catName;
     database.table('product_category')
         .getAll()
@@ -195,10 +182,10 @@ router.get('/categories', (req, res) => {
                 });
             }
         }).catch(err => res.json(err));
-});
+}
 
-/* GET ALL PRODUCTS FROM FOOD CATEGORY */
-router.get('/category_food', (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
+//Get sub categories food category
+const getFoodCategories = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
 
     // Get category title value from param
     const catId = 1;
@@ -230,10 +217,10 @@ router.get('/category_food', (req, res) => { // Sending Page Query Parameter is 
             }
         }).catch(err => res.json(err));
 
-});
+}
 
-/* GET ALL PRODUCTS FROM DRINKS CATEGORY */
-router.get('/category_drinks', (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
+//Get sub categories in drink category
+const getDrinkCategories = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
 
     // Get category title value from param
     const catId = 2;
@@ -265,8 +252,6 @@ router.get('/category_drinks', (req, res) => { // Sending Page Query Parameter i
             }
         }).catch(err => res.json(err));
 
-});
+}
 
-
-
-module.exports = router;
+module.exports = {getAllProducts, getProductById, getProductsByCat, getCategories, getFoodCategories, getDrinkCategories};

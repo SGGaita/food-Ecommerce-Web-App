@@ -3,12 +3,13 @@
         <span><p class="order-0">{{'TOP.Order' | translate}}: +25400000000 </p></span>
         <span class="d-block order-1" >
             
-            <!--select #langselect (change)="translate.use(langselect.value)">
-                <option *ngFor="let _lang of translate.getLangs()" [value]="_lang">{{_lang}}</option>
-        </select>-->
+            
     
             <p *ngIf="!this.auth_cust.isLoggedIn()" class="order-1"><a routerLink="/customer/login">{{'TOP.SingIn' | translate}}</a> </p>
         <p *ngIf="this.auth_cust.isLoggedIn()"class="order-1"><a (click)="this.auth_cust.logout()">{{'TOP.SignOut' | translate}} ({{fname}})</a> </p>
+        <select #langselect (change)="translate.use(langselect.value)">
+            <option *ngFor="let _lang of translate.getLangs()" [value]="_lang">{{_lang}}</option>
+    </select>
         </span>
         
     </div>
