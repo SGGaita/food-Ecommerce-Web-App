@@ -116,7 +116,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       },
-      defaultLanguage: 'fr'
+      defaultLanguage: 'French'
     }),
     
     

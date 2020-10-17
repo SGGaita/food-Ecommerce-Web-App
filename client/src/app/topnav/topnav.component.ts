@@ -27,7 +27,11 @@ export class TopnavComponent implements OnInit {
 
   ngOnInit(): void {
     
-
+    let customerToken = this.custAuthService.getToken()
+    console.log("Customer token", customerToken)
+    var decoded = jwt_decode(customerToken);
+    console.log("Decoded token", decoded);
+    this.fname = decoded.fname
 
        
   }

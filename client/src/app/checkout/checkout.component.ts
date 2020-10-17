@@ -47,26 +47,12 @@ export class CheckoutComponent implements OnInit {
       this.modes = mod.modes
     })
 
-    //get customer details
-    this.sharedService.sharedCustomer
-    .subscribe(data =>{
-      console.log("customer infor", data);
-      this.userData = data
-      console.log(this.userData.fname)
-
-      //fetch all customer details
-      this.customerService.getCustomerById(this.userData.id_customer)
-      .subscribe(data=>{
-        console.log("customer details", data)
-      })
-    })
-
-
     //get and decode token
-    let customerToken = this.custAuthService.getToken()
-    console.log("Customer token", customerToken)
+    //fetch user token and decode
+    let customerToken = this.custAuthService.getToken();
+    console.log('Customer token', customerToken);
     var decoded = jwt_decode(customerToken);
-    console.log("Decode", decoded)
+    console.log('Decoded token', decoded.id_customer);
   }
 
   //checkout method
