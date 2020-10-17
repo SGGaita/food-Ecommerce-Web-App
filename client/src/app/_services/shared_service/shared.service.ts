@@ -11,7 +11,7 @@ export class SharedService {
 
   constructor() { }
 
-  nextCustomerData(user: {}) {
+  nextCustomerData(user: string) {
     this.userData.next(user)
   }
 }

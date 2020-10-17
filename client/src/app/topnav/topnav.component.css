@@ -20,3 +20,7 @@ a:hover{
     color:#fff !important;
     text-decoration: none ;
 }
+
+._sign_in{
+    cursor: pointer;
+}

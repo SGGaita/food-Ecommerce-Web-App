@@ -7,7 +7,7 @@
           {{'CART.EmptyCart' | translate}}
         </h4>
         <button class="btn btn-outline-danger" routerLink="/restaurants">
-          <i class="fa fa-arrow-circle-o-left"> GO TO SHOP</i>
+          <i class="fa fa-arrow-circle-o-left"> {{'CART.Continue' | translate}}</i>
         </button>
       </div>
 
@@ -15,9 +15,9 @@
       <ng-container *ngIf="cartData.data[0].numInCart !== 0">
         <div class="row">
           <div class="col-sm-12 ">
-            <h4>
+            <h1>
               {{'CART.CartContents' | translate}}
-            </h4>
+            </h1>
           </div>
         </div>
         <div class="row">

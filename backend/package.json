@@ -9,6 +9,7 @@
   "author": "steve gaita",
   "license": "ISC",
   "dependencies": {
+    "@types/socket.io": "^2.1.11",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -23,6 +24,7 @@
     "nodemailer": "^6.4.11",
     "path": "^0.12.7",
     "sequelize": "^6.3.4",
+    "socket.io": "^2.3.0",
     "xoauth2": "^1.2.0"
   }
 }

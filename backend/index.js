@@ -4,12 +4,23 @@ var express = require('express'),
     morgan = require('morgan'),
     cors = require('cors');
     path = require('path');
+   
 
 var app = express();
+http = require('http').Server(app)
 var port = process.env.PORT || 3000;
+//create socket instace with http
+var io = require('socket.io')(http);
+
 
 //import database connection from dbconnect.js file
 var mysql = require('./db/db');
+
+// add listener for new connection
+io.on("connection", (socket) =>{
+  //this is the socket for each request
+  console.log("User connected", socket.id)
+})
 
 //Parse as urlencoded and json.
 app.use(bodyParser.urlencoded({extended:true}));

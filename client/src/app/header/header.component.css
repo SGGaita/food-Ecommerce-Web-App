@@ -120,6 +120,7 @@
     .carousel-caption p{
         font-size: 1rem;
         padding: 0px 20px 0 20px;
+        font-weight: 300;
     }
 
    
@@ -140,6 +141,7 @@
     .carousel-caption p{
         font-size: 1.2rem;
         padding: 0px 20px 0 20px;
+        font-weight: 300;
     }
 
    
@@ -162,6 +164,7 @@
     .carousel-caption p{
         font-size: 1.5rem;
         padding: 0px 20px 0 20px;
+        font-weight: 300;
     }
 
    

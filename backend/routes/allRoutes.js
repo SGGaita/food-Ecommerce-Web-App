@@ -47,7 +47,15 @@ router.post('/login_customer', authenticationController.loginCustomer);
 
 /*####################################################################*/
 
-//2. Product Endpoints
+//2. Customer Endpoints
+//a. Get all customers
+router.get('/customers_add', customerController.getAllCustomers);
+//b. Get customer infomation
+router.get('/customers/:custId',customerController.getCustomerById)
+
+/*####################################################################*/
+
+//3. Product Endpoints
 //a. Get all products
 router.get ('/products', productsController.getAllProducts)
 //b. Get one product by Product ID
@@ -63,7 +71,7 @@ router.get('/category_drinks', productsController.getDrinkCategories);
 
 /*####################################################################*/
 
-//3. Supplier Endpoints 
+//4. Supplier Endpoints 
 //a. Get all suppliers
 router.get('/suppliers', supplierController.getAllRestaurants );
 //b. Get supplier by id
@@ -71,7 +79,7 @@ router.get('/suppliers/:supId', supplierController.getRestaurantById);
 
 /*####################################################################*/
 
-//4. Order Endpoints
+//5. Order Endpoints
 //a. Get all orders
 router.get('/orders', ordersController.getAllOrders);
 //b. Get order by Id
@@ -82,7 +90,7 @@ router.post('/order', ordersController.addNewOrder)
 
 /*####################################################################*/
 
-//5. Payment Endpoints
+//6. Payment Endpoints
 router.get('/payment-modes', paymentController.getAllPaymentModes)
 
 module.exports = router;

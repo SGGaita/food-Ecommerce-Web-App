@@ -95,6 +95,7 @@
   },
 
   "CART":{
+    "Heading":"Panier",
   "CartContents": "Contenu du panier",
   "Image":"Image",
   "Title": "Titre",
@@ -107,6 +108,7 @@
   "EmptyCart":"Le panier d'achat est vide"
   },
   "CHECKOUT":{
+    "Heading":"Check-out",
     "Billing":"Adresse de facturation",
     "YourOrder":"Votre commande",
     "Product":"Produit",
@@ -115,9 +117,12 @@
     "Continue":"Continuer vos achats",
   "ShoppingCart":"La carte",
   "Payment":"Options de paiement",
-  "Terms":""
-
-  },
+  "EmptyCart":"Le panier d'achat est vide",
+   "TermStatement":"J'ai lu et accepte le",
+  "TermsLink":"termes et conditions",
+  "Booking":"Commande de réservation",
+  "Submit":"Soumettre"
+ },
 
   "CUSTOMERPAGE": {
     "MyAccount": "Mon compte",

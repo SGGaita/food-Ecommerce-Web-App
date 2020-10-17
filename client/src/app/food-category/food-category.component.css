@@ -1,17 +1,41 @@
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px !important;
+}
 .vertical-menu{
     border: #bfbebe 1px solid;
-    padding: 10px 10px 10px 10px;
-    background: whitesmoke;
+    padding: 0;
+    background: #cf0810;
+    margin-top: -80px
 }
 
-.vertical-menu h5{
+.vertical-menu .cat-heading{
+    color: white;
+    background: #f21f27;
+    }
 
+    .vertical-menu .cat-heading h5{
+        font-weight: 500;
+    }
+
+.vert-menu-list li{
+    border-top: #ffffff40 1px solid;
 }
 
-.vert-menu-list{
-
-}
-
-.vert-menu-list ul li{
+.vert-menu-list ul li a {
     list-style-type: none;
+    color: white;
 }
+
+.vert-menu-list ul li:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.123);
+    transition: background-color 3s ;
+    transition-timing-function: ease;
+}
+

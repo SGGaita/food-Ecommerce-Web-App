@@ -1,14 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 vertical-menu">
-       <h5>Categories</h5>
-     
-
+       
        <div class="vert-menu-list" *ngFor="let c of categories">
-        <h6>{{c.prod_category_name | uppercase}}</h6>
+         <div class="cat-heading d-flex justify-content-between p-2">
+          <h5>{{c.prod_category_name | uppercase}}</h5>
+        <i class="fa fa-cutlery" aria-hidden="true"></i>
+         </div>
+        
        <ul>
-         <div *ngIf="c.id_product_cat === 1"><li *ngFor="let f of foodSub"><a routerLink="/">{{f.subcategory}}</a> </li></div>
-         <div *ngIf="c.id_product_cat === 2"> <li *ngFor="let d of  drinkSub"><a routerLink="/">{{d.subcategory}}</a> </li></div>
+         <div *ngIf="c.id_product_cat === 1"><li class="p-2" *ngFor="let f of foodSub"><a routerLink="/">{{f.subcategory}}</a> </li></div>
+         <div *ngIf="c.id_product_cat === 2"> <li class="p-2" *ngFor="let d of  drinkSub"><a routerLink="/">{{d.subcategory}}</a> </li></div>
           
        </ul>
 

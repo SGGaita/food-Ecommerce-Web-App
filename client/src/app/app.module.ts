@@ -9,6 +9,9 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import {GoogleLoginProvider} from 'angularx-social-login';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +53,8 @@ import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+//const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
 @NgModule({
   declarations: [
@@ -103,6 +108,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     NgxSpinnerModule,
     NoopAnimationsModule,
     SocialLoginModule,
+    //SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -112,6 +118,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       },
       defaultLanguage: 'fr'
     }),
+    
     
   ],
   providers: [{

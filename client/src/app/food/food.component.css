@@ -3,3 +3,8 @@ h1{
     text-transform: uppercase;
     font-weight: 800;
 }
+
+.text-left {
+    text-align: left!important;
+    margin-top: -90px !important;
+}

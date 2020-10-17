@@ -1,6 +1,6 @@
 <ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="yellow" type="ball-clip-rotate-pulse"
   fullscreen="true">
-  <p style="font-size:20px; color:black ; margin-top:50px">Booking Order</p>
+  <p style="font-size:20px; color:black ; margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p>
 </ngx-spinner>
 <div class="container">
   <!--When the cart is empty-->
@@ -8,10 +8,10 @@
     <div class="col-sm-12 text-center my-5">
       <div class="">
         <h4>
-          Shopping cart is empty
+          {{'CHECKOUT.EmptyCart' | translate }}
         </h4>
         <button class="btn btn-outline-danger" routerLink="/">
-          <i class="fa fa-arrow-circle-o-left"> GO TO SHOP</i>
+          <i class="fa fa-arrow-circle-o-left"> {{'CHECKOUT.Continue' | translate }}</i>
         </button>
       </div>
     </div>
@@ -20,7 +20,7 @@
   <div class="row mb-5" *ngIf="cartData.total > 0">
     <div class="col-sm-12 text-center my-5 ">
       <h1>
-        Checkout
+        {{'CHECKOUT.Heading' | translate }}
       </h1>
 
 
@@ -54,7 +54,7 @@
         <div class="form-group col-sm-12">
           <input class="input form-control" type="tel" name="tel" placeholder="Telephone">
         </div>
-        <button class="btn btn-dark d-block w-80">Save Information</button>
+        <button class="btn btn-dark d-block w-80">{{'CHECKOUT.Submit' | translate }}</button>
         <!--div class="form-group col-sm-12">
           <div class="input-checkbox">
             <input type="checkbox" id="create-account">
@@ -118,8 +118,7 @@
             </div>
 
             <div class="terms">
-              <input class="checkbox" type="checkbox" name="" id=""> <small> I have read and accept the <a routerLink="/customer/terms">terms and
-                conditions.</a> </small>
+              <input class="checkbox" type="checkbox" name="" id=""> <small> {{'CHECKOUT.TermStatement' | translate}} <a routerLink="/customer/terms">{{'CHECKOUT.TermsLink' | translate}}</a> </small>
             </div>
 
 
@@ -136,9 +135,9 @@
 
     </div>
     <div class="col-sm-12 d-flex py-5 nav-btn">
-      <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
-        <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CHECKOUT.Continue' | translate}}</button>
-        <button class="btn btn-dark btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> {{'CHECKOUT.ShoppingCart' | translate}}</button>
+      <div class="d-flex flex-sm-column flex-md-row w-100 ">
+        <button class="btn btn-dark btn-sm order-0 mx-2" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CHECKOUT.Continue' | translate}}</button>
+        <button class="btn btn-secondary btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> {{'CHECKOUT.ShoppingCart' | translate}}</button>
         
       </div>
 

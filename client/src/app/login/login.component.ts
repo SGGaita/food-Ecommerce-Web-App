@@ -41,7 +41,7 @@ get f(){
   }
 
  //Share user data via shared service
-  sendUserData(user: []) {
+  sendUserData(user: string) {
     this.sharedService.nextCustomerData(user);
   }
 
@@ -56,7 +56,6 @@ get f(){
       return;
     }
     this.loading = true;
-    console.log("These values", this.loginForm.value)
     this.customerAuth.login(this.loginForm.value).subscribe(
       data => {
         console.log(data)
@@ -65,7 +64,7 @@ get f(){
     let customerToken = this.custAuthService.getToken()
     console.log("Customer token", customerToken)
     var decoded = jwt_decode(customerToken);
-    console.log("Decode", decoded)
+    console.log("Decoded token", decoded)
     this.sendUserData(decoded)
         this.successMsg = "Successful Authentication";
         this.loading = false;
