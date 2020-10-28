@@ -30,6 +30,9 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //check if radio button is selected
+    console.log("radio button", this.checkoutForm.value.payment)
+
     //Initialise form
 
     this.checkoutForm = this.fb.group({
@@ -51,14 +54,16 @@ export class CheckoutComponent implements OnInit {
     //fetch user token and decode
     let customerToken = this.custAuthService.getToken();
     console.log('Customer token', customerToken);
-    var decoded = jwt_decode(customerToken);
+    let decoded = jwt_decode(customerToken);
     console.log('Decoded token', decoded.id_customer);
+    
   }
 
   //checkout method
   onCheckout(){
 
     //this.spinner.show()
+    
 
 
 var payment_value = this.checkoutForm.value.payment

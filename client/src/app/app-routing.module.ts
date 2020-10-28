@@ -48,7 +48,11 @@ children:[
   {path: 'terms', component: TermsComponent}
 ]},
 //Start admin section
-{path:'admin', component:AdminComponent},
+{path:'admin', component:AdminComponent,
+children:[
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent, data:{title:'Administrator login'}},
+]},
 { path: '**', component: PageNotFoundComponent },
 ];
 
