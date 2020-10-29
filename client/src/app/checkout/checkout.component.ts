@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
   cartData: CartModelServer
   modes: [] =[];
   userData: any;
+  radio_state : boolean = false
   
 
   constructor(private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
@@ -30,13 +31,13 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //check if radio button is selected
-    console.log("radio button", this.checkoutForm.value.payment)
+    
 
     //Initialise form
 
     this.checkoutForm = this.fb.group({
-      payment: [null]
+      payment: [null],
+      terms: [null]
     })
 
     this.cartService.cartDataObs$.subscribe(data => {this.cartData = data; console.log(this.cartData)})
@@ -50,6 +51,9 @@ export class CheckoutComponent implements OnInit {
       this.modes = mod.modes
     })
 
+    //check if radio button is selected
+    console.log("radio button", this.checkoutForm.value.payment)
+
     //get and decode token
     //fetch user token and decode
     let customerToken = this.custAuthService.getToken();
@@ -59,19 +63,49 @@ export class CheckoutComponent implements OnInit {
     
   }
 
+  //check if radio buttons are selected
+  paymentChange(){
+    let radio_value = this.checkoutForm.value.payment
+    console.log(radio_value)
+
+    let terms = this.checkoutForm.value.terms
+    console.log("Checkbox", terms)
+   if (radio_value == null || terms == null){
+     //window.alert("This is null")
+     this.radio_state = false;
+   } else if (radio_value != null && terms != null){
+    this.radio_state = true;
+   }
+  }
+
+
+  //check if terms and conditions are checked
+  toggleEditable(event) {
+    //let radio_value = this.checkoutForm.value.payment
+    //if ( !event.target.checked || radio_value == null ) {
+     //   this.radio_state = false;
+       // window.alert("I m not checked")
+  // }else{
+    //window.alert("I m checked")
+   // this.radio_state = true;
+   //}
+}
+
   //checkout method
   onCheckout(){
+     
 
-    //this.spinner.show()
-    
+     
+this.spinner.show().then(p =>{
+  console.log("spinner", p)
 
-
-var payment_value = this.checkoutForm.value.payment
+  var payment_value = +this.checkoutForm.value.payment
 console.log (payment_value)
 
 switch(payment_value) {
   case 1:
     console.log("This is Cash")
+    this.cartService.CheckoutFromCart(2,payment_value);
     break;
   case 2:
     console.log("This is Card")
@@ -83,6 +117,11 @@ switch(payment_value) {
     console.log("This is Airtel")
     break;
 }
+})
+    
+
+
+
 
   }
 

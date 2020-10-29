@@ -22,4 +22,11 @@ const getAllPaymentModes = (req,res) =>{
 
 }
 
-module.exports = {getAllPaymentModes}
+//fake payment
+const paymentGetway = (req,res)=>{
+    setTimeout(()=>{
+        res.status(200).json({success: true})
+    }, 3000)
+}
+
+module.exports = {getAllPaymentModes, paymentGetway}

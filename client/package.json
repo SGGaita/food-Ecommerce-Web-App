@@ -29,7 +29,7 @@
     "jquery": "^3.5.1",
     "jwt-decode": "^3.0.0",
     "ngx-socket-io": "^3.2.0",
-    "ngx-spinner": "^10.0.1",
+    "ngx-spinner": "^8.1.0",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

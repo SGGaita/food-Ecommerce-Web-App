@@ -247,20 +247,23 @@ export class CartService {
     }
   }
 
-  CheckoutFromCart(userId: Number) {
+  CheckoutFromCart(customerId: Number, paymentId: number) {
     this.httpClient
-      .post(`${this.server_url}/orders/payment`, null)
+      .post(`${this.server_url}/payment`, null)
       .subscribe((res: { success: Boolean }) => {
         console.clear();
 
         if (res.success) {
           this.resetServerData();
           this.httpClient
-            .post(`${this.server_url}orders/new`, {
-              userId: userId,
+            .post(`${this.server_url}/orders/new`, {
+              customerId: customerId,
+              paymentId: paymentId,
               products: this.cartDataClient.prodData,
             })
             .subscribe((data: OrderConfirmationResponse) => {
+              console.log("Data response to Cart service", data)
+              console.log("Data order id from Cart service", data.order_id)
               this.orderService.getSingleOrder(data.order_id).then((prods) => {
                 if (data.success) {
                   const navigationExtras: NavigationExtras = {
@@ -273,7 +276,7 @@ export class CartService {
                   };
                   this.spinner.hide();
                   this.router
-                    .navigate(['/thankyou'], navigationExtras)
+                    .navigate(['/thank-you'], navigationExtras)
                     .then((p) => {
                       this.cartDataClient = {
                         prodData: [{ incart: 0, id: 0 }],

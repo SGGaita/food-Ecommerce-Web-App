@@ -111,14 +111,14 @@
             <div class="d-block my-3">
               <div class="" *ngFor="let py of modes">
                 <input class="form-input" type="radio" formControlName="payment" [value]="py.id_payment"
-                  id="{{py.payment_name}}"> <small class="">
+                  id="{{py.payment_name}}" (change)="paymentChange()"> <small class="">
                   {{py.payment_name}}</small>
 
               </div>
             </div>
 
             <div class="terms">
-              <input class="checkbox" type="checkbox" name="" id=""> <small> {{'CHECKOUT.TermStatement' | translate}} <a routerLink="/customer/terms">{{'CHECKOUT.TermsLink' | translate}}</a> </small>
+              <input class="checkbox" type="checkbox" name="terms" id="terms" formControlName="terms" (change)="paymentChange()"> <small> {{'CHECKOUT.TermStatement' | translate}} <a routerLink="/customer/terms">{{'CHECKOUT.TermsLink' | translate}}</a> </small>
             </div>
 
 
@@ -126,7 +126,7 @@
 
           <!-- Submit Button -->
           <div class="place-order text-center">
-            <button class="btn btn-danger btn-block">{{'CHECKOUT.PlaceOrder' | translate}}</button>
+            <button class="btn btn-danger btn-block" [disabled] ="!radio_state">{{'CHECKOUT.PlaceOrder' | translate}}</button>
           </div>
         </form><!-- Form ends -->
 

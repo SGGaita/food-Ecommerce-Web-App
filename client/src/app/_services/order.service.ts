@@ -17,7 +17,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getSingleOrder(orderID: Number){
-    return this.http.get<ProductResponseModel[]>('${this.server_url}orders/${orderId}').toPromise();
+    return this.http.get<ProductResponseModel[]>(`${this.server_url}/orders/${orderID}`).toPromise();
   }
 
   getAllPaymentModes(): Observable<any> {

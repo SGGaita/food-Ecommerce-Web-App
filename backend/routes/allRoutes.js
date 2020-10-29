@@ -83,14 +83,16 @@ router.get('/suppliers/:supId', supplierController.getRestaurantById);
 //a. Get all orders
 router.get('/orders', ordersController.getAllOrders);
 //b. Get order by Id
-router.get('/order/:id', ordersController.getOrderById );
+router.get('/orders/:id', ordersController.getOrderById );
 //c. Add new order
 // Place New Order
-router.post('/order', ordersController.addNewOrder)
+router.post('/orders/new', ordersController.addNewOrder)
 
 /*####################################################################*/
 
 //6. Payment Endpoints
 router.get('/payment-modes', paymentController.getAllPaymentModes)
+//payment checkot
+router.post('/payment', paymentController.paymentGetway)
 
 module.exports = router;

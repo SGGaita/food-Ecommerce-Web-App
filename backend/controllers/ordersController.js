@@ -93,13 +93,15 @@ const getOrderById = async (req, res) => {
 // Add new order
 const addNewOrder = async (req, res) => {
     // let userId = req.body.userId;
-    // let data = JSON.parse(req.body);
+    //let data = JSON.parse(req.body);
+
     let {
         customerId,
+        paymentId,
         products
     } = req.body;
-    console.log(customerId);
-    console.log(products);
+    console.log("customer id",customerId);
+    console.log("products",products);
 
     if (customerId !== null && customerId > 0 && !isNaN(customerId)) {
         database.table('orders')
@@ -140,6 +142,7 @@ const addNewOrder = async (req, res) => {
                             .insert({
                                 id_order_fk: newOrderId,
                                 id_product_fk: p.id,
+                                id_payment_fk: paymentId ,
                                 quantity: inCart,
                                 order_state: order_state
                             }).then(newId => {
@@ -162,7 +165,7 @@ const addNewOrder = async (req, res) => {
                 res.json({
                     message: `Order successfully placed with order id ${newOrderId}`,
                     success: true,
-                    id_order: newOrderId,
+                    order_id: newOrderId,
                     products: products
                 })
             }).catch(err => res.json(err));
