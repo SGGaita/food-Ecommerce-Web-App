@@ -94,7 +94,11 @@ export class CheckoutComponent implements OnInit {
   //checkout method
   onCheckout(){
      
-
+//fetch user token and decode
+let customerToken = this.custAuthService.getToken();
+console.log('Customer token', customerToken);
+let decoded = jwt_decode(customerToken);
+console.log('Decoded token', decoded.id_customer);
      
 this.spinner.show().then(p =>{
   console.log("spinner", p)
@@ -105,7 +109,7 @@ console.log (payment_value)
 switch(payment_value) {
   case 1:
     console.log("This is Cash")
-    this.cartService.CheckoutFromCart(2,payment_value);
+    this.cartService.CheckoutFromCart( decoded.id_customer,payment_value);
     break;
   case 2:
     console.log("This is Card")

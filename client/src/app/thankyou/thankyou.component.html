@@ -7,7 +7,7 @@
           <hr>
           <p>
   
-          <p>Order Id : <strong></strong></p>
+          <p>Order Id : <strong>{{orderId}}</strong></p>
         </div>
   
         <table class="table table-striped">
@@ -20,20 +20,20 @@
           </tr>
           </thead>
           <tbody>
-          <tr >
+          <tr *ngFor="let p of products" >
             <td>
-              <img [src]="" alt="" class="img-thumbnail" width="100px">
+              <img src="../../assets/img/menu/{{p.image}}" alt="" class="img-thumbnail" width="100px">
             </td>
-            <td>Item</td>
-            <td>{{1000 | currency:'USD'}}</td>
-            <td>{{2}}</td>
+            <td>{{p.product_name}}</td>
+            <td>{{p.product_price | currency:'USD'}}</td>
+            <td>{{p.quantityOrdered}}</td>
           </tr>
   
           <tr class="border-0">
             <td style="border: none;"></td>
             <td></td>
             <td>TOTAL</td>
-            <td>{{1000 | currency:'USD'}}</td>
+            <td>{{cartTotal | currency:'USD'}}</td>
   
           </tr>
           </tbody>
