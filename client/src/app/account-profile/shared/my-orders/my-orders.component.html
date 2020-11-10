@@ -25,7 +25,7 @@
           <p class="badge badge-secondary mt-3" [class.badge-info] ="order.order_state == 1" [class.badge-warning] ="order.order_state == 2" [class.badge-success] ="order.order_state == 3">{{order.order_state === 1 ? 'Preparing' : order.order_state === 2 ? 'Dispatched'  : order.order_state === 3 ? 'Livré / Delivered' : 'Pending' }} </p>
           <p class="delivery-date"> <strong>ON 16/09/20</strong> </p>
         </div>
-        <a class="text-danger" routerLink="./order-details">See Details{{'CUSTOMERPAGE.SeeDetails' | translate}}</a>
+        <a class="text-danger" routerLink="../order-details/{{order.id_order}}">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a>
 
       </div>
     </div>

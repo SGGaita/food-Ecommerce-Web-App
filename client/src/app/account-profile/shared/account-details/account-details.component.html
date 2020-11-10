@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>{{'CUSTOMERPAGE.AccountOver' | translate}}</h5>
+
+      </div>
+
+
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100">
+            <h6>{{'CUSTOMERPAGE.AccountDets' | translate}}</h6>
+            <a href=""><i class="fa fa-pencil"></i></a>
+          </div>
+          <div class="card-body ">
+            <p class="names">{{fname}} {{lname}}</p>
+            <p class="email">{{email}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100">
+            <h6>{{'CUSTOMERPAGE.AddressBook' | translate}}</h6>
+            <a href=""><i class="fa fa-pencil"></i></a>
+          </div>
+          <div class="card-body">
+            <p>{{'CUSTOMERPAGE.DefaultAdd' | translate}}</p>
+            <p>{{fname}} {{lname}} </p>
+
+            <p *ngIf="address || city || region"> <span>{{address}}</span> <span
+                *ngIf="(address && city) || (address && region)">,</span> <span>{{city}}</span><span
+                *ngIf="city && region">,</span> <span>{{region}}</span></p>
+            <p *ngIf="primaryPhone || secondaryPhone ">{{primaryPhone}} <span
+                *ngIf="primaryPhone && secondaryPhone ">/</span> {{secondaryPhone}}</p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

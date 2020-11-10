@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row ">
+      <div class="col-sm-12 d-flex justify-content-between flex-sm-column flex-md-row w-100">
+        <h5>{{'CUSTOMERPAGE.Address' | translate}}</h5>
+        <button  *ngIf="!add_new" class="btn btn-warning" (click)="addNewAddress('yes')">{{'CUSTOMERPAGE.AddNewAddress' | translate}}</button>
+        
+      </div>
+
+      <div class="col-sm-6" *ngIf="!add_new">
+        <div class="card">
+          <div class="card-body">
+            <p>{{'CUSTOMERPAGE.DefaultAdd' | translate}}</p>
+            <p>{{fname}} {{lname}} </p>
+
+            <p *ngIf="address || city || region"> <span>{{address}}</span> <span
+                *ngIf="(address && city) || (address && region)">,</span> <span>{{city}}</span><span
+                *ngIf="city && region">,</span> <span>{{region}}</span></p>
+            <p *ngIf="primaryPhone || secondaryPhone ">{{primaryPhone}} <span
+                *ngIf="primaryPhone && secondaryPhone ">/</span> {{secondaryPhone}}</p>
+            <p>{{'CUSTOMERPAGE.DefaultAddress' | translate}}</p>
+
+          </div>
+          <div class="card-footer d-flex justify-content-between flex-sm-column flex-md-row w-100">
+            <h6>{{'CUSTOMERPAGE.SetDefaultAdd' | translate}}</h6>
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12" *ngIf="add_new">
+        <form [formGroup]="addressForm" (ngSubmit)="submit('address')">
+          <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">{{'CUSTOMERPAGE.FirstName' | translate}}<label
+                  class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="fname" name="fname" formControlName="fname"
+                  placeholder="{{'CUSTOMERPAGE.EnterFname' | translate}}">
+
+              </div>
+              <!--Validation-->
+              <!-- <div *ngIf="submitted && f.fname.errors">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">{{'CUSTOMERPAGE.LastName' | translate}}<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="lname" name="lname" formControlName="lname"
+                  placeholder="{{'CUSTOMERPAGE.EnterLname' | translate}}">
+              </div>
+              <!--Validation-->
+              <!--<div *ngIf="submitted && registerForm.get('lname').errors" class="alert alert-danger">
+                        <div *ngIf="registerForm.get('lname').errors.required">
+                          Last name is required
+                        </div>
+                      </div>-->
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">{{'CUSTOMERPAGE.Email' | translate}}<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">@</div>
+                </div>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                  placeholder="{{'CUSTOMERPAGE.EnterEmail' | translate}}">
+              </div>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">{{'CUSTOMERPAGE.Phone' | translate}}</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">#</div>
+                </div>
+                <input type="text" class="form-control" id="primaryPhone" name="primaryPhone" formControlName="primaryPhone"
+                  placeholder="{{'CUSTOMERPAGE.EnterPhone' | translate}}">
+
+              </div>
+            </div>
+
+            <div class="col-sm-12 d-flex">
+              <button class="btn btn-warning btn-block" type="submit">
+                {{'CUSTOMERPAGE.Submit' | translate}}</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

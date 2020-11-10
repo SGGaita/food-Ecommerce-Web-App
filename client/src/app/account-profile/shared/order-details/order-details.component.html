@@ -1,1 +1,58 @@
-<p>order-details works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+           <h5><a routerLink="../../orders"><i class="fa fa-arrow-left mx-3"></i></a> Order Details </h5>
+           <hr class="w-80">
+        </div>
+
+        <div class="col-sm-12 px-3">
+          <h6>Order No: {{id}}</h6>
+          <p>{{this.order.length}} Items </p>
+          <p>Placed on </p>
+          <p>Total: CDF 2030</p>
+          <hr>
+        </div>
+       
+        <div class="col-sm-12">
+          <h6>Items in your order</h6>
+
+          <div class="card  py-3 px-3 d-flex justify-content-between flex-sm-column flex-md-row w-100" *ngFor="let o of order">
+          <div class="card-body">
+                <img src="../../assets/img/menu/{{o.image}}" width="100px" alt="">
+                <div class="product-info">
+                  <div class="details"><span>
+                      <h6>{{o.product_name}}</h6>
+                    </span> <span>- {{o.product_description}}</span></div>
+                  <br>
+                  
+                  <p class="badge badge-secondary mt-3" [class.badge-info] ="order.order_state == 1" [class.badge-warning] ="o.order_state == 2" [class.badge-success] ="order.order_state == 3">{{order.order_state === 1 ? 'Preparing' : order.order_state === 2 ? 'Dispatched'  : order.order_state === 3 ? 'Livré / Delivered' : 'Pending' }} </p>
+                  <p class="delivery-date"> <strong>ON 16/09/20</strong> </p>
+                </div>
+                <a class="text-danger" routerLink="../order-details/{{o.id_order}}">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a> </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <p>PAYMENT INFORMATION</p>
+            </div>
+            <div class="card-body">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+              <div class="card-header">
+                   <p>DELIVERY INFORMATION</p>
+              </div>
+              <div class="card-body">
+  
+              </div>
+            </div>
+          </div>
+
+    </div>
+</div>

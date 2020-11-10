@@ -53,10 +53,13 @@ import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import {MyOrdersComponent} from './account-profile/shared/my-orders/my-orders.component';
-import { OrderDetailsComponent } from './account-profile/_shared/my-order/order-details/order-details.component';
-import { MyOrderComponent } from './account-profile/_shared/my-order/my-order.component';
-import { AccountProfilesComponent } from './account-profile/shared/account-profiles/account-profiles.component';
+import { OrderDetailsComponent } from './account-profile/shared/order-details/order-details.component';
+import { MyOrdersComponent } from './account-profile/shared/my-orders/my-orders.component';
+import { ChangePasswordComponent } from './account-profile/shared/change-password/change-password.component';
+import { AddressBookComponent } from './account-profile/shared/address-book/address-book.component';
+import { DetailsEditComponent } from './account-profile/shared/details-edit/details-edit.component';
+import { AccountDetailsComponent } from './account-profile/shared/account-details/account-details.component';
+
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
@@ -100,8 +103,12 @@ import { AccountProfilesComponent } from './account-profile/shared/account-profi
     PageNotFoundComponent,
     ForgotPasswordComponent,
     OrderDetailsComponent,
-    MyOrderComponent,
-    AccountProfilesComponent
+    MyOrdersComponent,
+    ChangePasswordComponent,
+    AddressBookComponent,
+    DetailsEditComponent,
+    AccountDetailsComponent,
+    
   ], 
   imports: [
     BrowserModule,

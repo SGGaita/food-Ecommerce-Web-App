@@ -21,6 +21,12 @@ export class OrderService {
     return this.http.get<ProductResponseModel[]>(`${this.server_url}/orders/${orderID}`).toPromise();
   }
 
+  //get single order by its id
+  getSingleOrderById(orderID: Number){
+    return this.http.get<ProductResponseModel[]>(this.server_url + '/orders/' + orderID)
+    .pipe(catchError(this.handleError));
+  }
+
   //get order by user id
   getLatestOrderById(customerID: Number){
     return this.http.get<ProductResponseModel[]>(this.server_url + '/order_latest/' + customerID)

@@ -13,9 +13,9 @@ import { OrderService } from '../_services/order.service';
   styleUrls: ['./account-profile.component.css'],
 })
 export class AccountProfileComponent implements OnInit {
-  detailsForm: FormGroup;
-  addressForm: FormGroup;
-  passwordForm: FormGroup;
+ 
+  
+  
 
   userData: any;
   customerProfile: any;
@@ -32,42 +32,18 @@ export class AccountProfileComponent implements OnInit {
   orders: any;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private sharedService: SharedService,
+   
     private customerService: CustomerService,
     public custAuthService: CustomerAuthenticationService,
     private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
-    //Initialize forms
-    //details form
-    this.detailsForm = this.formBuilder.group({
-      fname: [null],
-      lname: [null],
-      email: [null],
-      primaryPhone: [null],
-    });
+    
 
-    //address form
-    this.addressForm = this.formBuilder.group({
-      fname: [null],
-      lname: [null],
-      email: [null],
-      primaryPhone: [null],
-      address: [null],
-      city: [null],
-      region: [null],
-      secondaryPhone: [null],
-      additional_info: [null]
-    });
+   
 
-    //password form
-    this.passwordForm = this.formBuilder.group({
-      password: [null],
-      cpassword: [null],
-      npassword: [null],
-    });
+   
 
     //fetch user token and decode
     let customerToken = this.custAuthService.getToken();
@@ -90,13 +66,7 @@ export class AccountProfileComponent implements OnInit {
         this.primaryPhone = this.customerProfile.primaryPhone;
         this.secondaryPhone = this.customerProfile.secondaryPhone;
 
-        //populate details form
-        this.detailsForm.patchValue({
-          fname: this.fname,
-          lname: this.lname,
-          email: this.email,
-          phone: this.primaryPhone,
-        });
+       
 
         //fetch orders by customer id
         this.orderService.getLatestOrderById(decoded.id_customer)
@@ -110,32 +80,15 @@ export class AccountProfileComponent implements OnInit {
   submit(btn_value: string) {
     //console.log("This details form", this.detailsForm.value)
     switch (btn_value) {
-      case 'dets':
-        console.log('This details form', this.detailsForm.value);
-        break;
+      
       case 'address':
         console.log('This address form');
         this.add_new = false;
-        break;
-      case 'pwd':
-        console.log('This password form', this.passwordForm.value);
         break;
       default:
         console.log('No value has been selected');
     }
   }
 
-  addNewAddress(btn_value) {
-    switch (btn_value) {
-      case 'yes':
-        this.add_new = true;
-        break;
-      case 'no':
-        console.log('This address form');
-        this.add_new = false;
-        break;
-      default:
-        console.log('No value has been selected');
-    }
-  }
+  
 }
