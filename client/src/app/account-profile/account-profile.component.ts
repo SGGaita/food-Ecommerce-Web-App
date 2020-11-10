@@ -5,6 +5,7 @@ import { SharedService } from '../_services/shared_service/shared.service';
 import jwt_decode from 'jwt-decode';
 import { CustomersModelServer } from '../_models/customers';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { OrderService } from '../_services/order.service';
 
 @Component({
   selector: 'app-account-profile',
@@ -28,12 +29,14 @@ export class AccountProfileComponent implements OnInit {
   secondaryPhone: any;
 
   add_new: boolean = false;
+  orders: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
     private customerService: CustomerService,
-    public cust_Auth: CustomerAuthenticationService
+    public custAuthService: CustomerAuthenticationService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,7 @@ export class AccountProfileComponent implements OnInit {
     });
 
     //fetch user token and decode
-    let customerToken = this.cust_Auth.getToken();
+    let customerToken = this.custAuthService.getToken();
     console.log('Customer token', customerToken);
     var decoded = jwt_decode(customerToken);
     console.log('Decoded token', decoded.id_customer);
@@ -94,6 +97,13 @@ export class AccountProfileComponent implements OnInit {
           email: this.email,
           phone: this.primaryPhone,
         });
+
+        //fetch orders by customer id
+        this.orderService.getLatestOrderById(decoded.id_customer)
+        .subscribe(data =>{
+          this.orders = data
+          console.log("These latest orders", this.orders)
+        })
       });
   }
 

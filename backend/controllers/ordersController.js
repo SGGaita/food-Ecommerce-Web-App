@@ -46,7 +46,7 @@ const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandator
 // Get single order
 const getOrderById = async (req, res) => {
     let orderId = req.params.id;
-    console.log(orderId);
+    console.log("Order ID in controller",orderId);
 
     database.table('order_details as od')
         .join([{
@@ -88,6 +88,53 @@ const getOrderById = async (req, res) => {
             }
 
         }).catch(err => res.json(err));
+}
+
+//get latest order by customer id
+const getLatestOrders = async(req,res)=>{
+let customerID = req.params.id
+console.log("Customer ID in controller",customerID);
+
+database.table('order_details as od')
+.join([{
+        table: "orders as o",
+        on: `o.id_order = od.id_order_fk`
+    },
+    {
+        table: 'product as p',
+        on: `p.id_product = od.id_product_fk`
+    },
+    {
+        table: 'customers as c',
+        on: `c.id_customer = o.id_customer_fk`
+    }
+])
+.withFields(['o.id_order',
+    'p.product_name',
+    'p.product_description',
+    'p.product_price',
+    'p.image',
+    'od.quantity as quantityOrdered',
+    'od.order_state',
+    'od.createdAt as orderTime',
+    'od.acceptedAt as acceptedTime'
+    ])
+.filter({
+    'c.id_customer': customerID
+})
+.getAll()
+.then(orders => {
+    console.log(orders);
+    if (orders.length > 0) {
+        res.json(orders);
+    } else {
+        res.json({
+            message: "No orders found"
+        });
+    }
+
+}).catch(err => res.json(err));
+
 }
 
 // Add new order
@@ -179,4 +226,4 @@ const addNewOrder = async (req, res) => {
 }
 
 
-module.exports = {getAllOrders, getOrderById, addNewOrder}
+module.exports = {getAllOrders, getOrderById, getLatestOrders, addNewOrder}

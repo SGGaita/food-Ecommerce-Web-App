@@ -20,6 +20,7 @@ import {ProductsComponent} from './products/products.component'
 import { CustomerComponent } from './customer/customer.component';
 import { TermsComponent } from './terms/terms.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 //Import Auth guards
 
@@ -43,7 +44,11 @@ children:[{
 children:[
   {path: "login", component: LoginComponent},
   {path: 'register', component: SignUpComponent},
+  {path:  'order-details', component: OrderDetailsComponent},
   {path: 'profile', component: AccountProfileComponent,
+  children:[
+    
+  ],
   canActivate: [AuthCustGuard]},
   {path: 'terms', component: TermsComponent}
 ]},

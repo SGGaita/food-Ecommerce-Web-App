@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as $ from 'jquery'
 import { CartService } from '../_services/cart.service';
 import { CartModelServer } from '../_models/cart';
+import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,9 @@ export class NavbarComponent implements OnInit {
 
   _route_url = "/home"
 
-  constructor(private router:Router, private cartService: CartService) { }
+  constructor(private router:Router, 
+    private cartService: CartService,
+    public custAuthService: CustomerAuthenticationService,) { }
 
   ngOnInit() {
 

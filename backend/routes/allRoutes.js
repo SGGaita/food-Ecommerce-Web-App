@@ -84,9 +84,11 @@ router.get('/suppliers/:supId', supplierController.getRestaurantById);
 router.get('/orders', ordersController.getAllOrders);
 //b. Get order by Id
 router.get('/orders/:id', ordersController.getOrderById );
-//c. Add new order
-// Place New Order
-router.post('/orders/new', ordersController.addNewOrder)
+//c: Get latest orders by customer id
+router.get('/order_latest/:id',ordersController.getLatestOrders)
+//d. Add new order
+router.post('/orders/new', ordersController.addNewOrder);
+
 
 /*####################################################################*/
 

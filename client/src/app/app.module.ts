@@ -53,6 +53,7 @@ import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
@@ -94,7 +95,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AdminFooterComponent,
     TopnavComponent,
     PageNotFoundComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    OrderDetailsComponent
   ], 
   imports: [
     BrowserModule,
