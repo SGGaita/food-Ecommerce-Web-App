@@ -70,43 +70,15 @@
                 <h5>{{'CUSTOMERPAGE.Orders' | translate}}</h5>
               </div>
 
-              <div class="col-sm-12">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab"
-                      aria-controls="open" aria-selected="true">{{'CUSTOMERPAGE.OpenOrders' | translate}}</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab"
-                      aria-controls="closed" aria-selected="false">{{'CUSTOMERPAGE.ClosedOrders' | translate}}</a>
-                  </li>
+              
+              
+              <div class="col-sm-12" >
+                
+                orders
+              </div>
 
-                </ul>
-                <div class="tab-content py-3" id="myTabContent" >
-                  <div class="tab-pane fade show active" id="open" role="tabpanel" aria-labelledby="open-tab" >
-                    <div class="card py-3 px-3 d-flex justify-content-between flex-sm-column flex-md-row w-100" *ngFor="let order of orders">
-                      <img src="../../assets/img/menu/{{order.image}}" width="100px" alt="">
-                      <div class="product-info">
-                        <div class="details"><span>
-                            <h6>{{order.product_name}}</h6>
-                          </span> <span>- {{order.product_description}}</span></div>
-                        <br>
-                        <small class="order-number"> <strong>{{'CUSTOMERPAGE.OrderNumber' | translate}}</strong>
-                          {{order.id_order}}</small>
-                        <br>
-                        <p class="badge badge-secondary mt-3" [class.badge-info] ="order.order_state == 1" [class.badge-warning] ="order.order_state == 2" [class.badge-success] ="order.order_state == 3">{{order.order_state === 1 ? 'Preparing' : order.order_state === 2 ? 'Dispatched'  : order.order_state === 3 ? 'Livré / Delivered' : 'Pending' }} </p>
-                        <p class="delivery-date"> <strong>ON 16/09/20</strong> </p>
-                      </div>
-                      <a class="text-danger" routerLink="../order-details">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a>
-
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="closed-tab">
-                    <div class=" w-100 py-3 text-center">
-                      <p>{{'CUSTOMERPAGE.NoDisplay' | translate}}</p>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-sm-12" hidden>
+                
               </div>
 
 

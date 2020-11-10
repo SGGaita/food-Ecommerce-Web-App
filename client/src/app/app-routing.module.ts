@@ -20,7 +20,8 @@ import {ProductsComponent} from './products/products.component'
 import { CustomerComponent } from './customer/customer.component';
 import { TermsComponent } from './terms/terms.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderDetailsComponent } from './account-profile/shared/order-details/order-details.component';
+import {MyOrdersComponent} from './account-profile/shared/my-orders/my-orders.component'
 
 //Import Auth guards
 
@@ -44,10 +45,10 @@ children:[{
 children:[
   {path: "login", component: LoginComponent},
   {path: 'register', component: SignUpComponent},
-  {path:  'order-details', component: OrderDetailsComponent},
   {path: 'profile', component: AccountProfileComponent,
   children:[
-    
+    {path: 'my-account', component: MyOrdersComponent},
+    {path:  'order-details/:id', component: OrderDetailsComponent}
   ],
   canActivate: [AuthCustGuard]},
   {path: 'terms', component: TermsComponent}

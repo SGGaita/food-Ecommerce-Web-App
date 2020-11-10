@@ -53,7 +53,10 @@ import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import {MyOrdersComponent} from './account-profile/shared/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './account-profile/_shared/my-order/order-details/order-details.component';
+import { MyOrderComponent } from './account-profile/_shared/my-order/my-order.component';
+import { AccountProfilesComponent } from './account-profile/shared/account-profiles/account-profiles.component';
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
@@ -96,7 +99,9 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     TopnavComponent,
     PageNotFoundComponent,
     ForgotPasswordComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    MyOrderComponent,
+    AccountProfilesComponent
   ], 
   imports: [
     BrowserModule,
