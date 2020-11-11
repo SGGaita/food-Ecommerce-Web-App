@@ -59,6 +59,8 @@ import { ChangePasswordComponent } from './account-profile/shared/change-passwor
 import { AddressBookComponent } from './account-profile/shared/address-book/address-book.component';
 import { DetailsEditComponent } from './account-profile/shared/details-edit/details-edit.component';
 import { AccountDetailsComponent } from './account-profile/shared/account-details/account-details.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -108,6 +110,8 @@ import { AccountDetailsComponent } from './account-profile/shared/account-detail
     AddressBookComponent,
     DetailsEditComponent,
     AccountDetailsComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
     
   ], 
   imports: [

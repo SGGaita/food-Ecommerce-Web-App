@@ -25,6 +25,8 @@ import { MyOrdersComponent } from './account-profile/shared/my-orders/my-orders.
 import { AccountDetailsComponent } from './account-profile/shared/account-details/account-details.component';
 import { AddressBookComponent } from './account-profile/shared/address-book/address-book.component';
 import { ChangePasswordComponent } from './account-profile/shared/change-password/change-password.component';
+import {AdminLoginComponent} from './admin-login/admin-login.component';
+import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component'
 
 //Import Auth guards
 
@@ -82,11 +84,10 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      {
-        path: 'login',
-        component: LoginComponent,
+      {path: 'login', component: AdminLoginComponent,
         data: { title: 'Administrator login' },
       },
+      {path: 'dashboard', component: AdminDashboardComponent}
     ],
   },
   { path: '**', component: PageNotFoundComponent },
