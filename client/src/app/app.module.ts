@@ -61,6 +61,12 @@ import { DetailsEditComponent } from './account-profile/shared/details-edit/deta
 import { AccountDetailsComponent } from './account-profile/shared/account-details/account-details.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { AdminRestaurantsComponent } from './admin-restaurants/admin-restaurants.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminCustomersComponent } from './admin-customers/admin-customers.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -112,6 +118,12 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AccountDetailsComponent,
     AdminLoginComponent,
     AdminDashboardComponent,
+    AdminOrdersComponent,
+    AdminRestaurantsComponent,
+    AdminProductsComponent,
+    AdminCustomersComponent,
+    AdminUsersComponent,
+    AdminSettingsComponent,
     
   ], 
   imports: [

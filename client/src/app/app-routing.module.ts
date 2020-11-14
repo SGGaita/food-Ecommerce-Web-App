@@ -27,6 +27,10 @@ import { AddressBookComponent } from './account-profile/shared/address-book/addr
 import { ChangePasswordComponent } from './account-profile/shared/change-password/change-password.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component'
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminCustomersComponent } from './admin-customers/admin-customers.component';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 
 //Import Auth guards
 
@@ -87,7 +91,11 @@ const routes: Routes = [
       {path: 'login', component: AdminLoginComponent,
         data: { title: 'Administrator login' },
       },
-      {path: 'dashboard', component: AdminDashboardComponent}
+      {path: 'dashboard', component: AdminDashboardComponent},
+      {path: 'orders', component: AdminOrdersComponent},
+      {path: 'products', component: AdminProductsComponent},
+      {path: 'customers', component: AdminCustomersComponent},
+      {path: 'settings', component: AdminSettingsComponent}
     ],
   },
   { path: '**', component: PageNotFoundComponent },
