@@ -1,1 +1,67 @@
-<p>admin-login works!</p>
+<div class="container-fluid loginForm">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center align-items-center vh-100">
+      <div class="card text-center ">
+        <div class="card-header">
+          <h6 class="">ADMIN LOGIN </h6>
+          <div class="text-info text-left" *ngIf="loading">
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            {{loadingMsg}}</div>
+          <div *ngIf="errorMsg" class="text-danger text-left errorMsg pt-3">
+            <p>Error: {{errorMsg}}</p>
+          </div>
+        </div>
+        <div class="card-body login-card-body">
+          <p class=".login-box-msg">Sign in to start your session</p>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="input-group mb-3">
+              <input type="username" class="form-control" placeholder="username" formControlName="username"
+                name="username" id="username">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+
+              <div *ngIf="submitted && f.username.errors" class=" w-100
+              text-danger text-left errorMsg pt-3">
+                <div *ngIf="f.username.errors.required">*Email or username is required</div>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                name="pasword" id="pasword">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+
+              <div *ngIf="submitted && f.password.errors" class=" w-100
+              text-danger text-left errorMsg pt-3">
+                <div class="alertMsg" *ngIf="f.password.errors.required">*
+                  {{'LOGIN.PasswordRequired' | translate}}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 d-flex justify-content-between">
+                <span>
+                  <a routerLink="./forgot-password">Forgot your password?</a>
+          
+                </span>
+                <span><button class="btn btn-outline-danger " type="submit"><i class="fa fa-sign-in"
+                  aria-hidden="true"></i> Login</button></span>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

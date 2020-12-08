@@ -88,3 +88,18 @@ label {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+
+
+  /*ADMIN SECTION CSS*/
+  .login-card-body, .register-card-body {
+    background: #fff;
+    border-top: 0;
+    color: #666;
+    padding: 20px;
+}
+
+.login-box-msg, .register-box-msg {
+  margin: 0;
+  padding: 0 20px 20px;
+  text-align: center;
+}

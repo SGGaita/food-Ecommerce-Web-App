@@ -1,14 +1,20 @@
 var Sequelize = require('sequelize');
-var mysqlConnection = require('../dbconnect/dbconnect');
+var mysqlConnection = require('../db/dbconnect');
 
 module.exports = mysqlConnection.sequelize.define(
   'users', {
-    user_id: {
+    id_user: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    userName: {
+    fname:{
+       type: Sequelize.STRING
+      },
+    lname:{ 
+      type: Sequelize.STRING
+    },
+    username: {
       type: Sequelize.STRING
     },
     email: {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode"; 
 import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
 import {SharedService} from '../_services/shared_service/shared.service'
 @Component({
@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
   public loadingMsg = "Authenticating...Please wait";
   _userData: any
 
-  constructor(private sharedService: SharedService, private custAuthService: CustomerAuthenticationService, private router: Router,private fb: FormBuilder,private customerAuth: CustomerAuthenticationService) {}
+  constructor(private sharedService: SharedService, private custAuthService: CustomerAuthenticationService, private router: Router,private fb: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
     this.loginForm = this.fb.group({
       email:[null, [Validators.required,  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
@@ -56,7 +56,7 @@ get f(){
       return;
     }
     this.loading = true;
-    this.customerAuth.login(this.loginForm.value).subscribe(
+    this.custAuthService.login(this.loginForm.value).subscribe(
       data => {
         console.log(data)
         

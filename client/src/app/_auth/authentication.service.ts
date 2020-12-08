@@ -4,7 +4,7 @@ import { Observable, throwError, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 
 import 'rxjs/operators';
-//import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise'; 
 import { Router } from '@angular/router';
 //import { Role } from '../_models/role.enum';
 
@@ -117,6 +117,7 @@ export class AuthenticationService {
   }
 
   public login(user: TokenPayload) {
+    console.log("User payload", user)
     return this.request('post', 'login', user);
   }
 
