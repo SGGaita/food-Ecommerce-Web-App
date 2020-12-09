@@ -25,12 +25,14 @@ import { MyOrdersComponent } from './account-profile/shared/my-orders/my-orders.
 import { AccountDetailsComponent } from './account-profile/shared/account-details/account-details.component';
 import { AddressBookComponent } from './account-profile/shared/address-book/address-book.component';
 import { ChangePasswordComponent } from './account-profile/shared/change-password/change-password.component';
-import {AdminLoginComponent} from './admin-login/admin-login.component';
-import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component'
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminCustomersComponent } from './admin-customers/admin-customers.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { ThanksRegisterComponent } from './thanks-register/thanks-register.component';
 
 //Import Auth guards
 
@@ -59,12 +61,15 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'thank-you', component: ThankyouComponent },
+
   {
     path: 'customer',
     component: CustomerComponent,
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: SignUpComponent },
+      { path: 'thank-you-register', component: ThanksRegisterComponent },
+      { path: 'verification/:id', component: EmailVerificationComponent },
       {
         path: 'profile',
         component: AccountProfileComponent,
@@ -88,14 +93,16 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      {path: 'login', component: AdminLoginComponent,
+      {
+        path: 'login',
+        component: AdminLoginComponent,
         data: { title: 'Administrator login' },
       },
-      {path: 'dashboard', component: AdminDashboardComponent},
-      {path: 'orders', component: AdminOrdersComponent},
-      {path: 'products', component: AdminProductsComponent},
-      {path: 'customers', component: AdminCustomersComponent},
-      {path: 'settings', component: AdminSettingsComponent}
+      { path: 'dashboard', component: AdminDashboardComponent },
+      { path: 'orders', component: AdminOrdersComponent },
+      { path: 'products', component: AdminProductsComponent },
+      { path: 'customers', component: AdminCustomersComponent },
+      { path: 'settings', component: AdminSettingsComponent },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

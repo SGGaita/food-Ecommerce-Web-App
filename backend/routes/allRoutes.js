@@ -44,6 +44,9 @@ router.post('/register_customer', authenticationController.addNewCustomer);
 router.post('/login_customer', authenticationController.loginCustomer );
 //Login Customer
 router.post('/login_customer', authenticationController.loginCustomer);
+//c. Customer account verification
+router.get('/activation/:custID', authenticationController.accountActivationCustomer)
+
 
 /*####################################################################*/
 
@@ -52,6 +55,7 @@ router.post('/login_customer', authenticationController.loginCustomer);
 router.get('/customers_add', customerController.getAllCustomers);
 //b. Get customer infomation
 router.get('/customers/:custId',customerController.getCustomerById)
+
 
 /*####################################################################*/
 

@@ -41,13 +41,14 @@ get f(){
   }
 
  //Share user data via shared service
-  sendUserData(user: string) {
-    this.sharedService.nextCustomerData(user);
+  sendUserData(message: string) {
+    this.sharedService.nextCustomerMessage(message);
   }
 
 
   //login
   login(){
+
     
     this.errorMsg = ""
     this.submitted = true

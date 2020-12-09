@@ -4,6 +4,8 @@
       <div class="card">
         <div class="card-header text-center">
           <h4>{{'REGISTER.CreateAccount' | translate}}</h4>
+          <p *ngIf="errorMessage" class="text-danger text-left">Error: {{errorMessage}}</p>
+          <p *ngIf="successMessage" class="text-success text-left">{{successMessage}}</p>
         </div>
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -14,10 +16,10 @@
                   <input type="text" class="form-control" id="fname" name="fname" formControlName="fname" placeholder="{{'REGISTER.EnterFname' | translate}}">
 
                 </div>
-                <!--Validation-->
+                <!--Validation
                <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
                   <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
-                </div>
+                </div>-->
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
@@ -25,10 +27,10 @@
                 <div class="input-group mb-2">
                   <input type="text" class="form-control" id="lname" name="lname" formControlName="lname" placeholder="{{'REGISTER.EnterLname' | translate}}">
                 </div>
-                <!--Validation-->
+                <!--Validation
                 <div *ngIf="f.lname.invalid && (f.lname.dirty || f.lname.touched)">
                   <div *ngIf="f.lname.errors.required" class="alert alert-danger">Last name is required</div>
-                </div>
+                </div>-->
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
@@ -94,22 +96,25 @@
                     </span>
                   </div>
                 </div>
-                <div *ngIf="submitted && f.confirmPassword.errors" >
-                  <!--div *ngIf="registerForm.get('confirmPassword').errors.required" class="alert alert-danger">
+               <!-- <div *ngIf="submitted && f.confirmPassword.errors" >
+                  div *ngIf="registerForm.get('confirmPassword').errors.required" class="alert alert-danger">
                     Confirm Password is required
-                  </div>-->
+                  </div>
 
                   <div *ngIf="f.confirmPassword.errors.confirmPasswordValidator" class="alert alert-danger">
                     Passsword and Confirm Password didn't match.
                   </div>
-                </div>
+                </div>-->
               </div>
 
              
  
               <div class="col-sm-12 d-flex">
-                <button class="btn btn-outline-danger btn-block" type="submit">
+                <button *ngIf="!submitted" class="btn btn-outline-danger btn-block" type="submit">
                   {{'REGISTER.Submit' | translate}}</button>
+                  <button *ngIf="submitted" class="btn btn-outline-danger btn-block" [disabled] ="submitted"
+                  [class.disabled]="submitted" >
+                    {{'REGISTER.Submitted' | translate}}</button>
 
           
 

@@ -36,8 +36,6 @@ export class TopnavComponent implements OnInit {
        
   }
 
-  ngOnDestroy(){
-    this.sharedService.sharedCustomer.subscribe(data=>{}).unsubscribe
-  }
+  
 
 }

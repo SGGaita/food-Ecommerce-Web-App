@@ -18,13 +18,11 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {}
 
-  // send confirmation email
-  sendEmail(user): Observable<any> {
-    console.log("You have hit the service")
-    console.log("user object", user)
-    return this.http.post(this.server_url + '/sendmail', user)
-      .pipe(catchError(this.handleError));
-  }
+//account activation
+accActivation(id_customer: number): Observable<any>{
+  return this.http.get(this.server_url + '/activation/' + id_customer)
+  .pipe(catchError(this.handleError));
+}
 
    // retrieving customers
    getCustomers(numberofResults: number = 10): Observable<any> {

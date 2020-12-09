@@ -77,7 +77,7 @@
     "Email": "Email",
     "Phone": "Phone(Optional) ",
     "Password": "Password",
-    "CPassword": "Confirmatio password",
+    "CPassword": "Confirmation password",
     "EnterFname": "Enter your first name",
     "EnterLname": "Enter your last name",
     "EnterPhone": "Enter your phone number",
@@ -85,7 +85,8 @@
     "EnterPassword": "Enter the password",
     "EnterCPassword": "Enter the confirmation password",
     "AlreadyAccount": "Already have an account?",
-    "Submit": "Submit"
+    "Submit": "Submit",
+    "Submitted": "Submitting"
     
   },
 

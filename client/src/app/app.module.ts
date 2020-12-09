@@ -67,6 +67,8 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminCustomersComponent } from './admin-customers/admin-customers.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { ThanksRegisterComponent } from './thanks-register/thanks-register.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -124,6 +126,8 @@ import { AdminSettingsComponent } from './admin-settings/admin-settings.componen
     AdminCustomersComponent,
     AdminUsersComponent,
     AdminSettingsComponent,
+    ThanksRegisterComponent,
+    EmailVerificationComponent,
     
   ], 
   imports: [

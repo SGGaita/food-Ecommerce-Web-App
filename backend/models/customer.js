@@ -24,6 +24,9 @@ module.exports = mysqlConnection.sequelize.define(
     password: {
       type: Sequelize.STRING,
     },
+    acc_state: {
+      type: Sequelize.INTEGER
+    },
     createdAt: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW

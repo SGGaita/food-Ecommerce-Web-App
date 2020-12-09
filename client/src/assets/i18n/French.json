@@ -86,7 +86,8 @@
     "EnterPassword": "Entrer le mot de pass",
     "EnterCPassword": "Entrez le mot de pass de confirmation",
     "AlreadyAccount": "Vous avez déjà un compte",
-    "Submit": "Soumettre"
+    "Submit": "Soumettre",
+    "Submitted": "Submission"
     
   },
 
@@ -121,7 +122,8 @@
    "TermStatement":"J'ai lu et accepte le",
   "TermsLink":"termes et conditions",
   "Booking":"Commande de réservation",
-  "Submit":"Soumettre"
+  "Submit":"Soumettre",
+  "Submitted": "Submission"
  },
 
   "CUSTOMERPAGE": {
