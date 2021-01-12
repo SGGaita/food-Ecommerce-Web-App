@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../_auth/authentication.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class AdminLoginComponent implements OnInit {
   loading = false;
   public loadingMsg = "Authenticating...Please wait";
 
-  constructor(private formbuilder:FormBuilder, private authService: AuthenticationService, private title: Title) { }
+  constructor(private formbuilder:FormBuilder, private route: ActivatedRoute, private authService: AuthenticationService, private title: Title, private router: Router) { }
 
   ngOnInit(): void {
     this.title.setTitle(this.pageTitle)
@@ -53,6 +54,7 @@ get f(){
     console.log("logged in",data);
     this.successMsg = "Successful Authentication";
         this.loading = false;
+        this.router.navigate(['../','dashboard'], { relativeTo: this.route });
   }, err => this.errorMsg = err.error.reason)
 
   }

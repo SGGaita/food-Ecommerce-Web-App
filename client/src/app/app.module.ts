@@ -69,6 +69,12 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { ThanksRegisterComponent } from './thanks-register/thanks-register.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { AdminOrderListComponent } from './admin-order-list/admin-order-list.component';
+import { AdminRestaurantCreateComponent } from './admin-restaurant-create/admin-restaurant-create.component';
+import { AdminRestaurantListComponent } from './admin-restaurant-list/admin-restaurant-list.component';
+import { AdminProductListComponent } from './admin-product-list/admin-product-list.component';
+import { AdminProductCreateComponent } from './admin-product-create/admin-product-create.component';
+import { AdminCustomerListComponent } from './admin-customer-list/admin-customer-list.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -128,6 +134,12 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     AdminSettingsComponent,
     ThanksRegisterComponent,
     EmailVerificationComponent,
+    AdminOrderListComponent,
+    AdminRestaurantCreateComponent,
+    AdminRestaurantListComponent,
+    AdminProductListComponent,
+    AdminProductCreateComponent,
+    AdminCustomerListComponent,
     
   ], 
   imports: [

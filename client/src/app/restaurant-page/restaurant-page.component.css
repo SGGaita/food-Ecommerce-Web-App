@@ -60,6 +60,10 @@ span a{
       border: #ccc 5px solid;
       border-radius: 50px;
   }
+
+  .restaurant .btn:hover{
+      cursor: pointer;
+  }
   
   .res-headings h1{
       color: #cf0810;

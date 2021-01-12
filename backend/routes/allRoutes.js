@@ -42,8 +42,6 @@ router.post('/login', authenticationController.loginUser );
 router.post('/register_customer', authenticationController.addNewCustomer);
 // Login Customer
 router.post('/login_customer', authenticationController.loginCustomer );
-//Login Customer
-router.post('/login_customer', authenticationController.loginCustomer);
 //c. Customer account verification
 router.get('/activation/:custID', authenticationController.accountActivationCustomer)
 

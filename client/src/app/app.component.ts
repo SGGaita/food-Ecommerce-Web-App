@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from './_auth/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
 
   _route_url = "/home"
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, public auth: AuthenticationService) { }
 
   ngOnInit() {
 

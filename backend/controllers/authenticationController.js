@@ -53,13 +53,12 @@ const addNewUser = (req, res, next) => {
         .catch(err => {
             res.send('error: ' + err);
             console.log("error", err)
-        })
-}
+        })}
 
 //Login User
 const loginUser = (req, res) => {
     User.findOne({
-        where: Sequelize.or({ email: req.body.email }, { userName: req.body.userName })
+        where: { username: req.body.username }
     }
     )
         .then(user => {

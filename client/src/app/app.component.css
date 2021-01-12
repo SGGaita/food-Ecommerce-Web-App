@@ -13,3 +13,7 @@
     bottom: 0;
     border-top:#f0002f 2px solid;
 }
+
+.logout{
+    cursor:pointer
+}

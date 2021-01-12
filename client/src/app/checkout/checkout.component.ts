@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   constructor(private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
      private spinner: NgxSpinnerService, private fb: FormBuilder, private sharedService: SharedService,private customerService: CustomerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
     
 

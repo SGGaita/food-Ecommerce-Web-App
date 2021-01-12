@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 export interface UserDetails {
   user_id: number,
-  username: string,
+  userName: string,
   email: string,
   password: string,
   roles: string;
@@ -25,7 +25,7 @@ interface TokenResponse {
 export interface TokenPayload {
   //user_id: number,
   team_id_fk: number,
-  username: string,
+  userName: string,
   email: string,
   password: string,
   roles: string

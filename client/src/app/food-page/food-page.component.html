@@ -10,7 +10,7 @@
     <div class="row mt-3">
         <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of products">
             <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
-            <img src="../../assets/img/menu/{{_menu.image}}" alt="">
+            <img src="{{_menu.image}}" alt="">
             <h3><a routerLink="/../product/{{_menu.id_product}}">{{_menu.product_name}}</a></h3>
             <p><strong>Category:</strong> </p>
             <p class="ingredients">{{_menu.product_description.substr(0,50)}} ...</p>

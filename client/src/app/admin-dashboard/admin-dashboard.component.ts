@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+  pageTitle = "Dashboard | TosEcommerce"
 
-  constructor() { }
+  constructor(private title:Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle(this.pageTitle)
   }
 
 }
