@@ -1,1 +1,35 @@
-<p>admin-restaurant-list works!</p>
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title font-weight-bold">Restaurants</h3>
+
+      <div class="card-tools">
+        <a class="btn" routerLink="../create"><i class="fas fa-2x fa-plus-circle"></i></a>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Restaurant name</th>
+            <th >Description</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let restaurant of restaurants; let i=index">
+            <td>{{i + 1}}</td>
+            <td class="image"><img class="rounded-circle"  src="{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
+            <td>{{restaurant.supplier_name}}</td>
+            <td>{{restaurant.supplier_description}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>

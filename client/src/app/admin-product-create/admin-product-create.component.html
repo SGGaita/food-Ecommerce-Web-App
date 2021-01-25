@@ -1,1 +1,157 @@
-<p>admin-product-create works!</p>
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header ">
+        <h3 class="card-title font-weight-bold">Add new menu</h3>
+  
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+  
+      </div>
+  
+      <!-- /.card-header -->
+      <div class="card-body">
+  
+        <form [formGroup]="menuForm" (ngSubmit)="submit()">
+          <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">Food name<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="contestant_fname" name="contestant_fname"
+                  formControlName="contestant_fname" placeholder="Enter contestant first name">
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+  
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+              <label for="">Category<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                  <select class="form-control" id="contestant_lname" name="contestant_lname"
+                  formControlName="contestant_lname">
+                      <option>Food</option>
+                      <option>Drinks</option>
+                  </select>
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <label for="">Sub Category<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control" id="contestant_lname" name="contestant_lname"
+                    formControlName="contestant_lname">
+                        <option>Pizza</option>
+                        <option>Burger</option>
+                        <option>Sandwiches</option>
+                    </select>
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                <label for="">Restaurant<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control" id="contestant_lname" name="contestant_lname"
+                    formControlName="contestant_lname">
+                        <option>Grill Park</option>
+                        <option>Chicken'n' Licken</option>
+                    </select>
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">Price<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" id="contestant_fname" name="contestant_fname"
+                    formControlName="contestant_fname" placeholder="Enter contestant first name">
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+  
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">Description<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <textarea type="text" class="form-control" id="contestant_location" name="contestant_location"
+                  formControlName="contestant_location" rows="4" cols="50">
+                </textarea>
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+  
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="d-flex justify-content-between w-100">
+                <span class="form-group upload-btn w-50 d-block">
+                  <label class="image-upload-container btn btn-danger"><i class="fa fa-upload pr-2"
+                      aria-hidden="true"></i>Upload Image
+                    <input #imageID type="file" accept="image/*" (change)="processImage(imageID)" formControlName="image"
+                      id="image" name="image">
+                  </label>
+  
+                  <!--<div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" >Email address required</div>
+                                                   <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('email')" >Enter a valid email</div>-->
+                </span>
+  
+                <!--image preview-->
+                <span class="w-50 d-block">
+                  <div class="img-preview-container text-center">
+                    <div class="img-preview" [ngStyle]="{'background-image': 'url('+ selectedImage.src +')'}">
+                    </div>
+  
+                  </div>
+                </span>
+  
+  
+              </div>
+            </div>
+  
+            <span class="d-flex w-100 pl-2 pt-2">
+              <!--
+                      <button class="btn btn-outline-dark" 
+                    [disabled] ="submitting"
+                  [class.disabled]="submitting"
+                  [class.btn-success]="submitting"
+                    
+                    type="submit">{{submitting ? "Submitting" : "Submit"}}</button> -->
+              <button class="btn btn-dark mr-3" type="submit">Submit</button>
+              <button class="btn btn-danger" type="reset">Reset</button>
+  
+  
+            </span>
+          </div>
+        </form>
+  
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.card -->
+  
+  </div>
+  

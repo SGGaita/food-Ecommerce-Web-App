@@ -1,12 +1,8 @@
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title font-weight-bold">Menu</h3>
+      <h3 class="card-title font-weight-bold">Customers Addresses</h3>
 
       <div class="card-tools">
-        <span class="_button"> 
-          <a class="btn" routerLink="../create"><i class="fas fa-2x fa-plus-circle"></i></a>
-        </span>
-        
         <ul class="pagination pagination-sm float-right">
           <li class="page-item"><a class="page-link" href="#">«</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -23,29 +19,30 @@
           <tr>
             <th>#</th>
             <th>Image</th>
-            <th>Item name</th>
-            <th >Category</th>
-            <th>Sub Category</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Status</th>
+            <th>Name</th>
+            <th >Date of birth</th>
+            <th>From</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let _menu of menuItems; let i=index">
-            <td>{{i+1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{_menu.image}}" alt="" width="50px" height="50px"></td>
-            <td>{{_menu.product_name}}</td>
-            <td>{{_menu.category}}</td>
-            <td>{{_menu.subcategory}}</td>
-            <td>{{_menu.product_description}}</td>
-            <td>{{_menu.quantity}}</td>
-            <td></td>
+          <tr>
+            <td>1.</td>
+            <td class="image"><img class="rounded-circle"  src="../../assets/img/contestants/contestant.png" alt="" width="50px" height="50px"></td>
+            <td>Contestant name1</td>
+            <td>24/11/1995</td>
+            <td>Goma</td>
             <td></td>
           </tr>
 
-          
+          <tr>
+            <td>1.</td>
+            <td class="image"><img class="rounded-circle" src="../../assets/img/contestants/contestant.png" alt="" width="50px" height="50px"></td>
+            <td>Contestant name1</td>
+            <td>24/11/1995</td>
+            <td>Goma</td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>

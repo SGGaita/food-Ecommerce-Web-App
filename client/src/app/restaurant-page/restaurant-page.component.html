@@ -11,8 +11,7 @@
           <img src="{{_restaurant.supplier_image}}" alt="">
           <h3>{{_restaurant.supplier_name}}</h3>
           <p>{{_restaurant.supplier_description.substr(0,50)}} ...</p>
-
-          <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >{{'RESTAURANT.ViewButton' | translate}}</a>
+          <button class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" (onClick)="navigate(restaurants)" >{{'RESTAURANT.ViewButton' | translate}}</button>
 
         </div>
   </div>

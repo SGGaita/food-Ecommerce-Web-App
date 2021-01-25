@@ -28,6 +28,10 @@ export class RestaurantPageComponent implements OnInit {
     },
     err => this.errorMsg = err)
   }
+
+  navigate(_link:any){
+    
+  }
   }
 
 

@@ -6,11 +6,11 @@
   <div class="wrapper" *ngIf="!hasRoute('admin')">
 
     <!--Frontend section-->
-    <app-topnav *ngIf="!hasRoute('admin')"></app-topnav>
-    <app-navbar *ngIf="!hasRoute('admin')" ></app-navbar>
-    <router-outlet *ngIf="!hasRoute('admin')"></router-outlet>
-    <app-footer *ngIf="!hasRoute('admin')"></app-footer>
-    <app-copyright *ngIf="!hasRoute('admin')" ></app-copyright>
+    <app-topnav ></app-topnav>
+    <app-navbar  ></app-navbar>
+    <router-outlet ></router-outlet>
+    <app-copyright></app-copyright>
+    
     <!-- End frontend-->
   </div>
 
@@ -171,12 +171,11 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/admin/orders" class="nav-link">
+            <a routerLink="/admin/dashboard/orders" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Orders
@@ -184,64 +183,102 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a  class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-               Restaurants
+              Catalog
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview ">
+              <li class="nav-item has-treeview">
+                <a  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Restaurants Manager
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/dashboard/restaurants/categories" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Restaurant categories</p>
+                    </a>
+                
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/admin/dashboard/restaurants" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Restaurants</p>
+                    </a>
+                
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+                  <p>Menu Manager</p>
+                  <i class="fas fa-angle-left right"></i>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/dashboard/menu/categories" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Menu Categories</p>
+                    </a>
+                
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/admin/dashboard/menu/list" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Menu list</p>
+                      
+                    </a>
+                
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a routerLink="/admin/products" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-               Products
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
-                </a>
-              </li>
-             </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a  class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Customers
+                Customers Manager
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a routerLink="/admin/dashboard/customers" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                  <p>Customers</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="/admin/dashboard/customers/addresses"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Customer addresses</p>
                 </a>
               </li>
              </ul>
           </li>
+          <li class="nav-item">
+            <a routerLink="/admin/dashboard/pages" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Pages
+                </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                Settings
@@ -250,13 +287,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a routerLink="/admin/dashboard/pages" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General Settings</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a routerLink="/admin/dashboard/user-accounts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>System Users</p>
                 </a>
@@ -313,16 +350,6 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-  
-    <!-- Main Footer -->
-    <footer class="main-footer" >
-      <strong>Copyright &copy; 2020 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.3
-      </div>
-    </footer>
-    <!--End Admin section-->
   </div>
   <!-- ./wrapper -->
 

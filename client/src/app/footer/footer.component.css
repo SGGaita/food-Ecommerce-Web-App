@@ -6,17 +6,6 @@
     text-align: center;
 }
 
-.footer::before{
-    content:"";
-    background-color: rgba(22 30 33 0.5);
-    position: absolute;
-    top:0px;
-    bottom:0px;
-    right:0px;
-    left:0px;
-    opacity:0.75
-}
-
 .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;

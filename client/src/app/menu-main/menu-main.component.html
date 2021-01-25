@@ -1,0 +1,24 @@
+<!--Menus section-->
+<div class="col-sm-12 menu-list">
+    <div class="row">
+      <div class="col-sm-12 res-headings">
+        <h1>{{'FEATUREDMENU.Heading' | translate}}</h1>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of products">
+        <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
+        <a routerLink="/products/{{_menu.id_product}}"><img src="{{_menu.image}}" alt="">
+        <h3>{{_menu.product_name}}</h3></a>
+        <p><strong>{{'FEATUREDMENU.Category' | translate}}:</strong> {{_menu.category}} </p>
+        <p class="ingredients">{{_menu.product_description.substr(0,80)}} ...</p>
+        <p class="currency"> {{_menu.product_price | currency: 'CDF'}}</p>
+        <button class="btn"
+        [disabled] ="_menu.quality < 1"
+        [class.disabled]="_menu.quantity < 1"
+        [class.btn-warning]="_menu.quantity < 1"
+        (click)="addToCart(_menu.id_product)">{{_menu.quantity < 1 ? "Pas de stock" : "Ajouter à la carte"}}</button>
+        <!--<button >Out of Stock</button>-->
+      </div>
+    </div>
+  </div>
+  <!--End menus section-->

@@ -75,6 +75,10 @@ import { AdminRestaurantListComponent } from './admin-restaurant-list/admin-rest
 import { AdminProductListComponent } from './admin-product-list/admin-product-list.component';
 import { AdminProductCreateComponent } from './admin-product-create/admin-product-create.component';
 import { AdminCustomerListComponent } from './admin-customer-list/admin-customer-list.component';
+import { AdminCustomerAddressesComponent } from './admin-customer-addresses/admin-customer-addresses.component';
+import { AdminProductCategoriesComponent } from './admin-product-categories/admin-product-categories.component';
+import { MenuMainComponent } from './menu-main/menu-main.component';
+import { TopnavcComponent } from './topnavc/topnavc.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -140,6 +144,10 @@ import { AdminCustomerListComponent } from './admin-customer-list/admin-customer
     AdminProductListComponent,
     AdminProductCreateComponent,
     AdminCustomerListComponent,
+    AdminCustomerAddressesComponent,
+    AdminProductCategoriesComponent,
+    MenuMainComponent,
+    TopnavcComponent,
     
   ], 
   imports: [

@@ -1,3 +1,11 @@
+.footer{
+
+    height: 400px;
+    border-top: #e30026 12px solid;
+    padding-top: 88px;
+    text-align: center;
+}
+
 .copyright{
     background:#1f272a;
     padding:10px;

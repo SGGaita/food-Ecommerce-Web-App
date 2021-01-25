@@ -1,0 +1,47 @@
+label{
+    font-size:1rem !important
+  }
+  .input-group [data-toggle=datetimepicker] {
+      cursor: pointer;
+  }
+  
+  .upload-btn{
+    margin-top: 0px;
+      margin-left: 5px;
+  }
+  
+  .bootstrap-datetimepicker-widget table th {
+      height: 20px;
+      line-height: 20px;
+      width: 20px;
+  }
+  .bootstrap-datetimepicker-widget table td, .bootstrap-datetimepicker-widget table th {
+      text-align: center;
+      border-radius: .25rem;
+  }
+  
+  .img-preview-container {
+    background-color: #f7f7f7;
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    display: flex;
+    }
+    
+    .img-preview {
+      background: center center no-repeat;
+      
+      background-size: contain;
+      height: 160px;
+      width: 100%;
+    }
+    
+    .upload-btn input {
+      display: none;
+    }
+    
+    .upload-btn label {
+      height: 50px;
+      width: 180px;
+    }
