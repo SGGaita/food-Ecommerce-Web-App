@@ -41,8 +41,20 @@
             <td>{{_menu.subcategory}}</td>
             <td>{{_menu.product_description}}</td>
             <td>{{_menu.quantity}}</td>
-            <td></td>
-            <td></td>
+            <td><span class="alert alert-success" *ngIf="_menu.status>0">Published</span><span class="alert alert-danger" *ngIf="_menu.status<1">Unpublished</span></td>
+            <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Publish</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </div>
+            </td>
           </tr>
 
           

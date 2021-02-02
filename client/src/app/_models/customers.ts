@@ -5,6 +5,7 @@ export class CustomersModelServer {
   lastName: string;
   email: string;
   phone: string;
+  dob: Date;
   primaryPhone: string;
   address: string;
   city:string;

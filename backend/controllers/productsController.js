@@ -43,6 +43,7 @@ const getAllProducts = (req, res)=> { // Sending Page Query Parameter is mandato
             'p.quantity',
             'p.product_description',
             'p.image',
+            'p.status'
 
         ])
         .slice(startValue, endValue)

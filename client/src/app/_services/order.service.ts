@@ -16,6 +16,15 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
+  //get all orders
+  getAllOrders(numberofResults: number = 100):Observable<any> {
+    return this.http.get(this.server_url +'/orders', {
+      params:{
+        limit: numberofResults.toString()
+      }
+    }).pipe(catchError(this.handleError));
+  }
+
   //get single order by its id
   getSingleOrder(orderID: Number){
     return this.http.get<ProductResponseModel[]>(`${this.server_url}/orders/${orderID}`).toPromise();

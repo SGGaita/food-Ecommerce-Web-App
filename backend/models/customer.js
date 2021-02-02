@@ -21,6 +21,9 @@ module.exports = mysqlConnection.sequelize.define(
     phone:{
         type: Sequelize.STRING
     },
+    dob:{
+      type: Sequelize.DATE,
+    },
     password: {
       type: Sequelize.STRING,
     },

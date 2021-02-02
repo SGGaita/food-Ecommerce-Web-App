@@ -30,3 +30,14 @@ label .red-text{
 .input-group-prepend .input-group-text{
     font-weight:600
 }
+
+.datepicker td, .datepicker th {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.85rem;
+}
+
+.datepicker {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}

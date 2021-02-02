@@ -83,16 +83,20 @@ const loginUser = (req, res) => {
 const addNewCustomer = async (req, res, next) => {
    
     let _acc_state = 0
+    console.log("Date of birth", req.body.dob)
     var newCustomer = {
 
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
         phone: req.body.phone,
+        dob: new moment(req.body.dob).format('YYYY-MM-DD HH:MM:SS'),
         password: req.body.password,
         acc_state: _acc_state,
         createdAt: currenttime
     }
+
+    console.log("new customer", newCustomer)
 
     Customer.findOne({
             where: Sequelize.or({

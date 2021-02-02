@@ -25,7 +25,7 @@
   },
   "HEADER": {
     "Intro": "Fresh, rapid and deliicious",
-    "Description": "Dans nos restaurants , nous offrons de plat délicieux et des services de qualité, nous vous invitons à essayer nos services. ",
+    "Description": "In our restaurants we offer delicious food and quality services, we invite you to try our services. ",
     "ViewButton": "View our restaurants"
   },
   "RESTAURANT": {
@@ -43,7 +43,8 @@
     "NoStock": "No stocks"
   },
   "CUSTOMERSASSURANCE": {
-    "BestQuality": "BeOn timeA temps",
+    "BestQuality": "Better quality",
+    "OnTime": "On time",
     "MasterChefs": "Masterchefs",
     "TastyFood": "Tasty food"
   },
@@ -76,6 +77,7 @@
     "LastName": "Last name",
     "Email": "Email",
     "Phone": "Phone(Optional) ",
+    "Dob": "Date of birth",
     "Password": "Password",
     "CPassword": "Confirmation password",
     "EnterFname": "Enter your first name",
@@ -121,7 +123,7 @@
   "TermStatement":"I have read and understand the",
   "TermsLink":"terms and conditions",
   "Booking":"Booking order",
-  "Submit":"Soumettre"
+  "Submit":"Submit"
   },
 
   "CUSTOMERPAGE": {

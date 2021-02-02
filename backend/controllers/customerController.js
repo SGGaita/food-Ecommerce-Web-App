@@ -20,6 +20,7 @@ const getCustomerById = (req, res) => {
     'c.lname as lastName',
     'c.email',
       'c.phone as primaryPhone',
+      'c.dob',
       'ca.additional_phone as secondaryPhone',
       'ca.address',
       'ca.city',

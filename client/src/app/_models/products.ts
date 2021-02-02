@@ -7,6 +7,7 @@ export class ProductModelServer {
     product_description:string;
     image:string;
     images:string;
+    status:number;
     product_price:number;
     quantity:number;
     createdAt:Date;

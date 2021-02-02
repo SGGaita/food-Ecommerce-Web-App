@@ -18,7 +18,7 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Reference</th>
+            <th>Product</th>
             <th>Customer</th>
             <th>Delivery address</th>
             <th>Total</th>
@@ -29,16 +29,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1.</td>
-            <td>JK23456</td>
+          <tr *ngFor="let order of orders; let i=index">
+            <td>{{order.id_order}}</td>
+            <td>{{order.product_name}}</td>
             <td>Customer name</td>
             <td>123 Station Rd.,Nakuru</td>
             <td>$1200</td>
             <td>Cash</td>
             <td class="badge badge-success">Paid</td>
             <td>24/11/1995</td>
-            <td><button class="btn btn-secondary"> <i class="fas fa-search"></i> View</button> <i class="fas fa-ellipsis-v"></i></td>
+            <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Publish</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </div>
+            </td>
           </tr>
 
           

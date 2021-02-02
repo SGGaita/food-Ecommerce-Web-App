@@ -11,7 +11,7 @@
         <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of products">
             <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
             <img src="{{_menu.image}}" alt="">
-            <h3><a routerLink="/../product/{{_menu.id_product}}">{{_menu.product_name}}</a></h3>
+            <h3><a routerLink="/../products/{{_menu.id_product}}">{{_menu.product_name}}</a></h3>
             <p><strong>Category:</strong> </p>
             <p class="ingredients">{{_menu.product_description.substr(0,50)}} ...</p>
             <p class="currency"> {{_currency}} {{_menu.product_price}}</p>
