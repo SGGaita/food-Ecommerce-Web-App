@@ -12,6 +12,12 @@
 
 ## Frontend Walk through
 ### Homepage
+* The landing page has a hero image with a custome welcome text and a link that takes you to the restaurant list page.
+* It also has featured Menu list 
+  <span><img src="screenshots/homepage_english.png" width="50%" /></span>
+ 
+
+
 
 
 ## Features
@@ -21,16 +27,9 @@
 * Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
 
 ## Payment Gateways
-<<<<<<< HEAD
-<img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/payments.png" width="100%" />
 
-=======
 <img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/payments.png" weight="30%" />
-<<<<<< HEAD
-=======
->>>>>>> 221c8ebc1053756348eacb9e1bb2b0c412743199
 
 
 ## Mobile platform
 *  The application has a mobile app under development using [React Native](https://reactnative.dev/docs/getting-started)
->>>>>>> c8311cf119b2fe4a90f4d1aec23587628c5cbe45
