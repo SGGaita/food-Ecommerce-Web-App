@@ -20,7 +20,7 @@
 * Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
 
 ## Payment Gateways
-<<<<<<< HEAD
+<<<<<< HEAD
 =======
 
 
