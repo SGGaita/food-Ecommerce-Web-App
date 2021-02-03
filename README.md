@@ -13,3 +13,6 @@
 
 ## Features
 * Language translation service using [ngx-translate](https://github.com/ngx-translate/core). Translates between English and French.
+
+## Mobile platform
+*  The application has a mobile app under devlopment using [React Native](https://reactnative.dev/docs/getting-started)
