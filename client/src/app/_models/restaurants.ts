@@ -4,6 +4,7 @@ export class SupplierModelServer {
     id_supplier_cat_fk: number;
     supplier_description:string;
     supplier_image:string;
+    status: number;
     createdAt:Date;
     updatedAt:Date;
 }

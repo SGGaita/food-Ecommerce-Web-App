@@ -7,3 +7,19 @@ i.fas{
 .btn{
     cursor:pointer
 }
+
+.status{
+   
+        width: 50px;
+        height: auto;
+        border-radius: 50px 50px;
+        padding: 10px 15px
+}
+
+.status-activated{
+    background: #008000cc;
+}
+
+.status-deactivated{
+    background: #f84a0acc;
+}
