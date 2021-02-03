@@ -20,3 +20,10 @@
 * Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
 
 ## Payment Gateways
+<<<<<<< HEAD
+=======
+
+
+## Mobile platform
+*  The application has a mobile app under development using [React Native](https://reactnative.dev/docs/getting-started)
+>>>>>>> c8311cf119b2fe4a90f4d1aec23587628c5cbe45
