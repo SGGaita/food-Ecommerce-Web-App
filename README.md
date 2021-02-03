@@ -8,8 +8,7 @@
 
 * [ANGULAR 10](https://angular.io/) - Implementation of the Frontend user interfaces across all web platform.
 * [Node JS](https://nodejs.org/en/) - Used to implement the backend logic and serve API routes
-* [MySql](https://dev.mysql.com/doc/) - Storage of data
-
+* [MySql](https://dev.mysql.com/doc/) - Database implementation
 
 ## Features
 * Language translation service using [ngx-translate](https://github.com/ngx-translate/core). Translates between English and French.
