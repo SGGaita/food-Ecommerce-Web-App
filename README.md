@@ -1,6 +1,6 @@
 # Food Ordering & Delivery Web Application
 <p align="center">
-  <img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/logo.png" height="500em" />
+  <img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/logo-bw.png" height="200em" />
 <p align="center"> Maungano (formerly Tosungana) is an online food ordering and delivery platform, that enables customers to make food orders  </p>
 </p>
 
@@ -20,6 +20,7 @@
 * Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
 
 ## Payment Gateways
+<img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/payments.png" height="100em" />
 <<<<<< HEAD
 =======
 
