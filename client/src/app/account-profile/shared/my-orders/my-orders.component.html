@@ -13,7 +13,7 @@
   <div class="tab-content py-3" id="myTabContent" >
     <div class="tab-pane fade show active" id="open" role="tabpanel" aria-labelledby="open-tab" >
       <div class="card py-3 px-3 d-flex justify-content-between flex-sm-column flex-md-row w-100" *ngFor="let order of orders">
-        <img src="../../assets/img/menu/{{order.image}}" width="100px" alt="">
+        <img src="{{order.image}}" width="10%" alt="">
         <div class="product-info">
           <div class="details"><span>
               <h6>{{order.product_name}}</h6>

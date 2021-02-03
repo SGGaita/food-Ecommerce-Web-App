@@ -14,7 +14,7 @@
           <div id="product-main-img">
             <ng-template [ngIf]="thumbimages.length === 0">
               <div class="product-preview">
-                <img src="../../assets/img/menu/{{product.image}}" alt="">
+                <img src="{{product.image}}" alt="">
               </div>
             </ng-template>
             <ng-template [ngIf]="thumbimages.length > 0">

@@ -36,7 +36,7 @@
               <tbody>
                 <tr *ngFor="let c of cartData.data; let i=index">
                   <td class="d-flex align-items-center justify-content-around">
-                    <img src="../../assets/img/menu/{{c.product.image}}" alt="" width="60" class="order-1">
+                    <img src="{{c.product.image}}" alt="" width="60" class="order-1">
                     <span class="text-danger mr-md-4" style="cursor:pointer"><i class="fa fa-trash"
                         (click)="cartService.DeleteProductFromCart(i)"></i></span>
                   </td>

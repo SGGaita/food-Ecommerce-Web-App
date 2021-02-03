@@ -7,11 +7,12 @@
 ## Built With
 
 * [ANGULAR 10](https://angular.io/) - Implementation of the Frontend user interfaces across all web platform.
-* [Node JS](https://nodejs.org/en/) - Used to implement the backend logic and serve API routes
+* [Node JS](https://nodejs.org/en/) - Used to implement the backend logic: Serve API routes, application authentication and encryption of the authentication process.
 * [MySql](https://dev.mysql.com/doc/) - Database implementation
 
 ## Frontend Walk through
 ### Homepage
+
 
 ## Features
 * Search option to filter the restaurants
@@ -20,9 +21,8 @@
 * Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
 
 ## Payment Gateways
-<img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/payments.png" height="100em" />
-<<<<<< HEAD
-=======
+<img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/payments.png" width="100%" />
+
 
 
 ## Mobile platform

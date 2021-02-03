@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CopyrightComponent implements OnInit {
 
+  date = new Date()
+  _year: number;
+
   constructor() { }
 
   ngOnInit(): void {
+    this._year = this.date.getFullYear()
   }
 
 }

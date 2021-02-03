@@ -71,7 +71,7 @@
             <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
               <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
                 <div class="product-img">
-                  <img src="../../assets/img/menu/{{c.product?.image}}" alt="" width="60px">
+                  <img src="{{c.product?.image}}" alt="" width="60px">
                 </div>
                 <div class="product-body">
                   <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
