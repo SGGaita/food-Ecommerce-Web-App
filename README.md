@@ -1,6 +1,6 @@
 # Food Ordering & Delivery Web Application
 <p align="center">
-  <img src="../../client/src/assets/img/logo.jpg" height="500em" />
+  <img src="https://github.com/SGGaita/food-Ecommerce-Web-App/blob/master/client/src/assets/img/logo.png" height="500em" />
 <p align="center"> Maungano (formerly Tosungana) is an online food ordering and delivery platform, that enables customers to make food orders  </p>
 </p>
 
