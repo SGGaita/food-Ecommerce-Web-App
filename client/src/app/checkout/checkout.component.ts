@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { CustomerService } from '../_services/customer.service';
 import { SharedService } from '../_services/shared_service/shared.service';
 import {CustomerAuthenticationService} from '../_auth/customer-authentication.service'
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -17,6 +18,8 @@ import {CustomerAuthenticationService} from '../_auth/customer-authentication.se
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+pageTitle = "Checkout | Maungano Food Express"
+
   checkoutForm: FormGroup
 
   cartTotal: number;
@@ -26,10 +29,11 @@ export class CheckoutComponent implements OnInit {
   radio_state : boolean = false
   
 
-  constructor(private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
+  constructor(private title: Title,private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
      private spinner: NgxSpinnerService, private fb: FormBuilder, private sharedService: SharedService,private customerService: CustomerService) { }
 
   ngOnInit(): void { 
+    this.title.setTitle(this.pageTitle)
 
     
 

@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title font-weight-bold">Menu Categories</h3>
+
+      <div class="card-tools">
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+        <a class="btn" routerLink="../../create-category" data-toggle="tooltip" data-placement="top" title="Add new "><i class="fas fa-2x fa-plus-circle"></i></a>
+        <ul class="pagination pagination-sm float-right">
+          <li class="page-item"><a class="page-link" href="#">«</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="categories < 1">No categories to display</tr>
+          <tr *ngFor="let cat of categories; let i= index">
+            <td>{{i+1}}</td>
+           
+              <td class="name">
+                <a routerLink="../{{cat.id_product_cat}}" data-toggle="tooltip" data-placement="top" title="Click to view sub categories">
+                {{cat.prod_category_name}}
+              </a>
+            </td>
+             <td class="description">
+                <a routerLink="../{{cat.id_product_cat}}" data-toggle="tooltip" data-placement="top" title="Click to view sub categories">
+                {{cat.prod_category_description}}
+              </a>
+              </td>
+            
+           <td >
+              <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="cat.cat_status>0"><i class="fa fa-check text-success" ></i></a>
+              <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="cat.cat_status<1"><i class="fa fa-times text-danger"></i></a>
+               
+            </td>
+           <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" routerLink="../{{cat.id_product_cat}}">Add Sub-categories</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>

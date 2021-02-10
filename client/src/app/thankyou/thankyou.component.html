@@ -3,11 +3,12 @@
       <div class="col-md-12 py-3">
         <div class="jumbotron text-center">
           <h1 class="display-3">Thank You!</h1>
+          <p>{{message}}</p>
           <p class="lead"><strong>Please check your email</strong> for order confirmation.</p>
           <hr>
           <p>
   
-          <p>Order Id : <strong>{{orderId}}</strong></p>
+          <p>Order reference : <strong>{{order_reference }}</strong></p>
         </div>
   
         <table class="table table-striped">
@@ -22,7 +23,7 @@
           <tbody>
           <tr *ngFor="let p of products" >
             <td>
-              <img src="../../assets/img/menu/{{p.image}}" alt="" class="img-thumbnail" width="100px">
+              <img src="{{p.image}}" alt="" class="img-thumbnail" width="100px">
             </td>
             <td>{{p.product_name}}</td>
             <td>{{p.product_price | currency:'USD'}}</td>

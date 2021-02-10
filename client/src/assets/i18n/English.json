@@ -138,7 +138,7 @@
     "DefaultAdd": "Your default delivery address ",
     "OpenOrders": "Open orders",
     "ClosedOrders": "Closed orders",
-    "OrderNumber": "Order number",
+    "OrderNumber": "Order reference",
     "SeeDetails": "See the details",
     "Delivered": "Delivered",
     "Cancelled": "Cancelled",

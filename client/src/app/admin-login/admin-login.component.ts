@@ -32,7 +32,7 @@ export class AdminLoginComponent implements OnInit {
     this.title.setTitle(this.pageTitle);
     //initialize form
     this.loginForm = this.formbuilder.group({
-      username: [null, Validators.required],
+      username: ["", Validators.required],
       password: [null, Validators.required],
     });
   }

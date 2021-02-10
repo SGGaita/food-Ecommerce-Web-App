@@ -185,6 +185,63 @@ const getCategories = (req, res) => {
         }).catch(err => res.json(err));
 }
 
+//Get category by ID
+const getCategoryByID = (req, res) => {
+    let catId = req.params.catId;
+    database.table('product_category')
+    .filter({
+        'id_product_cat': catId
+    })
+        .getAll()
+        .then(prod => {
+            console.log(prod);
+            if (prod) {
+                res.status(200).json(prod);
+            } else {
+                res.json({
+                    message: `No product categories were found`
+                });
+            }
+        }).catch(err => res.json(err));
+}
+
+//Get sub categories
+const getSubCategories = (req, res) => {
+    //let product_sub_cat = req.params.catName;
+    database.table('product_sub_category')
+        .getAll()
+        .then(prod => {
+            console.log(prod);
+            if (prod) {
+                res.status(200).json(prod);
+            } else {
+                res.json({
+                    message: `No product sub categories were found`
+                });
+            }
+        }).catch(err => res.json(err));
+}
+
+const getSubCategoriesById = (req, res) => {
+    let catId = req.params.catId;
+    database.table('product_sub_category')
+    .filter({
+        'id_product_cat_fk': catId
+    })
+    .getAll()
+        .then(prod => {
+            console.log(prod);
+            if (prod) {
+                res.status(200).json(prod);
+            } else {
+                res.json({
+                    message: `No category found with id ${catId}`
+                });
+            }
+        }).catch(err => res.json(err));
+}
+
+
 //Get sub categories food category
 const getFoodCategories = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products/category/categoryName?page=1
 
@@ -255,4 +312,49 @@ const getDrinkCategories = (req, res) => { // Sending Page Query Parameter is ma
 
 }
 
-module.exports = {getAllProducts, getProductById, getProductsByCat, getCategories, getFoodCategories, getDrinkCategories};
+// Add new category
+const addNewCategory = async (req, res) => {
+    
+        database.table('product_category')
+            .insert({
+                prod_category_name: req.body.prod_category_name,
+                prod_category_description: req.body.prod_category_description,
+                cat_status: req.body.cat_status
+            }).then((newCategory) => {
+                console.log("new category id", newCategory)
+
+                res.json({
+                    message: `Category successfully added`,
+                    success: true,
+                    
+                })
+            }).catch(err => res.json(err));
+   
+
+}
+
+// Add new sub category
+const addNewSubCategory = async (req, res) => {
+    
+    database.table('product_sub_category')
+        .insert({
+            sub_name: req.body.sub_name,
+      sub_description:req.body.sub_description,
+      id_product_cat_fk:req.body.id_product_cat_fk,
+      sub_status:req.body.sub_status,
+            
+        }).then((newSubCategory) => {
+
+            res.json({
+                message: `SUb Category successfully added`,
+                success: true,
+                
+            })
+        }).catch(err => res.json(err));
+
+
+}
+
+
+
+module.exports = {getAllProducts, getProductById, getProductsByCat, getCategories, getCategoryByID, getSubCategories, getSubCategoriesById, addNewCategory,addNewSubCategory, getFoodCategories, getDrinkCategories};

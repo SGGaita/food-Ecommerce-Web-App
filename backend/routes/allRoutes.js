@@ -66,9 +66,21 @@ router.get ('/products/:prodId', productsController.getProductById)
 router.get('/category/:catName', productsController.getProductsByCat)
 //d. Get categories
 router.get('/categories', productsController.getCategories)
-//e. Get subcategories in food category
+//d. Get category by id
+router.get('/categoryById', productsController.getCategoryByID)
+//c. Get category name
+//router.get('/subCategories/:catName', productsController.getSubCategoriesByCatName)
+//e. Get categories
+router.get('/subcategories', productsController.getSubCategories)
+//f. Get categories
+router.get('/subcategories/:catId', productsController.getSubCategoriesById)
+// g. Add new category
+router.post('/category/', productsController.addNewCategory)
+// g. Add new category
+router.post('/sub_category/', productsController.addNewSubCategory)
+//f. Get subcategories in food category
 router.get('/category_food', productsController.getFoodCategories)
-//f. Get subcategories in drink category
+//g. Get subcategories in drink category
 router.get('/category_drinks', productsController.getDrinkCategories);
 
 /*####################################################################*/

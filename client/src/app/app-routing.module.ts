@@ -41,6 +41,12 @@ import { AdminProductListComponent } from './admin-product-list/admin-product-li
 import { AdminOrderListComponent } from './admin-order-list/admin-order-list.component';
 import { AdminCustomerListComponent } from './admin-customer-list/admin-customer-list.component';
 import { AdminCustomerAddressesComponent } from './admin-customer-addresses/admin-customer-addresses.component';
+import { AdminSubcatListComponent } from './admin-subcat-list/admin-subcat-list.component';
+import { AdminCategoryListComponent } from './admin-category-list/admin-category-list.component';
+import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AdminRestaurantCategoryListComponent } from './admin-restaurant-category-list/admin-restaurant-category-list.component';
+import { AdminCatCreateComponent } from './admin-cat-create/admin-cat-create.component';
+import { AdminSubcatCreateComponent } from './admin-subcat-create/admin-subcat-create.component';
 
 //Import Auth guards
 
@@ -106,41 +112,66 @@ const routes: Routes = [
         component: AdminLoginComponent,
         data: { title: 'Administrator login' },
       },
-      { path: 'dashboard', component: AdminDashboardComponent,
-      children:[ 
-      { path: 'orders', component: AdminOrdersComponent ,
-    children:[
-      { path: '', redirectTo: 'list', pathMatch: 'full' },
-      {path:'list', component: AdminOrderListComponent}, 
-      
-    ]},
       {
-        path: 'restaurants',
-        component: AdminRestaurantsComponent,
+        path: 'dashboard',
+        component: AdminDashboardComponent,
         children: [
-          {path:'', redirectTo: 'list', pathMatch: 'full'}, 
-          { path: 'list', component: AdminRestaurantListComponent },
-          { path: 'create', component: AdminRestaurantCreateComponent },
-          {path: 'categories', component: AdminProductListComponent},
+          {
+            path: 'orders',
+            component: AdminOrdersComponent,
+            children: [
+              { path: '', redirectTo: 'list', pathMatch: 'full' },
+              { path: 'list', component: AdminOrderListComponent },
+            ],
+          },
+          {
+            path: 'restaurants',
+            component: AdminRestaurantsComponent,
+            children: [
+              { path: '', redirectTo: 'list', pathMatch: 'full' },
+              { path: 'list', component: AdminRestaurantListComponent },
+              { path: 'create', component: AdminRestaurantCreateComponent },
+              {
+                path: 'categories',
+                component: AdminRestaurantCategoryListComponent,
+              },
+            ],
+          },
+          {
+            path: 'menu',
+            component: AdminProductsComponent,
+            children: [
+              { path: '', redirectTo: 'list', pathMatch: 'full' },
+              { path: 'list', component: AdminProductListComponent },
+              { path: 'create', component: AdminProductCreateComponent },
+              {
+                path: 'categories',
+                component: AdminCategoryComponent,
+                children: [
+                  { path: '', redirectTo: 'list', pathMatch: 'full' },
+                  {path: 'list', component: AdminCategoryListComponent},
+                  { path: ':id', component: AdminSubcatListComponent },
+                  
+                ],
+              },
+              {path: 'create-category', component: AdminCatCreateComponent},
+              {path: 'create-subcategory', component: AdminSubcatCreateComponent}
+            ],
+          },
+          {
+            path: 'customers',
+            component: AdminCustomersComponent,
+            children: [
+              { path: '', redirectTo: 'list', pathMatch: 'full' },
+              { path: 'list', component: AdminCustomerListComponent },
+              { path: 'addresses', component: AdminCustomerAddressesComponent },
+            ],
+          },
+          { path: 'settings', component: AdminSettingsComponent },
         ],
+        canActivate: [AuthGuard],
       },
-      { path: 'menu', component: AdminProductsComponent,
-    children: [
-      {path:'', redirectTo: 'list', pathMatch: 'full'}, 
-      {path: 'list', component: AdminProductListComponent},
-     {path: 'create', component: AdminProductCreateComponent},
-      {path: 'categories', component: AdminProductListComponent},
-    ] },
-      { path: 'customers', component: AdminCustomersComponent,
-    children:[
-      {path:'', redirectTo: 'list', pathMatch: 'full'}, 
-      {path: 'list', component: AdminCustomerListComponent},
-      {path: 'addresses', component: AdminCustomerAddressesComponent}
-    ] },
-      { path: 'settings', component: AdminSettingsComponent },
     ],
-    canActivate: [AuthGuard]
-  }],
   },
   { path: '**', component: PageNotFoundComponent },
 ];

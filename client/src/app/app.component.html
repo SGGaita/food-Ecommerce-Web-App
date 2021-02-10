@@ -33,9 +33,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4" *ngIf="auth.isLoggedIn()" >
     <!-- Brand Logo -->
     <a routerLink="./admin" class="brand-link">
-     <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">-->
-      <span class="brand-text font-weight-light">Food Ordering System</span>
+      <img src="../assets/img/logo-bw.png" alt="maungano Logo" class="brand-image">
     </a>
 
     <!-- Sidebar -->
@@ -44,9 +42,9 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <!--div class="image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>-->
+        </!--div>-->
         <div class="info">
-          <a href="#" class="d-block">Steve Gaita</a>
+          <a href="#" class="d-block">{{userName}}</a>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import {Location} from '@angular/common'
 
 class ImageSnippet {
   constructor(public src: string, public file: File) { }
@@ -23,7 +24,7 @@ export class AdminProductCreateComponent implements OnInit {
   successMsg: string;
   fileData: File;
 
-  constructor(private title:Title, private fb: FormBuilder) { }
+  constructor(private title:Title, private fb: FormBuilder, private location: Location) { }
 
   ngOnInit(): void {
     this.title.setTitle(this.pageTitle);
@@ -63,5 +64,9 @@ export class AdminProductCreateComponent implements OnInit {
   
 
   submit(){}
+
+  back(){
+    this.location.back()
+  }
 
 }

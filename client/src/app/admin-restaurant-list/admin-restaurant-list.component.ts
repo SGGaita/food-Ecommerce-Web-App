@@ -23,4 +23,9 @@ export class AdminRestaurantListComponent implements OnInit {
     })
   }
 
+
+  refresh(){
+    this.ngOnInit()
+  }
+
 }

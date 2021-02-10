@@ -1,0 +1,22 @@
+.name{
+    text-transform: capitalize;
+    font-weight: 500
+}
+
+i.fas{
+    color:'grey' !important;
+    font-size: 1.2rem !important;
+    margin-top:-5px !important
+}
+
+.name a, .description a{
+    color: rgb(19, 19, 19) !important;
+    
+}
+
+.no-display{
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 600;
+}
+

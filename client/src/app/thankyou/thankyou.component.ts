@@ -10,6 +10,7 @@ import { OrderService } from '../_services/order.service';
 export class ThankyouComponent implements OnInit {
    message: string;
    orderId: number;
+   order_reference:string;
    products;
    cartTotal: number;
 
@@ -21,12 +22,14 @@ export class ThankyouComponent implements OnInit {
         message: string,
         products: ProductResponseModel[],
         orderId: number,
+        order_reference:string,
         total: number
       };
 
       this.message = state.message;
       this.products = state.products;
       this.orderId = state.orderId;
+      this.order_reference = state.order_reference;
       this.cartTotal = state.total;
     }
 

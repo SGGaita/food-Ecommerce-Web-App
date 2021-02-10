@@ -3,6 +3,7 @@
       <h3 class="card-title font-weight-bold">Restaurants</h3>
 
       <div class="card-tools">
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
         <a class="btn" routerLink="../create"><i class="fas fa-2x fa-plus-circle"></i></a>
       </div>
     </div>
@@ -16,7 +17,7 @@
             <th>Restaurant name</th>
             <th >Description</th>
             <th>Status</th>
-            <th>Action</th>
+            <th class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -25,8 +26,8 @@
             <td class="image"><img class="rounded-circle"  src="{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
             <td>{{restaurant.supplier_name}}</td>
             <td>{{restaurant.supplier_description}}</td>
-            <td >
-              <span class="status status-activated" *ngIf="restaurant.status<1"> <i class="fa fa-check"></i></span><span class="status status-deactivated" *ngIf="restaurant.status>0"><i class="fa fa-times"></i></span>
+            <td class="text-center">
+              <span > <i class="fa fa-check text-success" *ngIf="restaurant.status>0"></i></span><span  ><i class="fa fa-times text-danger" *ngIf="restaurant.status<1"></i></span>
             </td>
             <td>
               <div class="dropdown show">
@@ -36,7 +37,6 @@
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#"><span  *ngIf="restaurant.status>0">Deactivate</span><span  *ngIf="restaurant.status<1">Activate</span></a>
                   <a class="dropdown-item" href="#">Delete</a>
                 </div>
               </div>

@@ -20,4 +20,8 @@ export class AdminProductListComponent implements OnInit {
     })
   }
 
+  refresh(){
+    this.ngOnInit()
+  }
+
 }

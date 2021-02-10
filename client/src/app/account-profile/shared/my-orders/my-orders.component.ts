@@ -28,7 +28,7 @@ export class MyOrdersComponent implements OnInit {
      this.orderService.getLatestOrderById(decoded.id_customer)
      .subscribe(data =>{
        this.orders = data
-       console.log("These latest orders", this.orders)
+       console.log("These latest orders are", this.orders)
      })
   }
 

@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header ">
+        <h3 class="card-title font-weight-bold">Add new subcategory</h3>
+  
+        <div class="card-tools">
+            <a class="btn"  (click)="back()" data-toggle="tooltip" data-placement="top" title="Back to sub categories"><i class="fas fa-hand-point-left"></i></a>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+  
+      </div>
+  
+      <!-- /.card-header -->
+      <div class="card-body">
+  
+        <form [formGroup]="restaurantSubCategoryForm" (ngSubmit)="submit()">
+          <div class="row">
+            <div class="form-group col-sm-12 col-md-8">
+              <label for="">Sub Category name<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="sub_name" name="sub_name"
+                  formControlName="sub_name" placeholder="Sub category name">
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+  
+            <div class="form-group col-sm-12 col-md-8 ">
+                <label for="">Display</label>
+                <div class="input-group mr-2 mb-2">
+                    <select id="sub_status" name="sub_status"
+                    formControlName="sub_status">
+                        <option value="0">Unpublished</option>
+                        <option value="1">Published</option>
+                     </select>
+                </div>
+                
+            </div>
+
+            <div class="form-group col-sm-12 col-md-8 ">
+                <label for="">Parent category</label>
+                <div class="input-group mr-2 mb-2" >
+                    <select id="id_product_cat_fk" name="id_product_cat_fk"
+                    formControlName="id_product_cat_fk" >
+                        <option class="text-capitalize" *ngFor="let cat of categories" value="{{cat.id_product_cat}}">{{cat.prod_category_name}}</option>
+                        
+                     </select>
+                </div>
+                
+            </div>
+
+            <div class="form-group col-sm-12 col-md-8 ">
+                <label for="">Icon</label>
+                <div class="input-group mr-2 mb-2" >
+                    <input type="file" formControlName="icon" id="icon" name="icon">
+                </div>
+                
+            </div>
+  
+  
+            <div class="form-group col-sm-12 col-md-8 ">
+              <label for="">Description</label>
+              <div class="input-group mb-2">
+                <textarea type="text" class="form-control" id="sub_description" name="sub_description"
+                  formControlName="sub_description" rows="4" cols="50">
+                </textarea>
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+  
+  
+            <span class="d-flex w-100 pl-2 pt-2">
+              <!--
+                      <button class="btn btn-outline-dark" 
+                    [disabled] ="submitting"
+                  [class.disabled]="submitting"
+                  [class.btn-success]="submitting"
+                    
+                    type="submit">{{submitting ? "Submitting" : "Submit"}}</button> -->
+              <button class="btn btn-dark mr-3" type="submit" *ngIf="!submitted">Submit</button>
+              <button class="btn btn-dark mr-3" *ngIf="submitted" disabled>Submitting</button>
+              <button class="btn btn-danger" type="reset">Reset</button>
+              
+  
+            </span>
+          </div>
+        </form>
+  
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.card -->
+  
+  </div>
+  

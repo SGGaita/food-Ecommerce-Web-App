@@ -14,5 +14,5 @@ export class OrderModelServer {
 
 export interface OrderResponse{
     count:number;
-    suppliers: OrderModelServer[]
+    orders: OrderModelServer[]
 }

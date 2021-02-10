@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const {database} = require('../db/db_mysqli');
 
+//generate random string for reference number
+ var randomString = function getRandomString(length) {
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+     var result = '';
+     for ( var i = 0; i < length; i++ ) {
+         result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+     }
+      return result;
+}
+
 // Get all orders
 const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:4200/api/orders?page=1
     database.table('order_details as od')
@@ -20,6 +30,7 @@ const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandator
 
         ])
         .withFields(['o.id_order',
+            'od.order_reference',
             'p.product_name',
             'p.product_description',
             'p.product_price',
@@ -67,6 +78,7 @@ const getOrderById = async (req, res) => {
             'p.product_description',
             'p.product_price',
             'p.image',
+            'od.order_reference',
             'od.quantity as quantityOrdered',
             'od.order_state',
             'c.id_customer',
@@ -114,6 +126,7 @@ database.table('order_details as od')
     'p.product_description',
     'p.product_price',
     'p.image',
+    'od.order_reference',
     'od.quantity as quantityOrdered',
     'od.order_state',
     'od.createdAt as orderTime',
@@ -142,6 +155,8 @@ const addNewOrder = async (req, res) => {
     // let userId = req.body.userId;
     //let data = JSON.parse(req.body);
 
+    newReference = randomString(10)
+    console.log("Reference number", newReference)
     let {
         customerId,
         paymentId,
@@ -188,6 +203,7 @@ const addNewOrder = async (req, res) => {
                         database.table('order_details')
                             .insert({
                                 id_order_fk: newOrderId,
+                                order_reference: newReference,
                                 id_product_fk: p.id,
                                 id_payment_fk: paymentId ,
                                 quantity: inCart,
@@ -210,9 +226,10 @@ const addNewOrder = async (req, res) => {
                     });
                 }
                 res.json({
-                    message: `Order successfully placed with order id ${newOrderId}`,
+                    message: `Order successfully placed with Reference ${newReference}`,
                     success: true,
                     order_id: newOrderId,
+                    order_reference: newReference,
                     products: products
                 })
             }).catch(err => res.json(err));
@@ -227,3 +244,4 @@ const addNewOrder = async (req, res) => {
 
 
 module.exports = {getAllOrders, getOrderById, getLatestOrders, addNewOrder}
+

@@ -271,6 +271,7 @@ export class CartService {
                       message: data.message,
                       products: prods,
                       orderId: data.order_id,
+                      order_reference: data.order_reference,
                       total: this.cartDataClient.total,
                     },
                   };
@@ -333,6 +334,7 @@ export class CartService {
 
 interface OrderConfirmationResponse {
   order_id: Number;
+  order_reference: String;
   success: Boolean;
   message: String;
   products: [

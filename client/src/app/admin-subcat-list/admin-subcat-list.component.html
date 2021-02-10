@@ -1,13 +1,11 @@
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title font-weight-bold">Menu</h3>
+      <h3 class="card-title font-weight-bold">Product Sub Categories</h3>
 
       <div class="card-tools">
-        <span class="_button"> 
-          <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
-          <a class="btn" routerLink="../create"  data-toggle="tooltip" data-placement="top" title="Add new menu"><i class="fas fa-2x fa-plus-circle"></i></a>
-        </span>
-        
+        <a class="btn"  routerLink="../../categories" data-toggle="tooltip" data-placement="top" title="Back to categories"><i class="fas fa-hand-point-left"></i></a>
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+        <a class="btn" routerLink="../../create-subcategory" data-toggle="tooltip" data-placement="top" title="Add new "><i class="fas fa-2x fa-plus-circle"></i></a>
         <ul class="pagination pagination-sm float-right">
           <li class="page-item"><a class="page-link" href="#">«</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -24,30 +22,27 @@
           <tr>
             <th>#</th>
             <th>Image</th>
-            <th>Item name</th>
-            <th >Category</th>
-            <th>Sub Category</th>
+            <th>Name</th>
             <th>Description</th>
-            <th>Quantity</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let _menu of menuItems; let i=index">
-            <td>{{i+1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{_menu.image}}" alt="" width="50px" height="50px"></td>
-            <td class="text-capitalize">{{_menu.product_name}}</td>
-            <td class="text-capitalize">{{_menu.category}}</td>
-            <td>{{_menu.subcategory}}</td>
-            <td>{{_menu.product_description}}</td>
-            <td>{{_menu.quantity}}</td>
+          <tr class=" py-5" *ngIf="subCats < 1" >
+            <td class="text-center no-display" colspan="6">No sub-categories to display</td>
+          </tr>
+          <tr *ngFor="let subCat of subCats; let i = index">
+            <td>{{1 + 1}}</td>
+            <td><img src="{{subCat.icon}}"  width="50px" height="50px"/></td>
+            <td class="name">{{subCat.sub_name}}</td>
+            <td>{{subCat.sub_description}}</td>
             <td >
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="_menu.status>0"><i class="fa fa-check text-success" ></i></a>
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="_menu.status<1"><i class="fa fa-times text-danger"></i></a>
+              <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="subCat.sub_status>0"><i class="fa fa-check text-success" ></i></a>
+              <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="subCat.sub_status<1"><i class="fa fa-times text-danger"></i></a>
                
             </td>
-            <td>
+           <td>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Select action
@@ -55,6 +50,7 @@
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" routerLink="../">Products</a>
                   <a class="dropdown-item" href="#">Delete</a>
                 </div>
               </div>
