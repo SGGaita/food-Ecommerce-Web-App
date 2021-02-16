@@ -24,7 +24,7 @@
     "Help": "Help"
   },
   "HEADER": {
-    "Intro": "Fresh, rapid and deliicious",
+    "Intro": "Fresh, rapid and delicious",
     "Description": "In our restaurants we offer delicious food and quality services, we invite you to try our services. ",
     "ViewButton": "View our restaurants"
   },
@@ -165,7 +165,7 @@
   },
   "PNF": {
     "Error": "404 Error - Page Not Found",
-    "Message": "We're sorry, the page you requested could not be found. Please return to the home page or contact support at support@mukononi.org",
+    "Message": "We're sorry, the page you requested could not be found. Please return to the home page or contact support at support@maungano.com",
     "Button": "Home page"
   }
 }

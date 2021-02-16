@@ -19,6 +19,7 @@ export class AdminLoginComponent implements OnInit {
   errorMsg: any;
   loading = false;
   public loadingMsg = 'Authenticating...Please wait';
+  returnUrl: string
 
   constructor(
     private formbuilder: FormBuilder,
@@ -35,6 +36,9 @@ export class AdminLoginComponent implements OnInit {
       username: ["", Validators.required],
       password: [null, Validators.required],
     });
+
+    //get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   //get form controls

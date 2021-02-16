@@ -247,7 +247,7 @@ export class CartService {
     }
   }
 
-  CheckoutFromCart(customerId: Number, paymentId: number) {
+  CheckoutFromCart(customerId: number, paymentId: number, total: number) {
     this.httpClient
       .post(`${this.server_url}/payment`, null)
       .subscribe((res: { success: Boolean }) => {
@@ -259,6 +259,7 @@ export class CartService {
             .post(`${this.server_url}/orders/new`, {
               customerId: customerId,
               paymentId: paymentId,
+              total:total,
               products: this.cartDataClient.prodData,
             })
             .subscribe((data: OrderConfirmationResponse) => {

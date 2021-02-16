@@ -47,6 +47,10 @@ import { AdminCategoryComponent } from './admin-category/admin-category.componen
 import { AdminRestaurantCategoryListComponent } from './admin-restaurant-category-list/admin-restaurant-category-list.component';
 import { AdminCatCreateComponent } from './admin-cat-create/admin-cat-create.component';
 import { AdminSubcatCreateComponent } from './admin-subcat-create/admin-subcat-create.component';
+import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 
 //Import Auth guards
 
@@ -116,6 +120,12 @@ const routes: Routes = [
         path: 'dashboard',
         component: AdminDashboardComponent,
         children: [
+          { path: '', redirectTo: 'main', pathMatch: 'full' },
+          {
+            path: 'main',
+            component: DashboardMainComponent,
+            data: { title: 'Dashboard Main' },
+          },
           {
             path: 'orders',
             component: AdminOrdersComponent,
@@ -167,7 +177,16 @@ const routes: Routes = [
               { path: 'addresses', component: AdminCustomerAddressesComponent },
             ],
           },
-          { path: 'settings', component: AdminSettingsComponent },
+          { path: 'settings', component: AdminSettingsComponent,
+        children:[
+          { path: 'user-accounts' , component: AdminUsersComponent,
+           children:[
+             {path: '', redirectTo:'list', pathMatch: 'full'},
+             {path: 'list', component: AdminUserListComponent},
+             {path: 'create-user', component: AdminUserCreateComponent}
+           ]
+
+        }] },
         ],
         canActivate: [AuthGuard],
       },

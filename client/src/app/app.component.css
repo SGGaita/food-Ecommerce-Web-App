@@ -17,3 +17,7 @@
 .logout{
     cursor:pointer
 }
+
+.info p{
+    color: white
+}

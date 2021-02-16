@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  pageTitle = "Dashboard | TosEcommerce"
+  pageTitle = "Dashboard | Maungano Food Express"
 
   constructor(private title:Title) { }
 

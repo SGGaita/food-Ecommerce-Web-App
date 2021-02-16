@@ -24,6 +24,7 @@ const addNewUser = (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         roles: req.body.roles,
+        status: req.body.status,
         created_at: currenttime
     }
 

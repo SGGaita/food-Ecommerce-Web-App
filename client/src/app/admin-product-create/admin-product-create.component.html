@@ -16,13 +16,13 @@
       <!-- /.card-header -->
       <div class="card-body">
   
-        <form [formGroup]="menuForm" (ngSubmit)="submit()">
+        <form [formGroup]="menuForm" >
           <div class="row">
             <div class="form-group col-sm-12 col-md-6">
               <label for="">Food name<label class="red-text">*</label></label>
               <div class="input-group mb-2">
-                <input type="text" class="form-control" id="contestant_fname" name="contestant_fname"
-                  formControlName="contestant_fname" placeholder="Enter contestant first name">
+                <input type="text" class="form-control" id="product_name" name="product_name"
+                  formControlName="product_name" placeholder="Enter product">
   
               </div>
               <!--Validation
@@ -34,11 +34,11 @@
             <div class="form-group col-sm-12 col-md-3 col-lg-3">
               <label for="">Category<label class="red-text">*</label></label>
               <div class="input-group mb-2">
-                  <select class="form-control" id="contestant_lname" name="contestant_lname"
-                  formControlName="contestant_lname">
-                      <option>Food</option>
-                      <option>Drinks</option>
-                  </select>
+                <select class="form-control" id="id_product_cat_fk" name="id_product_cat_fk"
+                formControlName="id_product_cat_fk" >
+                    <option class="text-capitalize" *ngFor="let cat of categories" value="{{cat.id_product_cat}}">{{cat.prod_category_name}}</option>
+                    
+                 </select>
   
               </div>
               <!--Validation
@@ -50,11 +50,11 @@
             <div class="form-group col-sm-12 col-md-3 col-lg-3">
                 <label for="">Sub Category<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                    <select class="form-control" id="contestant_lname" name="contestant_lname"
-                    formControlName="contestant_lname">
-                        <option>Pizza</option>
-                        <option>Burger</option>
-                        <option>Sandwiches</option>
+                    <select class="form-control" id="id_product_sub_cat_fk" name="id_product_sub_cat_fk"
+                    formControlName="id_product_sub_cat_fk">
+                        <option value="1">Pizza</option>
+                        <option value="2">Burger</option>
+                        <option value="3"> Sandwiches</option>
                     </select>
     
                 </div>
@@ -64,13 +64,12 @@
                       </div>-->
               </div>
 
-              <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
                 <label for="">Restaurant<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                    <select class="form-control" id="contestant_lname" name="contestant_lname"
-                    formControlName="contestant_lname">
-                        <option>Grill Park</option>
-                        <option>Chicken'n' Licken</option>
+                    <select class="form-control select2" id="id_supplier_fk" name="id_supplier_fk"
+                    formControlName="id_supplier_fk">
+                    <option *ngFor="let rest of restaurants" value="{{rest.id_supplier}}">{{rest.supplier_name}}</option>
                     </select>
     
                 </div>
@@ -80,11 +79,27 @@
                       </div>-->
               </div>
 
-              <div class="form-group col-sm-12 col-md-6">
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
                 <label for="">Price<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="contestant_fname" name="contestant_fname"
-                    formControlName="contestant_fname" placeholder="Enter contestant first name">
+                  <input type="text" class="form-control" id="product_price" name="product_price"
+                    formControlName="product_price" placeholder="Enter price">
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                <label for="">Status<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control select2" id="status" name="status"
+                    formControlName="status">
+                    <option value="0">Unpublish</option>
+                    <option value="1">Publish</option>
+                    </select>
     
                 </div>
                 <!--Validation
@@ -96,8 +111,8 @@
             <div class="form-group col-sm-12 col-md-6">
               <label for="">Description<label class="red-text">*</label></label>
               <div class="input-group mb-2">
-                <textarea type="text" class="form-control" id="contestant_location" name="contestant_location"
-                  formControlName="contestant_location" rows="4" cols="50">
+                <textarea type="text" class="form-control" id="product_description" name="product_description"
+                  formControlName="product_description" rows="4" cols="50">
                 </textarea>
   
               </div>
@@ -112,7 +127,7 @@
                 <span class="form-group upload-btn w-50 d-block">
                   <label class="image-upload-container btn btn-danger"><i class="fa fa-upload pr-2"
                       aria-hidden="true"></i>Upload Image
-                    <input #imageID type="file" accept="image/*" (change)="processImage(imageID)" formControlName="image"
+                    <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="image"
                       id="image" name="image">
                   </label>
   
@@ -120,11 +135,10 @@
                                                    <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('email')" >Enter a valid email</div>-->
                 </span>
   
-                <!--image preview-->
+                <!--image preview-->      
                 <span class="w-50 d-block">
                   <div class="img-preview-container text-center">
-                    <div class="img-preview" [ngStyle]="{'background-image': 'url('+ selectedImage.src +')'}">
-                    </div>
+                   
   
                   </div>
                 </span>
@@ -141,7 +155,7 @@
                   [class.btn-success]="submitting"
                     
                     type="submit">{{submitting ? "Submitting" : "Submit"}}</button> -->
-              <button class="btn btn-dark mr-3" type="submit">Submit</button>
+              <button class="btn btn-dark mr-3"  (click)="save()">Submit</button>
               <button class="btn btn-danger" type="reset">Reset</button>
   
   

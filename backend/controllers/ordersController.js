@@ -12,6 +12,32 @@ const {database} = require('../db/db_mysqli');
       return result;
 }
 
+//get all orders using query
+const getAllDistinctOrders = (req,res)=>{
+    database.query('SELECT DISTINCT od.id_order_dets, od.id_order_fk,od.order_reference,\
+    o.id_customer_fk,o.total,od.id_payment_fk,pm.payment_name,s.supplier_name,c.fname,\
+    c.lname,ca.address,ca.city,od.order_state,\
+    GROUP_CONCAT( product_name SEPARATOR ",") as product_name \
+    FROM order_details as od LEFT JOIN orders as o ON od.id_order_fk = o.id_order \
+    LEFT JOIN product as p ON od.id_product_fk = p.id_product \
+    LEFT JOIN suppliers as s ON s.id_supplier = p.id_supplier_fk\
+    LEFT JOIN customers as c ON c.id_customer = o.id_customer_fk \
+    LEFT JOIN customer_addresses as ca ON ca.id_customer_fk = c.id_customer \
+    LEFT JOIN payment_modes as pm ON pm.id_payment = od.id_payment_fk GROUP BY od.order_reference\
+    ').then(orders =>{
+        if (orders.length > 0) {
+            res.status(200).json({
+                count: orders.length,
+                orders: orders
+            });
+        } else {
+            res.json({
+                message: "No orders found"
+            });
+        }
+    }).catch(err => res.json(err));
+}
+
 // Get all orders
 const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:4200/api/orders?page=1
     database.table('order_details as od')
@@ -160,15 +186,18 @@ const addNewOrder = async (req, res) => {
     let {
         customerId,
         paymentId,
+        total,
         products
     } = req.body;
     console.log("customer id",customerId);
     console.log("products",products);
+    console.log("Total",total);
 
-    if (customerId !== null && customerId > 0 && !isNaN(customerId)) {
+   if (customerId !== null && customerId > 0 && !isNaN(customerId)) {
         database.table('orders')
             .insert({
-                id_customer_fk: customerId
+                id_customer_fk: customerId,
+                 total:total
             }).then((newOrderId) => {
                 console.log("new order id", newOrderId)
 
@@ -238,10 +267,10 @@ const addNewOrder = async (req, res) => {
             message: 'New order failed',
             success: false
         });
-    }
+    } 
 
 }
 
 
-module.exports = {getAllOrders, getOrderById, getLatestOrders, addNewOrder}
+module.exports = {getAllOrders, getAllDistinctOrders, getOrderById, getLatestOrders, addNewOrder}
 

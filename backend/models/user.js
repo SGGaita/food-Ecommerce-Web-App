@@ -26,6 +26,9 @@ module.exports = mysqlConnection.sequelize.define(
     roles: {
       type: Sequelize.STRING,
     },
+    status:{
+      type: Sequelize.INTEGER,
+    },
     createdAt: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 
 export interface UserDetails {
   user_id: number,
+  fname: string,
+  lname:string,
   userName: string,
   email: string,
   password: string,

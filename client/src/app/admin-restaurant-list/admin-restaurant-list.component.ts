@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { RestaurantsService } from '../_services/restaurants.service';
 
 @Component({
@@ -7,18 +9,20 @@ import { RestaurantsService } from '../_services/restaurants.service';
   styleUrls: ['./admin-restaurant-list.component.css']
 })
 export class AdminRestaurantListComponent implements OnInit {
+  pageTitle = 'Restaurants list | Maungano Food Express';
   restaurants: any;
 
-  constructor(private restaurantService: RestaurantsService) { 
+  constructor(private title: Title,private restaurantService: RestaurantsService,private spinner: NgxSpinnerService) { 
 
   }
 
   ngOnInit(): void {
-
+    this.spinner.show();
     //fetch restaurants
     this.restaurantService.getAllSuppliers()
     .subscribe(data=>{
       this.restaurants = data.suppliers
+      this.spinner.hide()
       
     })
   }

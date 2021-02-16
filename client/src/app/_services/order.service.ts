@@ -16,6 +16,11 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
+  
+  //get orders distinct reference id
+  getAllDistinctOrders():Observable<any>{
+    return this.http.get(this.server_url +'/orders_distinct').pipe(catchError(this.handleError));
+  }
   //get all orders
   getAllOrders(numberofResults: number = 100):Observable<any> {
     return this.http.get(this.server_url +'/orders', {

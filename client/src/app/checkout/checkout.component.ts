@@ -41,12 +41,20 @@ pageTitle = "Checkout | Maungano Food Express"
 
     this.checkoutForm = this.fb.group({
       payment: [null],
-      terms: [null]
+      terms: [null],
+      total: [null]
     })
 
     this.cartService.cartDataObs$.subscribe(data => {this.cartData = data; console.log(this.cartData)})
     
-    this.cartService.cartTotals$.subscribe(total => {this.cartTotal = total; console.log(this.cartTotal)})
+    this.cartService.cartTotals$
+    .subscribe(total => {this.cartTotal = total; 
+
+      this.checkoutForm.patchValue({
+         total: this.cartTotal
+      })
+      //console.log(this.cartTotal)
+    })
 
     //fetch payment modes
     this.orderService.getAllPaymentModes()
@@ -109,11 +117,13 @@ this.spinner.show().then(p =>{
 
   var payment_value = +this.checkoutForm.value.payment
 console.log (payment_value)
+  var total = +this.checkoutForm.value.total
+  console.log("Total", total)
 
 switch(payment_value) {
   case 1:
     console.log("This is Cash")
-    this.cartService.CheckoutFromCart( decoded.id_customer,payment_value);
+    this.cartService.CheckoutFromCart( decoded.id_customer,payment_value, total);
     break;
   case 2:
     console.log("This is Card")

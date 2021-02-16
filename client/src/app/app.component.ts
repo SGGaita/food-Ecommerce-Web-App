@@ -16,7 +16,8 @@ export class AppComponent {
   sideBarOpen = true
 
   _route_url = "/home"
-  userName: any;
+  fname: any;
+  lname: any;
 
   constructor(private router:Router, public auth: AuthenticationService, private title: Title) { }
 
@@ -24,10 +25,12 @@ export class AppComponent {
  this.title.setTitle(this.pageTitle)
 
     //fetch user token and decode
-    let customerToken = this.auth.getToken();
-    console.log('User token', customerToken);
-    var decoded = jwt_decode(customerToken);
-    this.userName = decoded.username
+    let Token = this.auth.getToken();
+    //console.log('User token', Token);
+    var decoded = jwt_decode(Token);
+    console.log("Decoded", decoded)
+    this.fname = decoded.fname
+    this.lname = decoded.lname
 
     
 

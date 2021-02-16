@@ -2,7 +2,9 @@
 /*._body{
     height:85vh
 }*/
-
+th,td{
+  font-size: 0.9em !important;
+}
 
 .alert {
   position: relative;
@@ -26,6 +28,7 @@ label {
     max-height: 180px;
     overflow-y: scroll;
     margin-bottom: 15px;
+    padding: 0 20px
   }
   
   .dropdown-menu .cart-list .product-widget {

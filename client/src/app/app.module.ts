@@ -85,6 +85,9 @@ import { AdminRestaurantCategoryListComponent } from './admin-restaurant-categor
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
 import { AdminCatCreateComponent } from './admin-cat-create/admin-cat-create.component';
 import { AdminSubcatCreateComponent } from './admin-subcat-create/admin-subcat-create.component';
+import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -160,6 +163,9 @@ import { AdminSubcatCreateComponent } from './admin-subcat-create/admin-subcat-c
     AdminCategoryComponent,
     AdminCatCreateComponent,
     AdminSubcatCreateComponent,
+    DashboardMainComponent,
+    AdminUserListComponent,
+    AdminUserCreateComponent,
     
   ], 
   imports: [

@@ -1,11 +1,12 @@
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
-<div class="card">
+<div class="card w-100">
     <div class="card-header">
-      <h3 class="card-title font-weight-bold">Restaurants</h3>
+      <h3 class="card-title font-weight-bold"> New Orders </h3>
+
 
       <div class="card-tools">
         <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
-        <a class="btn" routerLink="../create"><i class="fas fa-2x fa-plus-circle"></i></a>
+       <span class="alert alert-primary"> <span class="badge badge-light">{{count}}</span>  new orders</span>
       </div>
     </div>
     <!-- /.card-header -->
@@ -14,22 +15,24 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Image</th>
-            <th>Restaurant name</th>
-            <th >Description</th>
-            <th>Status</th>
-            <th class="text-center">Action</th>
+            <th>Reference</th>
+            <th>Item</th>
+            <th>Total price</th>
+            <th>Payment mode</th>
+            <th>Customer</th>
+            <th>Delivery address</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let restaurant of restaurants; let i=index">
-            <td>{{i + 1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
-            <td>{{restaurant.supplier_name}}</td>
-            <td>{{restaurant.supplier_description}}</td>
-            <td class="text-center">
-              <span > <i class="fa fa-check text-success" *ngIf="restaurant.status>0"></i></span><span  ><i class="fa fa-times text-danger" *ngIf="restaurant.status<1"></i></span>
-            </td>
+          <tr *ngFor="let order of orders; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{order.order_reference}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.total}}</td>
+            <td>{{order.payment_name}}</td>
+            <td><span class="text-capitalize">{{order.fname}}</span> {{order.lname}}</td>
+            <td>{{order.address}}</td>
             <td>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,12 +40,13 @@
                 </a>
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Delete</a>
+                  <a class="dropdown-item" href="#">Serve</a>
                 </div>
               </div>
             </td>
           </tr>
+
+          
         </tbody>
       </table>
     </div>

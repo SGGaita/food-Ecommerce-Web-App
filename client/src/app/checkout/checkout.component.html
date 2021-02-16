@@ -1,7 +1,4 @@
-<ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="yellow" type="ball-clip-rotate-pulse"
-  fullscreen="true">
-  <p style="font-size:20px; color:black ; margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p>
-</ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p> </ngx-spinner>
 <div class="container">
   <!--When the cart is empty-->
   <div class="row" *ngIf="cartData.total == 0">
@@ -25,7 +22,7 @@
 
 
     </div>
-    <div class="col-sm-8">
+   <!-- <div class="col-sm-8">
       <div class="billing-details">
         <div class="section-title">
           <h3 class="title">{{'CHECKOUT.Billing' | translate }}</h3>
@@ -67,11 +64,11 @@
               <input class="input" type="password" name="password" placeholder="Enter Your Password">
             </div>
           </div>
-        </div>-->
+        </div>
       </div>
-      <!-- /Billing Details -->
+     
 
-    </div>
+    </div> -->
     <div class="col-sm-4 order border border-secondary">
       <h5>{{'CHECKOUT.YourOrder' | translate }}</h5>
 
@@ -120,6 +117,8 @@
             <div class="terms">
               <input class="checkbox" type="checkbox" name="terms" id="terms" formControlName="terms" (change)="paymentChange()"> <small> {{'CHECKOUT.TermStatement' | translate}} <a routerLink="/customer/terms">{{'CHECKOUT.TermsLink' | translate}}</a> </small>
             </div>
+
+            <input type="text" name="total" id="total" formControlName="total" hidden>
 
 
           </div>

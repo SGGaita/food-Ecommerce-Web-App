@@ -6,7 +6,7 @@
       <div class="card-tools">
         <span class="_button"> 
           <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
-          <a class="btn" routerLink="../create"  data-toggle="tooltip" data-placement="top" title="Add new menu"><i class="fas fa-2x fa-plus-circle"></i></a>
+          <a class="btn" routerLink="../create-user"  data-toggle="tooltip" data-placement="top" title="Add new account"><i class="fas fa-2x fa-plus-circle"></i></a>
         </span>
         
         <ul class="pagination pagination-sm float-right">
@@ -23,29 +23,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Image</th>
-            <th>Item name</th>
-            <th >Category</th>
-            <th>Sub Category</th>
-            <th>Description</th>
-            <th>Quantity</th>
+            <th>Staff</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th>Role</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let _menu of menuItems; let i=index">
-            <td>{{i+1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{_menu.image}}" alt="" width="50px" height="50px"></td>
-            <td class="text-capitalize">{{_menu.product_name}}</td>
-            <td class="text-capitalize">{{_menu.category}}</td>
-            <td>{{_menu.subcategory}}</td>
-            <td>{{_menu.product_description}}</td>
-            <td>{{_menu.quantity}}</td>
-            <td >
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="_menu.status>0"><i class="fa fa-check text-success" ></i></a>
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="_menu.status<1"><i class="fa fa-times text-danger"></i></a>
+          <tr >
+            <td class="image"><img class="rounded-circle"  src="" alt="" width="50px" height="50px"></td>
+            <td ></td>
+            <td class="text-capitalize"></td>
+            <td class="text-capitalize"></td>
+           <td >
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Unpublish" ><i class="fa fa-check text-success" ></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Publish" ><i class="fa fa-times text-danger"></i></a>
                
             </td>
             <td>
@@ -56,6 +50,7 @@
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Reset</a>
                   <a class="dropdown-item" href="#">Delete</a>
                 </div>
               </div>

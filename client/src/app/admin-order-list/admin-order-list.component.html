@@ -1,8 +1,10 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="card">
     <div class="card-header">
       <h3 class="card-title font-weight-bold">Orders</h3>
 
       <div class="card-tools">
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
         <ul class="pagination pagination-sm float-right">
           <li class="page-item"><a class="page-link" href="#">«</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -31,13 +33,20 @@
         <tbody>
           <tr *ngFor="let order of orders; let i=index">
             <td>{{order.id_order}}</td>
+            <td>{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
-            <td>Customer name</td>
+            
             <td>123 Station Rd.,Nakuru</td>
             <td>$1200</td>
-            <td>Cash</td>
-            <td class="badge badge-success">Paid</td>
-            <td>24/11/1995</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="alert alert-primary" *ngIf="order.order_state < 0" >New order</span>
+              <span class="alert alert-warning" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="alert alert-info" *ngIf="order.order_state == 2" >Dispatched</span>
+              <span class="alert alert-success" *ngIf="order.order_state == 3">Fulfilled</span>
+              <span class="alert alert-danger" *ngIf="order.order_state == 4">Cancelled</span>
+            </td>
+            <td>{{order.createdAt}}</td>
             <td>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

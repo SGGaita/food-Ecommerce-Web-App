@@ -21,8 +21,8 @@
           <div class="form-group col-sm-12 col-md-6">
             <label for="">Restaurant name<label class="red-text">*</label></label>
             <div class="input-group mb-2">
-              <input type="text" class="form-control" id="contestant_fname" name="contestant_fname"
-                formControlName="contestant_fname" placeholder="Enter contestant first name">
+              <input type="text" class="form-control" id="supplier_name" name="supplier_name"
+                formControlName="supplier_name" placeholder="Enter restaurant name">
 
             </div>
             <!--Validation
@@ -31,24 +31,13 @@
                   </div>-->
           </div>
 
-          <div class="form-group col-sm-12 col-md-6">
-            <label for="">Restaurant Category<label class="red-text">*</label></label>
-            <div class="input-group mb-2">
-              <input type="text" class="form-control" id="contestant_lname" name="contestant_lname"
-                formControlName="contestant_lname" placeholder="Enter contestant last name">
-
-            </div>
-            <!--Validation
-                 <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
-                    <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
-                  </div>-->
-          </div>
+          
 
           <div class="form-group col-sm-12 col-md-6">
             <label for="">Description<label class="red-text">*</label></label>
             <div class="input-group mb-2">
-              <textarea type="text" class="form-control" id="contestant_location" name="contestant_location"
-                formControlName="contestant_location" rows="4" cols="50">
+              <textarea type="text" class="form-control" id="supplier description" name="supplier description"
+                formControlName="supplier description" rows="4" cols="50">
               </textarea>
 
             </div>
@@ -63,8 +52,8 @@
               <span class="form-group upload-btn w-50 d-block">
                 <label class="image-upload-container btn btn-danger"><i class="fa fa-upload pr-2"
                     aria-hidden="true"></i>Upload Image
-                  <input #imageID type="file" accept="image/*" (change)="processImage(imageID)" formControlName="image"
-                    id="image" name="image">
+                  <input #imageID type="file" accept="image/*" (change)="processImage(imageID)" formControlName="supplier_image"
+                    id="supplier_image" name="supplier_image">
                 </label>
 
                 <!--<div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" >Email address required</div>

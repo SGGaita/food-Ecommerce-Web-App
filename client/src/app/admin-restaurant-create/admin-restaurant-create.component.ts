@@ -18,7 +18,7 @@ export class AdminRestaurantCreateComponent implements OnInit {
 
   selectedImage: ImageSnippet;
   imagePreview: string;
-  submitted = false
+  submitted = false 
   errorMsg: string;
   successMsg: string;
   fileData: File;
@@ -31,7 +31,6 @@ export class AdminRestaurantCreateComponent implements OnInit {
     //Instantiat form
     this.restaurantForm = this.fb.group({
       supplier_name:[null],
-      supplier_category:[null],
       supplier_description:[null],
       supplier_image:[null]
     });
@@ -62,7 +61,10 @@ export class AdminRestaurantCreateComponent implements OnInit {
 
   
 
-  submit(){}
+  submit(){
+
+    console.log("form elements", this.restaurantForm.value)
+  }
 
   back(){
     this.location.back()

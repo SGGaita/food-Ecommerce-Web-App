@@ -44,7 +44,8 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </!--div>-->
         <div class="info">
-          <a href="#" class="d-block">{{userName}}</a>
+          <p class="d-block">{{fname}} {{lname}}</p>
+          <a>View Profile</a>
         </div>
       </div>
 
@@ -96,13 +97,6 @@
                 
                   </li>
 
-                  <li class="nav-item">
-                    <a routerLink="/admin/dashboard/restaurants/categories" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Restaurant categories</p>
-                    </a>
-                
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -119,7 +113,7 @@
                   <li class="nav-item">
                     <a routerLink="/admin/dashboard/menu/list" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Menu list</p>
+                      <p>Menu</p>
                       
                     </a>
                 
@@ -161,14 +155,14 @@
               </li>
              </ul>
           </li>
-          <li class="nav-item">
+         <!-- <li class="nav-item">
             <a routerLink="/admin/dashboard/pages" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Pages
                 </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item has-treeview">
             <a class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -185,7 +179,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a routerLink="/admin/dashboard/user-accounts" class="nav-link">
+                <a routerLink="/admin/dashboard/settings/user-accounts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>System Users</p>
                 </a>

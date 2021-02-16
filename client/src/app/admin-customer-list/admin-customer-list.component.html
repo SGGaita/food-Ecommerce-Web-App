@@ -1,8 +1,10 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="card">
     <div class="card-header">
       <h3 class="card-title font-weight-bold">Customers</h3>
 
       <div class="card-tools">
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
         <ul class="pagination pagination-sm float-right">
           <li class="page-item"><a class="page-link" href="#">«</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -18,29 +20,26 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Image</th>
             <th>Name</th>
-            <th >Date of birth</th>
-            <th>From</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Date of birth</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1.</td>
-            <td class="image"><img class="rounded-circle"  src="../../assets/img/contestants/contestant.png" alt="" width="50px" height="50px"></td>
-            <td>Contestant name1</td>
-            <td>24/11/1995</td>
-            <td>Goma</td>
-            <td></td>
-          </tr>
-
-          <tr>
-            <td>1.</td>
-            <td class="image"><img class="rounded-circle" src="../../assets/img/contestants/contestant.png" alt="" width="50px" height="50px"></td>
-            <td>Contestant name1</td>
-            <td>24/11/1995</td>
-            <td>Goma</td>
+          <tr *ngFor="let cust of customers; let i=index ">
+            <td>{{i+1}}</td>
+            <td class="text-capitalize">{{cust.firstName}} {{cust.lastName}}</td>
+            <td>{{cust.email}}</td>
+            <td>{{cust.primaryPhone}}</td>
+            <td>{{cust.dob}}</td>
+            <td >
+              <a class="btn" (click)="updateState(1)" data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="cust.acc_state>0"><i class="fa fa-check text-success" ></i></a>
+              <a class="btn" (click)="updateState(0)" data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="cust.acc_state<1"><i class="fa fa-times text-danger"></i></a>
+               
+            </td>
             <td></td>
           </tr>
         </tbody>
