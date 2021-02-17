@@ -43,6 +43,9 @@ export class ProductsService {
   }
 
 
+  
+  //
+  
   //Get all products categories 
   getAllCategories(): Observable<any> {
     return this.http

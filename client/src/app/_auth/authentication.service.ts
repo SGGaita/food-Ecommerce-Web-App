@@ -26,11 +26,13 @@ interface TokenResponse {
 
 export interface TokenPayload {
   //user_id: number,
-  team_id_fk: number,
-  userName: string,
+  fname: string,
+  lname: string;
+  username: string,
   email: string,
   password: string,
-  roles: string
+  roles: string,
+  status: string;
 }
 
 @Injectable({

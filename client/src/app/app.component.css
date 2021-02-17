@@ -18,6 +18,25 @@
     cursor:pointer
 }
 
-.info p{
-    color: white
+.user-panel .info {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 5px 5px 10px;
 }
+
+.info p{
+    color: white;
+    font-weight:600;
+    letter-spacing: 0.2rem;
+
+}
+
+.info a{
+    margin-top: -20px;
+    font-size: 0.9rem;
+}
+
+.info a:hover{
+    cursor:pointer
+}
+
