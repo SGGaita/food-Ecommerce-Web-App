@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ProductModelServer} from "../_models/products";
 import {map} from "rxjs/operators";
 import { RestaurantsService } from '../_services/restaurants.service';
+import { ProductsService } from '../_services/products.service';
 
 @Component({
   selector: 'app-restaurant-menu',
@@ -13,8 +14,10 @@ export class RestaurantMenuComponent implements OnInit {
   id: any;
 
   supplier:any
+  menu: [] = [];
+  
 
-  constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService ) { }
+  constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService , private productService: ProductsService) { }
 
   ngOnInit(): void {
 
@@ -25,11 +28,12 @@ export class RestaurantMenuComponent implements OnInit {
       })
     ).subscribe(prodId => {
       this.id = prodId;
-      console.log("This restaurant", this.id)
+      //console.log("This restaurant", this.id)
       this.restaurantService.getSingleRestaurant(this.id)
       .subscribe(data=>{
         console.log("this restaurant", data)
         this.supplier = data
+        
       })
     
     })

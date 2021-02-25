@@ -33,6 +33,13 @@ export class RestaurantsService {
       .pipe(catchError(this.handleError));
   }
 
+  //activation update
+  updateStatus(updateInfo: any): Observable<any>{
+    var headers = new HttpHeaders();
+  return this.http.post(this.server_url + '/activation',updateInfo)
+  .pipe(catchError(this.handleError));
+}
+
   //capture errors
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {

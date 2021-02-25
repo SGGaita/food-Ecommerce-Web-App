@@ -28,6 +28,22 @@ export class AdminRestaurantListComponent implements OnInit {
   }
 
 
+  activationUpdate( id: number,status: number){
+    const updateInfo = {
+      id_supplier: id,
+      status:status
+    }
+    console.log(status)
+    console.log("Supplier id", id)
+    this.restaurantService.updateStatus(updateInfo)
+   .subscribe(data =>{
+     console.log(data)
+     this.ngOnInit()
+
+    })
+  }
+
+
   refresh(){
     this.ngOnInit()
   }

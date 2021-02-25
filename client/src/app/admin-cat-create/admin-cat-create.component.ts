@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr'; 
 import { ProductsService } from '../_services/products.service';
 import {Location} from '@angular/common'
 

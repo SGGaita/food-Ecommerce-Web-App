@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 import {UserService} from '../_services/user.service';
 
 @Component({
@@ -9,11 +10,20 @@ import {UserService} from '../_services/user.service';
 })
 export class AdminUserListComponent implements OnInit {
   pageTitle = "User Accounts | Maungano Food Express"
+  users: any;
 
-  constructor(private title: Title, private userService: UserService) { }
+  constructor(private title: Title, private userService: UserService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.title.setTitle(this.pageTitle)
+
+    //fetch user accounts
+    this.spinner.show()
+    this.userService.getUsers()
+    .subscribe(data=>{
+      this.users = data.users
+      this.spinner.hide()
+    })
   }
 
   refresh(){

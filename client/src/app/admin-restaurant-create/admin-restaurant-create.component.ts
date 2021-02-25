@@ -1,38 +1,64 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import {Location} from '@angular/common'
+import { Location } from '@angular/common';
+import LocationPicker from 'location-picker';
+import { RestaurantsService } from '../_services/restaurants.service';
+import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr'; 
 
 class ImageSnippet {
-  constructor(public src: string, public file: File) { }
-} 
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-admin-restaurant-create',
   templateUrl: './admin-restaurant-create.component.html',
-  styleUrls: ['./admin-restaurant-create.component.css']
+  styleUrls: ['./admin-restaurant-create.component.css'],
 })
 export class AdminRestaurantCreateComponent implements OnInit {
   pageTitle = 'New Restaurant | TosEcommerce';
-  restaurantForm: FormGroup
+  lp: LocationPicker;
+
+  restaurantForm: FormGroup;
 
   selectedImage: ImageSnippet;
   imagePreview: string;
-  submitted = false 
+  submitted: boolean = false;
   errorMsg: string;
   successMsg: string;
   fileData: File;
 
-  constructor(private title:Title, private fb: FormBuilder, private location: Location) { }
+  constructor(
+    private title: Title,
+    private fb: FormBuilder,
+    private location: Location,
+    private restaurantsService: RestaurantsService,
+    private http: HttpClient,
+    private spinner: NgxSpinnerService,
+    private toast: ToastrService, 
+  ) {}
 
   ngOnInit(): void {
     this.title.setTitle(this.pageTitle);
 
-    //Instantiat form
+    //Initialize map
+    //this.lp = new LocationPicker('map');
+
+    //Instantiate form
     this.restaurantForm = this.fb.group({
-      supplier_name:[null],
-      supplier_description:[null],
-      supplier_image:[null]
+      supplier_name: [null],
+      supplier_description: [null],
+      supplier_image: [null],
+      status: [null],
+      email: [null],
+      address: [null],
+      city: [null],
+      zip: [null],
+      country: [null],
+      phone: [null],
+      geoposition: [null],
     });
   }
 
@@ -41,33 +67,65 @@ export class AdminRestaurantCreateComponent implements OnInit {
     return this.restaurantForm.controls;
   }
 
-
   processImage(imageID: any) {
     const file: File = imageID.files[0];
-    this.fileData = file
+    this.fileData = file;
     var fileExtension = '.' + file.name.split('.').pop();
-   
-    console.log("Date now", Date.now())
-    console.log("this passport image extension", fileExtension)
-    console.log("member" + '-' + Date.now() + '.' + fileExtension)
+
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-
       this.selectedImage = new ImageSnippet(event.target.result, file);
-    })
+    });
     reader.readAsDataURL(file);
-    
   }
 
-  
+  submit() {
+    this.submitted = true
 
-  submit(){
+    var supplier_name = this.restaurantForm.value.supplier_name;
+    var supplier_description = this.restaurantForm.value.supplier_description;
+    var status = this.restaurantForm.value.status;
+    var email = this.restaurantForm.value.email;
+    var address = this.restaurantForm.value.address;
+    var city = this.restaurantForm.value.city;
+    var zip = this.restaurantForm.value.zip;
+    var country = this.restaurantForm.value.country;
+    var phone = this.restaurantForm.value.phone;
 
-    console.log("form elements", this.restaurantForm.value)
+    const formData = new FormData();
+
+    formData.append('supplier_name', supplier_name);
+    formData.append('supplier_description', supplier_description);
+    formData.append('status', status);
+    formData.append('email', email);
+    formData.append('address', address);
+    formData.append('city', city);
+    formData.append('zip', zip);
+    formData.append('phone', phone);
+    formData.append('country', country);
+    formData.append('image', this.fileData);
+
+    this.http.post('/api/restaurant/', formData).subscribe(
+      (res) => {
+        console.log("data from server", res)
+        this.toast.success(
+          `${res} `,
+          'Category saved',
+          {
+            timeOut: 3600,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right',
+          }
+        );
+        this.submitted = false;
+        this.ngOnInit();
+      },
+      (err) => (this.errorMsg = err)
+    );
   }
 
-  back(){
-    this.location.back()
+  back() {
+    this.location.back();
   }
-
 }

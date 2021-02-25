@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductsService } from '../_services/products.service';
 import { CartService } from '../_services/cart.service';
 
@@ -8,26 +8,28 @@ import { CartService } from '../_services/cart.service';
   styleUrls: ['./food-page.component.css']
 })
 export class FoodPageComponent implements OnInit {
+  @Input() restaurantId: number
 
-  products: [] = [];
-
-  
   _currency = "CDF"
   serverMsg: string;
   errorMsg: any;
+  menu: any
 
   constructor(private productService: ProductsService, private cartService: CartService) { }
 
   ngOnInit(): void {
 
     //fetch products
-    this.productService.getProducts()
-    .subscribe(prods => {
-      this.products = prods.products
-    
-    },
-    err => {this.errorMsg = err;
-    console.log(this.errorMsg)})
+    this.productService.getProductsByRestaurant(this.restaurantId)
+        .subscribe(data=>{
+          this.menu = data.products
+          if(data.count > 1){
+            return true
+          } else{
+            this.errorMsg = true
+          }
+          
+        })
   }
 
   //Add to cart function 

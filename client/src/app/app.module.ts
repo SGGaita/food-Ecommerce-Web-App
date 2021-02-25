@@ -10,6 +10,7 @@ import {GoogleLoginProvider} from 'angularx-social-login';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+//import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -181,6 +182,9 @@ import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.
     NoopAnimationsModule,
     SocialLoginModule,
     //SocketIoModule.forRoot(config),
+    //AgmCoreModule.forRoot({
+      //apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+   // }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

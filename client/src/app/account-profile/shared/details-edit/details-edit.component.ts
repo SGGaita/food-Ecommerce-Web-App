@@ -12,7 +12,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class DetailsEditComponent implements OnInit {
   detailsForm: FormGroup;
-  customerProfile: import("c:/web-projects/Angular apps/TosEcommerce/client/src/app/_models/customers").CustomersModelServer;
+  customerProfile: any;
   fname: any;
   lname: any;
   email: any;

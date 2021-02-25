@@ -29,6 +29,7 @@
           </tr>
         </thead>
         <tbody>
+          <tr class="text-center no-display" *ngIf="customers < 1">No customers to display</tr>
           <tr *ngFor="let cust of customers; let i=index ">
             <td>{{i+1}}</td>
             <td class="text-capitalize">{{cust.firstName}} {{cust.lastName}}</td>

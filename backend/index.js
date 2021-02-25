@@ -49,7 +49,6 @@ app.use(function (req,res,next){
     next();
 });
 
-
 //import routes from /routes/allRoutes.js
 var allRoutes = require('./routes/allRoutes')
 

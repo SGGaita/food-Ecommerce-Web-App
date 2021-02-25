@@ -51,6 +51,7 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 //Import Auth guards
 
@@ -88,6 +89,7 @@ const routes: Routes = [
       { path: 'register', component: SignUpComponent },
       { path: 'thank-you-register', component: ThanksRegisterComponent },
       { path: 'verification/:id', component: EmailVerificationComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
       {
         path: 'profile',
         component: AccountProfileComponent,

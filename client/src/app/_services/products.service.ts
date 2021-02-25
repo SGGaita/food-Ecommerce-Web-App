@@ -36,47 +36,61 @@ export class ProductsService {
       .pipe(catchError(this.handleError));
   }
 
-  //get products from one category
-  getProductsFromCategory(catName: string): Observable<ProductModelServer[]> {
-    return this.http.get<ProductModelServer[]>(this.server_url + 'products/category/' + catName)
-    .pipe(catchError(this.handleError))
+  
+  //Fetch products by restaurant
+  getProductsByRestaurant(
+    restaurantId: Number
+  ): Observable<any> {
+    return this.http
+      .get(
+        this.server_url + '/productsByRest/' + restaurantId
+      )
+      .pipe(catchError(this.handleError));
   }
 
+  //get products from one category
+  getProductsFromCategory(catName: string): Observable<ProductModelServer[]> {
+    return this.http
+      .get<ProductModelServer[]>(
+        this.server_url + 'products/category/' + catName
+      )
+      .pipe(catchError(this.handleError));
+  }
 
-  
   //
-  
-  //Get all products categories 
+
+  //Get all products categories
   getAllCategories(): Observable<any> {
     return this.http
       .get(this.server_url + '/categories')
       .pipe(catchError(this.handleError));
-  } 
+  }
 
   //Get categories by ID
   getCategoryById(id: number): Observable<any> {
     return this.http
-      .get(this.server_url + '/categoryById'+id)
+      .get(this.server_url + '/categoryById' + id)
       .pipe(catchError(this.handleError));
-  } 
+  }
 
-   //get products from one category
-   getCategoryName(catName: string): Observable<ProductModelServer[]> {
-    return this.http.get<ProductModelServer[]>(this.server_url + '/category/' + catName)
-    .pipe(catchError(this.handleError))
+  //get products from one category
+  getCategoryName(catName: string): Observable<ProductModelServer[]> {
+    return this.http
+      .get<ProductModelServer[]>(this.server_url + '/category/' + catName)
+      .pipe(catchError(this.handleError));
   }
 
   //add new category
-  addNewCategory(newCat: any): Observable<any>{
-    return this.http.post(this.server_url + '/category', newCat)
+  addNewCategory(newCat: any): Observable<any> {
+    return this.http.post(this.server_url + '/category', newCat);
   }
 
   //add new sub category
-  addNewSubCategory(newSubCat: any): Observable<any>{
-    return this.http.post(this.server_url + '/sub_category', newSubCat)
+  addNewSubCategory(newSubCat: any): Observable<any> {
+    return this.http.post(this.server_url + '/sub_category', newSubCat);
   }
 
-  //Get  all sub categories 
+  //Get  all sub categories
   getAllSubCategories(): Observable<any> {
     return this.http
       .get(this.server_url + '/subcategories')
@@ -84,9 +98,10 @@ export class ProductsService {
   }
 
   //Get subcategories by id
-  getSubCategoriesById(id: number): Observable<any>{
-    return this.http.get(this.server_url + '/subcategories/'+id)
-    .pipe(catchError(this.handleError));
+  getSubCategoriesById(id: number): Observable<any> {
+    return this.http
+      .get(this.server_url + '/subcategories/' + id)
+      .pipe(catchError(this.handleError));
   }
 
   //Get all food sub categories

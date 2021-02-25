@@ -17,7 +17,7 @@ class ImageSnippet {
   styleUrls: ['./admin-product-create.component.css'],
 })
 export class AdminProductCreateComponent implements OnInit {
-  pageTitle = 'New Menu | TosEcommerce';
+  pageTitle = 'New Menu | Maungano';
   menuForm: FormGroup;
 
   selectedImage: ImageSnippet;
@@ -81,7 +81,7 @@ export class AdminProductCreateComponent implements OnInit {
 
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-      this.selectedImage = new ImageSnippet(event.target.result, file);
+      this.selectedImage = new ImageSnippet(event.target.result, file); 
     });
     reader.readAsDataURL(file);
   }

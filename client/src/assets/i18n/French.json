@@ -69,7 +69,7 @@
     "InvalidEmail":"Format d'e-mail non valide *example@email.com",
     "PasswordRequired":"Mot de pass requis",
     "Register": "S'incrire un compte",
-    "Reset": "Réinitialiser"
+    "Google": "Connectez-vous avec Google"
   },
   "REGISTER": {
     "CreateAccount": "S'incrire un compte",

@@ -56,4 +56,20 @@ const getRestaurantById = (req, res) => {
 }
 
 
-module.exports = {getAllRestaurants, getRestaurantById};
+const updateSupplierStatus = (req, res) =>{
+    console.log(req.body)
+
+  
+    database.table('suppliers')
+    .filter({id_supplier: req.body.id_supplier
+    })
+    .update({
+        status: req.body.status
+    }).then(successNum => {
+        console.log("rows updated", successNum)
+        res.status(200).json(successNum)
+    }).catch(err => console.log(err));
+    
+  }
+
+module.exports = {getAllRestaurants, getRestaurantById,updateSupplierStatus};

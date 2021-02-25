@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container">
     <!-- SELECT2 EXAMPLE -->
     <div class="card card-default">
       <div class="card-header ">
         <h3 class="card-title font-weight-bold">Add new account</h3>
   
         <div class="card-tools">
-          <a class="btn"  (click)="back()" data-toggle="tooltip" data-placement="top" title="Back to categories"><i class="fas fa-hand-point-left"></i></a>
+          <a class="btn"  routerLink="../../user-accounts" data-toggle="tooltip" data-placement="top" title="Back to user list"><i class="fas fa-hand-point-left"></i></a>
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
@@ -76,9 +76,9 @@
                 <label for="">Role<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
                  <select class="form-control" formControlName="roles" id="roles" name="roles">
-                    <option value="0">Super Admin</option>
-                     <option value="1">Admin</option>
-                     <option value="2">Staff</option>
+                    <option value="Super Admin">Super Admin</option>
+                     <option value="Admin">Admin</option>
+                     <option value="Staff">Staff</option>
                  </select>
                 <!--Validation
                      <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
@@ -105,7 +105,7 @@
               <div class="form-group col-sm-12 col-md-6">
                 <label for="">Password<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="password" name="password"
+                  <input type="password" class="form-control" id="password" name="password"
                     formControlName="password" placeholder="Enter password">
     
                 </div>

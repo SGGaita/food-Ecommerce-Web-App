@@ -1,0 +1,11 @@
+.no-display{
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+i.fas{
+    color:'grey' !important;
+    font-size: 1.2rem !important;
+    margin-top:-5px !important
+}

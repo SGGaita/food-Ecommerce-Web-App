@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
   submitted: boolean = false;
   fieldTextType: boolean;
   errorMessage: any;
-  successMessage: string;
+  successMessage: string; 
   _date = new Date()
   new_date: any
   max_date: string;

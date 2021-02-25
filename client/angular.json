@@ -42,7 +42,7 @@
               "node_modules/admin-lte/plugins/raphael/raphael.min.js",
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.min.js",
               "node_modules/admin-lte/plugins/chart.js/Chart.min.js",
-              "node_modules/admin-lte/dist/js/pages/dashboard2.js"
+              
             ]
           },
           "configurations": {

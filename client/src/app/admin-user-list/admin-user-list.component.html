@@ -23,23 +23,24 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Staff</th>
             <th>Name</th>
             <th>User ID</th>
+            <th>Email</th>
             <th>Role</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr >
-            <td class="image"><img class="rounded-circle"  src="" alt="" width="50px" height="50px"></td>
-            <td ></td>
-            <td class="text-capitalize"></td>
-            <td class="text-capitalize"></td>
+          <tr class="text-center no-display" *ngIf="users < 1">No users to display</tr>
+          <tr *ngFor="let user of users" >
+            <td class="text-capitalize">{{user.fname}} {{user.lname}}</td>
+            <td >{{user.username}}</td>
+            <td class="text-capitalize">{{user.email}}</td>
+            <td class="text-capitalize">{{user.roles}}</td>
            <td >
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Unpublish" ><i class="fa fa-check text-success" ></i></a>
-              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Publish" ><i class="fa fa-times text-danger"></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Deactivated" *ngIf="user.status < 1" ><i class="fa fa-times text-danger" ></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Activated" *ngIf="user.status > 0"  ><i class="fa fa-check text-success"></i></a>
                
             </td>
             <td>

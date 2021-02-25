@@ -125,8 +125,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
               <div class="d-flex justify-content-between w-100">
                 <span class="form-group upload-btn w-50 d-block">
-                  <label class="image-upload-container btn btn-danger"><i class="fa fa-upload pr-2"
-                      aria-hidden="true"></i>Upload Image
+                  <label class="image-upload-container btn btn-danger">Upload Image
                     <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="image"
                       id="image" name="image">
                   </label>
@@ -155,8 +154,8 @@
                   [class.btn-success]="submitting"
                     
                     type="submit">{{submitting ? "Submitting" : "Submit"}}</button> -->
-              <button class="btn btn-dark mr-3"  (click)="save()">Submit</button>
-              <button class="btn btn-danger" type="reset">Reset</button>
+              <button class="btn btn-outline-dark mr-3"  (click)="save()">Submit</button>
+              <button class="btn btn-outline-danger" type="reset">Reset</button>
   
   
             </span>

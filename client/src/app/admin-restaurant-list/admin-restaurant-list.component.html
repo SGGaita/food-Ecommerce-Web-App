@@ -27,8 +27,9 @@
             <td class="image"><img class="rounded-circle"  src="{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
             <td>{{restaurant.supplier_name}}</td>
             <td>{{restaurant.supplier_description}}</td>
-            <td class="text-center">
-              <span > <i class="fa fa-check text-success" *ngIf="restaurant.status>0"></i></span><span  ><i class="fa fa-times text-danger" *ngIf="restaurant.status<1"></i></span>
+            <td >
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Deactivate" *ngIf="restaurant.status>0" (click)="activationUpdate(restaurant.id_supplier,0)"><i class="fa fa-check text-success" ></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Activate" *ngIf="restaurant.status<1" (click)="activationUpdate(restaurant.id_supplier,1)"><i class="fa fa-times text-danger"></i></a>
             </td>
             <td>
               <div class="dropdown show">

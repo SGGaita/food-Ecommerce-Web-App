@@ -18,9 +18,6 @@
             <div class="form-group">
               <label for="">{{'LOGIN.Email' | translate}}<label class="red-text">*</label></label>
               <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">@</div>
-                </div>
                 <input type="email" class="form-control" id="email" name="email" formControlName="email"
                   placeholder="{{'LOGIN.EnterEmail' | translate}}">
                 <!--Validation-->
@@ -71,13 +68,13 @@
                 <input type="checkbox" name="" id="" class="">
               </div>
               <div class="forgot order-1 pb-2">
-                <a routerLink="/forgot-password">{{'LOGIN.Forgot' | translate}} </a>
+                <a routerLink="/customer/forgot-password">{{'LOGIN.Forgot' | translate}} </a>
               </div>
             </div>
             <button class="btn btn-outline-danger btn-block" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i>
               {{'LOGIN.Login' | translate}} </button>
-            <button class="btn btn-outline-dark btn-block" type="reset"><i class="fa fa-undo" aria-hidden="true"></i>
-              {{'LOGIN.Reset' | translate}}</button>
+            <button class="btn btn-outline-dark btn-block" ><i class="fa fa-google" aria-hidden="true"></i>
+              {{'LOGIN.Google' | translate}}</button>
 
             <div class="col-sm-12 pt-2 text-center">
               <a routerLink="/customer/register">{{'LOGIN.Register' | translate}}</a>

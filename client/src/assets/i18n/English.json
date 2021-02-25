@@ -69,7 +69,7 @@
     "InvalidEmail":"Invalid Email format *example@email.com",
     "PasswordRequired":"Password is required",
     "Register": "Register an account",
-    "Reset": "Reset"
+    "Google": "Sign in with Google"
   },
   "REGISTER": {
     "CreateAccount": "Create an account",
