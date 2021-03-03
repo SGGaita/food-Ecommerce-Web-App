@@ -1,19 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const {database} = require('../db/db_mysqli');
+const {
+    database
+} = require('../db/db_mysqli');
+var moment = require('moment');
+var currenttime = new moment().format('YYYY-MM-DD HH:mm:ss');
 
 //generate random string for reference number
- var randomString = function getRandomString(length) {
+var randomString = function getRandomString(length) {
     var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-     var result = '';
-     for ( var i = 0; i < length; i++ ) {
-         result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-     }
-      return result;
+    var result = '';
+    for (var i = 0; i < length; i++) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    return result;
 }
 
 //get all orders using query
-const getAllDistinctOrders = (req,res)=>{
+const getAllDistinctOrders = (req, res) => {
     database.query('SELECT DISTINCT od.id_order_dets, od.id_order_fk,od.order_reference,\
     o.id_customer_fk,o.total,od.id_payment_fk,pm.payment_name,s.supplier_name,c.fname,\
     c.lname,ca.address,ca.city,od.order_state,\
@@ -24,7 +28,7 @@ const getAllDistinctOrders = (req,res)=>{
     LEFT JOIN customers as c ON c.id_customer = o.id_customer_fk \
     LEFT JOIN customer_addresses as ca ON ca.id_customer_fk = c.id_customer \
     LEFT JOIN payment_modes as pm ON pm.id_payment = od.id_payment_fk GROUP BY od.order_reference\
-    ').then(orders =>{
+    ').then(orders => {
         if (orders.length > 0) {
             res.status(200).json({
                 count: orders.length,
@@ -83,7 +87,69 @@ const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandator
 // Get single order
 const getOrderById = async (req, res) => {
     let orderId = req.params.id;
-    console.log("Order ID in controller",orderId);
+    console.log("Order ID in controller", orderId);
+
+    database.table('order_details as od')
+        .join([{
+                table: "orders as o",
+                on: `o.id_order = od.id_order_fk`
+            },
+            {
+                table: 'product as p',
+                on: `p.id_product = od.id_product_fk`
+            },
+            {
+                table: 'customers as c',
+                on: `c.id_customer = o.id_customer_fk`
+            },
+            {
+                table: 'customer_addresses as ca',
+                on: `ca.id_customer_fk = c.id_customer`
+            },
+            {
+                table: 'payment_modes as pm',
+                on: `pm.id_payment = od.id_payment_fk`
+            }
+        ])
+        .withFields(['o.id_order',
+            'o.total',
+            'p.product_name',
+            'p.product_description',
+            'p.product_price',
+            'p.image',
+            'od.order_reference',
+            'od.quantity as quantityOrdered',
+            'od.order_state',
+            'c.id_customer',
+            'c.fname',
+            'c.lname',
+            'ca.address',
+            'ca.city',
+            'ca.region',
+            'ca.additional_phone',
+            'pm.payment_name'
+        ])
+        .filter({
+            'o.id_order': orderId
+        })
+        .getAll()
+        .then(orders => {
+            console.log(orders);
+            if (orders.length > 0) {
+                res.json(orders);
+            } else {
+                res.json({
+                    message: "No orders found"
+                });
+            }
+
+        }).catch(err => res.json(err));
+}
+
+//get latest order by customer id
+const getLatestOrders = async (req, res) => {
+    let customerID = req.params.id
+    console.log("Customer ID in controller", customerID);
 
     database.table('order_details as od')
         .join([{
@@ -107,12 +173,11 @@ const getOrderById = async (req, res) => {
             'od.order_reference',
             'od.quantity as quantityOrdered',
             'od.order_state',
-            'c.id_customer',
-            'c.fname',
-            'c.lname'
+            'od.createdAt as orderTime',
+            'od.acceptedAt as acceptedTime'
         ])
         .filter({
-            'o.id_order': orderId
+            'c.id_customer': customerID
         })
         .getAll()
         .then(orders => {
@@ -126,53 +191,6 @@ const getOrderById = async (req, res) => {
             }
 
         }).catch(err => res.json(err));
-}
-
-//get latest order by customer id
-const getLatestOrders = async(req,res)=>{
-let customerID = req.params.id
-console.log("Customer ID in controller",customerID);
-
-database.table('order_details as od')
-.join([{
-        table: "orders as o",
-        on: `o.id_order = od.id_order_fk`
-    },
-    {
-        table: 'product as p',
-        on: `p.id_product = od.id_product_fk`
-    },
-    {
-        table: 'customers as c',
-        on: `c.id_customer = o.id_customer_fk`
-    }
-])
-.withFields(['o.id_order',
-    'p.product_name',
-    'p.product_description',
-    'p.product_price',
-    'p.image',
-    'od.order_reference',
-    'od.quantity as quantityOrdered',
-    'od.order_state',
-    'od.createdAt as orderTime',
-    'od.acceptedAt as acceptedTime'
-    ])
-.filter({
-    'c.id_customer': customerID
-})
-.getAll()
-.then(orders => {
-    console.log(orders);
-    if (orders.length > 0) {
-        res.json(orders);
-    } else {
-        res.json({
-            message: "No orders found"
-        });
-    }
-
-}).catch(err => res.json(err));
 
 }
 
@@ -189,21 +207,21 @@ const addNewOrder = async (req, res) => {
         total,
         products
     } = req.body;
-    console.log("customer id",customerId);
-    console.log("products",products);
-    console.log("Total",total);
+    console.log("customer id", customerId);
+    console.log("products", products);
+    console.log("Total", total);
 
-   if (customerId !== null && customerId > 0 && !isNaN(customerId)) {
+    if (customerId !== null && customerId > 0 && !isNaN(customerId)) {
         database.table('orders')
             .insert({
                 id_customer_fk: customerId,
-                 total:total
+                total: total
             }).then((newOrderId) => {
                 console.log("new order id", newOrderId)
 
                 if (newOrderId > 0) {
                     products.forEach(async (p) => {
-                          console.log('products', p)
+                        console.log('products', p)
                         let data = await database.table('product').filter({
                             id_product: p.id
                         }).withFields(['quantity']).get().catch(err => console.log(err));
@@ -234,9 +252,10 @@ const addNewOrder = async (req, res) => {
                                 id_order_fk: newOrderId,
                                 order_reference: newReference,
                                 id_product_fk: p.id,
-                                id_payment_fk: paymentId ,
+                                id_payment_fk: paymentId,
                                 quantity: inCart,
-                                order_state: order_state
+                                order_state: order_state,
+                                createdAt: currenttime
                             }).then(newId => {
                                 database.table('product')
                                     .filter({
@@ -267,10 +286,33 @@ const addNewOrder = async (req, res) => {
             message: 'New order failed',
             success: false
         });
-    } 
+    }
 
 }
 
+const cancelOrder = async (req, res) => {
+    console.log("Cancel body", req.body)
+    database.table('order_details')
+        .filter({
+            id_order_fk: req.body.id_order
+        })
+        .update({
+            order_state: req.body.order_state,
+            cancelledAt: currenttime,
+            cancelledBy: req.body.cancelledBy,
+            
+        })
+        .then(successNum => {
+            console.log(successNum)
+        }).catch(err => console.log(err))
+}
 
-module.exports = {getAllOrders, getAllDistinctOrders, getOrderById, getLatestOrders, addNewOrder}
 
+module.exports = {
+    getAllOrders,
+    getAllDistinctOrders,
+    getOrderById,
+    getLatestOrders,
+    addNewOrder,
+    cancelOrder
+}

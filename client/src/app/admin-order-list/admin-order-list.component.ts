@@ -10,7 +10,7 @@ import { OrderService } from '../_services/order.service';
 })
 export class AdminOrderListComponent implements OnInit {
   pageTitle = 'Orders list | Maungano Food Express';
-  orders: any;
+  ordersOpen: any;
 
   constructor(
     private title: Title,
@@ -23,7 +23,7 @@ export class AdminOrderListComponent implements OnInit {
     this.spinner.show();
     this.orderService.getAllDistinctOrders().subscribe((data) => {
       console.log(data);
-      this.orders = data.orders;
+      this.ordersOpen = data.orders.filter(obj => obj.order_state ===  0 );
       this.spinner.hide();
     },
     err=>{});

@@ -1,3 +1,4 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -5,54 +6,62 @@
            <hr class="w-80">
         </div>
 
-        <div class="col-sm-12 px-3">
-          <h6>Order No: {{id}}</h6>
-          <p>{{this.order.length}} Items </p>
-          <p>Placed on </p>
-          <p>Total: CDF 2030</p>
+        <div class="d-flex w-100 justify-content-between flex-sm-column flex-md-row flex-lg-row px-5 py-3  ">
+          <h6>Order No: {{reference}}</h6>
+          <h6>Order state: <span class="alert alert-pending" *ngIf="order_state < 1" >Pending</span>
+            <span class="alert alert-processing" *ngIf="order_state == 1" >Processing</span>
+            <span class="alert alert-info" *ngIf="order_state == 2" >Dispatched</span></h6>
+          <span>{{quantityOrdered}} Items in Order </span>
+          <span>Placed on:  </span>
+          <span>Total: {{total |  currency:'CDF ':'code' }}</span>
+        </div>
+          <div>
           <hr>
         </div>
        
         <div class="col-sm-12">
           <h6>Items in your order</h6>
 
-          <div class="card  py-3 px-3 d-flex justify-content-between flex-sm-column flex-md-row w-100" *ngFor="let o of order">
-          <div class="card-body">
+          <div class="card  py-3 px-3 " *ngFor="let o of order">
+          <div class="card-body d-flex justify-content-between flex-sm-column flex-md-row w-100">
                 <img src="{{o.image}}" width="100px" alt="">
                 <div class="product-info">
                   <div class="details"><span>
-                      <h6>{{o.product_name}}</h6>
-                    </span> <span>- {{o.product_description}}</span></div>
-                  <br>
-                  
-                  <p class="badge badge-secondary mt-3" [class.badge-info] ="order.order_state == 1" [class.badge-warning] ="o.order_state == 2" [class.badge-success] ="order.order_state == 3">{{order.order_state === 1 ? 'Preparing' : order.order_state === 2 ? 'Dispatched'  : order.order_state === 3 ? 'Livré / Delivered' : 'Pending' }} </p>
-                  <p class="delivery-date"> <strong>ON 16/09/20</strong> </p>
+                      <h6 class="pr-3">{{o.product_name}} </h6>
+                    </span> <span> - {{o.product_description}}</span></div>
                 </div>
-                <a class="text-danger" routerLink="../order-details/{{o.id_order}}">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a> </div>
+                
           </div>
         </div>
 
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <p>PAYMENT INFORMATION</p>
-            </div>
-            <div class="card-body">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
+        <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100">
+          <div class="col-sm-6">
             <div class="card">
               <div class="card-header">
-                   <p>DELIVERY INFORMATION</p>
+                <p>PAYMENT INFORMATION</p>
               </div>
               <div class="card-body">
-  
+               <p><span class="font-weight-bold">Name:</span> {{fname}} {{lname}}</p>
+               <p> <span class="font-weight-bold">Payment method:</span>  {{payment_name}} </p>
               </div>
             </div>
           </div>
+  
+          <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                     <p>DELIVERY INFORMATION</p>
+                </div>
+                <div class="card-body">
+                  <p><span class="font-weight-bold">Address</span> {{address}}</p>
+                  <p> <span class="font-weight-bold">City</span>  {{city}} </p>
+                  <p> <span class="font-weight-bold">Region</span>  {{region}} </p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        
 
     </div>
 </div>

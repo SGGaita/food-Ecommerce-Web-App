@@ -1,8 +1,23 @@
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="card">
-    <div class="card-header">
+    <div class="card-header w-100 d-flex flex-row justify-content-between">
       <h3 class="card-title font-weight-bold">Orders</h3>
-
+      <!---Search field-->
+      <span class="w-50 d-flex flex-row justify-content-between">
+        <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by Reference number...">
+      <!--Search by state-->
+      <select name="" id="" class="form-control">
+        <option selected>Filter by state</option>
+        <option value="0">Pending</option>
+        <option value="1">Processing</option>
+        <option value="2">Dispatched</option>
+        <option value="3">Fulfilled</option>
+        <option value="4">Cancelled</option>
+      </select>
+      <!--End Search by state-->
+      </span>
+      
+      <!---END Search field-->
       <div class="card-tools">
         <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
         <ul class="pagination pagination-sm float-right">
@@ -26,27 +41,32 @@
             <th>Total</th>
             <th>Payment mode</th>
             <th>Status</th>
-            <th>Date</th>
+            
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of orders; let i=index">
+          <tr class="text-center no-display" *ngIf="ordersOpen < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersOpen; let i=index">
             <td>{{order.id_order}}</td>
             <td>{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
             
-            <td>123 Station Rd.,Nakuru</td>
-            <td>$1200</td>
+            <td>{{order.address}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
             <td>{{order.payment_name}}</td>
             <td >
-              <span class="alert alert-primary" *ngIf="order.order_state < 0" >New order</span>
-              <span class="alert alert-warning" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="alert alert-pending" *ngIf="order.order_state < 1" >New order</span>
+              <span class="alert alert-processing" *ngIf="order.order_state == 1" >Processing</span>
               <span class="alert alert-info" *ngIf="order.order_state == 2" >Dispatched</span>
               <span class="alert alert-success" *ngIf="order.order_state == 3">Fulfilled</span>
               <span class="alert alert-danger" *ngIf="order.order_state == 4">Cancelled</span>
             </td>
-            <td>{{order.createdAt}}</td>
+        
             <td>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

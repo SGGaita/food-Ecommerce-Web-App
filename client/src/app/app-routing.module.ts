@@ -52,6 +52,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
 
 //Import Auth guards
 
@@ -128,6 +129,7 @@ const routes: Routes = [
             component: DashboardMainComponent,
             data: { title: 'Dashboard Main' },
           },
+          {path: 'order-service/:id', component: AdminOrderServiceComponent},
           {
             path: 'orders',
             component: AdminOrdersComponent,

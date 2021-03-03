@@ -4,6 +4,12 @@ a {
     background-color: transparent;
 }
 
+.no-display{
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #424040;
     background-color: #ededed;
@@ -42,4 +48,8 @@ label .red-text{
 
 .input-group-prepend .input-group-text{
     font-weight:600
+}
+
+.fas{
+    font-size:1rem
 }

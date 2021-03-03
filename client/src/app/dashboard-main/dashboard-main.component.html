@@ -25,11 +25,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of orders; let i=index">
+          <tr class="no-display" *ngIf="ordersOpen < 1">
+            <td class="text-center" colSpan="7">
+              No new orders 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersOpen; let i=index">
             <td>{{i+1}}</td>
             <td>{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
-            <td>{{order.total}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
             <td>{{order.payment_name}}</td>
             <td><span class="text-capitalize">{{order.fname}}</span> {{order.lname}}</td>
             <td>{{order.address}}</td>
@@ -40,7 +45,7 @@
                 </a>
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Serve</a>
+                  <a class="dropdown-item" (click)="openDialog(order)">Serve</a>
                 </div>
               </div>
             </td>

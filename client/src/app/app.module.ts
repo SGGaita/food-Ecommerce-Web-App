@@ -10,11 +10,13 @@ import {GoogleLoginProvider} from 'angularx-social-login';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 //import { AgmCoreModule } from '@agm/core';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -89,6 +91,7 @@ import { AdminSubcatCreateComponent } from './admin-subcat-create/admin-subcat-c
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
+import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -167,6 +170,7 @@ import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.
     DashboardMainComponent,
     AdminUserListComponent,
     AdminUserCreateComponent,
+    AdminOrderServiceComponent,
     
   ], 
   imports: [
@@ -185,6 +189,9 @@ import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.
     //AgmCoreModule.forRoot({
       //apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
    // }),
+   AngularFireModule.initializeApp(environment.firebaseConfig),
+   AngularFireAuthModule,
+   MatDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -211,7 +218,8 @@ import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.
       ],
     } as SocialAuthServiceConfig,
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AdminOrderServiceComponent]
 })
 export class AppModule { }
 

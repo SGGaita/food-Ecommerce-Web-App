@@ -25,12 +25,13 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
-              "node_modules/admin-lte/dist/css/adminlte.min.css" 
+              "node_modules/admin-lte/dist/css/adminlte.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -41,8 +42,7 @@
               "node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
               "node_modules/admin-lte/plugins/raphael/raphael.min.js",
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.min.js",
-              "node_modules/admin-lte/plugins/chart.js/Chart.min.js",
-              
+              "node_modules/admin-lte/plugins/chart.js/Chart.min.js"
             ]
           },
           "configurations": {
@@ -87,7 +87,6 @@
           "configurations": {
             "production": {
               "browserTarget": "TosEcommerce:build:production"
-
             }
           }
         },
@@ -141,6 +140,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "TosEcommerce"
 }

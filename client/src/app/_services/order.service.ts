@@ -63,14 +63,23 @@ getFulFilledOrdersById(customerID: Number){
     }).pipe(catchError(this.handleError));
   }
 
+ //cancel order
+ cancelOrder(updateInfo: any): Observable<any>{
+  var headers = new HttpHeaders();
+  headers.append('Content-Type', 'application/json');
+   return this.http.post(this.server_url+ '/cancel',updateInfo,{headers: headers}).pipe(catchError(this.handleError))
+ } 
+
   //capture errors
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.error('Client Side Error:', errorResponse.error.message);
     } else {
-      console.error('Server Side Error:', errorResponse);
+       
+     
+      console.error('Server Side Error:', errorResponse.message);
     }
-    return throwError('There is an error with the sermon. Please notify your systems admin if it persists')
+    return throwError('There is an error with this service. Please notify your systems admin if it persists')
 
   }
 

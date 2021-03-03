@@ -1,0 +1,32 @@
+<div class="container-fluid p-3">
+    <div class="row">
+      <div class="col-sm-12">
+      <h6>Order {{data.reference}} from {{data.name}} </h6>
+      <hr>
+      <form [formGroup]="orderForm">
+
+        <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+                <label for="">Update state</label>
+                <div class="input-group mb-2">
+                 <select class="form-control" formControlName="order_state" name="order_state" id="order_state">
+                     <option disabled selected>Select state</option>
+                     <option value="1">Processing</option>
+                     <option value="2">Dispatched</option>
+                     <option value="3">Fullfilled</option>
+                     <option value="4">Cancel</option>
+                 </select> 
+              </div>
+        </div>
+        </div>
+          <hr>
+          
+          <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button  cdkFocusInitial (click)="close()" ><i class="fas fa-save"></i>Save</button>
+          </mat-dialog-actions>
+      </form>
+      </div>
+    </div>
+
+</div>

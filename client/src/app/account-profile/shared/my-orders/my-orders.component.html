@@ -1,38 +1,117 @@
-<div class="col-sm-12" >
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
+<div class="col-sm-12">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab"
-        aria-controls="open" aria-selected="true">{{'CUSTOMERPAGE.OpenOrders' | translate}}</a>
+      <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab" aria-controls="open"
+        aria-selected="true">{{'CUSTOMERPAGE.OpenOrders' | translate}}</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab"
-        aria-controls="closed" aria-selected="false">{{'CUSTOMERPAGE.ClosedOrders' | translate}}</a>
+      <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="closed"
+        aria-selected="false">{{'CUSTOMERPAGE.ClosedOrders' | translate}}</a>
+    </li>
+
+    <li class="nav-item mr-auto">
+      <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
     </li>
 
   </ul>
-  <div class="tab-content py-3" id="myTabContent" >
-    <div class="tab-pane fade show active" id="open" role="tabpanel" aria-labelledby="open-tab" >
-      <div class="card py-3 px-3 d-flex justify-content-between flex-sm-column flex-md-row w-100" *ngFor="let order of orders">
-        <img src="{{order.image}}" width="10%" alt="">
-        <div class="product-info">
-          <div class="details"><span>
-              <h6>{{order.product_name}}</h6>
-            </span> <span>- {{order.product_description}}</span></div>
-          
-          <p><small class="order-number"> {{'CUSTOMERPAGE.OrderNumber' | translate}} 
-            <strong> <a routerLink="../order-details/{{order.id_order}}"> {{order.order_reference}}</a>  </strong></small></p>
-          <br>
-          <p class="badge badge-secondary mt-3" [class.badge-info] ="order.order_state == 1" [class.badge-warning] ="order.order_state == 2" [class.badge-success] ="order.order_state == 3">{{order.order_state === 1 ? 'Preparing' : order.order_state === 2 ? 'Dispatched'  : order.order_state === 3 ? 'Livré / Delivered' : 'Pending' }} </p>
-          <p class="delivery-date"> <strong>{{order.createdAt}}</strong> </p>
-        </div>
-        <a class="text-danger" routerLink="../order-details/{{order.id_order}}">{{'CUSTOMERPAGE.SeeDetails' | translate}}</a>
+  <div class="tab-content py-3" id="myTabContent">
+    <div class="tab-pane fade show active" id="open" role="tabpanel" aria-labelledby="open-tab">
+      <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Reference</th>
+            <th>Product(s)</th>
+            <th>Total</th>
+            <th>Payment mode</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="ordersOpen < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersOpen; let i=index">
+            <td class="font-weight-bold">{{order.order_reference}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="alert alert-pending" *ngIf="order.order_state < 1" >Pending</span>
+              <span class="alert alert-processing" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="alert alert-info" *ngIf="order.order_state == 2" >Dispatched</span>
+              
+              
+            </td>
+            <td>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order details" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View Invoice" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-file-pdf"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel Order" (click)="cancel(order.id_order_fk,order.order_reference)"><i class="fas fa-times"></i></a></span>
+            </td>
+          </tr>
 
-      </div>
+          
+        </tbody>
+      </table>
     </div>
+    <!-- /.card-body Open orders -->
+    </div>
+
+
     <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="closed-tab">
-      <div class=" w-100 py-3 text-center">
-        <p>{{'CUSTOMERPAGE.NoDisplay' | translate}}</p>
-      </div>
+            <!-- /.card-header Closed orders -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Reference</th>
+            <th>Product(s)</th>
+            <th>Total</th>
+            <th>Payment mode</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="ordersClosed < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersClosed; let i=index">
+            <td class="font-weight-bold">{{order.order_reference}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="alert alert-danger" *ngIf="order.order_state == 4" >Cancelled</span>
+              <span class="alert alert-success" *ngIf="order.order_state == 3">Fulfilled</span>
+              
+            </td>
+            <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">View Order</a>
+                  <a class="dropdown-item" href="#">Print Invoice</a>
+                  </div>
+              </div>
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
     </div>
   </div>
 </div>
