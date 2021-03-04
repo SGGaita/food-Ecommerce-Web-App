@@ -4,16 +4,16 @@
       <h3 class="card-title font-weight-bold">Orders</h3>
       <!---Search field-->
       <span class="w-50 d-flex flex-row justify-content-between">
-        <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by Reference number...">
-      <!--Search by state-->
-      <select name="" id="" class="form-control">
+        <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by Reference number..." [(ngModel)]="searchText" name="searchText">
+      <!--Search by state
+      <select name="" id="" class="form-control" [(ngModel)]="searchState" name="searchState">
         <option selected>Filter by state</option>
         <option value="0">Pending</option>
         <option value="1">Processing</option>
         <option value="2">Dispatched</option>
         <option value="3">Fulfilled</option>
         <option value="4">Cancelled</option>
-      </select>
+      </select> -->
       <!--End Search by state-->
       </span>
       
@@ -51,11 +51,13 @@
               No orders in list 
             </td>
           </tr>
-          <tr *ngFor="let order of ordersOpen; let i=index">
-            <td>{{order.id_order}}</td>
+          <tr *ngFor="let order of ordersOpen | searchBy:{order_reference:
+            searchText}  | searchBy:{id_order_fk:
+              searchState} ; let i=index">
+            
             <td>{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
-            
+            <td>{{order.fname}} {{order.lname}}</td>
             <td>{{order.address}}</td>
             <td>{{order.total | currency:'CDF':'code'}}</td>
             <td>{{order.payment_name}}</td>

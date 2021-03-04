@@ -63,6 +63,12 @@ getFulFilledOrdersById(customerID: Number){
     }).pipe(catchError(this.handleError));
   }
 
+  updateOrder(updateInfo: any): Observable<any>{
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+     return this.http.post(this.server_url+ '/update',updateInfo,{headers: headers}).pipe(catchError(this.handleError))
+   } 
+
  //cancel order
  cancelOrder(updateInfo: any): Observable<any>{
   var headers = new HttpHeaders();

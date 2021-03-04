@@ -81,13 +81,12 @@ const getAllOrders = (req, res) => { // Sending Page Query Parameter is mandator
                 });
             }
         })
-        .catch(err => console.log(err));
+        .catch(err => res.json(err));
 }
 
 // Get single order
 const getOrderById = async (req, res) => {
     let orderId = req.params.id;
-    console.log("Order ID in controller", orderId);
 
     database.table('order_details as od')
         .join([{
@@ -142,14 +141,12 @@ const getOrderById = async (req, res) => {
                     message: "No orders found"
                 });
             }
-
         }).catch(err => res.json(err));
 }
 
 //get latest order by customer id
 const getLatestOrders = async (req, res) => {
     let customerID = req.params.id
-    console.log("Customer ID in controller", customerID);
 
     database.table('order_details as od')
         .join([{
@@ -189,15 +186,11 @@ const getLatestOrders = async (req, res) => {
                     message: "No orders found"
                 });
             }
-
         }).catch(err => res.json(err));
-
 }
 
 // Add new order
 const addNewOrder = async (req, res) => {
-    // let userId = req.body.userId;
-    //let data = JSON.parse(req.body);
 
     newReference = randomString(10)
     console.log("Reference number", newReference)
@@ -226,25 +219,18 @@ const addNewOrder = async (req, res) => {
                             id_product: p.id
                         }).withFields(['quantity']).get().catch(err => console.log(err));
 
-                        console.log("Data", data)
-
-
-
                         let inCart = parseInt(p.incart);
 
                         // Deduct the number of pieces ordered from the quantity in database
-
                         if (data.quantity > 0) {
                             data.quantity = data.quantity - inCart;
 
                             if (data.quantity < 0) {
                                 data.quantity = 0;
                             }
-
                         } else {
                             data.quantity = 0;
                         }
-
                         // Insert order details w.r.t the newly created order Id
                         let order_state = 0
                         database.table('order_details')
@@ -263,8 +249,8 @@ const addNewOrder = async (req, res) => {
                                     })
                                     .update({
                                         quantity: data.quantity
-                                    }).then(successNum => {}).catch(err => console.log(err));
-                            }).catch(err => console.log(err));
+                                    }).then(successNum => {}).catch(err => res.json(err));
+                            }).catch(err => res.json(err));
                     });
 
                 } else {
@@ -287,23 +273,52 @@ const addNewOrder = async (req, res) => {
             success: false
         });
     }
-
 }
 
-const cancelOrder = async (req, res) => {
-    console.log("Cancel body", req.body)
+//Update order state
+const UpdateOrderState = (req, res) => {
     database.table('order_details')
         .filter({
             id_order_fk: req.body.id_order
         })
         .update({
             order_state: req.body.order_state,
-            cancelledAt: currenttime,
-            cancelledBy: req.body.cancelledBy,
-            
+            updatedAt: currenttime,
+            comments: req.body.comment
+
         })
         .then(successNum => {
-            console.log(successNum)
+            res.status(200).json({
+                message: "Order state successfully updated",
+                success: true,
+                records: successNum
+            })
+        }).catch(err => {
+            res.status(200).json({
+                message: "Order state successfully updated",
+                success: true,
+                errorMsg: err
+            })
+        })
+}
+
+//Cancel orders
+const cancelOrder = (req, res) => {
+    database.table('order_details')
+        .filter({
+            id_order_fk: req.body.id_order
+        })
+        .update({
+            order_state: req.body.order_state,
+            updatedAt: currenttime,
+            cancelledBy: req.body.cancelledBy,
+        })
+        .then(successNum => {
+            res.status(200).json({
+                message: "Order successfully cancelled",
+                success: true,
+                records: successNum
+            })
         }).catch(err => console.log(err))
 }
 
@@ -314,5 +329,6 @@ module.exports = {
     getOrderById,
     getLatestOrders,
     addNewOrder,
+    UpdateOrderState,
     cancelOrder
 }

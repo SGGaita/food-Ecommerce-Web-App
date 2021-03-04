@@ -10,6 +10,7 @@ export interface DialogData {
   id_order: number;
   createdAt: Date;
   total: number;
+  product_name:string;
 }
 
 @Component({
@@ -18,17 +19,19 @@ export interface DialogData {
   styleUrls: ['./admin-order-service.component.css']
 })
 export class AdminOrderServiceComponent implements OnInit {
-  pageTitle= "Serve orders | Maungano Food Express"
+  pageTitle: string
   orderForm: FormGroup
 
   constructor(private title: Title, private fb: FormBuilder , public dialogRef: MatDialogRef<AdminOrderServiceComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
+    this.pageTitle = `Orders > Order ${this.data.reference} | Maungano Food Express`
     this.title.setTitle(this.pageTitle)
 
     this.orderForm = this.fb.group(
       {
-        order_state:[null]
+        order_state:[null],
+        comments: [null]
       }
     )
   }
@@ -36,8 +39,17 @@ export class AdminOrderServiceComponent implements OnInit {
 
  //close dialog
   close(order: any) {
-    console.log("Order", order)
-    this.dialogRef.close("test");
+    
+    var order_state = +this.orderForm.value.order_state
+    if (this.orderForm.value.comments){
+      var comments = this.orderForm.value.comments
+    }else{
+      var comments:any = "No comments"
+    }
+    
+    Object.assign(order,{new_state: order_state}, {comments: comments})
+    console.log("new order", order)
+    this.dialogRef.close(JSON.stringify(order));
   }
 
 }

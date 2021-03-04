@@ -123,7 +123,9 @@ router.get('/orders/:id', ordersController.getOrderById);
 router.get('/order_latest/:id', ordersController.getLatestOrders)
 //d. Add new order
 router.post('/orders/new', ordersController.addNewOrder);
-//e: cancel order
+//f: cancel order
+router.post('/update', ordersController.UpdateOrderState)
+//f: cancel order
 router.post('/cancel', ordersController.cancelOrder)
 
 

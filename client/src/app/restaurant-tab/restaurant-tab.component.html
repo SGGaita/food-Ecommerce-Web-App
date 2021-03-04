@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 restaurant" *ngFor="let _restaurant of restaurants">
               <div class="col-sm-12 badge"><span class="badge badge-danger">{{'RESTAURANT.NewBadge' | translate}}</span></div>
-              <img src="{{_restaurant.supplier_image}}" alt="">
+              <img src="../../assets/img/restaurants/{{_restaurant.supplier_image}}" alt="">
               <h3>{{_restaurant.supplier_name}}</h3>
               <p>{{_restaurant.supplier_description.substr(0,80)}} ...</p>
               <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >{{'RESTAURANT.ViewButton' | translate}}</a>

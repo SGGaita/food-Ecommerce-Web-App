@@ -12,6 +12,9 @@ export class AdminOrderListComponent implements OnInit {
   pageTitle = 'Orders list | Maungano Food Express';
   ordersOpen: any;
 
+  public searchText: string;
+  public searchState: number;
+
   constructor(
     private title: Title,
     private orderService: OrderService,
@@ -23,7 +26,7 @@ export class AdminOrderListComponent implements OnInit {
     this.spinner.show();
     this.orderService.getAllDistinctOrders().subscribe((data) => {
       console.log(data);
-      this.ordersOpen = data.orders.filter(obj => obj.order_state ===  0 );
+      this.ordersOpen = data.orders.filter(obj => obj.order_state ===  0 || obj.order_state ===  1 || obj.order_state ===  2);
       this.spinner.hide();
     },
     err=>{});

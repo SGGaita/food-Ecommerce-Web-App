@@ -1,32 +1,63 @@
 <div class="container-fluid p-3">
-    <div class="row">
-      <div class="col-sm-12">
-      <h6>Order {{data.reference}} from {{data.name}} </h6>
+  <div class="row">
+    <div class="col-sm-12">
+      <h6 class="font-weight-bold">Order {{data.reference}} from {{data.name | uppercase}} </h6>
+      <div class="w-100 d-flex justify-content-between flex-row">
+        <span d-flex justify-content-between flex-column>
+          <div class="text-info font-weight-bold h6">Products</div>
+          <div>{{data.product_name}}</div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-success font-weight-bold h6">Total</div>
+          <div>{{data.total}}</div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-warning font-weight-bold h6">Date</div>
+          <div>{{data.createdAt}}</div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-danger font-weight-bold h6">Status</div>
+          <div class="py-3">
+            <span class="alert alert-pending" *ngIf="data.order_state < 1">Pending</span>
+            <span class="alert alert-processing" *ngIf="data.order_state == 1">Processing</span>
+            <span class="alert alert-info" *ngIf="data.order_state == 2">Dispatched</span>
+            <span class="alert alert-success" *ngIf="data.order_state == 3">Fulfilled</span>
+            <span class="alert alert-danger" *ngIf="data.order_state == 4">Cancelled</span>
+          </div>
+        </span>
+      </div>
       <hr>
       <form [formGroup]="orderForm">
 
         <div class="row">
-            <div class="form-group col-sm-12 col-md-6">
-                <label for="">Update state</label>
-                <div class="input-group mb-2">
-                 <select class="form-control" formControlName="order_state" name="order_state" id="order_state">
-                     <option disabled selected>Select state</option>
-                     <option value="1">Processing</option>
-                     <option value="2">Dispatched</option>
-                     <option value="3">Fullfilled</option>
-                     <option value="4">Cancel</option>
-                 </select> 
-              </div>
+          <div class="form-group col-sm-12 col-md-12">
+            <label for="">Update state</label>
+            <div class="input-group mb-2">
+              <select class="form-control" formControlName="order_state" name="order_state" id="order_state">
+                <option selected>Select state</option>
+                <option value="1">Processing</option>
+                <option value="2">Dispatch</option>
+                <option value="3">Fullfill</option>
+                <option value="4">Cancel</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-12 col-md-12">
+            <label for="">Comments</label>
+            <div class="input-group mb-2">
+              <textarea class="form-control" cols="50" rows="5" formControlName="comments" name="comments" id="comments"></textarea>
+            </div>
+          </div>
         </div>
-        </div>
-          <hr>
-          
-          <mat-dialog-actions align="end">
-            <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button  cdkFocusInitial (click)="close()" ><i class="fas fa-save"></i>Save</button>
-          </mat-dialog-actions>
+        <hr>
+
+        <mat-dialog-actions align="end">
+          <button class="btn btn-outline-danger mr-2" mat-button mat-dialog-close>Cancel</button>
+          <button class="btn btn-outline-dark" cdkFocusInitial (click)="close(data)">Update</button>
+        </mat-dialog-actions>
       </form>
-      </div>
     </div>
+  </div>
 
 </div>

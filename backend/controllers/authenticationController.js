@@ -3,7 +3,7 @@ const router = express.Router();
 var cors = require('cors')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const User = require('../models/user'); 
+const User = require('../models/user');
 const Customer = require('../models/customer');
 router.use(cors());
 var Sequelize = require('sequelize');
@@ -16,7 +16,7 @@ process.env.SECRET_KEY = 'secret';
 
 //Register new system user
 const addNewUser = (req, res, next) => {
-    console.log("User body information",req.body)
+    console.log("User body information", req.body)
     var newUser = {
         fname: req.body.fname,
         lname: req.body.lname,
@@ -28,11 +28,15 @@ const addNewUser = (req, res, next) => {
         created_at: currenttime
     }
 
-    console.log("New user",)
+    console.log("New user", )
 
     User.findOne({
-        where: Sequelize.or({ email: req.body.email }, { username: req.body.username })
-    })
+            where: Sequelize.or({
+                email: req.body.email
+            }, {
+                username: req.body.username
+            })
+        })
         .then(user => {
             if (!user) {
                 const hash = bcrypt.hashSync(newUser.password, 10)
@@ -42,38 +46,52 @@ const addNewUser = (req, res, next) => {
                         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                             expiresIn: 3600
                         })
-                        res.json({ token: token })
+                        res.json({
+                            token: token
+                        })
                     })
                     .catch(err => {
                         res.send('error: ' + err)
                     })
             } else {
-                res.json({ error: 'User already exists' });
+                res.json({
+                    error: 'User already exists'
+                });
             }
         })
         .catch(err => {
             res.send('error: ' + err);
             console.log("error", err)
-        })}
+        })
+}
 
 //Login User
 const loginUser = (req, res) => {
     User.findOne({
-        where: { username: req.body.username }
-    }
-    )
+            where: {
+                username: req.body.username
+            }
+        })
         .then(user => {
             if (!user) {
-                return res.status(404).send({reason: 'User Not Found'});
+                return res.status(404).send({
+                    reason: 'User Not Found'
+                });
             }
             var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
             if (!passwordIsValid) {
-                return res.status(401).send({ auth: false, accessToken: null, reason: 'Invalid Password' });
+                return res.status(401).send({
+                    auth: false,
+                    accessToken: null,
+                    reason: 'Invalid Password'
+                });
             }
             var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                 expiresIn: 7200
             });
-            res.send({ token: token })
+            res.send({
+                token: token
+            })
         })
         .catch(err => {
             res.status(500).send('error: ' + err)
@@ -82,7 +100,7 @@ const loginUser = (req, res) => {
 
 //Register new customer
 const addNewCustomer = async (req, res, next) => {
-   
+
     let _acc_state = 0
     console.log("Date of birth", req.body.dob)
     var newCustomer = {
@@ -115,17 +133,17 @@ const addNewCustomer = async (req, res, next) => {
 
                         let _id_customer = customer.dataValues.id_customer
 
-                        console.log("Let this customer be customer", customer.dataValues.id_customer )
-                    
+                        console.log("Let this customer be customer", customer.dataValues.id_customer)
+
                         var transporter = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                   user: 'gingergait06@gmail.com',
-                                   pass: 'Waxmangme86'
-                               }
-                           });
-                    
-                           const mailOptions = {
+                                user: 'gingergait06@gmail.com',
+                                pass: 'Waxmangme86'
+                            }
+                        });
+
+                        const mailOptions = {
                             from: 'Tosungana <steveggaita@gmail.com>', // sender address
                             to: req.body.email, // list of receivers
                             subject: 'Account activation link', // Subject line
@@ -302,26 +320,27 @@ const addNewCustomer = async (req, res, next) => {
                                 </table>
                             </body>
                             
-                            </html>`// plain text body
-                          };
-                    
-                     await transporter.sendMail(mailOptions, function (err, info) {
-                            if(err)
-                              console.log("Error is",err)
-                            else
-                              console.log("console log",info);
+                            </html>` // plain text body
+                        };
 
-                              res.json({
-                                info: info                            })
-                         });
+                        await transporter.sendMail(mailOptions, function (err, info) {
+                            if (err)
+                                console.log("Error is", err)
+                            else
+                                console.log("console log", info);
+
+                            res.json({
+                                info: info
+                            })
+                        });
 
                         //end send email
 
-                        
 
-                       // let token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
+
+                        // let token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
                         //    expiresIn: 3600
-                       // })
+                        // })
                         res.json({
                             message: `${req.body.email} `,
                         })
@@ -336,7 +355,7 @@ const addNewCustomer = async (req, res, next) => {
             }
         })
         .catch(err => {
-            
+
             res.send('Error: ' + err);
         })
 }
@@ -351,7 +370,7 @@ const loginCustomer = (req, res) => {
         })
         .then(async (customer) => {
             console.log("Customer returns", customer)
-            
+
 
             if (!customer) {
                 return res.status(404).send({
@@ -360,22 +379,22 @@ const loginCustomer = (req, res) => {
             }
             let _acc_state = +customer.dataValues.acc_state
             console.log('customer id', _acc_state)
-           //check account state
-           
-            if (_acc_state == 0 ){//If account state is inactive, send an activation email to customer email
+            //check account state
+
+            if (_acc_state == 0) { //If account state is inactive, send an activation email to customer email
                 let _id_customer = customer.dataValues.id_customer
 
-                console.log("Let this customer be customer", customer.dataValues.id_customer )
-            
+                console.log("Let this customer be customer", customer.dataValues.id_customer)
+
                 var transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                           user: 'gingergait06@gmail.com',
-                           pass: 'Waxmangme86'
-                       }
-                   });
-            
-                   const mailOptions = {
+                        user: 'gingergait06@gmail.com',
+                        pass: 'Waxmangme86'
+                    }
+                });
+
+                const mailOptions = {
                     from: 'Tosungana <steveggaita@gmail.com>', // sender address
                     to: req.body.email, // list of receivers
                     subject: 'Account activation link', // Subject line
@@ -552,31 +571,32 @@ const loginCustomer = (req, res) => {
                         </table>
                     </body>
                     
-                    </html>`// plain text body
-                  };
-            
-             await transporter.sendMail(mailOptions, function (err, info) {
-                    if(err)
-                      console.log("Error is",err)
-                    else
-                      console.log("console log",info);
+                    </html>` // plain text body
+                };
 
-                      res.json({
-                        info: info                            })
-                 });
+                await transporter.sendMail(mailOptions, function (err, info) {
+                    if (err)
+                        console.log("Error is", err)
+                    else
+                        console.log("console log", info);
+
+                    res.json({
+                        info: info
+                    })
+                });
 
                 return res.status(403).send({
                     reason: `<h5>Inactive account. An activation link has been sent to email account: <strong>${req.body.email}</strong></h5>`
                 });
-            } else{//If account state is active, allow authentication to continue
+            } else { //If account state is active, allow authentication to continue
                 var passwordIsValid = bcrypt.compareSync(req.body.password, customer.password);
-                if (!passwordIsValid) {//If password is invalid send error message
+                if (!passwordIsValid) { //If password is invalid send error message
                     return res.status(401).send({
                         auth: false,
                         accessToken: null,
                         reason: 'Invalid Password'
                     });
-                }//else generate a token
+                } //else generate a token
                 var token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 7200
                 });
@@ -584,8 +604,7 @@ const loginCustomer = (req, res) => {
                     token: token
                 })
             }
-            
-        })
+  })
         .catch(err => {
             res.status(500).send('error: ' + err)
         });
@@ -593,34 +612,40 @@ const loginCustomer = (req, res) => {
 
 
 
-const accountActivationCustomer = (req, res) =>{
-  let _id_customer = req.params.custID
+const accountActivationCustomer = (req, res) => {
+    let _id_customer = req.params.custID
 
-  console.log(_id_customer)
-
-  Customer.findOne({
-    where:{
-        id_customer: _id_customer
-    }
-})
-.then(async (customer) => {
-    console.log("customer", customer)
-
-    await Customer.update({acc_state: 1},{
-        where: {
-            id_customer: _id_customer
-        }})
-    .then(data =>{
-        console.log("update state", data)
-        res.status(200).send({
-           message: `${customer.dataValues.email}` 
+    Customer.findOne({
+            where: {
+                id_customer: _id_customer
+            }
         })
-    }).catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(async (customer) => {
+            
+            await Customer.update({
+                    acc_state: 1
+                }, {
+                    where: {
+                        id_customer: _id_customer
+                    }
+                })
+                .then(data => {
+                    console.log("update state", data)
+                    res.status(200).send({
+                        message: `${customer.dataValues.email}`
+                    })
+                }).catch(err => {
+                    res.send('error: ' + err)
+                })
 
-})
+        })
 }
 
 
-module.exports = {addNewCustomer, loginCustomer, accountActivationCustomer, addNewUser, loginUser}
+module.exports = {
+    addNewCustomer,
+    loginCustomer,
+    accountActivationCustomer,
+    addNewUser,
+    loginUser
+}

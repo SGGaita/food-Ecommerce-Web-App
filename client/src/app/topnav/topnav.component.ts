@@ -18,7 +18,7 @@ export class TopnavComponent implements OnInit {
 
   //languages =[{value:"en",lang:"English"},{value:"fr",lang:"French"}]
 
-  constructor(public translate: TranslateService,private sharedService: SharedService,public custAuthService: CustomerAuthenticationService, private customerService: CustomerService) { 
+  constructor(public translate: TranslateService,public custAuthService: CustomerAuthenticationService, private customerService: CustomerService) { 
     translate.addLangs(['English','French'])
     translate.setDefaultLang('French')
     const browserLang = translate.getBrowserLang();
@@ -28,13 +28,10 @@ export class TopnavComponent implements OnInit {
   ngOnInit(): void {
     
     let customerToken = this.custAuthService.getToken()
-    console.log("Customer token", customerToken)
     var decoded = jwt_decode(customerToken);
     console.log("Decoded token", decoded);
     this.fname = decoded.fname
-
-       
-  }
+ }
 
   
 
