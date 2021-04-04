@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const {database} = require('../db/db_mysqli');
+const {
+    database
+} = require('../db/db_mysqli');
 
 //Get all restaurants
 const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
@@ -17,9 +19,7 @@ const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is man
     }
     database.table('suppliers as s')
         .slice(startValue, endValue)
-        .sort({
-            id_supplier: .1
-        })
+        .sort({ status :  -1, supplier_name : .1  })
         .getAll()
         .then(sups => {
             if (sups.length > 0) {
@@ -55,21 +55,66 @@ const getRestaurantById = (req, res) => {
         }).catch(err => res.json(err));
 }
 
-
-const updateSupplierStatus = (req, res) =>{
+const updateSupplier = (req, res) => {
     console.log(req.body)
 
-  
-    database.table('suppliers')
-    .filter({id_supplier: req.body.id_supplier
-    })
-    .update({
-        status: req.body.status
-    }).then(successNum => {
-        console.log("rows updated", successNum)
-        res.status(200).json(successNum)
-    }).catch(err => console.log(err));
-    
-  }
 
-module.exports = {getAllRestaurants, getRestaurantById,updateSupplierStatus};
+    database.table('suppliers')
+        .filter({
+            id_supplier: req.body.id_supplier
+        })
+        .update({
+            status: req.body.status
+        }).then(successNum => {
+            console.log("rows updated", successNum)
+            res.status(200).json(successNum)
+        }).catch(err => console.log(err));
+
+}
+
+
+const updateSupplierStatus = (req, res) => {
+    console.log(req.body)
+
+
+    database.table('suppliers')
+        .filter({
+            id_supplier: req.body.id_supplier
+        })
+        .update({
+            status: req.body.status
+        }).then(successNum => {
+            console.log("rows updated", successNum)
+            res.status(200).json(successNum)
+        }).catch(err => console.log(err));
+
+}
+
+//Delete Supplier
+const deleteSupplier = (req, res) => {
+    //console.log("body",req.body)
+    //console.log("params", req.params)
+
+
+    database.table('suppliers')
+        .filter({
+            id_supplier: req.params.id
+        })
+        .remove()
+        .then(successNum => {
+            res.json({
+                success:true
+            })
+        }).catch(err =>  res.json({
+            success:false,
+            errorMsg: err
+        }));
+
+}
+
+module.exports = {
+    getAllRestaurants,
+    getRestaurantById,
+    updateSupplierStatus,
+    deleteSupplier
+};

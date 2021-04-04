@@ -39,6 +39,7 @@ export class OrderDetailsComponent implements OnInit {
      this.orderService.getSingleOrderById(this.id)
      .subscribe(data=>{
        this.order = data;
+       console.log("order details", this.order)
        
        //get unique value if repeated
        const unique = (value, index, self) =>{
@@ -46,15 +47,15 @@ export class OrderDetailsComponent implements OnInit {
       }
        this.reference = this.order.map(x=>x.order_reference).filter(unique)
        this.order_state = this.order.map(x=>x.order_state).filter(unique)
-       this.total = +this.order.map(x=>x.total)
+       this.total = +this.order.map(x=>x.total).filter(unique)
        this.quantityOrdered = this.order.map(x=>x.quantityOrdered).filter(unique)
-       this.fname = this.order.map(x=>x.fname)
-       this.lname = this.order.map(x=>x.lname)
-       this.payment_name = this.order.map(x=>x.payment_name)
-       this.address = this.order.map(x=>x.address)
-       this.city = this.order.map(x=>x.city)
-       this.region = this.order.map(x=>x.region)
-       this.spinner.show();
+       this.fname = this.order.map(x=>x.fname).filter(unique)
+       this.lname = this.order.map(x=>x.lname).filter(unique)
+       this.payment_name = this.order.map(x=>x.payment_name).filter(unique)
+       this.address = this.order.map(x=>x.address).filter(unique)
+       this.city = this.order.map(x=>x.city).filter(unique)
+       this.region = this.order.map(x=>x.region).filter(unique)
+       this.spinner.hide();
      }, err =>{
 
        

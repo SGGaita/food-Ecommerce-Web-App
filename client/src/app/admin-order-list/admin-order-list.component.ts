@@ -14,6 +14,8 @@ export class AdminOrderListComponent implements OnInit {
 
   public searchText: string;
   public searchState: number;
+  p: number = 1;
+  count: any
 
   constructor(
     private title: Title,
@@ -26,6 +28,7 @@ export class AdminOrderListComponent implements OnInit {
     this.spinner.show();
     this.orderService.getAllDistinctOrders().subscribe((data) => {
       console.log(data);
+      this.count = data.count;
       this.ordersOpen = data.orders.filter(obj => obj.order_state ===  0 || obj.order_state ===  1 || obj.order_state ===  2);
       this.spinner.hide();
     },

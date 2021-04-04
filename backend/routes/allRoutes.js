@@ -4,13 +4,19 @@ var multer = require('multer');
 const {
     database
 } = require('../db/db_mysqli');
-const productsController = require('../controllers/productsController');
+var mime = require("mime");
+const productsController = require('../controllers/productsController'); 
 const supplierController = require('../controllers/supplierController');
 const ordersController = require('../controllers/ordersController');
 const paymentController = require('../controllers/paymentController');
 const authenticationController = require('../controllers/authenticationController');
 const customerController = require('../controllers/customerController');
 const userController = require('../controllers/userController')
+const emailServerController = require('../controllers/emailServerController')
+
+
+
+router.get('/email_order', emailServerController.getEmailOrderVariables)
 
 /************************************************/
 /*                  Table of Contents           */
@@ -66,6 +72,8 @@ router.get('/users/:userId', userController.getUserById);
 router.get('/customers', customerController.getAllCustomers);
 //b. Get customer infomation
 router.get('/customers/:custId', customerController.getCustomerById)
+//c: Update customers information
+router.post('/customer',customerController.updateCustomer)
 
 
 /*####################################################################*/
@@ -109,6 +117,8 @@ router.get('/suppliers', supplierController.getAllRestaurants);
 router.get('/suppliers/:supId', supplierController.getRestaurantById);
 //supplier status activation
 router.post('/activation', supplierController.updateSupplierStatus)
+//delete supplier
+router.delete('/delete/:id', supplierController.deleteSupplier)
 
 /*####################################################################*/
 
@@ -127,6 +137,8 @@ router.post('/orders/new', ordersController.addNewOrder);
 router.post('/update', ordersController.UpdateOrderState)
 //f: cancel order
 router.post('/cancel', ordersController.cancelOrder)
+//g. get order state
+router.get('/order_state', ordersController.getAllOrderStates)
 
 
 /*####################################################################*/
@@ -150,7 +162,7 @@ var storage_product = multer.diskStorage({
     },
     filename: function (req, file, callback) {
         const prefix = "maungano-menu"
-        const filename = prefix + '-' + Date.now()
+        const filename = prefix + '-' + Date.now() + '.' + mime.getExtension(file.mimetype)
         callback(null, filename)
         //! use next line where no extension
         //callback(null, file.originalname + '.' + mime.getExtension(file.mimetype))
@@ -184,7 +196,7 @@ router.post('/product', upload_product.single('image'), async (req, res) => {
             status: req.body.status
         })
         .then((lastId) => {
-            console.log(lastId)
+            
             // If there is no self-incrementing ID in the table structure, the return value will always be 0 
             res.json({
                 message: `Product successfully added ${lastId}`,
@@ -214,7 +226,7 @@ var storage_restaurant = multer.diskStorage({
     },
     filename: function (req, file, callback) {
         const prefix = "maungano-rest"
-        const filename = prefix + '-' + Date.now()
+        const filename = prefix + '-' + Date.now() + '.' + mime.getExtension(file.mimetype)
         callback(null, filename)
         //! use next line where no extension
         //callback(null, file.originalname + '.' + mime.getExtension(file.mimetype))
@@ -254,7 +266,7 @@ router.post('/restaurant', upload_restaurant.single('image'), async (req, res) =
                     zip: req.body.zip,
                     country: req.body.country,
                     phone: req.body.phone
-                }).then((restLastId) => {
+                }).then((lastId) => {
                     res.json({
                         message: `Restaurant successfully added.`,
                         success: true,

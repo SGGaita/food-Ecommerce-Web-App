@@ -1,4 +1,4 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p> </ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p> </ngx-spinner>
 <div class="container">
   <!--When the cart is empty-->
   <div class="row" *ngIf="cartData.total == 0">
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="row mb-5" *ngIf="cartData.total > 0">
+  <div class="row mb-3 " *ngIf="cartData.total > 0">
     <div class="col-sm-12 text-center my-5 ">
       <h1>
         {{'CHECKOUT.Heading' | translate }}
@@ -22,55 +22,28 @@
 
 
     </div>
-   <!-- <div class="col-sm-8">
-      <div class="billing-details">
-        <div class="section-title">
-          <h3 class="title">{{'CHECKOUT.Billing' | translate }}</h3>
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control " type="text" name="first-name" placeholder="First Name">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="text" name="last-name" placeholder="Last Name">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="email" name="email" placeholder="Email">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="text" name="address" placeholder="Address">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="text" name="city" placeholder="City">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="text" name="country" placeholder="Country">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="text" name="zip-code" placeholder="ZIP Code">
-        </div>
-        <div class="form-group col-sm-12">
-          <input class="input form-control" type="tel" name="tel" placeholder="Telephone">
-        </div>
-        <button class="btn btn-dark d-block w-80">{{'CHECKOUT.Submit' | translate }}</button>
-        <!--div class="form-group col-sm-12">
-          <div class="input-checkbox">
-            <input type="checkbox" id="create-account">
-            <label for="create-account">
-              <span></span>
-              Create Account?
-            </label>
-            <div class="caption">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-              <input class="input" type="password" name="password" placeholder="Enter Your Password">
-            </div>
-          </div>
-        </div>
-      </div>
-     
+  
+    <div class="col-sm-7 p-3 mx-2 border-light rounded bg-light border-secondary">
+      <span class="d-flex w-100 justify-content-between flex-sm-column flex-md-row flex-lg-row">
+        <h5 class="font-weight-bold w-25">Shipping Details</h5>
+        <hr class="w-75">
+      </span>
 
-    </div> -->
-    <div class="col-sm-4 order border border-secondary">
-      <h5>{{'CHECKOUT.YourOrder' | translate }}</h5>
+      <span class=" py-3 d-flex w-100 justify-content-between flex-column">
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row text-capitalize "><h6 class="font-weight-bold pr-2 ">Name:</h6>{{fname}} {{lname}}</span>
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row "><h6 class="font-weight-bold pr-2">Phone: </h6> {{primaryPhone}} <span>/{{secondaryPhone}} <span *ngIf="!primaryPhone"> <a routerLink="../customer/profile">Update phone details</a></span></span></span>
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row text-capitalize "><h6 class="font-weight-bold pr-2">Delivery Address:</h6> </span>
+      <span *ngIf="_address">{{_address}}</span><span *ngIf="!_address"> <a routerLink="../customer/profile">Update address details</a></span></span>
+
+      <span class="d-flex w-100 justify-content-between flex-sm-column flex-md-row flex-lg-row">
+        <h6 class="font-weight-bold w-50">Information to accompany the order</h6>
+        <hr class="w-50">
+      </span>
+      
+    </div>
+
+    <div class="col-sm-4 p-3  border-light rounded bg-light border border-secondary">
+      <h5 class="font-weight-bold">{{'CHECKOUT.YourOrder' | translate }}</h5>
 
       <div col-sm-12 text-center>
         <table class="table">
@@ -108,8 +81,8 @@
             <div class="d-block my-3">
               <div class="" *ngFor="let py of modes">
                 <input class="form-input" type="radio" formControlName="payment" [value]="py.id_payment"
-                  id="{{py.payment_name}}" (change)="paymentChange()"> <small class="">
-                  {{py.payment_name}}</small>
+                  id="{{py.payment_name}}" (change)="paymentChange()" [disabled]="py.status < 1"> <small class="">
+                  {{py.payment_name}} </small> <span >(Service not active)</span>
 
               </div>
             </div>
@@ -133,7 +106,7 @@
 
 
     </div>
-    <div class="col-sm-12 d-flex py-5 nav-btn">
+    <div class="col-sm-12 ml-auto mr-auto d-flex py-5 nav-btn">
       <div class="d-flex flex-sm-column flex-md-row w-100 ">
         <button class="btn btn-dark btn-sm order-0 mx-2" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CHECKOUT.Continue' | translate}}</button>
         <button class="btn btn-secondary btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> {{'CHECKOUT.ShoppingCart' | translate}}</button>

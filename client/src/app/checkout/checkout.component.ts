@@ -10,6 +10,7 @@ import { CustomerService } from '../_services/customer.service';
 import { SharedService } from '../_services/shared_service/shared.service';
 import {CustomerAuthenticationService} from '../_auth/customer-authentication.service'
 import { Title } from '@angular/platform-browser';
+import { CustomersModelServer } from '../_models/customers';
 
 
 @Component({
@@ -27,6 +28,19 @@ pageTitle = "Checkout | Maungano Food Express"
   modes: [] =[];
   userData: any;
   radio_state : boolean = false
+  fname: any;
+  lname: any;
+  phone: any;
+  id: any;
+  customer:CustomersModelServer;
+  email: any;
+  address: any;
+  city: any;
+  region: any;
+  primaryPhone: any;
+  secondaryPhone: any;
+ _address: string;
+
   
 
   constructor(private title: Title,private custAuthService: CustomerAuthenticationService ,private cartService: CartService, private orderService: OrderService, private router: Router,
@@ -34,8 +48,6 @@ pageTitle = "Checkout | Maungano Food Express"
 
   ngOnInit(): void { 
     this.title.setTitle(this.pageTitle)
-
-    
 
     //Initialise form
 
@@ -71,7 +83,25 @@ pageTitle = "Checkout | Maungano Food Express"
     let customerToken = this.custAuthService.getToken();
     console.log('Customer token', customerToken);
     let decoded = jwt_decode(customerToken);
-    console.log('Decoded token', decoded.id_customer);
+    console.log('Decoded token', decoded);
+  
+    //fetch all customer details
+   this.customerService
+   .getCustomerById(decoded.id_customer)
+   .subscribe((data) => {
+     console.log('customer details', data);
+     this.customer = data;
+     this.fname = this.customer.firstName;
+     this.lname = this.customer.lastName;
+     this.email = this.customer.email;
+     this.address = this.customer.address;
+     this.city = this.customer.city;
+     this.region = this.customer.region;
+     this.primaryPhone = this.customer.primaryPhone;
+     this.secondaryPhone = this.customer.secondaryPhone;
+
+     this._address = `${this.address}, ${this.city}, ${this.city}`
+   })
     
   }
 
@@ -113,12 +143,12 @@ let decoded = jwt_decode(customerToken);
 console.log('Decoded token', decoded.id_customer);
      
 this.spinner.show().then(p =>{
-  console.log("spinner", p)
+ // console.log("spinner", p)
 
   var payment_value = +this.checkoutForm.value.payment
-console.log (payment_value)
+//console.log (payment_value)
   var total = +this.checkoutForm.value.total
-  console.log("Total", total)
+  //console.log("Total", total)
 
 switch(payment_value) {
   case 1:

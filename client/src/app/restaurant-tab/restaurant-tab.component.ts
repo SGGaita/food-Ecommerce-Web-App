@@ -12,7 +12,8 @@ export class RestaurantTabComponent implements OnInit {
   restaurants: [] =[];
   products: [] = [];
 
-  
+  contentLoadedSups: boolean =false
+  contentLoadedProds: boolean =false
   _currency = "CDF"
   serverMsg: string;
   errorMsg: any;
@@ -28,6 +29,7 @@ export class RestaurantTabComponent implements OnInit {
        
        console.log("Restaurants", sups)
        this.restaurants = sups.suppliers
+       this.contentLoadedSups = true
       
     },
     err => this.errorMsg = err)
@@ -36,7 +38,7 @@ export class RestaurantTabComponent implements OnInit {
     this.productService.getProducts()
     .subscribe(prods => {
       this.products = prods.products
-    console.log("This products",this.products)
+      this.contentLoadedProds = true
     },
     err => {this.errorMsg = err;
     console.log(this.errorMsg)})

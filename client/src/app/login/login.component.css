@@ -32,15 +32,15 @@ label .red-text{
 }
 
 .alert.validation{
-    height: 20px;
+    height: 30px;
     font-size: small;
     margin: auto;
-    background: #ea5160;
-    border-color: #d32535;
+    background: #ea5160a1;
+    border-color: #d325356b;
 }
 
 .alertMsg{
-    margin-top:-10px
+    
 }
 
 .remember label{

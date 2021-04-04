@@ -80,6 +80,7 @@ h1{
 
 .product-preview img {
   width: 100%;
+  border-radius: 5px;
 }
 
 /*----------------------------*\
@@ -147,6 +148,8 @@ h1{
   width: 90px;
 }
 
+
+
 .product-details .add-to-cart {
   margin-bottom: 30px;
 }
@@ -199,8 +202,15 @@ h1{
 }
 
 .product-details .add-to-cart .qty-label .input-number {
-  width: 90px;
-  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--danger);
+  border-radius: 5px;
+  width: 140px !important;
+}
+.product-details .add-to-cart .qty-label .input-number input {
+text-align: center;
+    font-size: 16px;
+    border: navajowhite;
 }
 
 .product-details .product-btns li {

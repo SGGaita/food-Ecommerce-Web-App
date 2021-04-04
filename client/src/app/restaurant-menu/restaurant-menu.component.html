@@ -1,10 +1,9 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="container-fluid my-5">
     <div class="row">
         <div class="col-sm-12 text-center heading"><h1> {{supplier?.supplier_name}} - Menu </h1></div>
-      <div class="col-sm-3 text-left">
-        <app-food-category></app-food-category>
-      </div>
-      <div class="col-sm-9 text-center ">
+      
+      <div class="col-sm-12 text-center ">
         <app-food-page [restaurantId]="id" ></app-food-page>
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 <!--End homepage-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light " data-toggle="collapse" data-target=".navbar-collapse.show">
     <a class="navbar-brand" routerLink="/"><img src="../../assets/img/logo.png" alt=""></a>
@@ -45,8 +46,7 @@
               <i class="fa fa-2x fa-user" aria-hidden="true"><br><span>{{'HOME.Account' | translate}}</span></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyProfile' | translate}}</a>
-            <a class="dropdown-item" routerLink="/customer/my-orders" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyOrders' | translate}}</a>
+            <a class="dropdown-item" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyOrders' | translate}}</a>
             <div class="row">
               <div class="col-sm-12 d-flex flex-xs-column flex-sm-column flex-md-column" *ngIf="!custAuthService.isLoggedIn()">
                 <a class="btn btn-outline-danger text-center my-2 mx-3" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</a>
@@ -64,25 +64,40 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <button type="button" class="close border-0" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="no-item w-100 d-flex justify-content-center align-items-center flex-column" *ngIf="cartData.data[0].numInCart == 0">
+             <span><img src="../../assets/img/nothing_to_see.png" alt="" class="nothing-img"></span>
+              <span class="nothing-top-text mt-2 font-weight-bold">Nothing to see here!</span>
+              <span class="nothing-small-text">Add items to your cart and then find them here.</span>
+             <span><button class="btn btn-outline-danger border-radius-5 mt-2" routerLink="../restaurants">Continue Shopping</button></span>
+            </div>
+
             <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
-              <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
-                <div class="product-img">
-                  <img src="{{c.product?.image}}" alt="" width="60px">
+              <div class="product-widget w-100 d-flex justify-content-between flex-row py-2" *ngFor="let c of cartData.data; let i=index">
+                <button class="btn border-0" (click)="cartService.DeleteProductFromCart(i)"  data-toggle="tooltip" data-placement="top" title="Delete item"><i class="fa fa-close"></i></button>
+
+                <div class="product-img mr-auto pl-5">
+                  <img src="../../assets/img/menu/{{c.product?.image}}" alt="" width="60px">
                 </div>
-                <div class="product-body">
+                <div class="product-body mr-auto pl-5">
                   <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
                   <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'USD'}}</h4>
+              
                 </div>
-                <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+                
               </div>
+              
             </div>
-            <div class="cart-summary">
+            <div class="cart-summary" *ngIf="cartData.data[0].numInCart !== 0">
               <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} {{'HOME.SelectedItems' | translate}}</small>
               <h5>TOTAL : {{cartTotal | currency:'USD'}}</h5>
             </div>
-            <div class="cart-btns ">
+            <div class="cart-btns " *ngIf="cartData.data[0].numInCart !== 0">
               <a routerLink="/cart">{{'HOME.ViewCart' | translate}}</a>
-              <a routerLink="/checkout">{{'HOME.Checkout' | translate}} <i class="fa fa-arrow-circle-right"></i></a>
+              <a  (click)="checkout()">{{'HOME.Checkout' | translate}} <i class="fa fa-arrow-circle-right"></i></a>
             </div>
              </div>
           </li>

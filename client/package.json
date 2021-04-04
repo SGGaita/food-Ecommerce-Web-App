@@ -35,6 +35,7 @@
     "jwt-decode": "^3.0.0",
     "location-picker": "^1.1.1",
     "ngx-pagination": "^5.0.0",
+    "ngx-skeleton-loader": "^2.9.1",
     "ngx-socket-io": "^3.2.0",
     "ngx-spinner": "^8.1.0",
     "ngx-toastr": "^13.0.0",

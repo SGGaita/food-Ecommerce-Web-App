@@ -1,4 +1,4 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -24,7 +24,7 @@
 
           <div class="card  py-3 px-3 " *ngFor="let o of order">
           <div class="card-body d-flex justify-content-between flex-sm-column flex-md-row w-100">
-                <img src="{{o.image}}" width="100px" alt="">
+                <img src="../../../../assets/img/menu/{{o.image}}" width="100px" alt="">
                 <div class="product-info">
                   <div class="details"><span>
                       <h6 class="pr-3">{{o.product_name}} </h6>

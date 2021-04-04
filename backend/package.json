@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mime": "^2.4.6",
+    "mime": "^2.5.2",
     "moments": "0.0.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",

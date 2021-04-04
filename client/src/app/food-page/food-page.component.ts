@@ -15,6 +15,9 @@ export class FoodPageComponent implements OnInit {
   errorMsg: any;
   menu: any
 
+  public searchText: string;
+   public searchCat;
+
   constructor(private productService: ProductsService, private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -23,7 +26,7 @@ export class FoodPageComponent implements OnInit {
     this.productService.getProductsByRestaurant(this.restaurantId)
         .subscribe(data=>{
           this.menu = data.products
-          if(data.count > 1){
+          if(data.count >= 1){
             return true
           } else{
             this.errorMsg = true

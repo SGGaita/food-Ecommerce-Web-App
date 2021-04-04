@@ -11,6 +11,7 @@ export class CustomersModelServer {
   city:string;
   region: string;
   additional_info:string
+  secondaryPhone:string
 }
 
 export interface CustomerResponse {

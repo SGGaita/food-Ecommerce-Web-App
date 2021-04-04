@@ -1,9 +1,26 @@
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title font-weight-bold">Restaurants</h3>
+  <div class="card-header w-100 d-flex flex-row justify-content-between">
+    <h3 class="card-title font-weight-bold">Restaurants</h3>
+    <!---Search field-->
+    <span class="w-75 d-flex flex-row justify-content-between ml-5 ">
+      <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by name..." [(ngModel)]="searchText" name="searchText">
+    <!---END Search field-->
+    
+        
+      <!--Search by state-->
+      <select name="" id="" class="form-control" [(ngModel)]="searchState" name="searchState">
+        <option selected value="">All</option>
+        <option value="1">Activated</option>
+        <option value="0">Deactivated</option>
+        
+      </select>
+      <!--End Search by state-->
+      </span>
+      
+      <!---END Search field-->
 
-      <div class="card-tools">
+      <div class="card-tools ml-auto">
         <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
         <a class="btn" routerLink="../create"><i class="fas fa-2x fa-plus-circle"></i></a>
       </div>
@@ -22,9 +39,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let restaurant of restaurants; let i=index">
+          <tr class="text-center no-display" *ngIf="restaurants < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let restaurant of restaurants | searchBy:{supplier_name:
+            searchText}  | searchBy:{status:
+              searchState} |  paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true }; let i=index">
             <td>{{i + 1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
+            <td class="image"><img class="rounded-circle"  src="../../assets/img/restaurants/{{restaurant.supplier_image}}" alt="" width="50px" height="50px"></td>
             <td>{{restaurant.supplier_name}}</td>
             <td>{{restaurant.supplier_description}}</td>
             <td >
@@ -32,20 +56,18 @@
               <a class="btn"  data-toggle="tooltip" data-placement="top" title="Activate" *ngIf="restaurant.status<1" (click)="activationUpdate(restaurant.id_supplier,1)"><i class="fa fa-times text-danger"></i></a>
             </td>
             <td>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select action
-                </a>
-              
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                </div>
-              </div>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View details" routerLink="../order-details/{{restaurant.id_supplier}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Delete records" (click)="delete(restaurant.id_supplier)"><i class="fas fa-trash"></i></a></span>   
+                  
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event"></pagination-controls>
+      </div>
     </div>
     <!-- /.card-body -->
   </div>

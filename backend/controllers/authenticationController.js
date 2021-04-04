@@ -8,6 +8,7 @@ const Customer = require('../models/customer');
 router.use(cors());
 var Sequelize = require('sequelize');
 var nodemailer = require('nodemailer')
+const emailServerController = require('../controllers/emailServerController')
 
 var moment = require('moment');
 var currenttime = new moment().format('YYYY-MM-DD HH:MM:SS');
@@ -101,53 +102,72 @@ const loginUser = (req, res) => {
 //Register new customer
 const addNewCustomer = async (req, res, next) => {
 
-    let _acc_state = 0
-    console.log("Date of birth", req.body.dob)
-    var newCustomer = {
+            let _acc_state = 0
+            console.log("Date of birth", req.body.dob)
+            var newCustomer = {
 
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        phone: req.body.phone,
-        dob: new moment(req.body.dob).format('YYYY-MM-DD HH:MM:SS'),
-        password: req.body.password,
-        acc_state: _acc_state,
-        createdAt: currenttime
+                fname: req.body.fname,
+                lname: req.body.lname,
+                email: req.body.email,
+                phone: req.body.phone,
+                dob: new moment(req.body.dob).format('YYYY-MM-DD HH:MM:SS'),
+                password: req.body.password,
+                acc_state: _acc_state,
+                createdAt: currenttime
+            }
+
+            console.log("new customer", newCustomer)
+
+            Customer.findOne({
+                    where: Sequelize.or({
+                        email: req.body.email
+                    })
+                })
+                .then(customer => {
+                        console.log("email", req.body.email)
+                        console.log("customer", customer)
+                        if (!customer) {
+                            const hash = bcrypt.hashSync(newCustomer.password, 10)
+                            newCustomer.password = hash;
+                            Customer.create(newCustomer)
+                                .then(async (customer) => {
+
+                                            let _id_customer = customer.dataValues.id_customer
+
+                                            console.log("Let this customer be customer", customer.dataValues.id_customer)
+
+                                            var transporter = nodemailer.createTransport({
+                                                    host: "mail.maungano.com",
+                                                    port: 465,
+                                                    secure: true, // use TLS
+                                                    auth: {
+                                                        user: "order@maungano.com",
+                                                        pass: "admin2020"
+                                                    }
+                                                    })
+
+                                                    // verify connection configuration
+transporter.verify(function(error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Server is ready to take our messages");
     }
+  });
 
-    console.log("new customer", newCustomer)
+                                                // var transporter = nodemailer.createTransport({
+                                                //     service: 'gmail',
+                                                //     auth: {
+                                                //         user: 'gingergait06@gmail.com',
+                                                //         pass: 'Waxmangme86'
+                                                //     }
+                                                // });
 
-    Customer.findOne({
-            where: Sequelize.or({
-                email: req.body.email
-            })
-        })
-        .then(customer => {
-            console.log("email", req.body.email)
-            console.log("customer", customer)
-            if (!customer) {
-                const hash = bcrypt.hashSync(newCustomer.password, 10)
-                newCustomer.password = hash;
-                Customer.create(newCustomer)
-                    .then(async (customer) => {
-
-                        let _id_customer = customer.dataValues.id_customer
-
-                        console.log("Let this customer be customer", customer.dataValues.id_customer)
-
-                        var transporter = nodemailer.createTransport({
-                            service: 'gmail',
-                            auth: {
-                                user: 'gingergait06@gmail.com',
-                                pass: 'Waxmangme86'
-                            }
-                        });
-
-                        const mailOptions = {
-                            from: 'Tosungana <steveggaita@gmail.com>', // sender address
-                            to: req.body.email, // list of receivers
-                            subject: 'Account activation link', // Subject line
-                            html: `<html>
+                                                const mailOptions = {
+                                                    from: 'Maungano <order@maungano.com>', // sender address
+                                                    to: req.body.email, // list of receivers
+                                                    subject: `Account activation for ${req.body.email} `, // Subject line
+                                                    html: `<html>
 
                             <head>
                                 <title></title>
@@ -251,6 +271,8 @@ const addNewCustomer = async (req, res, next) => {
                                         margin: 0 !important;
                                     }
                                 </style>
+                                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                                            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
                             </head>
                             
                             <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
@@ -272,7 +294,7 @@ const addNewCustomer = async (req, res, next) => {
                                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                                                 <tr>
                                                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                                                        <h1 style="font-size: 28px !important; font-weight:800 text-transform="uppercase" ; margin: 2;">Welcome to Tosungana!</h1> 
+                                                        <h1 style="font-size: 28px !important; font-weight:800 text-transform="uppercase" ; margin: 2;">Welcome to Maungano Food Express!</h1> 
                                                         
                                                         <img src=""  />
                                                     </td>
@@ -284,8 +306,8 @@ const addNewCustomer = async (req, res, next) => {
                                         <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">
                                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                                                 <tr>
-                                                    <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                                        <p style="margin: 0;">We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
+                                                    <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
+                                                        <p style="margin: 0; text-align: center">We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -295,7 +317,7 @@ const addNewCustomer = async (req, res, next) => {
                                                                 <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                                                     <table border="0" cellspacing="0" cellpadding="0">
                                                                         <tr>
-                                                                            <td align="center" style="border-radius: 3px;" bgcolor="#cf0810"><a href="http://localhost:4200/customer/verification/${_id_customer}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #cf0810; display: inline-block;">Confirm Account</a></td>
+                                                                            <td align="center" style="border-radius: 3px;" bgcolor="#cf0810"><a href="http://localhost:4200/customer/verification/${_id_customer}" target="_blank" style="font-size: 15px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #cf0810; display: inline-block;">Confirm Account</a></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
@@ -309,7 +331,7 @@ const addNewCustomer = async (req, res, next) => {
                                                     </td>
                                                 </tr> <!-- COPY -->
                                                 <tr>
-                                                    <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                                                    <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
                                                         <p style="margin: 0;"><a href="http://localhost:4200/customer/verification/${_id_customer}" target="_blank" style="color: #cf0810;">http://localhost:4200/customer/verification/${_id_customer}</a></p>
                                                     </td>
                                                 </tr>
@@ -321,84 +343,83 @@ const addNewCustomer = async (req, res, next) => {
                             </body>
                             
                             </html>` // plain text body
-                        };
+                                                };
 
-                        await transporter.sendMail(mailOptions, function (err, info) {
-                            if (err)
-                                console.log("Error is", err)
-                            else
-                                console.log("console log", info);
+                                                await transporter.sendMail(mailOptions, function (err, info) {
+                                                    if (err)
+                                                        console.log("Error is", err)
+                                                    else
+                                                        console.log("console log", info);
 
-                            res.json({
-                                info: info
-                            })
-                        });
 
-                        //end send email
+                                                });
+
+                                                //end send email
 
 
 
-                        // let token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
-                        //    expiresIn: 3600
-                        // })
-                        res.json({
-                            message: `${req.body.email} `,
+                                                // let token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
+                                                //    expiresIn: 3600
+                                                // })
+                                                res.json({
+                                                    message: `${req.body.email} `,
+                                                })
+                                            })
+                                        .catch(err => {
+                                            res.send('error: ' + err)
+                                        })
+                                }
+                            else {
+                                res.json({
+                                    error: 'Customer already exists'
+                                });
+                            }
+                        })
+                    .catch(err => {
+
+                        res.send('Error: ' + err);
+                    })
+                }
+
+            //Login Customer
+            const loginCustomer = (req, res) => {
+                console.log("Request body", req.body)
+                Customer.findOne({
+                        where: Sequelize.or({
+                            email: req.body.email
                         })
                     })
-                    .catch(err => {
-                        res.send('error: ' + err)
-                    })
-            } else {
-                res.json({
-                    error: 'Customer already exists'
-                });
-            }
-        })
-        .catch(err => {
-
-            res.send('Error: ' + err);
-        })
-}
-
-//Login Customer
-const loginCustomer = (req, res) => {
-    console.log("Request body", req.body)
-    Customer.findOne({
-            where: Sequelize.or({
-                email: req.body.email
-            })
-        })
-        .then(async (customer) => {
-            console.log("Customer returns", customer)
+                    .then(async (customer) => {
+                        console.log("Customer returns", customer)
 
 
-            if (!customer) {
-                return res.status(404).send({
-                    reason: `Customer email ${req.body.email} not found in the database`
-                });
-            }
-            let _acc_state = +customer.dataValues.acc_state
-            console.log('customer id', _acc_state)
-            //check account state
+                        if (!customer) {
+                            return res.status(404).send({
+                                reason: `Customer email ${req.body.email} not found in the database`
+                            });
+                        }
+                        let _acc_state = +customer.dataValues.acc_state
+                        console.log('customer id', _acc_state)
+                        //check account state
 
-            if (_acc_state == 0) { //If account state is inactive, send an activation email to customer email
-                let _id_customer = customer.dataValues.id_customer
+                        if (_acc_state == 0) { //If account state is inactive, send an activation email to customer email
+                            let _id_customer = customer.dataValues.id_customer
 
-                console.log("Let this customer be customer", customer.dataValues.id_customer)
+                            console.log("Let this customer be customer", customer.dataValues.id_customer)
 
-                var transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        user: 'gingergait06@gmail.com',
-                        pass: 'Waxmangme86'
-                    }
-                });
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: 'gingergait06@gmail.com',
+                                    pass: 'Waxmangme86'
+                                }
+                            });
 
-                const mailOptions = {
-                    from: 'Tosungana <steveggaita@gmail.com>', // sender address
-                    to: req.body.email, // list of receivers
-                    subject: 'Account activation link', // Subject line
-                    html: `<html>
+                            const mailOptions = {
+                                from: 'Tosungana <steveggaita@gmail.com>', // sender address
+                                to: req.body.email, // list of receivers
+                                subject: 'Account activation link', // Subject line
+                                html: `<html>
 
                     <head>
                         <title></title>
@@ -572,80 +593,80 @@ const loginCustomer = (req, res) => {
                     </body>
                     
                     </html>` // plain text body
-                };
+                            };
 
-                await transporter.sendMail(mailOptions, function (err, info) {
-                    if (err)
-                        console.log("Error is", err)
-                    else
-                        console.log("console log", info);
+                            await transporter.sendMail(mailOptions, function (err, info) {
+                                if (err)
+                                    console.log("Error is", err)
+                                else
+                                    console.log("console log", info);
 
-                    res.json({
-                        info: info
+                                res.json({
+                                    info: info
+                                })
+                            });
+
+                            return res.status(403).send({
+                                reason: `<h5>Inactive account. An activation link has been sent to email account: <strong>${req.body.email}</strong></h5>`
+                            });
+                        } else { //If account state is active, allow authentication to continue
+                            var passwordIsValid = bcrypt.compareSync(req.body.password, customer.password);
+                            if (!passwordIsValid) { //If password is invalid send error message
+                                return res.status(401).send({
+                                    auth: false,
+                                    accessToken: null,
+                                    reason: 'Invalid Password'
+                                });
+                            } //else generate a token
+                            var token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
+                                expiresIn: 7200
+                            });
+                            res.send({
+                                token: token
+                            })
+                        }
                     })
-                });
-
-                return res.status(403).send({
-                    reason: `<h5>Inactive account. An activation link has been sent to email account: <strong>${req.body.email}</strong></h5>`
-                });
-            } else { //If account state is active, allow authentication to continue
-                var passwordIsValid = bcrypt.compareSync(req.body.password, customer.password);
-                if (!passwordIsValid) { //If password is invalid send error message
-                    return res.status(401).send({
-                        auth: false,
-                        accessToken: null,
-                        reason: 'Invalid Password'
+                    .catch(err => {
+                        res.status(500).send('error: ' + err)
                     });
-                } //else generate a token
-                var token = jwt.sign(customer.dataValues, process.env.SECRET_KEY, {
-                    expiresIn: 7200
-                });
-                res.send({
-                    token: token
-                })
             }
-  })
-        .catch(err => {
-            res.status(500).send('error: ' + err)
-        });
-}
 
 
 
-const accountActivationCustomer = (req, res) => {
-    let _id_customer = req.params.custID
+            const accountActivationCustomer = (req, res) => {
+                let _id_customer = req.params.custID
 
-    Customer.findOne({
-            where: {
-                id_customer: _id_customer
-            }
-        })
-        .then(async (customer) => {
-            
-            await Customer.update({
-                    acc_state: 1
-                }, {
-                    where: {
-                        id_customer: _id_customer
-                    }
-                })
-                .then(data => {
-                    console.log("update state", data)
-                    res.status(200).send({
-                        message: `${customer.dataValues.email}`
+                Customer.findOne({
+                        where: {
+                            id_customer: _id_customer
+                        }
                     })
-                }).catch(err => {
-                    res.send('error: ' + err)
-                })
+                    .then(async (customer) => {
 
-        })
-}
+                        await Customer.update({
+                                acc_state: 1
+                            }, {
+                                where: {
+                                    id_customer: _id_customer
+                                }
+                            })
+                            .then(data => {
+                                console.log("update state", data)
+                                res.status(200).send({
+                                    message: `${customer.dataValues.email}`
+                                })
+                            }).catch(err => {
+                                res.send('error: ' + err)
+                            })
+
+                    })
+            }
 
 
-module.exports = {
-    addNewCustomer,
-    loginCustomer,
-    accountActivationCustomer,
-    addNewUser,
-    loginUser
-}
+            module.exports = {
+                addNewCustomer,
+                loginCustomer,
+                accountActivationCustomer,
+                addNewUser,
+                loginUser
+            }

@@ -1,4 +1,4 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="col-sm-12">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -36,7 +36,7 @@
               No orders in list 
             </td>
           </tr>
-          <tr *ngFor="let order of ordersOpen; let i=index">
+          <tr *ngFor="let order of ordersOpen | paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true, id: 'first' }; let i=index">
             <td class="font-weight-bold">{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
             <td>{{order.total | currency:'CDF':'code'}}</td>
@@ -58,6 +58,11 @@
           
         </tbody>
       </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event" id="first"></pagination-controls>
+      </div>
     </div>
     <!-- /.card-body Open orders -->
     </div>
@@ -83,7 +88,7 @@
               No orders in list 
             </td>
           </tr>
-          <tr *ngFor="let order of ordersClosed; let i=index">
+          <tr *ngFor="let order of ordersClosed | paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true, id: 'second' } ; let i=index">
             <td class="font-weight-bold">{{order.order_reference}}</td>
             <td>{{order.product_name}}</td>
             <td>{{order.total | currency:'CDF':'code'}}</td>
@@ -94,22 +99,22 @@
               
             </td>
             <td>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select action
-                </a>
               
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">View Order</a>
-                  <a class="dropdown-item" href="#">Print Invoice</a>
-                  </div>
-              </div>
+                <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order details" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+                <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View Invoice" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-file-pdf"></i></a></span>
+                
+            
             </td>
           </tr>
 
           
         </tbody>
       </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event" id="second"></pagination-controls>
+      </div>
     </div>
     <!-- /.card-body -->
     </div>

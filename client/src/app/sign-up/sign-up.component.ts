@@ -35,8 +35,6 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-//date convert
-console.log("Date today ",this._date)
 
 let year = this._date.getFullYear()
 let month = (1 + this._date.getMonth()).toString().padStart(2,'0')

@@ -14,6 +14,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class MyOrdersComponent implements OnInit {
   ordersOpen: any;
   ordersClosed: any;
+  p: number = 1;
+  count: any
 
   constructor(
     private customerService: CustomerService,

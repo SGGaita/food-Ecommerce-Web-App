@@ -1,9 +1,13 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row py-3">
-        <div class="col-sm-12 _buttons">
-            <span><a href="" class="btn btn-outline-danger px-3 mx-3 ">All</a></span>
-           <span><a href="" class="btn btn-outline-danger px-3 mx-3">Food</a></span>
-           <span><a href="" class="btn btn-outline-danger px-3 mx-3">Drinks</a></span>
+        <div class="p-3 bg-danger rounded w-100 d-flex justify-content-start flex-row">
+            <span class="font-weight-bold justify-content-center align-items-center" > <h4 class="mt-auto mb-auto mr-2">Filter Items: </h4></span>
+            <select class="w-25 mr-2"  name="searchCat" id="" [(ngModel)]="searchCat">
+                <option value="" selected="selected">All Categories</option>
+                <option value="1">Food</option>
+                <option value="2">Drinks</option>
+            </select>
+            <input class="w-50"  type="text"  id="" placeholder="Seach by food name.." [(ngModel)]="searchText" name="searchText">
            
         </div>
     </div>
@@ -14,10 +18,12 @@
           </div>
     </div>
     
-    <div class="row mt-3">
-        <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of menu">
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of menu | searchBy:{id_product_cat:
+            searchCat} | searchBy:{product_name:
+            searchText} ">
             <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
-            <img src="{{_menu.image}}" alt="">
+            <img src="../../assets/img/menu/{{_menu.image}}" alt="">
             <h3><a routerLink="/../products/{{_menu.id_product}}">{{_menu.product_name}}</a></h3>
             <p><strong>Category:</strong> </p>
             <p class="ingredients">{{_menu.product_description.substr(0,50)}} ...</p>

@@ -16,13 +16,29 @@
               <h2>{{'RESTAURANT.Heading' | translate}}</h2>
               <h1>{{'RESTAURANT.Heading2' | translate}}</h1>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 restaurant" *ngFor="let _restaurant of restaurants">
-              <div class="col-sm-12 badge"><span class="badge badge-danger">{{'RESTAURANT.NewBadge' | translate}}</span></div>
-              <img src="../../assets/img/restaurants/{{_restaurant.supplier_image}}" alt="">
-              <h3>{{_restaurant.supplier_name}}</h3>
-              <p>{{_restaurant.supplier_description.substr(0,80)}} ...</p>
-              <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >{{'RESTAURANT.ViewButton' | translate}}</a>
+
+            <!--Ngx-skeleton END-->
+            <div class="item col-sm-12" *ngIf="!contentLoadedSups">
+              <ngx-skeleton-loader count="4" animation="pulse" appearance="circle" [theme]="{'border-radius': '5px',
+              height: '250px',
+              width: '310px',
+              border: '1px solid white'}"></ngx-skeleton-loader>
+
+              <ngx-skeleton-loader animation="pulse" count="5" [theme]="{ 'border-radius': '0', height: '10px', width:'100%' }"></ngx-skeleton-loader>
             </div>
+
+             <!--Ngx-skeleton END-->
+
+            <div class="w-100 d-flex" *ngIf="contentLoadedSups">
+              <div class="col-sm-12 col-md-6 col-lg-3 restaurant" *ngFor="let _restaurant of restaurants" >
+                <div class="col-sm-12 badge"><span class="badge badge-danger">{{'RESTAURANT.NewBadge' | translate}}</span></div>
+                <img src="../../assets/img/restaurants/{{_restaurant.supplier_image}}" alt="">
+                <h3>{{_restaurant.supplier_name}}</h3>
+                <p>{{_restaurant.supplier_description.substr(0,80)}} ...</p>
+                <a class="btn" routerLink="/restaurants/{{_restaurant.id_supplier}}" >{{'RESTAURANT.ViewButton' | translate}}</a>
+              </div>
+            </div>
+           
           </div>
         </div>
         <!-- End Restaurants section-->
@@ -34,20 +50,35 @@
               <h1>{{'FEATUREDMENU.Heading' | translate}}</h1>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of products">
-              <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
-              <a routerLink="/products/{{_menu.id_product}}"><img src="{{_menu.image}}" alt="">
-              <h3>{{_menu.product_name}}</h3></a>
-              <p><strong>{{'FEATUREDMENU.Category' | translate}}:</strong> {{_menu.category}} </p>
-              <p class="ingredients">{{_menu.product_description.substr(0,80)}} ...</p>
-              <p class="currency"> {{_menu.product_price | currency: 'CDF'}}</p>
-              <button class="btn"
-              [disabled] ="_menu.quality < 1"
-              [class.disabled]="_menu.quantity < 1"
-              [class.btn-warning]="_menu.quantity < 1"
-              (click)="addToCart(_menu.id_product)">{{_menu.quantity < 1 ? "Pas de stock" : "Ajouter à la carte"}}</button>
-              <!--<button >Out of Stock</button>-->
+
+            <!--Ngx-skeleton-->
+            <div class="item col-sm-12" *ngIf="!contentLoadedProds">
+              <ngx-skeleton-loader count="4" animation="pulse" appearance="circle" [theme]="{'border-radius': '5px',
+              height: '250px',
+              width: '310px',
+              border: '1px solid white'}"></ngx-skeleton-loader>
+
+              <ngx-skeleton-loader animation="pulse" count="5" [theme]="{ 'border-radius': '0', height: '10px', width:'100%' }"></ngx-skeleton-loader>
             </div>
+             <!--Ngx-skeleton END-->
+
+            <div class="w-100 d-flex flex-lg-row flex-sm-column justify-content-between" *ngIf="contentLoadedProds">
+              <div class="col-sm-12 col-md-12 col-lg-3  restaurant" *ngFor="let _menu of products">
+                <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
+                <a routerLink="/products/{{_menu.id_product}}"><img src="../../assets/img/menu/{{_menu.image}}" alt="">
+                <h3>{{_menu.product_name}}</h3></a>
+                <p><strong>{{'FEATUREDMENU.Category' | translate}}:</strong> {{_menu.category}} </p>
+                <p class="ingredients">{{_menu.product_description.substr(0,80)}} ...</p>
+                <p class="currency"> {{_menu.product_price | currency: 'CDF'}}</p>
+                <button class="btn"
+                [disabled] ="_menu.quality < 1"
+                [class.disabled]="_menu.quantity < 1"
+                [class.btn-warning]="_menu.quantity < 1"
+                (click)="addToCart(_menu.id_product)">{{_menu.quantity < 1 ? "Pas de stock" : "Ajouter à la carte"}}</button>
+                <!--<button >Out of Stock</button>-->
+              </div>
+            </div>
+           
           </div>
         </div>
         <!--End menus section-->

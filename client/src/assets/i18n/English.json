@@ -112,7 +112,7 @@
   "CHECKOUT":{
     "Heading":"Checkout",
     "Billing":"Billing address",
-    "YourOrder":"Your order",
+    "YourOrder":"Your order summary",
     "Product":"Product(s)",
   "Total":"Total",
     "PlaceOrder":"Place order",

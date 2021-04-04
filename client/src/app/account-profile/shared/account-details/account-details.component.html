@@ -1,42 +1,116 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h5>{{'CUSTOMERPAGE.AccountOver' | translate}}</h5>
-
-      </div>
-
-
-      <div class="col-sm-6">
         <div class="card">
           <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100">
             <h6>{{'CUSTOMERPAGE.AccountDets' | translate}}</h6>
-            <a href=""><i class="fa fa-pencil"></i></a>
           </div>
           <div class="card-body ">
-            <p class="names">{{fname}} {{lname}}</p>
-            <p class="email">{{email}}</p>
+            <form [formGroup]="customerProfileForm" (ngSubmit)="submit()">
+
+              <div class="row">
+                <div class="form-group col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">First and last name</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="fname" name="fname" id="fname">
+                    <input type="text" class="form-control" formControlName="lname" name="lname" id="lname">
+                  </div>
+                </div>
+  
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Email</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="email" name="email" id="email">
+                    
+                  </div>
+                </div>
+  
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Primary Phone</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="primaryPhone" name="primaryPhone" id="primaryPhone">
+                    
+                  </div>
+                </div>
+  
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Secondary Phone</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="secondaryPhone" name="secondaryPhone" id="secondaryPhone">
+                  </div>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">DOB</span>
+                    </div>
+                    <input type="date" class="form-control" formControlName="dob" name="dob" id="dob">
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between w-100 flex-row my-2">
+                 <h6>Shipping Address</h6>
+                 <hr>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Address</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="address" name="address" id="address">
+                  </div>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">City</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="city" name="city" id="city">
+                  </div>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Region</span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="region" name="region" id="region">
+                  </div>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                  <label>Additional information</label>
+                  <div class="input-group mb-3">
+                    <textarea formControlName="additional_info" id="additional_info" name="additional_info" id="" cols="500" rows="5"></textarea>
+                  </div>
+                </div>
+  
+                <div class="col-sm-12">
+                <button class="btn btn-dark"
+                [disabled] ="updating"
+                [class.disabled]="updating"
+                [class.btn-warning]="updating"
+                >{{updating ? "Updating" : "Update"}}</button>
+                </div>
+              </div>
+             
+            </form>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-header d-flex justify-content-between flex-sm-column flex-md-row w-100">
-            <h6>{{'CUSTOMERPAGE.AddressBook' | translate}}</h6>
-            <a href=""><i class="fa fa-pencil"></i></a>
-          </div>
-          <div class="card-body">
-            <p>{{'CUSTOMERPAGE.DefaultAdd' | translate}}</p>
-            <p>{{fname}} {{lname}} </p>
-
-            <p *ngIf="address || city || region"> <span>{{address}}</span> <span
-                *ngIf="(address && city) || (address && region)">,</span> <span>{{city}}</span><span
-                *ngIf="city && region">,</span> <span>{{region}}</span></p>
-            <p *ngIf="primaryPhone || secondaryPhone ">{{primaryPhone}} <span
-                *ngIf="primaryPhone && secondaryPhone ">/</span> {{secondaryPhone}}</p>
-
-          </div>
-        </div>
-      </div>
+      
 
     </div>
   </div>

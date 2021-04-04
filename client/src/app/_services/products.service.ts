@@ -27,25 +27,53 @@ export class ProductsService {
           limit: numberofResults.toString(),
         },
       })
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   getSingleProduct(productId: Number): Observable<ProductModelServer> {
     return this.http
       .get<ProductModelServer>(this.server_url + '/products/' + productId)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
-  
   //Fetch products by restaurant
-  getProductsByRestaurant(
-    restaurantId: Number
-  ): Observable<any> {
+  getProductsByRestaurant(restaurantId: Number): Observable<any> {
     return this.http
-      .get(
-        this.server_url + '/productsByRest/' + restaurantId
-      )
-      .pipe(catchError(this.handleError));
+      .get(this.server_url + '/productsByRest/' + restaurantId)
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   //get products from one category
@@ -54,30 +82,70 @@ export class ProductsService {
       .get<ProductModelServer[]>(
         this.server_url + 'products/category/' + catName
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   //
 
   //Get all products categories
   getAllCategories(): Observable<any> {
-    return this.http
-      .get(this.server_url + '/categories')
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/categories').pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
   //Get categories by ID
   getCategoryById(id: number): Observable<any> {
-    return this.http
-      .get(this.server_url + '/categoryById' + id)
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/categoryById' + id).pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
   //get products from one category
   getCategoryName(catName: string): Observable<ProductModelServer[]> {
     return this.http
       .get<ProductModelServer[]>(this.server_url + '/category/' + catName)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   //add new category
@@ -92,41 +160,83 @@ export class ProductsService {
 
   //Get  all sub categories
   getAllSubCategories(): Observable<any> {
-    return this.http
-      .get(this.server_url + '/subcategories')
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/subcategories').pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
   //Get subcategories by id
   getSubCategoriesById(id: number): Observable<any> {
-    return this.http
-      .get(this.server_url + '/subcategories/' + id)
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/subcategories/' + id).pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
   //Get all food sub categories
   getAllFoodCategories(): Observable<any> {
-    return this.http
-      .get(this.server_url + '/category_food')
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/category_food').pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
   //Get all drink sub categories
   getAllDrinkCategories(): Observable<any> {
-    return this.http
-      .get(this.server_url + '/category_drinks')
-      .pipe(catchError(this.handleError));
+    return this.http.get(this.server_url + '/category_drinks').pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
   }
 
-  //capture errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error:', errorResponse.error.message);
-    } else {
-      console.error('Server Side Error:', errorResponse);
+  //Get Http server errors
+  private getServerErrorMessage(errorResponse: HttpErrorResponse): string {
+    switch (errorResponse.status) {
+      case 404: {
+        return `Not Found: ${errorResponse.message}`;
+      }
+      case 403: {
+        return `Access Denied: ${errorResponse.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${errorResponse.message}`;
+      }
+      default: {
+        return `Unknown Server Error: ${errorResponse.message}`;
+      }
     }
-    return throwError(
-      'There is an error with the sermon. Please notify your systems admin if it persists'
-    );
   }
 }

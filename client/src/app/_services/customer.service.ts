@@ -9,61 +9,120 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { CustomersModelServer} from '../_models/customers' 
+import { CustomersModelServer } from '../_models/customers';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
   private server_url = environment.serverURL;
 
   constructor(private http: HttpClient) {}
 
-//account activation
-accActivation(id_customer: number): Observable<any>{
-  return this.http.get(this.server_url + '/activation/' + id_customer)
-  .pipe(catchError(this.handleError));
-}
+  //account activation
+  accActivation(id_customer: number): Observable<any> {
+    return this.http.get(this.server_url + '/activation/' + id_customer).pipe(
+      catchError((error) => {
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+      }`;
+        } else {
+          errorMsg = this.getServerErrorMessage(error);
+        }
+        return throwError(errorMsg);
+      })
+    );
+  }
 
-   // retrieving customers
-   getCustomers(numberofResults: number = 10): Observable<any> {
+  // retrieving customers
+  getCustomers(numberofResults: number = 10): Observable<any> {
     return this.http
       .get(this.server_url + '/customers', {
         params: {
           limit: numberofResults.toString(),
         },
       })
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   getCustomerById(customerId: Number): Observable<CustomersModelServer> {
     return this.http
       .get<CustomersModelServer>(this.server_url + '/customers/' + customerId)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
   getCustomerAddById(customerId: Number): Observable<CustomersModelServer> {
     return this.http
-      .get<CustomersModelServer>(this.server_url + '/customers_add/' + customerId)
-      .pipe(catchError(this.handleError));
+      .get<CustomersModelServer>(
+        this.server_url + '/customers_add/' + customerId
+      )
+      .pipe(
+        catchError((error) => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message};
+      }`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
 
-  //get products from one category
-  getProductsFromCategory(catName: string): Observable<CustomersModelServer[]> {
-    return this.http.get<CustomersModelServer[]>(this.server_url + 'products/category/' + catName)
-    .pipe(catchError(this.handleError))
-  }
+  //update customer information
+ updateCustomer(customerInfo: any): Observable<any>{
+  var headers = new HttpHeaders();
+return this.http.post(this.server_url + '/customer',customerInfo,{ headers: headers })
+.pipe(catchError(error =>{
+  let errorMsg: string;
+  if (error.error instanceof ErrorEvent) {
+    errorMsg = `Error: ${error.error.message};
+    }`
+  } else {
+   errorMsg = this.getServerErrorMessage(error);
+   }
+  return throwError(errorMsg)
+}));
+}
 
-
-  //capture errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error:', errorResponse.error.message);
-    } else {
-      console.error('Server Side Error:', errorResponse);
+  //Get Http server errors
+  private getServerErrorMessage(errorResponse: HttpErrorResponse): string {
+    switch (errorResponse.status) {
+      case 404: {
+        return `Not Found: ${errorResponse.message}`;
+      }
+      case 403: {
+        return `Access Denied: ${errorResponse.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${errorResponse.message}`;
+      }
+      default: {
+        return `Unknown Server Error: ${errorResponse.message}`;
+      }
     }
-    let errMsg = errorResponse.statusText + errorResponse.url + "Not found"
-    return throwError(
-      errMsg
-    );
   }
 }

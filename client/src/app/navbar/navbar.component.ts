@@ -4,6 +4,9 @@ import * as $ from 'jquery'
 import { CartService } from '../_services/cart.service';
 import { CartModelServer } from '../_models/cart';
 import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-navbar',
@@ -13,15 +16,20 @@ import { CustomerAuthenticationService } from '../_auth/customer-authentication.
 export class NavbarComponent implements OnInit {
 
   cartData: CartModelServer;
-  cartTotal: number
+  cartTotal: number;
+  _message: string
 
-  _route_url = "/home"
+  
 
   constructor(private router:Router, 
     private cartService: CartService,
-    public custAuthService: CustomerAuthenticationService,) { }
+    public custAuthService: CustomerAuthenticationService,
+    private matDialog: MatDialog,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+
+   
 
     this.cartService.cartTotals$.subscribe(total =>{
       this.cartTotal = total;
@@ -29,12 +37,6 @@ export class NavbarComponent implements OnInit {
 
     this.cartService.cartDataObs$.subscribe(data => {this.cartData = data;
       console.log("Cart data",this.cartData)})
-
-     
-    
-
-
-
 }
 
 hasRoute(route: string){
@@ -46,6 +48,50 @@ hasRoute(route: string){
 }
 
 
+checkout(){
+
+
+  if (this.custAuthService.isLoggedIn()){
+   
+    this.router.navigateByUrl('/checkout');
+  }else{
+  //this.openDialog()
+  
+  let _state: any = 1
+    localStorage.setItem('stateToken', _state)
+   
+      this.router.navigateByUrl('customer/login')
+   
+    
+  }
+}
+
+openDialog() {
+
+
+  const dialogConfig = new MatDialogConfig();
+  // The user can't close the dialog by clicking outside its body
+  dialogConfig.disableClose = true;
+  dialogConfig.id = 'logout-modal-component';
+  dialogConfig.height = '90%';
+  dialogConfig.width = '100%';
+  dialogConfig.data = {
+    message: "Login to proceed to checkout",
+    dialogState: 1
+  };
+
+  // https://material.angular.io/components/dialog/overview
+  const modalDialog = this.matDialog.open(
+    LoginComponent,
+    dialogConfig
+  );
+  modalDialog.afterClosed().subscribe((result) => {
+    let data = JSON.parse(result)
+
+    console.log("Data passed to login", data)
+   
+  });
+}
 
 
 }

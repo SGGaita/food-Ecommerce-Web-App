@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { CustomerAuthenticationService } from '../_auth/customer-authentication.service';
 import { SharedService } from '../_services/shared_service/shared.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+
+export interface DialogData {
+  message: string;
+  dialogState: number
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,16 +26,21 @@ export class LoginComponent implements OnInit {
   loading = false;
   public loadingMsg = 'Authenticating...Please wait';
   _userData: any;
+  _state: number;
 
   constructor(
     private title: Title,
     private sharedService: SharedService,
     private custAuthService: CustomerAuthenticationService,
     private router: Router,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    //public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
+    
+  }
 
   ngOnInit(): void {
+    console.log("")
     this.title.setTitle(this.pageTitle);
 
     this.loginForm = this.fb.group({
@@ -64,6 +75,62 @@ export class LoginComponent implements OnInit {
     this.errorMsg = '';
     this.submitted = true;
 
+    this._state = +localStorage.getItem('stateToken')
+    console.log("state value", this._state)
+
+    if (this._state){
+      if (this.loginForm.invalid) {
+        return;
+      }
+      this.loading = true;
+      this.custAuthService.login(this.loginForm.value).subscribe(
+        (data) => {
+          console.log(data);
+  
+          //get and decode token
+          let customerToken = this.custAuthService.getToken();
+          console.log('Customer token', customerToken);
+          var decoded = jwt_decode(customerToken);
+          console.log('Decoded token', decoded);
+          this.sendUserData(decoded);
+          this.successMsg = 'Successful Authentication';
+          this.loading = false;
+          localStorage.removeItem('stateToken')
+          this.router.navigateByUrl('/checkout');
+        },
+        (err) => {
+          this.errorMsg = err.error.reason;
+          this.loading = false;
+          //console.log('This is error', this.errorMsg);
+        }
+      );
+    } else{
+      if (this.loginForm.invalid) {
+        return;
+      }
+      this.loading = true;
+      this.custAuthService.login(this.loginForm.value).subscribe(
+        (data) => {
+          console.log(data);
+  
+          //get and decode token
+          let customerToken = this.custAuthService.getToken();
+          console.log('Customer token', customerToken);
+          var decoded = jwt_decode(customerToken);
+          console.log('Decoded token', decoded);
+          this.sendUserData(decoded);
+          this.successMsg = 'Successful Authentication';
+          this.loading = false;
+          this.router.navigateByUrl('/customer/profile');
+        },
+        (err) => {
+          this.errorMsg = err.error.reason;
+          this.loading = false;
+          console.log('This is error', this.errorMsg);
+        }
+      );
+    }
+/** 
     if (this.loginForm.invalid) {
       return;
     }
@@ -88,5 +155,6 @@ export class LoginComponent implements OnInit {
         console.log('This is error', this.errorMsg);
       }
     );
+    */
   }
 }

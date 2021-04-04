@@ -14,6 +14,7 @@ import { SupplierModelServer } from '../_models/restaurants';
 export class RestaurantsService {
 
   private server_url = environment.serverURL
+  errorMsg: string;
 
   constructor(private http:HttpClient) { }
 
@@ -23,32 +24,82 @@ export class RestaurantsService {
       params:{
         limit: numberofResults.toString()
       }
-    }).pipe(catchError(this.handleError));
+    }).pipe(catchError(error =>{
+      let errorMsg: string;
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Error: ${error.error.message};
+        }`
+      } else {
+       errorMsg = this.getServerErrorMessage(error);
+       }
+      return throwError(errorMsg)
+    }));
   }
 
   //retrieving restaurant by ID
   getSingleRestaurant(productId: Number): Observable<SupplierModelServer> {
     return this.http
       .get<SupplierModelServer>(this.server_url + '/suppliers/' + productId)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(error =>{
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+          }`
+        } else {
+         errorMsg = this.getServerErrorMessage(error);
+         }
+        return throwError(errorMsg)
+      }));
   }
 
   //activation update
   updateStatus(updateInfo: any): Observable<any>{
     var headers = new HttpHeaders();
   return this.http.post(this.server_url + '/activation',updateInfo)
-  .pipe(catchError(this.handleError));
+  .pipe(catchError(error =>{
+    let errorMsg: string;
+    if (error.error instanceof ErrorEvent) {
+      errorMsg = `Error: ${error.error.message};
+      }`
+    } else {
+     errorMsg = this.getServerErrorMessage(error);
+     }
+    return throwError(errorMsg)
+  }));
 }
 
-  //capture errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error:', errorResponse.error.message);
+//delete restaurant 
+deleteRestaurant(id: any) {
+  return this.http.delete(this.server_url + '/delete/' + id)
+  .pipe(catchError(error =>{
+    let errorMsg: string;
+    if (error.error instanceof ErrorEvent) {
+      errorMsg = `Error: ${error.error.message};
+      }`
     } else {
-      console.error('Server Side Error:', errorResponse);
-    }
-    return throwError('There is an error with the sermon. Please notify your systems admin if it persists')
+     errorMsg = this.getServerErrorMessage(error);
+     }
+    return throwError(errorMsg)
+  }))
+}
 
+ 
+//Get Http server errors
+  private getServerErrorMessage(errorResponse: HttpErrorResponse): string{
+    switch (errorResponse.status) {
+      case 404: {
+        return `Not Found: ${errorResponse.message}`;
+      }
+      case 403: {
+        return `Access Denied: ${errorResponse.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${errorResponse.message}`;
+      }
+      default:{
+        return `Unknown Server Error: ${errorResponse.message}`
+      }
+    }
   }
   
 }

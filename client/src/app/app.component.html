@@ -1,24 +1,19 @@
+<div class="wrapper" *ngIf="!hasRoute('admin')">
 
-  
+  <!--Frontend section-->
+  <app-topnav></app-topnav>
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+  <app-copyright></app-copyright>
 
- 
+  <!-- End frontend-->
+</div>
 
-  <div class="wrapper" *ngIf="!hasRoute('admin')">
+<!--Admin section-->
+<div class="wrapper" *ngIf="hasRoute('admin')">
 
-    <!--Frontend section-->
-    <app-topnav ></app-topnav>
-    <app-navbar  ></app-navbar>
-    <router-outlet ></router-outlet>
-    <app-copyright></app-copyright>
-    
-    <!-- End frontend-->
-  </div>
-
-    <!--Admin section-->
-    <div class="wrapper" *ngIf="hasRoute('admin')">
-
-    <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light" *ngIf="auth.isLoggedIn()" >
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" *ngIf="auth.isLoggedIn()">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -26,11 +21,11 @@
       </li>
     </ul>
   </nav>
- 
+
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" *ngIf="auth.isLoggedIn()" >
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" *ngIf="auth.isLoggedIn()">
     <!-- Brand Logo -->
     <a routerLink="./admin" class="brand-link">
       <img src="../assets/img/logo-bw.png" alt="maungano Logo" class="brand-image">
@@ -55,7 +50,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
-            <a routerLink="/admin/dashboard" class="nav-link active">
+            <a routerLink="/admin/dashboard" routerLinkActive='active' class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -63,77 +58,39 @@
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/admin/dashboard/orders" class="nav-link">
+            <a routerLink="/admin/dashboard/orders" routerLinkActive='active' class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Orders
-                </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a  class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-              Catalog
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview ">
-              <li class="nav-item has-treeview">
-                <a  class="nav-link">
-                  <i class="fas fa-hotel nav-icon"></i>
-                  <p>Restaurants Manager
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-
-                <ul class="nav nav-treeview">
-                  
-                  <li class="nav-item">
-                    <a routerLink="/admin/dashboard/restaurants" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Restaurants</p>
-                    </a>
-                
-                  </li>
-
-                </ul>
-              </li>
-            </ul>
-
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a  class="nav-link">
-                  <i class="fas fa-utensils nav-icon"></i>
-                  <p>Menu Manager</p>
-                  <i class="fas fa-angle-left right"></i>
-                </a>
-                <ul class="nav nav-treeview">
-
-                  <li class="nav-item">
-                    <a routerLink="/admin/dashboard/menu/list" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Menu</p>
-                      
-                    </a>
-                
-                  </li>
-                  
-                  <li class="nav-item">
-                    <a routerLink="/admin/dashboard/menu/categories" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Menu Categories</p>
-                    </a>
-                
-                  </li>
-                 
-                </ul>
-              </li>
-            </ul>
           </li>
+
+
+          <li class="nav-item">
+            <a routerLink="/admin/dashboard/restaurants" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Restaurants</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="/admin/dashboard/menu/list" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Menu</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="/admin/dashboard/menu/categories" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Menu Categories</p>
+            </a>
+          </li>
+
           <li class="nav-item has-treeview">
-            <a  class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <a class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
               <p>
                 Customers Manager
                 <i class="fas fa-angle-left right"></i>
@@ -148,26 +105,19 @@
               </li>
 
               <li class="nav-item">
-                <a routerLink="/admin/dashboard/customers/addresses"  class="nav-link">
+                <a routerLink="/admin/dashboard/customers/addresses" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer addresses</p>
                 </a>
               </li>
-             </ul>
+            </ul>
           </li>
-         <!-- <li class="nav-item">
-            <a routerLink="/admin/dashboard/pages" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>
-                Pages
-                </p>
-            </a>
-          </li> -->
+
           <li class="nav-item has-treeview">
             <a class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-               Settings
+                Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -184,17 +134,17 @@
                   <p>System Users</p>
                 </a>
               </li>
-             </ul>
+            </ul>
           </li>
 
           <li class="nav-item ">
             <a (click)="this.auth.logout()" class="nav-link logout">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-              Logout
-                
+                Logout
+
               </p>
-            </a>            
+            </a>
           </li>
 
         </ul>
@@ -206,38 +156,37 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="container-fluid" *ngIf="!auth.isLoggedIn()">
-       
+
 
     <router-outlet></router-outlet>
 
-   </div><!--/. container-fluid -->
-  <div class="content-wrapper" *ngIf="auth.isLoggedIn()" >
+  </div>
+  <!--/. container-fluid -->
+  <div class="content-wrapper" *ngIf="auth.isLoggedIn()">
     <!-- Content Header (Page header) -->
-   
+
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content" >
+    <section class="content">
       <div class="container-fluid">
-       
 
-       <router-outlet></router-outlet>
 
-      </div><!--/. container-fluid -->
+        <router-outlet></router-outlet>
+
+      </div>
+      <!--/. container-fluid -->
     </section>
 
-    
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark" *ngIf="auth.isLoggedIn()" >
+  <aside class="control-sidebar control-sidebar-dark" *ngIf="auth.isLoggedIn()">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-
-  
-
+</div>
+<!-- ./wrapper -->

@@ -39,6 +39,7 @@ export class AdminLoginComponent implements OnInit {
 
     //get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    console.log("This url", this.returnUrl)
   }
 
   //get form controls
@@ -57,10 +58,9 @@ export class AdminLoginComponent implements OnInit {
 
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
-        console.log('logged in', data);
-        this.successMsg = 'Successful Authentication';
         this.loading = false;
-        this.router.navigate(['../', 'dashboard'], { relativeTo: this.route });
+        this.router.navigate([this.returnUrl]);
+        
       },
       (err) => {
         this.errorMsg = err.error.reason;

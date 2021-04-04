@@ -104,7 +104,7 @@ const getProductById = (req, res) => {
         })
         .get()
         .then(prod => {
-            console.log(prod);
+            //console.log(prod);
             if (prod) {
                 res.status(200).json(prod);
             } else {
@@ -228,7 +228,7 @@ const getCategories = (req, res) => {
     database.table('product_category')
         .getAll()
         .then(prod => {
-            console.log(prod);
+            //console.log(prod);
             if (prod) {
                 res.status(200).json(prod);
             } else {
@@ -248,7 +248,7 @@ const getCategoryByID = (req, res) => {
         })
         .getAll()
         .then(prod => {
-            console.log(prod);
+           // console.log(prod);
             if (prod) {
                 res.status(200).json(prod);
             } else {
@@ -265,7 +265,7 @@ const getSubCategories = (req, res) => {
     database.table('product_sub_category')
         .getAll()
         .then(prod => {
-            console.log(prod);
+           // console.log(prod);
             if (prod) {
                 res.status(200).json(prod);
             } else {
@@ -284,7 +284,7 @@ const getSubCategoriesById = (req, res) => {
         })
         .getAll()
         .then(prod => {
-            console.log(prod);
+           // console.log(prod);
             if (prod) {
                 res.status(200).json(prod);
             } else {
@@ -377,7 +377,7 @@ const addNewCategory = async (req, res) => {
             prod_category_description: req.body.prod_category_description,
             cat_status: req.body.cat_status
         }).then((newCategory) => {
-            console.log("new category id", newCategory)
+            //console.log("new category id", newCategory)
 
             res.json({
                 message: `Category successfully added`,

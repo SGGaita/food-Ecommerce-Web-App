@@ -4,6 +4,8 @@ import {ProductModelServer} from "../_models/products";
 import {map} from "rxjs/operators";
 import { RestaurantsService } from '../_services/restaurants.service';
 import { ProductsService } from '../_services/products.service';
+import { Title } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-restaurant-menu',
@@ -15,11 +17,14 @@ export class RestaurantMenuComponent implements OnInit {
 
   supplier:any
   menu: [] = [];
+  pageTitle:string;
   
 
-  constructor(private route: ActivatedRoute, private restaurantService: RestaurantsService , private productService: ProductsService) { }
+  constructor(private title: Title, private spinner: NgxSpinnerService,  private route: ActivatedRoute, private restaurantService: RestaurantsService , private productService: ProductsService) { }
 
   ngOnInit(): void {
+
+    this.spinner.show()
 
     this.route.paramMap.pipe(
       map((param: ParamMap) => {
@@ -33,6 +38,8 @@ export class RestaurantMenuComponent implements OnInit {
       .subscribe(data=>{
         console.log("this restaurant", data)
         this.supplier = data
+        this.title.setTitle(`${this.supplier.supplier_name} Menu | Maungano Food Express`)
+        this.spinner.hide()
         
       })
     

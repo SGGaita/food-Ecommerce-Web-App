@@ -1,8 +1,11 @@
+
+
 i.fas{
     color:'grey' !important;
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
     margin-top:-10px !important
 }
+
 
 .btn{
     cursor:pointer
@@ -22,4 +25,12 @@ i.fas{
 
 .status-deactivated{
     background: #f84a0acc;
+}
+
+
+.pagination /deep/  .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: var(--danger);
+    color: #fefefe;
+    cursor: default;
 }

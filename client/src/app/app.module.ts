@@ -14,7 +14,9 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 //import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 import { AppComponent } from './app.component';
@@ -192,6 +194,8 @@ import { AdminOrderServiceComponent } from './admin-order-service/admin-order-se
    AngularFireModule.initializeApp(environment.firebaseConfig),
    AngularFireAuthModule,
    MatDialogModule,
+   NgxSkeletonLoaderModule.forRoot(),
+   NgxPaginationModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -219,7 +223,7 @@ import { AdminOrderServiceComponent } from './admin-order-service/admin-order-se
     } as SocialAuthServiceConfig,
   }],
   bootstrap: [AppComponent],
-  entryComponents: [AdminOrderServiceComponent]
+  entryComponents: [AdminOrderServiceComponent, LoginComponent]
 })
 export class AppModule { }
 

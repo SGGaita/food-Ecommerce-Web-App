@@ -14,11 +14,16 @@ export class DashboardMainComponent implements OnInit {
   count: any;
   ordersOpen: any;
 
+  public searchText: string;
+  public searchState: number;
+
+  p: number = 1;
+
   constructor(
     private title: Title,
     private orderService: OrderService,
     private spinner: NgxSpinnerService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog 
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +32,7 @@ export class DashboardMainComponent implements OnInit {
     this.orderService.getAllDistinctOrders().subscribe(
       (data) => {
         this.count = data.count;
-        this.ordersOpen = data.orders.filter((obj) => obj.order_state === 0);
+        this.ordersOpen = data.orders.filter((obj) => obj.order_state === 0 || obj.order_state === 1 || obj.order_state === 2);
         console.log('Distinct open orders', this.ordersOpen);
         /** spinner ends after api fetch is complete */
         this.spinner.hide();
@@ -54,7 +59,7 @@ export class DashboardMainComponent implements OnInit {
       createdAt: order.createdAt,
       total: order.total,
       product_name: order.product_name,
-    };
+    }; 
 
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(

@@ -29,25 +29,49 @@ export class UserService {
           limit: numberofResults.toString(),
         },
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(error =>{
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+          }`
+        } else {
+         errorMsg = this.getServerErrorMessage(error);
+         }
+        return throwError(errorMsg)
+      }));
   }
 
   getSingleUser(userId: Number): Observable<UserModelServer> {
     return this.http
       .get<UserModelServer>(this.server_url + '/users/' + userId)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(error =>{
+        let errorMsg: string;
+        if (error.error instanceof ErrorEvent) {
+          errorMsg = `Error: ${error.error.message};
+          }`
+        } else {
+         errorMsg = this.getServerErrorMessage(error);
+         }
+        return throwError(errorMsg)
+      }));
   }
 
-  //capture errors
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error:', errorResponse.error.message);
-    } else {
-      console.error('Server Side Error:', errorResponse);
+  //Get Http server errors
+  private getServerErrorMessage(errorResponse: HttpErrorResponse): string{
+    switch (errorResponse.status) {
+      case 404: {
+        return `Not Found: ${errorResponse.message}`;
+      }
+      case 403: {
+        return `Access Denied: ${errorResponse.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${errorResponse.message}`;
+      }
+      default:{
+        return `Unknown Server Error: ${errorResponse.message}`
+      }
     }
-    return throwError(
-      'There is an error with the sermon. Please notify your systems admin if it persists'
-    );
   }
 
 }

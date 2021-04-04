@@ -6,6 +6,8 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -15,21 +17,28 @@ import {
 export class RestaurantPageComponent implements OnInit {
   restaurants: [] = [];
 
+  pageTitle="Restaurants | Maungano Food Express"
   public searchText: string;
 
   serverMsg: string;
   errorMsg: any;
 
-  constructor(private restaurantService: RestaurantsService) {}
+  constructor(private title: Title, private restaurantService: RestaurantsService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
+    this.title.setTitle(this.pageTitle)
+    this.spinner.show()
     //fetch restaurants
     this.restaurantService.getAllSuppliers().subscribe(
       (sups) => {
         console.log('Restaurants', sups);
         this.restaurants = sups.suppliers;
+        this.spinner.hide()
       },
-      (err) => (this.errorMsg = err)
+      (err) =>{
+        this.spinner.hide()
+        this.errorMsg = err;
+      }
     );
   }
 

@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
+import { CartModelPublic } from '../_models/cart';
 
 export interface customerDetails {
   id_customer: number,
@@ -42,7 +44,19 @@ export class CustomerAuthenticationService {
 
   private token: string
 
-  constructor(private http: HttpClient, private router: Router) { }
+
+  //Data variable to store the cart information on the client's local storage
+  private cartDataClient: CartModelPublic = {
+    total: 0,
+    prodData: [
+      {
+        incart: 0,
+        id: 0,
+      },
+    ],
+  };
+  
+  constructor(private http: HttpClient, private router: Router,private spinner: NgxSpinnerService) { }
 
   //save token
   public saveToken(token: string): void {
@@ -127,13 +141,42 @@ export class CustomerAuthenticationService {
 
   //logout
   public logout(): void {
-    if (window.confirm('Are you sure you want to logout?')) {
+
+    
     this.token = ''
-    window.localStorage.removeItem('customerToken')
-    this.router.navigateByUrl('/customer/login')
+
+      //Get the information from local storage (if any)
+  let info: CartModelPublic = JSON.parse(localStorage.getItem('cart'));
+  //Check if the info variable is null or has some data in it
+  if (info !== null && info !== undefined && info.prodData[0].incart !== 0) {
+    if (window.confirm('Your shopping cart still has items. If you logout this data will be lost. Do you wish to continue?')) {
+      window.localStorage.removeItem('customerToken')
+      this.router.navigateByUrl('/customer/login')
+      .then((p) => {
+        this.cartDataClient = {
+          prodData: [{ incart: 0, id: 0 }],
+          total: 0,
+        };
+        localStorage.setItem(
+          'cart',
+          JSON.stringify(this.cartDataClient)
+        );
+      });
+    } else{
+      return 
+    }
+  }else{
+    if (window.confirm('Are you sure you want to logout?')) {
+      window.localStorage.removeItem('customerToken')
+      this.router.navigateByUrl('/customer/login')
+    
     } else{
       return
     }
+  }
+   
+   
+    
   }
 
   private handleError(errorResponse: HttpErrorResponse) {

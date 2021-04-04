@@ -12,6 +12,9 @@
           <div *ngIf="errorMsg" class="text-danger text-left errorMsg pt-3">
             <p>Error: {{errorMsg}}</p>
           </div>
+          <div *ngIf="successMsg" class="text-danger text-left errorMsg pt-3">
+            <p>{{successMsg}}</p>
+          </div>
         </div>
         <div class="card-body login-card-body">
           <p class=".login-box-msg">Sign in to start your session</p>
