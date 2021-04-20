@@ -52,8 +52,11 @@ export class AdminRestaurantListComponent implements OnInit {
       this.spinner.show();
       this.restaurantService.deleteRestaurant(id)
       .subscribe(data =>{
+        console.log("Data",data)
         this.ngOnInit()
         this.spinner.hide();
+      },err=>{
+        console.log(err)
       })
     }else{
       return

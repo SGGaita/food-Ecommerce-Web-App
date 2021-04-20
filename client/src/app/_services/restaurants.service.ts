@@ -52,6 +52,7 @@ export class RestaurantsService {
       }));
   }
 
+
   //activation update
   updateStatus(updateInfo: any): Observable<any>{
     var headers = new HttpHeaders();

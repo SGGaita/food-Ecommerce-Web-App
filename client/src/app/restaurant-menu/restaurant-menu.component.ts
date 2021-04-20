@@ -6,6 +6,7 @@ import { RestaurantsService } from '../_services/restaurants.service';
 import { ProductsService } from '../_services/products.service';
 import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CurrencyService } from '../_services/currency.service';
 
 @Component({
   selector: 'app-restaurant-menu',
@@ -18,9 +19,12 @@ export class RestaurantMenuComponent implements OnInit {
   supplier:any
   menu: [] = [];
   pageTitle:string;
+  currency: any;
+  iso_code: any;
+  conversion_rate: number;
   
 
-  constructor(private title: Title, private spinner: NgxSpinnerService,  private route: ActivatedRoute, private restaurantService: RestaurantsService , private productService: ProductsService) { }
+  constructor(private title: Title, private spinner: NgxSpinnerService,  private route: ActivatedRoute, private restaurantService: RestaurantsService , private productService: ProductsService, private currencyService: CurrencyService) { }
 
   ngOnInit(): void {
 
@@ -44,6 +48,12 @@ export class RestaurantMenuComponent implements OnInit {
       })
     
     })
+
+   // console.log("Active currency is", this.convertWithCurrencyRate())
   }
+
+
+
+   
 
 }

@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 var multer = require('multer');
-const {
-    database
-} = require('../db/db_mysqli');
 var mime = require("mime");
+const {database} = require('../db/db_mysqli');
+
 const productsController = require('../controllers/productsController'); 
 const supplierController = require('../controllers/supplierController');
 const ordersController = require('../controllers/ordersController');
@@ -12,7 +11,8 @@ const paymentController = require('../controllers/paymentController');
 const authenticationController = require('../controllers/authenticationController');
 const customerController = require('../controllers/customerController');
 const userController = require('../controllers/userController')
-const emailServerController = require('../controllers/emailServerController')
+const emailServerController = require('../controllers/emailServerController');
+const currencyController = require('../controllers/currencyController');
 
 
 
@@ -42,7 +42,8 @@ router.get('/email_order', emailServerController.getEmailOrderVariables)
     a. Get all Suppliers
     b. Get supplier by Id
    5. Order Endpoints 
-   6. Payment Endpoints
+   6. Currency Endpoints
+   7. Payment Endpoints
 */
 
 /*####################################################################*/
@@ -142,10 +143,18 @@ router.get('/order_state', ordersController.getAllOrderStates)
 
 
 /*####################################################################*/
+//6. Currency Endpoints
+router.get('/currency', currencyController.getAllCurrency)
 
-//6. Payment Endpoints
+/*####################################################################*/
+
+//7. Payment Endpoints
 router.get('/payment-modes', paymentController.getAllPaymentModes)
-//payment checkot
+//Mpesa 
+router.get('/mpesa',paymentController.mpesaPassword)
+//Mpesa STK push
+router.post('/mpesa/stk/push', paymentController.mpesaToken, paymentController.mpesaSTKPush)
+//payment checkout
 router.post('/payment', paymentController.paymentGetway)
 
 
@@ -247,13 +256,15 @@ var upload_restaurant = multer({
 });
 
 router.post('/restaurant', upload_restaurant.single('image'), async (req, res) => {
-    console.log(req.body)
+    console.log("whats here",req.body)
     database.table('suppliers')
         .insert({
             supplier_name: req.body.supplier_name,
             supplier_description: req.body.supplier_description,
             supplier_image: req.file.filename,
             status: req.body.status,
+            openTime: req.body.openTime,
+            closeTime: req.body.closeTime
         })
         .then(async (lastId) => {
             //insert restaurant address

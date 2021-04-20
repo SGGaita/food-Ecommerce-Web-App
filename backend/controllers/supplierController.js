@@ -3,6 +3,9 @@ const router = express.Router();
 const {
     database
 } = require('../db/db_mysqli');
+var multer = require('multer');
+var mime = require("mime");
+
 
 //Get all restaurants
 const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is mandatory http://localhost:3636/api/products?page=1
@@ -19,7 +22,10 @@ const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is man
     }
     database.table('suppliers as s')
         .slice(startValue, endValue)
-        .sort({ status :  -1, supplier_name : .1  })
+        .sort({
+            status: -1,
+            supplier_name: .1
+        })
         .getAll()
         .then(sups => {
             if (sups.length > 0) {
@@ -39,6 +45,10 @@ const getAllRestaurants = (req, res) => { // Sending Page Query Parameter is man
 const getRestaurantById = (req, res) => {
     let supplierId = req.params.supId;
     database.table('suppliers as s')
+        .leftJoin([{
+            table: "suppliers_address as a",
+            on: `s.id_supplier = a.id_supplier_fk`
+        }])
         .filter({
             's.id_supplier': supplierId
         })
@@ -54,6 +64,57 @@ const getRestaurantById = (req, res) => {
             }
         }).catch(err => res.json(err));
 }
+
+//**********************************************/
+/*               Restaurant upload                */
+//**********************************************/
+const fileUpload = (req, res, next) => {
+
+    console.log("req body", req.body)
+
+    //set up disk storage engine and filename
+    var storage_restaurant = multer.diskStorage({
+        destination: function (req, file, callback) {
+            console.log("storage restaurant", req)
+            callback(null, '../client/src/assets/img/restaurants');
+            //callback(null, './uploads/img/team');
+            //Use next line in production change path to ../public/assets/img/...
+            //!callback(null, '../client/uploads');
+        },
+        filename: function (req, file, callback) {
+            const prefix = "maungano-rest"
+            const filename = prefix + '-' + Date.now() + '.' + mime.getExtension(file.mimetype)
+            callback(null, filename)
+            //! use next line where no extension
+            //callback(null, file.originalname + '.' + mime.getExtension(file.mimetype))
+        }
+    });
+
+
+    //Multer Mime type validation
+    var upload_restaurant = multer({
+        storage: storage_restaurant,
+        fileFilter: (req, file, cb) => {
+            if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "image/gif") {
+                cb(null, true);
+            } else {
+                cb(null, false);
+                return cb(new Error('Allowed only .png, .jpg, .jpeg and .gif'));
+            }
+        }
+    });
+
+    return upload_restaurant.single('image')
+    next()
+    
+}
+
+const addSupplier = (req, res) => {
+    let upload = req.upload
+    console.log('This upload', upload)
+}
+
+
 
 const updateSupplier = (req, res) => {
     console.log(req.body)
@@ -103,10 +164,10 @@ const deleteSupplier = (req, res) => {
         .remove()
         .then(successNum => {
             res.json({
-                success:true
+                success: true
             })
-        }).catch(err =>  res.json({
-            success:false,
+        }).catch(err => res.json({
+            success: false,
             errorMsg: err
         }));
 
@@ -115,6 +176,8 @@ const deleteSupplier = (req, res) => {
 module.exports = {
     getAllRestaurants,
     getRestaurantById,
+    fileUpload,
+    updateSupplier,
     updateSupplierStatus,
     deleteSupplier
 };

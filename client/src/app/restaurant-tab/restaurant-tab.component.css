@@ -44,6 +44,13 @@ a
     height: 200px;
 }
 
+.restaurant img{
+    width: 250px;
+    height: 150px;
+    border-radius: 10px 0 10px 0;
+    border: 4px #907f7f61 solid;
+  }
+
 .restaurant .btn{
     background: #cf0810;
     color: white;

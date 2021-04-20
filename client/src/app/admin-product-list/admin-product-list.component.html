@@ -1,4 +1,4 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="card">
     <div class="card-header">
       <h3 class="card-title font-weight-bold">Menu</h3>
@@ -38,7 +38,7 @@
           <tr class="text-center no-display" *ngIf="menuItems < 1">No items to display</tr>
           <tr *ngFor="let _menu of menuItems; let i=index">
             <td>{{i+1}}</td>
-            <td class="image"><img class="rounded-circle"  src="{{_menu.image}}" alt="" width="50px" height="50px"></td>
+            <td class="image"><img class="rounded-circle"  src="../../assets/img/menu/{{_menu.image}}" alt="" width="50px" height="50px"></td>
             <td class="text-capitalize">{{_menu.product_name}}</td>
             <td class="text-capitalize">{{_menu.category}}</td>
             <td>{{_menu.subcategory}}</td>

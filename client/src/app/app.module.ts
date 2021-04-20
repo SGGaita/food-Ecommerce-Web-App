@@ -94,6 +94,7 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
+import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-restaurant-edit.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -173,6 +174,7 @@ import { AdminOrderServiceComponent } from './admin-order-service/admin-order-se
     AdminUserListComponent,
     AdminUserCreateComponent,
     AdminOrderServiceComponent,
+    AdminRestaurantEditComponent,
     
   ], 
   imports: [

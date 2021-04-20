@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CurrencyService } from '../_services/currency.service';
+import {CurrencyModelServer} from '../_models/currency';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -22,6 +24,9 @@ export class RestaurantPageComponent implements OnInit {
 
   serverMsg: string;
   errorMsg: any;
+  currency:any;
+  iso_code: any;
+  conversion_rate: number;
 
   constructor(private title: Title, private restaurantService: RestaurantsService, private spinner: NgxSpinnerService) {}
 
@@ -32,7 +37,7 @@ export class RestaurantPageComponent implements OnInit {
     this.restaurantService.getAllSuppliers().subscribe(
       (sups) => {
         console.log('Restaurants', sups);
-        this.restaurants = sups.suppliers;
+        this.restaurants = sups.suppliers.filter(x=>{ return x.status == 1})
         this.spinner.hide()
       },
       (err) =>{
@@ -40,7 +45,12 @@ export class RestaurantPageComponent implements OnInit {
         this.errorMsg = err;
       }
     );
+
+    
   }
+
+
+ 
 
   navigate(_link: any) {}
 }

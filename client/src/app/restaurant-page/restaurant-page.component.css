@@ -20,6 +20,12 @@ span a{
     margin-top:20px;
     margin-bottom:20px; 
   }
+
+  .time span{
+      font-size:0.9rem;
+      color:#960e0e;
+      font-weight: bold;
+  }
   
   .featured-section .nav-tabs{
       text-align: center;
@@ -51,6 +57,8 @@ span a{
   .restaurant img{
     width: 250px;
     height: 150px;
+    border-radius: 10px 0 10px 0;
+    border: 4px #907f7f61 solid;
   }
   
   .restaurant .btn{

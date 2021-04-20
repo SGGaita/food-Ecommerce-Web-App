@@ -32,6 +32,8 @@
     "Heading": "Choose your taste",
     "Heading2": "Restaurant",
     "NewBadge": "New",
+    "Open": "Opening at",
+    "Close":"Closing at",
     "ViewButton": "View our menu",
     "SearchBar": "Find your favorite restaurant..."
   },

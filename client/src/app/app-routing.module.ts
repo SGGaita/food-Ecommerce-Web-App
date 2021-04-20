@@ -53,6 +53,7 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
+import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-restaurant-edit.component';
 
 //Import Auth guards
 
@@ -145,6 +146,7 @@ const routes: Routes = [
               { path: '', redirectTo: 'list', pathMatch: 'full' },
               { path: 'list', component: AdminRestaurantListComponent },
               { path: 'create', component: AdminRestaurantCreateComponent },
+              { path: 'order-details/:id', component: AdminRestaurantEditComponent },
               {
                 path: 'categories',
                 component: AdminRestaurantCategoryListComponent,

@@ -4,23 +4,24 @@ var express = require('express'),
     morgan = require('morgan'),
     cors = require('cors');
     path = require('path');
-   
+
+   require('dotenv').config()
 
 var app = express();
-http = require('http').Server(app)
-var port = process.env.PORT || 3000;
+//http = require('http').Server(app)
+var port = process.env.PORT ;
 //create socket instace with http
-var io = require('socket.io')(http);
+//var io = require('socket.io')(http);
 
 
 //import database connection from dbconnect.js file
 var mysql = require('./db/db');
 
 // add listener for new connection
-io.on("connection", (socket) =>{
+//io.on("connection", (socket) =>{
   //this is the socket for each request
-  console.log("User connected", socket.id)
-})
+ // console.log("User connected", socket.id)
+//})
 
 //Parse as urlencoded and json.
 app.use(bodyParser.urlencoded({extended:true}));

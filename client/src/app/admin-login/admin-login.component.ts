@@ -38,7 +38,7 @@ export class AdminLoginComponent implements OnInit {
     });
 
     //get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin/dashboard';
     console.log("This url", this.returnUrl)
   }
 

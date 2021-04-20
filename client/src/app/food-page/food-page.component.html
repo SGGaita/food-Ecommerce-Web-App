@@ -27,7 +27,7 @@
             <h3><a routerLink="/../products/{{_menu.id_product}}">{{_menu.product_name}}</a></h3>
             <p><strong>Category:</strong> </p>
             <p class="ingredients">{{_menu.product_description.substr(0,50)}} ...</p>
-            <p class="currency"> {{_currency}} {{_menu.product_price}}</p>
+            <p class="currency"> {{getIsoCode()}} {{_menu.product_price}}</p>
             <button class="btn"
             [class.disabled]="_menu.quantity < 1"
             [class.btn-warning]="_menu.quantity < 1"

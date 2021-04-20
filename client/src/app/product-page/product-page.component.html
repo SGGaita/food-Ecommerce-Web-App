@@ -17,11 +17,11 @@
                 <img src="../../assets/img/menu/{{product.image}}" alt="">
               </div>
             </ng-template>
-            <ng-template [ngIf]="thumbimages.length > 0">
+            <!-- <ng-template [ngIf]="thumbimages.length > 0">
               <div class="product-preview" *ngFor="let t of thumbimages">
                 <img [src]="t" alt="">
               </div>
-            </ng-template>
+            </ng-template>-->
           </div>
         </div>
         <!-- /Product main img -->
@@ -51,7 +51,7 @@
             <h2 class="product-name">{{product?.product_name}}</h2>
            
             <div>
-              <h3 class="product-price">{{product?.product_price | currency:'USD'}} </h3>
+              <h3 class="product-price">{{product?.product_price | currency:'CDF' }} </h3>
               <span class="product-available">{{product?.quantity < 1 ? "Out of Stock" : "In Stock"}}</span>
             </div>
             <p>{{product?.description}}</p>

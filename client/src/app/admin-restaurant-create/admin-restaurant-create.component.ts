@@ -58,6 +58,8 @@ export class AdminRestaurantCreateComponent implements OnInit {
       zip: [null],
       country: [null],
       phone: [null],
+      openTime:[null],
+      closeTime:[null],
       geoposition: [null],
     });
   }
@@ -67,14 +69,14 @@ export class AdminRestaurantCreateComponent implements OnInit {
     return this.restaurantForm.controls;
   }
 
-  processImage(imageID: any) {
-    const file: File = imageID.files[0];
+  processImage(imageMenu: any) {
+    const file: File = imageMenu.files[0];
     this.fileData = file;
     var fileExtension = '.' + file.name.split('.').pop();
 
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-      this.selectedImage = new ImageSnippet(event.target.result, file);
+      this.selectedImage = event.target.result
     });
     reader.readAsDataURL(file);
   }
@@ -91,6 +93,9 @@ export class AdminRestaurantCreateComponent implements OnInit {
     var zip = this.restaurantForm.value.zip;
     var country = this.restaurantForm.value.country;
     var phone = this.restaurantForm.value.phone;
+    var openTime = this.restaurantForm.value.openTime;
+    var closeTime = this.restaurantForm.value.closeTime
+
 
     const formData = new FormData();
 
@@ -103,14 +108,17 @@ export class AdminRestaurantCreateComponent implements OnInit {
     formData.append('zip', zip);
     formData.append('phone', phone);
     formData.append('country', country);
+    formData.append('openTime', openTime);
+    formData.append('closeTime', closeTime);
     formData.append('image', this.fileData);
 
     this.http.post('/api/restaurant/', formData).subscribe(
       (res) => {
         console.log("data from server", res)
+        let message = res.message
         this.toast.success(
-          `${res} `,
-          'Category saved',
+          `${message} `,
+          'New restaurant saved',
           {
             timeOut: 3600,
             progressBar: true,
@@ -119,7 +127,9 @@ export class AdminRestaurantCreateComponent implements OnInit {
           }
         );
         this.submitted = false;
+
         this.ngOnInit();
+        this.selectedImage = ""
       },
       (err) => (this.errorMsg = err)
     );

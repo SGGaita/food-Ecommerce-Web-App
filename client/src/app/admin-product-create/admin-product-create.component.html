@@ -121,45 +121,23 @@
                       <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
                     </div>-->
             </div>
-  
-            <div class="col-sm-12 col-md-6 col-lg-6">
-              <div class="d-flex justify-content-between w-100">
-                <span class="form-group upload-btn w-50 d-block">
-                  <label class="image-upload-container btn btn-danger">Upload Image
-                    <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="image"
-                      id="image" name="image">
-                  </label>
-  
-                  <!--<div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" >Email address required</div>
-                                                   <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('email')" >Enter a valid email</div>-->
-                </span>
-  
-                <!--image preview-->      
-                <span class="w-50 d-block">
-                  <div class="img-preview-container text-center">
-                   
-  
-                  </div>
-                </span>
-  
-  
-              </div>
-            </div>
-  
-            <span class="d-flex w-100 pl-2 pt-2">
-              <!--
-                      <button class="btn btn-outline-dark" 
-                    [disabled] ="submitting"
-                  [class.disabled]="submitting"
-                  [class.btn-success]="submitting"
-                    
-                    type="submit">{{submitting ? "Submitting" : "Submit"}}</button> -->
-              <button class="btn btn-outline-dark mr-3"  (click)="save()">Submit</button>
-              <button class="btn btn-outline-danger" type="reset">Reset</button>
-  
-  
-            </span>
+
+             <div class="col-sm-12 col-md-6 col-lg-6">
+                <img class="p-2" [src]="selectedImage" height="150"> <br/>   
+                      <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="image"
+                        id="image" name="image">
+               </div>
+    
           </div>
+           <span class="d-flex w-100 pl-2 pt-2">
+            <button class="btn btn-dark mr-3 ">
+               <p>Submit</p>
+              </button>
+            
+            <button class="btn btn-outline-dark" (click)="back()" >
+                 <p>Cancel</p>
+            </button>
+          </span>
         </form>
   
         <!-- /.row -->

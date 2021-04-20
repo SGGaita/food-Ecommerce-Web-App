@@ -6,9 +6,9 @@
     </span>
     <span class="d-block order-1">
       <span class="mx-2">
-        <select name="" id="">
-          <option>CDF</option>
-          <option value="">USD</option>
+        <select #currencySelect (change)="selectCurrency(currencySelect.value)">
+          <option *ngFor="let _curr of currency" [value]="_curr.id_currency">{{_curr.iso_code}}</option>
+          
         </select>
       </span>
       <span class="mx-2">
