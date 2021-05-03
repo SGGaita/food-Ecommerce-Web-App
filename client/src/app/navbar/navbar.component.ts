@@ -7,6 +7,7 @@ import { CustomerAuthenticationService } from '../_auth/customer-authentication.
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { GeneralSettingsService } from '../_services/general-settings.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,15 +20,28 @@ export class NavbarComponent implements OnInit {
   cartTotal: number;
   _message: string
 
+  store: any = [];
+  logo: any
+
   
 
-  constructor(private router:Router, 
+  constructor(
+    private generalService: GeneralSettingsService,
+    private router:Router, 
     private cartService: CartService,
     public custAuthService: CustomerAuthenticationService,
     private matDialog: MatDialog,
     private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+
+    //fetch store information
+    this.generalService.getStoreInfo()
+    .subscribe(data =>{
+      this.store = data
+      this.logo = this.store.map(x=>x.logo).toString()
+      console.log("logo on nav", this.logo)
+    })
 
    
 

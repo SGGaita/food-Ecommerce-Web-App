@@ -22,7 +22,7 @@ export class AdminProductListComponent implements OnInit {
     this.title.setTitle(this.pageTitle);
     this.spinner.show();
     //fetch menu Items
-    this.menuService.getProducts().subscribe((data) => {
+    this.menuService.getProducts().subscribe((data) => { 
       this.menuItems = data.products;
       console.log(`Menu`, this.menuItems);
       this.spinner.hide();

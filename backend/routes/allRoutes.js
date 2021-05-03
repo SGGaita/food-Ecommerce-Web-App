@@ -13,6 +13,7 @@ const customerController = require('../controllers/customerController');
 const userController = require('../controllers/userController')
 const emailServerController = require('../controllers/emailServerController');
 const currencyController = require('../controllers/currencyController');
+const sysConfigController = require('../controllers/sysConfigController')
 
 
 
@@ -44,6 +45,7 @@ router.get('/email_order', emailServerController.getEmailOrderVariables)
    5. Order Endpoints 
    6. Currency Endpoints
    7. Payment Endpoints
+   8. Store information Endpoints
 */
 
 /*####################################################################*/
@@ -156,6 +158,12 @@ router.get('/mpesa',paymentController.mpesaPassword)
 router.post('/mpesa/stk/push', paymentController.mpesaToken, paymentController.mpesaSTKPush)
 //payment checkout
 router.post('/payment', paymentController.paymentGetway)
+
+
+//8. Store information Endpoints
+router.get('/store', sysConfigController.getStoreInfo)
+router.get('/timezone', sysConfigController.getTimezoneInfo)
+router.get('/social', sysConfigController.getSocialInfo)
 
 
 //7. Endpoints with file uploads

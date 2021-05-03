@@ -54,6 +54,9 @@ import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
 import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-restaurant-edit.component';
+import { GeneralSettingsComponent } from './general-settings/general-settings.component';
+import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { PaymentSettingsComponent } from './payment-settings/payment-settings.component';
 
 //Import Auth guards
 
@@ -185,6 +188,9 @@ const routes: Routes = [
           },
           { path: 'settings', component: AdminSettingsComponent,
         children:[
+          {path:'general', component: GeneralSettingsComponent},
+          {path:'email', component: EmailSettingsComponent},
+          {path:'payment', component: PaymentSettingsComponent},
           { path: 'user-accounts' , component: AdminUsersComponent,
            children:[
              {path: '', redirectTo:'list', pathMatch: 'full'},

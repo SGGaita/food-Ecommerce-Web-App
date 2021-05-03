@@ -95,6 +95,9 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserCreateComponent } from './admin-user-create/admin-user-create.component';
 import { AdminOrderServiceComponent } from './admin-order-service/admin-order-service.component';
 import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-restaurant-edit.component';
+import { GeneralSettingsComponent } from './general-settings/general-settings.component';
+import { EmailSettingsComponent } from './email-settings/email-settings.component';
+import { PaymentSettingsComponent } from './payment-settings/payment-settings.component';
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -175,6 +178,9 @@ import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-rest
     AdminUserCreateComponent,
     AdminOrderServiceComponent,
     AdminRestaurantEditComponent,
+    GeneralSettingsComponent,
+    EmailSettingsComponent,
+    PaymentSettingsComponent,
     
   ], 
   imports: [
@@ -225,7 +231,7 @@ import { AdminRestaurantEditComponent } from './admin-restaurant-edit/admin-rest
     } as SocialAuthServiceConfig,
   }],
   bootstrap: [AppComponent],
-  entryComponents: [AdminOrderServiceComponent, LoginComponent]
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }
 

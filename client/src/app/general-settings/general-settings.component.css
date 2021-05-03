@@ -1,0 +1,64 @@
+label{
+    font-size:1rem !important
+  }
+  label{
+    font-size:1rem !important
+  }
+  
+  i.fas{
+    color:'grey' !important;
+    font-size: 1.2rem !important;
+    margin-top:-5px !important
+  }
+  
+  .input-group [data-toggle=datetimepicker] {
+      cursor: pointer;
+  }
+  
+  .upload-btn{
+    margin-top: 0px;
+      margin-left: 5px;
+  }
+
+  img.bw{
+    background:black
+  }
+  
+  
+  .img-preview-container {
+    background-color: #f7f7f7;
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    display: flex;
+    }
+    
+    .img-preview {
+      background: center center no-repeat;
+      
+      background-size: contain;
+      height: 160px;
+      width: 100%;
+    }
+    
+    .upload-btn input {
+      display: none;
+    }
+    
+    .upload-btn label {
+      height: 50px;
+      width: 180px;
+    }
+  
+    #map {
+      width: 100%;
+      height: 280px;
+      background: #f9f8f8
+  }
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+    font-size: 1rem !important;
+  }

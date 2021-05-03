@@ -6,6 +6,7 @@ import { RestaurantsService } from '../_services/restaurants.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { SupplierModelServer } from '../_models/restaurants';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -14,13 +15,12 @@ class ImageSnippet {
 @Component({
   selector: 'app-admin-restaurant-edit',
   templateUrl: './admin-restaurant-edit.component.html',
-  styleUrls: ['./admin-restaurant-edit.component.css']
+  styleUrls: ['./admin-restaurant-edit.component.css'],
 })
 export class AdminRestaurantEditComponent implements OnInit {
   pageTitle = 'Update Restaurant | Maungano Food Express';
-  
 
-  restaurantUpdateForm: FormGroup;
+  restaurantUpdateForm: FormGroup; 
 
   selectedImage: ImageSnippet;
   imagePreview: string;
@@ -43,15 +43,18 @@ export class AdminRestaurantEditComponent implements OnInit {
   country: any;
   phone: any;
 
-  
-
-  constructor(private route: ActivatedRoute,private location: Location,private fb: FormBuilder, private title: Title, private restaurantsService: RestaurantsService, ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private fb: FormBuilder,
+    private title: Title,
+    private restaurantsService: RestaurantsService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.title.setTitle(this.pageTitle);
-
-   
-
+    this.spinner.show();
     //Instantiate form
     this.restaurantUpdateForm = this.fb.group({
       supplier_name: [null],
@@ -64,56 +67,60 @@ export class AdminRestaurantEditComponent implements OnInit {
       zip: [null],
       country: [null],
       phone: [null],
-      openTime:[null],
-      closeTime:[null],
+      openTime: [null],
+      closeTime: [null],
       geoposition: [null],
+      current_image: [null]
     });
 
     //fetch and patch data to forms
-    this.route.paramMap.pipe(
-      map((param: ParamMap) => {
-        // @ts-ignore
-        return param.params.id;
-      })
-    ).subscribe(suppId => {
-      this.id = suppId; 
+    this.route.paramMap
+      .pipe(
+        map((param: ParamMap) => {
+          // @ts-ignore
+          return param.params.id;
+        })
+      )
+      .subscribe((suppId) => {
+        this.id = suppId;
 
-    this.restaurantsService.getSingleRestaurant(this.id)
-    .subscribe(data =>{
-      console.log("This restaurant data", data)
-      this.restaurant = data
-      this.supplier_name = this.restaurant.supplier_name
-      this.status = this.restaurant.status
-      this.openTime = this.restaurant.openTime
-      this.closeTime = this.restaurant.closeTime
-      this.email = this.restaurant.email
-      this.address= this.restaurant.address
-      this.city= this.restaurant.city
-      this.zip= this.restaurant.zip
-      this.country= this.restaurant.country
-      this.phone = this.restaurant.phone
-      this.supplier_description = this.restaurant.supplier_description
-      this.supplier_image = this.restaurant.supplier_image
+        this.restaurantsService
+          .getSingleRestaurant(this.id)
+          .subscribe((data) => {
+            this.spinner.hide();
+            console.log('This restaurant data', data);
+            this.restaurant = data;
+            this.supplier_name = this.restaurant.supplier_name;
+            this.status = this.restaurant.status;
+            this.openTime = this.restaurant.openTime;
+            this.closeTime = this.restaurant.closeTime;
+            this.email = this.restaurant.email;
+            this.address = this.restaurant.address;
+            this.city = this.restaurant.city;
+            this.zip = this.restaurant.zip;
+            this.country = this.restaurant.country;
+            this.phone = this.restaurant.phone;
+            this.supplier_description = this.restaurant.supplier_description;
+            this.supplier_image = this.restaurant.supplier_image;
 
-      //patch to form
-      this.restaurantUpdateForm.patchValue({
-        supplier_name: this.supplier_name,
-        email: this.email,
-        address: this.address,
-        city: this.city,
-        zip: this.zip,
-        phone:this.phone,
-        country: this.country,
-        openTime: this.openTime,
-        closeTime: this.closeTime,
-        supplier_description: this.supplier_description
+            
+            //patch to form
+            this.restaurantUpdateForm.patchValue({
+              supplier_name: this.supplier_name,
+              email: this.email,
+              address: this.address,
+              city: this.city,
+              zip: this.zip,
+              phone: this.phone,
+              country: this.country,
+              openTime: this.openTime,
+              closeTime: this.closeTime,
+              supplier_description: this.supplier_description,
+            });
 
-      })
-    })
-    })
-    
+          });
+      });
   }
-  
 
   processImage(imageID: any) {
     const file: File = imageID.files[0];
@@ -122,7 +129,7 @@ export class AdminRestaurantEditComponent implements OnInit {
 
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-      this.selectedImage = event.target.result
+      this.selectedImage = event.target.result;
     });
     reader.readAsDataURL(file);
   }
@@ -131,8 +138,18 @@ export class AdminRestaurantEditComponent implements OnInit {
     this.location.back();
   }
 
-  submitUpdate(){
-
+  submitUpdate() {
+    console.log(this.restaurantUpdateForm.value)
+    var supplier_name = this.restaurantUpdateForm.value.supplier_name;
+    var supplier_description = this.restaurantUpdateForm.value.supplier_description;
+    var status = this.restaurantUpdateForm.value.status;
+    var email = this.restaurantUpdateForm.value.email;
+    var address = this.restaurantUpdateForm.value.address;
+    var city = this.restaurantUpdateForm.value.city;
+    var zip = this.restaurantUpdateForm.value.zip;
+    var country = this.restaurantUpdateForm.value.country;
+    var phone = this.restaurantUpdateForm.value.phone;
+    var openTime = this.restaurantUpdateForm.value.openTime;
+    var closeTime = this.restaurantUpdateForm.value.closeTime
   }
-
 }

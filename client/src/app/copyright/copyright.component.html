@@ -3,24 +3,23 @@
 
     <div class="col-sm-12">
       <div class="social-footer footer-right">
-        <div class="socials"><a href="#" class="social-link"><span class="fa fa-facebook"><span
-                class="hidden">hidden</span></span></a><a routerLink="/" class="social-link"><span
-              class="fa fa-twitter"><span class="hidden">hidden</span></span></a><a routerLink="/"
-            class="social-link"><span class="fa fa-pinterest"><span class="hidden">hidden</span></span></a><a
-            routerLink="/" class="social-link"><span class="fa fa-youtube-play"><span
-                class="hidden">hidden</span></span></a><a routerLink="/" class="social-link"><span
-              class="fa fa-instagram"><span class="hidden">hidden</span></span></a>
+        <div class="socials" *ngFor="let _social of social ">
+          <a href="{{_social.social_url}}" class="social-link">
+            <span class="fa {{_social.social_fa_class}}"><span
+              class="hidden">hidden</span></span>
+          </a>
         </div>
+    
 
         <div class="logo">
-          <a routerLink="/"><img src="../../assets/img/logo-bw.png" alt=""></a>
+          <a routerLink="/"><img src="../../assets/img/{{logo}}" alt=""></a>
         </div>
 
         <div class="col-md-12 col-sm-12 menu-footer footer-center">
           <ul class="menu">
-            <li class="menu-item"><span>Maungano, Kinshasa, DR Congo</span></li>
-            <li class="menu-item"><span>Telephone: +243 995 215390</span></li>
-            <li class="menu-item"><span>order@maungano.com</span></li>
+            <li class="menu-item"><span>{{store_name}}, {{city}}, {{country}}</span></li>
+            <li class="menu-item"><span>Telephone: {{phone}}</span></li>
+            <li class="menu-item"><span>{{email}}</span></li>
           </ul>
         </div>
 

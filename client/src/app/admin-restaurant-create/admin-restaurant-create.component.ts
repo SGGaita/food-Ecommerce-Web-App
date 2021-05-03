@@ -112,8 +112,8 @@ export class AdminRestaurantCreateComponent implements OnInit {
     formData.append('closeTime', closeTime);
     formData.append('image', this.fileData);
 
-    this.http.post('/api/restaurant/', formData).subscribe(
-      (res) => {
+    this.http.post<any>('/api/restaurant/', formData).subscribe(
+      res => {
         console.log("data from server", res)
         let message = res.message
         this.toast.success(
@@ -127,9 +127,7 @@ export class AdminRestaurantCreateComponent implements OnInit {
           }
         );
         this.submitted = false;
-
         this.ngOnInit();
-        this.selectedImage = ""
       },
       (err) => (this.errorMsg = err)
     );

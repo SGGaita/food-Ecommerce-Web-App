@@ -7,6 +7,7 @@ import { SharedService } from '../_services/shared_service/shared.service';
 import {TranslateService} from '@ngx-translate/core'
 import jwt_decode from "jwt-decode";
 import { CartModelPublic } from '../_models/cart';
+import { GeneralSettingsService } from '../_services/general-settings.service';
 
 
 @Component({
@@ -20,6 +21,10 @@ export class TopnavComponent implements OnInit {
   customerData: any;
   cart: any;
   _message: string
+
+  store: any = [];
+  email: any
+  phone:any
 
   //Data variable to store the cart information on the client's local storage
   private cartDataClient: CartModelPublic = {
@@ -37,7 +42,7 @@ export class TopnavComponent implements OnInit {
  
   //languages =[{value:"en",lang:"English"},{value:"fr",lang:"French"}]
 
-  constructor(public translate: TranslateService,public custAuthService: CustomerAuthenticationService, private currencyService: CurrencyService, private customerService: CustomerService) { 
+  constructor(private generalService: GeneralSettingsService,public translate: TranslateService,public custAuthService: CustomerAuthenticationService, private currencyService: CurrencyService, private customerService: CustomerService) { 
     translate.addLangs(['English','French'])
     translate.setDefaultLang('French')
     const browserLang = translate.getBrowserLang();
@@ -45,6 +50,13 @@ export class TopnavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //fetch store information
+    this.generalService.getStoreInfo()
+    .subscribe(data =>{
+      this.store = data
+      this.phone = this.store.map(x=>x.phone).toString()
+    })
 
    
     

@@ -1,3 +1,4 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="container-fluid">
   <!-- SELECT2 EXAMPLE -->
   <div class="card card-default">
@@ -17,7 +18,7 @@
     <!-- /.card-header -->
     <div class="card-body">
 
-      <form [formGroup]="restaurantForm" (ngSubmit)="submit()" >
+      <form [formGroup]="restaurantForm" (ngSubmit)="submit()">
 
         <div class="row">
           <div class="form-group col-sm-12 col-md-6">
@@ -42,8 +43,10 @@
           <div class="form-group col-sm-12 col-md-4">
             <label for="">Open time - Closing time</label>
             <div class="input-group mb-2">
-<input type="time" class="form-control" value="08:00" formControlName="openTime" name="openTime" id="openTime"> -
- <input type="time" class="form-control" value="22:00" formControlName="closeTime" name="closeTime" id="closeTime">
+              <input type="time" class="form-control" value="08:00" formControlName="openTime" name="openTime"
+                id="openTime"> -
+              <input type="time" class="form-control" value="22:00" formControlName="closeTime" name="closeTime"
+                id="closeTime">
             </div>
           </div>
 
@@ -59,8 +62,7 @@
           <div class="form-group col-sm-12 col-md-4">
             <label for="">Phone<label class="red-text">*</label></label>
             <div class="input-group mb-2">
-              <input type="tel" class="form-control" id="phone" name="phone" formControlName="phone"
-                placeholder="">
+              <input type="tel" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="">
             </div>
           </div>
 
@@ -143,7 +145,7 @@
                 <option value="Colombia">Colombia</option>
                 <option value="Comoros">Comoros</option>
                 <option value="Congo">Congo</option>
-                <option value="Congo,DR" >Congo,DR</option>
+                <option value="Congo,DR">Congo,DR</option>
                 <option value="Cook Islands">Cook Islands</option>
                 <option value="Costa Rica">Costa Rica</option>
                 <option value="Cote DIvoire">Cote DIvoire</option>
@@ -340,37 +342,38 @@
                 <option value="Zaire">Zaire</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-             </select>
+              </select>
             </div>
           </div>
 
           <div class="form-group col-sm-12 col-md-4">
             <label for="">Description<label class="red-text">*</label></label>
             <div class="input-group mb-2">
-              <textarea class="form-control" formControlName="supplier_description" name="supplier_description" id="supplier_description" cols="50" rows="5"></textarea>
-              </div>
+              <textarea class="form-control" formControlName="supplier_description" name="supplier_description"
+                id="supplier_description" cols="50" rows="5"></textarea>
             </div>
+          </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-6">
-                <img class="p-2" [src]="selectedImage" height="150"> <br/>   
-                      <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="supplier_image"
-                        id="supplier_image" name="supplier_image">
-               </div>
-     </div>
- <span class="d-flex w-100 pl-2 pt-2">
-            <button class="btn btn-dark mr-3 " *ngIf="!submitted">
-               <p>Submit</p>
-              </button>
-            <button class="btn btn-outline-dark mr-3" disabled *ngIf="submitted">
-               <p>Submitting</p>
-              
-              </button>
-            <button class="btn btn-outline-dark" (click)="back()" >
-                 <p>Cancel</p>
-            </button>
-          </span>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <img class="p-2" [src]="selectedImage" height="150"> <br />
+            <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)"
+              formControlName="supplier_image" id="supplier_image" name="supplier_image">
+          </div>
+        </div>
+        <span class="d-flex w-100 pl-2 pt-2">
+          <button class="btn btn-dark mr-3 " *ngIf="!submitted">
+            <p>Submit</p>
+          </button>
+          <button class="btn btn-outline-dark mr-3" disabled *ngIf="submitted">
+            <p>Submitting</p>
+
+          </button>
+          <button class="btn btn-outline-dark" (click)="back()">
+            <p>Cancel</p>
+          </button>
+        </span>
       </form>
- <!-- /.row -->
+      <!-- /.row -->
     </div>
   </div>
   <!-- /.card -->

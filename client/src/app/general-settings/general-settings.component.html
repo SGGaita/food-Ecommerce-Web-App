@@ -1,0 +1,198 @@
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header ">
+        <h3 class="card-title font-weight-bold">General System Settings</h3>
+  
+        <div class="card-tools">
+         
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+   </div>
+  
+      <!-- /.card-header -->
+      <div class="card-body">
+ 
+        <form [formGroup]="generalForm">
+            <div class="row">
+                <div class="form-group col-sm-12 col-md-8">
+                    <label for="">Store name<label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="store_name" name="store_name"
+                        formControlName="store_name" placeholder="Enter store name">
+        
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-6 col-lg-6 py-2">
+                    <label for="">Main logo</label>
+                    <img class="colored p-2" src="../../assets/img/{{logo}}" [src]="selectedImage" width="35%">
+                    <br />
+                    <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)"
+                      formControlName="logo" id="logo" name="logo">
+                  </div>
+
+                  <div class="col-sm-12 col-md-6 col-lg-6">
+                    <label for="">Black and White logo</label>
+                    <img class="bw p-2" src="../../assets/img/{{logobw}}" [src]="selectedImageBW" width="35%">
+                    <br />
+                    <input #imageMenuBW type="file" accept="image/*" (change)="processImageBW(imageMenuBW)"
+                      formControlName="logoBW" id="logoBW" name="logoBW">
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="">Contact Email<label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="email" name="email"
+                        formControlName="email" placeholder="Store email">
+        
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="">Primary phone number <label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="phone" name="phone"
+                        formControlName="phone" placeholder="Enter primary phone number">
+        
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="">Secondary phone number <label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="secondary_phone" name="secondary_phone"
+                        formControlName="secondary_phone" placeholder="Enter secondary phone number">
+        
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="">City <label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="city" name="city"
+                        formControlName="city" placeholder="Enter city">
+        
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="">Country <label class="red-text">*</label></label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="country" name="country"
+                        formControlName="country" placeholder="Enter country">
+        
+                    </div>
+                  </div>
+
+                  <hr>
+                  
+                      <div class="col-sm-12">
+                          <button class="btn btn-dark" width="10px">Save</button>
+                      </div>
+                   
+                 
+
+            </div>
+        </form>
+  
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.card -->
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header ">
+          <h3 class="card-title font-weight-bold">Timezone Settings</h3>
+    
+          <div class="card-tools">
+           
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+    
+        </div>
+    
+        <!-- /.card-header -->
+        <div class="card-body">
+   
+          <form [formGroup]="timezoneForm">
+              <div class="row">
+                  <div class="form-group col-sm-12 col-md-4">
+                      <label for="">City<label class="red-text">*</label></label>
+                      <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="supplier_name" name="supplier_name"
+                          formControlName="city" placeholder="Enter City where store is located">
+          
+                      </div>
+                    </div>
+  
+                    <div class="form-group col-sm-12 col-md-4">
+                      <label for="">Country<label class="red-text">*</label></label>
+                      <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="country" name="country"
+                          formControlName="supplier_name" placeholder="Enter supplier">
+          
+                      </div>
+                    </div>
+  
+                    <div class="form-group col-sm-12 col-md-4">
+                      <label for="">Offset<label class="red-text">*</label></label>
+                      <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="offset" name="offset"
+                          formControlName="offset" placeholder="Enter supplier">
+          
+                      </div>
+                    </div>
+  
+                </div>
+          </form>
+    
+          <!-- /.row -->
+        </div>
+      </div>
+      <!-- /.card -->
+
+      <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header ">
+          <h3 class="card-title font-weight-bold">Social media Settings</h3>
+    
+          <div class="card-tools">
+           
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+    
+        </div>
+    
+        <!-- /.card-header -->
+        <div class="card-body">
+   
+          <form [formGroup]="socialForm">
+              <div class="row">
+                  
+  
+                    
+  
+                   
+  
+                   
+  
+              </div>
+          </form>
+    
+          <!-- /.row -->
+        </div>
+      </div>
+      <!-- /.card -->
+
+    
+  
+  </div>
+  
