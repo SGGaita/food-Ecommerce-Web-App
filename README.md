@@ -1,6 +1,6 @@
 # Food Ordering & Delivery Web Application
-<p align="center">
-<p align="center"> An online food ordering and delivery platform, that enables customers to make food orders  </p>
+<p>
+<p> An online food ordering and delivery platform, that enables customers to make food orders  </p>
 </p>
 
 ## Built With
