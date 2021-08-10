@@ -1,6 +1,6 @@
 # Food Ordering & Delivery Web Application
 <p>
-<p> An online food ordering and delivery platform, that enables customers to make food orders  </p>
+<p> An online food ordering and delivery web platform. Users can make food orders from listed restaurants and have it delivered to their physical address. </p>
 </p>
 
 ## Built With
@@ -15,7 +15,7 @@
 * Search option to filter the restaurants
 * Shopping cart
 * Language translation service using [ngx-translate](https://github.com/ngx-translate/core). Translates between English and French.
-* Payment options include Cash payment, M-Pesa, Airtel Money, Visa/Master Card 
+* Payment options include Cash payment, M-Pesa, Visa/Master Card 
 ## Frontend Walk through
 ### Homepage
 * The landing page has a hero image with a custome welcome text and a link that takes you to the restaurant list page.
