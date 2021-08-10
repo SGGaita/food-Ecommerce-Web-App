@@ -71,9 +71,9 @@
 
             <div class="no-item w-100 d-flex justify-content-center align-items-center flex-column" *ngIf="cartData.data[0].numInCart == 0">
              <span><img src="../../assets/img/nothing_to_see.png" alt="" class="nothing-img"></span>
-              <span class="nothing-top-text mt-2 font-weight-bold">Nothing to see here!</span>
-              <span class="nothing-small-text">Add items to your cart and then find them here.</span>
-             <span><button class="btn btn-outline-danger border-radius-5 mt-2" routerLink="../restaurants">Continue Shopping</button></span>
+              <span class="nothing-top-text mt-2 font-weight-bold">{{'HOME.NothingtoSee' | translate}}</span>
+              <span class="nothing-small-text">{{'HOME.AddItems' | translate}}</span>
+             <span><button class="btn btn-outline-danger border-radius-5 mt-2" routerLink="../restaurants">{{'HOME.ContinueShopping' | translate}}</button></span>
             </div>
 
             <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="product-body mr-auto pl-5">
                   <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
-                  <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'USD'}}</h4>
+                  <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'CDF'}}</h4>
               
                 </div>
                 
@@ -94,7 +94,7 @@
             </div>
             <div class="cart-summary" *ngIf="cartData.data[0].numInCart !== 0">
               <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} {{'HOME.SelectedItems' | translate}}</small>
-              <h5>TOTAL : {{cartTotal | currency:'USD'}}</h5>
+              <h5>TOTAL : {{cartTotal | currency:'CDF'}}</h5>
             </div>
             <div class="cart-btns " *ngIf="cartData.data[0].numInCart !== 0">
               <a routerLink="/cart">{{'HOME.ViewCart' | translate}}</a>

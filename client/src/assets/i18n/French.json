@@ -21,7 +21,10 @@
     "Checkout": "Accédez aux payements",
     "SelectedItems": "Choix fait",
     "Total": "total",
-    "Help": ""
+    "Help": "Aider",
+    "NothingtoSee":"Rien à voir ici!",
+    "AddItems":"Ajoutez des articles à votre panier et retrouvez-les ici.",
+    "ContinueShopping":"Continuer vos achats"
   },
   "HEADER": {
     "Intro": "Fraîche, rapide et delicieux",
@@ -105,7 +108,7 @@
   "CartContents": "Contenu du panier",
   "Image":"Image",
   "Title": "Titre",
-  "Price":"Le prix",
+  "Price":"Prix à l'unité",
   "Quantity":"Quantité",
   "Subtotal":"Sous-total",
   "Total":"Total",

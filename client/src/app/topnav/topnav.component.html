@@ -5,12 +5,12 @@
       <p>{{'TOP.Order' | translate}}: {{phone}} </p>
     </span>
     <span class="d-block order-1">
-      <span class="mx-2">
+     <!-- <span class="mx-2">
         <select #currencySelect (change)="selectCurrency(currencySelect.value)">
           <option *ngFor="let _curr of currency" [value]="_curr.id_currency">{{_curr.iso_code}}</option>
           
         </select>
-      </span>
+      </span> -->
       <span class="mx-2">
         <select #langselect (change)="translate.use(langselect.value)">
           <option *ngFor="let _lang of translate.getLangs()" [value]="_lang" [selected]="_lang[0]"> <img alt="flag"> {{_lang}}</option>

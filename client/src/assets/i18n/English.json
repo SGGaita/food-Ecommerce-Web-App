@@ -21,7 +21,10 @@
     "Checkout": "Checkout",
     "SelectedItems": "Selected item(s)",
     "Total": "Total",
-    "Help": "Help"
+    "Help": "Help",
+    "NothingtoSee":"Nothing to see here!",
+    "AddItems":"Add items to your cart and then find them here.",
+    "ContinueShopping":"Continue Shopping"
   },
   "HEADER": {
     "Intro": "Fresh, rapid and delicious",
@@ -107,7 +110,7 @@
   "CartContents": "Shopping cart content",
   "Image":"Image",
   "Title": "Title",
-  "Price":"Price",
+  "Price":"Price/Unit",
   "Quantity":"Quantity",
   "Subtotal":"Subtotal",
   "Total":"Total",

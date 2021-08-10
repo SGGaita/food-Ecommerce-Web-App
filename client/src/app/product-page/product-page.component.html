@@ -14,7 +14,7 @@
           <div id="product-main-img">
             <ng-template [ngIf]="thumbimages.length === 0">
               <div class="product-preview">
-                <img src="../../assets/img/menu/{{product.image}}" alt="">
+                <img src="../../assets/img/menu/{{product?.image}}" alt="">
               </div>
             </ng-template>
             <!-- <ng-template [ngIf]="thumbimages.length > 0">
@@ -38,7 +38,7 @@
           <ng-template [ngIf]="thumbimages.length === 0">
             <div id="product-imgs">
               <div class="product-preview">
-                <img src="../../assets/img/menu/{{product.image}}" alt="">
+                <img src="../../assets/img/menu/{{product?.image}}" alt="">
               </div>
             </div>
           </ng-template>
@@ -54,7 +54,7 @@
               <h3 class="product-price">{{product?.product_price | currency:'CDF' }} </h3>
               <span class="product-available">{{product?.quantity < 1 ? "Out of Stock" : "In Stock"}}</span>
             </div>
-            <p>{{product?.description}}</p>
+            <p>{{product?.product_description}}</p>
   
   
             <div class="add-to-cart">
@@ -68,7 +68,7 @@
                 </div>
               </div>
               <button (click)="addToCart(product?.id_product)" class="add-to-cart-btn"><i
-                class="fa fa-shopping-cart"></i>{{product.quantity < 1 ? "No Stock" : "Add to cart"}}
+                class="fa fa-shopping-cart"></i>{{product?.quantity < 1 ? "No Stock" : "Add to cart"}}
               </button>
             </div>
   

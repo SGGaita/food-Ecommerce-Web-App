@@ -13,8 +13,9 @@
               <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.FirstName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="fname" name="fname" formControlName="fname" placeholder="{{'REGISTER.EnterFname' | translate}}">
- </div>
+                  <input type="text" class="form-control" id="fname" name="fname" formControlName="fname"
+                    placeholder="{{'REGISTER.EnterFname' | translate}}">
+                </div>
                 <!--Validation
                <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
                   <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
@@ -24,7 +25,8 @@
               <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.LastName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="lname" name="lname" formControlName="lname" placeholder="{{'REGISTER.EnterLname' | translate}}">
+                  <input type="text" class="form-control" id="lname" name="lname" formControlName="lname"
+                    placeholder="{{'REGISTER.EnterLname' | translate}}">
                 </div>
                 <!--Validation
                 <div *ngIf="f.lname.invalid && (f.lname.dirty || f.lname.touched)">
@@ -35,24 +37,26 @@
               <div class="form-group col-sm-12 col-md-12">
                 <label for="">{{'REGISTER.Email' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
-                  <input type="email" [class.is-invalid] = "f.email.invalid && f.email.touched" class="form-control" id="email" name="email" formControlName="email"
-                    placeholder="{{'REGISTER.EnterEmail' | translate}}">
- </div>
+                  <input type="email" [class.is-invalid]="f.email.invalid && f.email.touched" class="form-control"
+                    id="email" name="email" formControlName="email" placeholder="{{'REGISTER.EnterEmail' | translate}}">
+                </div>
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.Phone' | translate}}</label>
                 <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="{{'REGISTER.EnterPhone' | translate}}">
-</div>
+                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone"
+                    placeholder="{{'REGISTER.EnterPhone' | translate}}">
+                </div>
               </div>
 
               <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.Dob' | translate}} </label>
                 <div class="input-group mb-2">
                   <div class="datepicker date input-group p-0 shadow-sm">
-                    <input type="date" name="dob" formControlName="dob" id="dob" max={{min_date}} min="1900-01-28" class="form-control">
-               </div>
+                    <input type="date" name="dob" formControlName="dob" id="dob" max={{min_date}} min="1900-01-28"
+                      class="form-control">
+                  </div>
                 </div>
               </div>
 
@@ -60,8 +64,8 @@
                 <label for="">{{'REGISTER.Password' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
-                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password" formControlName="password"
-                    placeholder="{{'REGISTER.EnterPassword' | translate}}">
+                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password"
+                    formControlName="password" placeholder="{{'REGISTER.EnterPassword' | translate}}">
                 </div>
                 <!--<div *ngIf="submitted && registerForm.get('password').errors" class="alert alert-danger">
                   <div *ngIf="registerForm.get('password').errors.required">
@@ -74,10 +78,11 @@
                 <label for="">{{'REGISTER.CPassword' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
-                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword"
+                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="confirmPassword"
+                    name="confirmPassword" formControlName="confirmPassword"
                     placeholder="{{'REGISTER.EnterCPassword' | translate}}">
                 </div>
-               <!-- <div *ngIf="submitted && f.confirmPassword.errors" >
+                <!-- <div *ngIf="submitted && f.confirmPassword.errors" >
                   div *ngIf="registerForm.get('confirmPassword').errors.required" class="alert alert-danger">
                     Confirm Password is required
                   </div>
@@ -88,13 +93,13 @@
                 </div>-->
               </div>
 
-             <div class="col-sm-12 d-flex">
+              <div class="col-sm-12 d-flex">
                 <button *ngIf="!submitted" class="btn btn-outline-danger btn-block" type="submit">
                   {{'REGISTER.Submit' | translate}}</button>
-                  <button *ngIf="submitted" class="btn btn-outline-danger btn-block" [disabled] ="submitted"
-                  [class.disabled]="submitted" >
-                    {{'REGISTER.Submitted' | translate}}</button>
- </div>
+                <button *ngIf="submitted" class="btn btn-outline-danger btn-block" [disabled]="submitted"
+                  [class.disabled]="submitted">
+                  {{'REGISTER.Submitted' | translate}}</button>
+              </div>
             </div>
 
           </form>

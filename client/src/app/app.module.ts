@@ -39,7 +39,6 @@ import { CartComponent } from './cart/cart.component';
 import { DrinksComponent } from './drinks/drinks.component';
 import { DrinksCategoriesComponent } from './drinks-categories/drinks-categories.component';
 import { DrinksPageComponent } from './drinks-page/drinks-page.component';
-import { SingleProductComponent } from './single-product/single-product.component';
 import { FoodComponent } from './food/food.component';
 import { FoodCategoryComponent } from './food-category/food-category.component';
 import { FoodPageComponent } from './food-page/food-page.component';
@@ -122,7 +121,6 @@ import { PaymentSettingsComponent } from './payment-settings/payment-settings.co
     DrinksComponent,
     DrinksCategoriesComponent,
     DrinksPageComponent,
-    SingleProductComponent,
     FoodComponent,
     FoodCategoryComponent,
     FoodPageComponent,

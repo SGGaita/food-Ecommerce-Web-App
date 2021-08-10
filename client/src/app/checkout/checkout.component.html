@@ -60,13 +60,13 @@
                 {{c.numInCart}} x {{c.product.product_name}}
               </td>
               <td>
-                {{c.product.product_price * c.numInCart | currency: 'USD'}}
+                {{c.product.product_price * c.numInCart | currency: 'CDF'}}
               </td>
 
             </tr>
             <tr>
               <td class="total-hd">Total</td>
-              <td class="total-qty">{{cartTotal | currency: 'USD'}}</td>
+              <td class="total-qty">{{cartTotal | currency: 'CDF'}}</td>
             </tr>
 
           </tbody>

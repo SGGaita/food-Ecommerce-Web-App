@@ -37,10 +37,10 @@ export class ProductPageComponent implements AfterViewInit, OnInit {
       })
     ).subscribe(prodId => {
       this.id = prodId;
-      console.log("this id is", this.id)
+      //console.log("this id is", this.id)
       this.productService.getSingleProduct(this.id).subscribe(prod => {
         this.product = prod;
-        console.log("this product", this.product)
+        //console.log("this product", this.product)
         if (prod.images !== null) {
           this.thumbimages = prod.images.split(';');
         }

@@ -44,7 +44,7 @@
                     <p>{{c.product.product_name}}</p>
                   </td>
                   <td>
-                    <p>{{c.product.product_price}}</p>
+                    <p>{{c.product.product_price | currency: 'CDF'}}</p>
                   </td>
                   <td>
                     <form>
@@ -62,7 +62,7 @@
 
                   <td>
                     <p>
-                      {{cartService.CalculateSubTotal(i) | currency: 'USD'}}
+                      {{cartService.CalculateSubTotal(i) | currency: 'CDF'}}
                     </p>
                   </td>
                 </tr>
@@ -72,7 +72,7 @@
                   <td></td>
                   <td></td>
                   <td>{{'CART.Total' | translate}}</td>
-                  <td>{{cartTotal | currency: 'USD'}}</td>
+                  <td>{{cartTotal | currency: 'CDF'}}</td>
                 </tr>
               </tbody>
 
@@ -83,7 +83,7 @@
           <div class="col-sm-12 d-flex md-5 nav-btn">
             <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
               <button class="btn btn-dark btn-sm order-0" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CART.Continue' | translate}}</button>
-              <button class="btn btn-danger btn-sm order-1 " routerLink="/checkout">{{'CART.CheckOut' | translate}} <i
+              <button class="btn btn-danger btn-sm order-1 " (click)="checkout()">{{'CART.CheckOut' | translate}} <i
                   class="fa fa-arrow-circle-right"></i></button>
             </div>
 
