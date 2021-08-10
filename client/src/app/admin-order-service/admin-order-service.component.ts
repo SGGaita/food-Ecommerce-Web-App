@@ -1,17 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { OrderService } from '../_services/order.service';
 
-export interface DialogData {
-  reference: string;
-  order_state: number;
-  name: string;
-  id_order: number;
-  createdAt: Date;
-  total: number;
-  product_name:string;
-}
+
 
 @Component({
   selector: 'app-admin-order-service',
@@ -21,12 +15,54 @@ export interface DialogData {
 export class AdminOrderServiceComponent implements OnInit {
   pageTitle: string
   orderForm: FormGroup
+  id: any;
+  order: any = [];
+  reference: any;
+  fname: any;
+  lname: any;
+  products: any;
+  total: any;
+  status: any;
 
-  constructor(private title: Title, private fb: FormBuilder , public dialogRef: MatDialogRef<AdminOrderServiceComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  constructor(private title: Title, private fb: FormBuilder,private orderService: OrderService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.pageTitle = `Orders > Order ${this.data.reference} | Maungano Food Express`
-    this.title.setTitle(this.pageTitle)
+
+    //fetch and patch data to forms
+    this.route.paramMap
+      .pipe(
+        map((param: ParamMap) => {
+          // @ts-ignore
+          return param.params.id;
+        })
+      )
+      .subscribe((orderId) => {
+        this.id = orderId;
+        console.log("Route id is", this.id)
+        this.orderService.getSingleOrderById(this.id)
+        .subscribe(data=>{
+          console.log("console",data)
+          this.order = data
+          //get unique value if repeated
+       const unique = (value, index, self) =>{
+        return self.indexOf(value) === index
+      }
+
+      
+
+          this.reference = this.order.map(x=>x.order_reference).filter(unique)
+          this.fname = this.order.map(x=>x.fname).filter(unique)
+          this.lname = this.order.map(x=>x.lname).filter(unique)
+          this.products = this.order.map(x=>x.product_name)
+          this.total = this.order.map(x=>x.total).filter(unique)
+          this.status = this.order.map(x=>x.order_state).filter(unique)
+
+          this.pageTitle = `Orders > Order ${this.reference}  | Maungano Food Express`
+          this.title.setTitle(this.pageTitle)
+        })
+
+      })
+    
 
     this.orderForm = this.fb.group(
       {
@@ -38,7 +74,7 @@ export class AdminOrderServiceComponent implements OnInit {
 
 
  //close dialog
-  close(order: any) {
+  submit() {
     
     var order_state = +this.orderForm.value.order_state
     if (this.orderForm.value.comments){
@@ -47,9 +83,11 @@ export class AdminOrderServiceComponent implements OnInit {
       var comments:any = "No comments"
     }
     
-    Object.assign(order,{new_state: order_state}, {comments: comments})
-    console.log("new order", order)
-    this.dialogRef.close(JSON.stringify(order));
+   
+  }
+
+  back(){
+
   }
 
 }

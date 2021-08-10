@@ -53,25 +53,18 @@
             <td>{{order.total | currency:'CDF':'code'}}</td>
             <td>{{order.payment_name}}</td>
             <td >
-              <span class="alert alert-pending" *ngIf="order.order_state < 1" >New order</span>
-              <span class="alert alert-processing" *ngIf="order.order_state == 1" >Processing</span>
-              <span class="alert alert-info" *ngIf="order.order_state == 2" >Dispatched</span>
-              <span class="alert alert-success" *ngIf="order.order_state == 3">Fulfilled</span>
-              <span class="alert alert-danger" *ngIf="order.order_state == 4">Cancelled</span>
+              <span class="text text-pending" *ngIf="order.order_state < 1" >New order</span>
+              <span class="text text-processing" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="text text-info" *ngIf="order.order_state == 2" >Dispatched</span>
+              <span class="text text-success" *ngIf="order.order_state == 3">Fulfilled</span>
+              <span class="text text-danger" *ngIf="order.order_state == 4">Cancelled</span>
             </td>
         
             <td>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select action
-                </a>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order" routerLink="../orders/order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel order" (click)="cancel(order.id_order_fk)"><i class="fas fa-close"></i></a></span>   
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel order" (click)="cancel(order.id_order_fk)"><i class="fas fa-close"></i></a></span>   
               
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Publish</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                </div>
-              </div>
             </td>
           </tr>
 

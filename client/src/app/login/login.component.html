@@ -1,8 +1,28 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="card mt-3">
-        <div class="card-header text-center">
+
+    <!--Column 1-->
+
+      <!--Column 2  Registration Form-->
+    <div class="col-sm-12 col-md-6 col-lg-6 column1-no-bg" *ngIf="_visible">
+     <app-sign-up></app-sign-up>
+
+    </div>
+
+     <!--Column 1 not Form-->
+    <div class="col-sm-12 col-md-6 col-lg-6 column1 " *ngIf="!_visible">
+      <div class="column1-wrapper ">
+        <h1>{{'LOGIN.Welcome' | translate}}</h1>
+        <p>{{'LOGIN.WelcomeP' | translate}}</p>
+          <a class="btn btn-outline-warning" (click)="TogglePage('register')">{{'LOGIN.Register' | translate}}</a>
+      </div>
+    </div>
+ <!--End Column 1-->
+
+    <!--Column 2 Login Form-->
+    <div class="col-sm-12 col-md-6 col-lg-6 column2" *ngIf="!_visible">
+      <div class="card-wrapper m-5 mt-3 ">
+        <div class=" text-center">
           <h4>{{'LOGIN.Login' | translate}}</h4>
           <p>{{'LOGIN.PromptMsg' | translate}}</p>
           <div class="alert alert-info" *ngIf="loading">
@@ -71,21 +91,22 @@
                 <a routerLink="/customer/forgot-password">{{'LOGIN.Forgot' | translate}} </a>
               </div>
             </div>
-            <button class="btn btn-dark btn-block" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            <button class="btn btn-outline-dark btn-block" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i>
               {{'LOGIN.Login' | translate}} </button>
-            <button class="btn btn-outline-dark btn-block" ><i class="fa fa-google" aria-hidden="true"></i>
-              {{'LOGIN.Google' | translate}}</button>
-
-            <div class="col-sm-12 pt-2 text-center">
-              <a routerLink="/customer/register">{{'LOGIN.Register' | translate}}</a>
-            </div>
-
-
-
-
+            <a  class="text-center "><i class="fa fa-google" aria-hidden="true"></i>
+              {{'LOGIN.Google' | translate}}</a>
 
           </form>
         </div>
+      </div>
+    </div>
+
+   <!--Column 2 not Form-->
+    <div class="col-sm-12 col-md-6 col-lg-6 column2-bg" *ngIf="_visible">
+      <div class="column2-wrapper-bg ">
+        <h1 class="text-dark">{{'LOGIN.WelcomeLogin' | translate}}</h1>
+        <p class="text-dark">{{'LOGIN.WelcomeLoginP' | translate}}</p>
+          <a class="btn btn-outline-danger" (click)="TogglePage('login')">{{'LOGIN.Login' | translate}}</a>
       </div>
     </div>
   </div>

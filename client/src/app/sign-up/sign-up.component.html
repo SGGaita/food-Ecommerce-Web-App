@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 py-3">
-      <div class="card">
+      <div class="">
         <div class="card-header text-center">
           <h4>{{'REGISTER.CreateAccount' | translate}}</h4>
           <p *ngIf="errorMessage" class="text-danger text-left">Error: {{errorMessage}}</p>
@@ -10,19 +10,18 @@
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="row">
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.FirstName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
                   <input type="text" class="form-control" id="fname" name="fname" formControlName="fname" placeholder="{{'REGISTER.EnterFname' | translate}}">
-
-                </div>
+ </div>
                 <!--Validation
                <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
                   <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
                 </div>-->
               </div>
 
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.LastName' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
                   <input type="text" class="form-control" id="lname" name="lname" formControlName="lname" placeholder="{{'REGISTER.EnterLname' | translate}}">
@@ -38,50 +37,31 @@
                 <div class="input-group mb-2">
                   <input type="email" [class.is-invalid] = "f.email.invalid && f.email.touched" class="form-control" id="email" name="email" formControlName="email"
                     placeholder="{{'REGISTER.EnterEmail' | translate}}">
-
-                </div>
-                
-               
+ </div>
               </div>
 
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.Phone' | translate}}</label>
                 <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">#</div>
-                  </div>
                   <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="{{'REGISTER.EnterPhone' | translate}}">
-
-                </div>
+</div>
               </div>
 
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.Dob' | translate}} </label>
                 <div class="input-group mb-2">
                   <div class="datepicker date input-group p-0 shadow-sm">
                     <input type="date" name="dob" formControlName="dob" id="dob" max={{min_date}} min="1900-01-28" class="form-control">
-              
-                </div>
-                  
-
+               </div>
                 </div>
               </div>
 
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.Password' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
                   <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password" formControlName="password"
                     placeholder="{{'REGISTER.EnterPassword' | translate}}">
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="fa" [ngClass]="{
-                              'fa-eye-slash': !fieldTextType,
-                              'fa-eye': fieldTextType
-                            }" (click)="toggleFieldTextType()"></i>
-                    </span>
-                  </div>
-
                 </div>
                 <!--<div *ngIf="submitted && registerForm.get('password').errors" class="alert alert-danger">
                   <div *ngIf="registerForm.get('password').errors.required">
@@ -90,20 +70,12 @@
                 </div>-->
               </div>
 
-              <div class="form-group col-sm-12 col-md-12">
+              <div class="form-group col-sm-12 col-md-6">
                 <label for="">{{'REGISTER.CPassword' | translate}}<label class="red-text">*</label></label>
                 <div class="input-group mb-2">
 
                   <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword"
                     placeholder="{{'REGISTER.EnterCPassword' | translate}}">
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="fa" [ngClass]="{
-                              'fa-eye-slash': !fieldTextType,
-                              'fa-eye': fieldTextType
-                            }" (click)="toggleFieldTextType()"></i>
-                    </span>
-                  </div>
                 </div>
                <!-- <div *ngIf="submitted && f.confirmPassword.errors" >
                   div *ngIf="registerForm.get('confirmPassword').errors.required" class="alert alert-danger">
@@ -116,21 +88,13 @@
                 </div>-->
               </div>
 
-             
- 
-              <div class="col-sm-12 d-flex">
+             <div class="col-sm-12 d-flex">
                 <button *ngIf="!submitted" class="btn btn-outline-danger btn-block" type="submit">
                   {{'REGISTER.Submit' | translate}}</button>
                   <button *ngIf="submitted" class="btn btn-outline-danger btn-block" [disabled] ="submitted"
                   [class.disabled]="submitted" >
                     {{'REGISTER.Submitted' | translate}}</button>
-
-          
-
-              </div>
-              <div class="col-sm-12 pt-2 text-center">
-                <a routerLink="/customer/login">{{'REGISTER.AlreadyAccount' | translate}}</a>
-</div>
+ </div>
             </div>
 
           </form>

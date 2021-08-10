@@ -1,7 +1,13 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
 <div class="card w-100">
+  <div>
+    <h3 class="card-title font-weight-bold">New Orders <small>(This list contains only new orders. To access processed orders <a routerLink="../orders">click here</a>)</small></h3>
+  </div>
   <div class="card-header w-100 d-flex flex-row justify-content-between">
-    <h3 class="card-title font-weight-bold">New Orders</h3>
+    <div>
+
+    </div>
+    
     <!---Search field-->
     <span class="w-50 d-flex flex-row justify-content-between ml-5">
       <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by Reference number..." [(ngModel)]="searchText" name="searchText">
@@ -33,7 +39,7 @@
             <th>Total price</th>
             <th>Payment mode</th>
             <th>Customer</th>
-            <th>State</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -60,15 +66,9 @@
               <span class="alert alert-danger" *ngIf="order.order_state == 4">Cancelled</span>
             </td>
             <td>
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select action
-                </a>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order" routerLink="../orders/order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel order" (click)="cancel(order.id_order_fk)"><i class="fas fa-close"></i></a></span>   
               
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" (click)="openDialog(order)">Serve</a>
-                </div>
-              </div>
             </td>
           </tr>
 

@@ -70,8 +70,10 @@
     "EmailRequired": "Email est requis",
     "InvalidEmail":"Format d'e-mail non valide *example@email.com",
     "PasswordRequired":"Mot de pass requis",
-    "Register": "S'incrire un compte",
-    "Google": "Connectez-vous avec Google"
+    "Register": "S'incrire",
+    "Google": "Connectez-vous avec Google",
+    "Welcome": "Bienvenue",
+    "WelcomeP":"Accédez à plus de fonctionnalités client"
   },
   "REGISTER": {
     "CreateAccount": "S'incrire un compte",

@@ -133,13 +133,14 @@ const routes: Routes = [
             component: DashboardMainComponent,
             data: { title: 'Dashboard Main' },
           },
-          {path: 'order-service/:id', component: AdminOrderServiceComponent},
+          
           {
             path: 'orders',
             component: AdminOrdersComponent,
             children: [
               { path: '', redirectTo: 'list', pathMatch: 'full' },
               { path: 'list', component: AdminOrderListComponent },
+              {path: 'order-details/:id', component: AdminOrderServiceComponent},
             ],
           },
           {
@@ -149,7 +150,7 @@ const routes: Routes = [
               { path: '', redirectTo: 'list', pathMatch: 'full' },
               { path: 'list', component: AdminRestaurantListComponent },
               { path: 'create', component: AdminRestaurantCreateComponent },
-              { path: 'order-details/:id', component: AdminRestaurantEditComponent },
+              { path: 'restaurant-details/:id', component: AdminRestaurantEditComponent },
               {
                 path: 'categories',
                 component: AdminRestaurantCategoryListComponent,

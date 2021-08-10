@@ -44,9 +44,9 @@ export class TopnavComponent implements OnInit {
 
   constructor(private generalService: GeneralSettingsService,public translate: TranslateService,public custAuthService: CustomerAuthenticationService, private currencyService: CurrencyService, private customerService: CustomerService) { 
     translate.addLangs(['English','French'])
-    translate.setDefaultLang('French')
+    translate.setDefaultLang('English')
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/English|French/) ? browserLang : 'French');
+    translate.use(browserLang.match(/English|French/) ? browserLang : 'English');
   }
 
   ngOnInit(): void {

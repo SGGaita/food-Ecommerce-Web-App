@@ -34,7 +34,7 @@
           <button class="btn btn-danger d-lg-none w-50 rounded-0" routerLink="/checkout" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Checkout' | translate}} <i class="fa fa-arrow-circle-right"></i></button>
         </div>
 
-        <button class="btn btn-danger d-block d-lg-none my-2" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</button>
+        <button class="btn btn-danger d-block d-lg-none my-2 text-center" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</button>
         <button class="btn btn-warning d-block d-lg-none" routerLink="/customer/register" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Register' | translate}}</button>
 
        
@@ -46,7 +46,8 @@
               <i class="fa fa-2x fa-user" aria-hidden="true"><br><span>{{'HOME.Account' | translate}}</span></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyOrders' | translate}}</a>
+            <a class="dropdown-item" routerLink="/customer/profile/my-account" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyProfile' | translate}}</a>
+            <a class="dropdown-item" routerLink="/customer/profile/orders" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyOrders' | translate}}</a>
             <div class="row">
               <div class="col-sm-12 d-flex flex-xs-column flex-sm-column flex-md-column" *ngIf="!custAuthService.isLoggedIn()">
                 <a class="btn btn-outline-danger text-center my-2 mx-3" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</a>

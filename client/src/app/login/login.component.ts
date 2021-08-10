@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   public loadingMsg = 'Authenticating...Please wait';
   _userData: any;
   _state: number;
+  _visible: boolean;
 
   constructor(
     private title: Title,
@@ -68,6 +69,20 @@ export class LoginComponent implements OnInit {
   //Share user data via shared service
   sendUserData(message: string) {
     this.sharedService.nextCustomerMessage(message);
+  }
+
+
+  //child page toggler
+  TogglePage(pageValue: string){
+    
+    switch(pageValue) {
+      case 'register':
+        this._visible = true 
+        break;
+      case 'login':
+        this._visible = false
+        break;
+    }
   }
 
   //login

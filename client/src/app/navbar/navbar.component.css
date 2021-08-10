@@ -295,7 +295,7 @@ li .cart-count {
 
   .navbar.bg-light {
     z-index: 2000;
-    background-color: rgb(22 30 33) !important;
+    background-color: #fff !important;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
       0 2px 10px 0 rgba(0, 0, 0, 0.12);
   }

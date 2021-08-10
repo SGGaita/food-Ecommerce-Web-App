@@ -211,7 +211,7 @@ import { PaymentSettingsComponent } from './payment-settings/payment-settings.co
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       },
-      defaultLanguage: 'French'
+      defaultLanguage: 'English'
     }),
     
     

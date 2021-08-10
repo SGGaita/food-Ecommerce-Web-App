@@ -14,7 +14,7 @@
     "Cart": "View Cart",
     "MyProfile": "My Profile",
     "MyOrders": "My Orders",
-    "Register": "Register account",
+    "Register": "Sign up",
     "SingIn": "Sign in",
     "ViewCart": "View cart",
     "Admin": "Administrator",
@@ -70,8 +70,12 @@
     "EmailRequired": "Email is required",
     "InvalidEmail":"Invalid Email format *example@email.com",
     "PasswordRequired":"Password is required",
-    "Register": "Register an account",
-    "Google": "Sign in with Google"
+    "Register": "Sign up",
+    "Google": "Sign in with Google",
+    "Welcome": "Welcome",
+    "WelcomeP":"Access more customer features.",
+    "WelcomeLogin": "Welcome Back!",
+    "WelcomeLoginP":"Kindly sign in to access your customer features."
   },
   "REGISTER": {
     "CreateAccount": "Create an account",

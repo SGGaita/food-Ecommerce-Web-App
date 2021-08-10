@@ -30,7 +30,7 @@ th,td{
 
 label {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500 !important;
   margin-bottom: 0.1rem !important;
 }
 

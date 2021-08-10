@@ -28,7 +28,7 @@ export class CopyrightComponent implements OnInit {
     //fetch store information
     this.generalService.getStoreInfo()
     .subscribe(data =>{
-      console.log('Data', JSON.stringify(data))
+      //console.log('Data', JSON.stringify(data))
       this.store = data
       this.store_name = this.store.map(x=>x.store_name).toString()
       this.city = this.store.map(x=>x.city).toString()
@@ -41,9 +41,9 @@ export class CopyrightComponent implements OnInit {
     //fetch social information
     this.generalService.getSocialMedia()
     .subscribe(data =>{
-      console.log(`social ${JSON.stringify(data)}`)
+      //console.log(`social ${JSON.stringify(data)}`)
       this.social = data
-      console.log("Social media", this.social)
+      //console.log("Social media", this.social)
     })
   }
 

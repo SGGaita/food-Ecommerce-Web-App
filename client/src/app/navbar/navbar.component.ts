@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
     .subscribe(data =>{
       this.store = data
       this.logo = this.store.map(x=>x.logo).toString()
-      console.log("logo on nav", this.logo)
+      //console.log("logo on nav", this.logo)
     })
 
    
@@ -50,7 +50,8 @@ export class NavbarComponent implements OnInit {
     });
 
     this.cartService.cartDataObs$.subscribe(data => {this.cartData = data;
-      console.log("Cart data",this.cartData)})
+      //console.log("Cart data",this.cartData)
+    })
 }
 
 hasRoute(route: string){
@@ -102,7 +103,7 @@ openDialog() {
   modalDialog.afterClosed().subscribe((result) => {
     let data = JSON.parse(result)
 
-    console.log("Data passed to login", data)
+    //console.log("Data passed to login", data)
    
   });
 }

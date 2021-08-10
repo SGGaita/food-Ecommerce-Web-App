@@ -29,8 +29,9 @@ export class DashboardMainComponent implements OnInit {
 
     this.orderService.getAllDistinctOrders().subscribe(
       (data) => {
-        this.count = data.count;
+        
         this.ordersOpen = data.orders.filter((obj) => obj.order_state === 0 || obj.order_state === 1 || obj.order_state === 2);
+        this.count = data.length;
         console.log('Distinct open orders', this.ordersOpen);
         /** spinner ends after api fetch is complete */
         this.spinner.hide();
@@ -39,6 +40,10 @@ export class DashboardMainComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  cancel(id:number){
+    console.log(id)
   }
 
   refresh() {

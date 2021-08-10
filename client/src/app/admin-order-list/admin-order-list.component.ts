@@ -29,7 +29,7 @@ export class AdminOrderListComponent implements OnInit {
     this.orderService.getAllDistinctOrders().subscribe((data) => {
       console.log(data);
       this.count = data.count;
-      this.ordersOpen = data.orders.filter(obj => obj.order_state ===  0 || obj.order_state ===  1 || obj.order_state ===  2);
+      this.ordersOpen = data.orders;
       this.spinner.hide();
     },
     err=>{});

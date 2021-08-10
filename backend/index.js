@@ -15,7 +15,7 @@ var port = process.env.PORT ;
 
 
 //import database connection from dbconnect.js file
-var mysql = require('./db/db');
+//var mysql = require('./db/db');
 
 // add listener for new connection
 //io.on("connection", (socket) =>{
