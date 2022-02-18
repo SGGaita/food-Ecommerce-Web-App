@@ -1,4 +1,4 @@
-# Food Ordering & Delivery Web Application
+# Food Ordering Web Application
 <p>
 <p> An online food ordering and delivery web platform. Users can make food orders from listed restaurants and have it delivered to their physical address. </p>
 </p>
@@ -15,7 +15,7 @@
 * Search option to filter the restaurants
 * Shopping cart
 * Language translation service using [ngx-translate](https://github.com/ngx-translate/core). Translates between English and French.
-* Payment options include Cash payment, M-Pesa, Visa/Master Card 
+* Payment options include Cash payment, M-Pesa(Incomplete), Visa/Master Card(Incomplete) 
 ## Frontend Walk through
 ### Homepage
 * The landing page has a hero image with a custome welcome text and a link that takes you to the restaurant list page.
@@ -63,8 +63,8 @@
 
 <p>This application implements the following payments gateways:</p>
 
-* M-PESA - This is implemented using the [M-Pesa Library for Node JS ](https://github.com/safaricom/mpesa-node-library), that exposes M-Pesa API by Safaricom.
-* Stripe - The Stripe Node library provides convenient access to the [Stripe API](https://github.com/stripe/stripe-node) that allows collecting customer and payment information made using VISA/ Mastercard.
+* M-PESA - [INCOMPLETE] This is implemented using the [M-Pesa Library for Node JS ](https://github.com/safaricom/mpesa-node-library), that exposes M-Pesa API by Safaricom.
+* Stripe - [INCOMPLETE] The Stripe Node library provides convenient access to the [Stripe API](https://github.com/stripe/stripe-node) that allows collecting customer and payment information made using VISA/ Mastercard.
 
 
 ## Mobile platform
